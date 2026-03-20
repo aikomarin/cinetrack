@@ -26,33 +26,29 @@ CineTrack funciona como un catálogo personal donde puedes registrar películas 
 ### Dashboard
 ![Dashboard](ct1.png)
 
-![Dashboard extendido](ct2.png)
-
 ---
 
 ### Catálogo
-![Catálogo](ct3.png)
-
-![Catálogo vista 2](ct4.png)
+![Catálogo](ct2.png)
 
 ---
 
 ### Pendientes
-![Pendientes tablero](ct5.png)
+![Pendientes tablero](ct3.png)
 
-![Pendientes focus](ct6.png)
+![Pendientes focus](ct4.png)
 
 ---
 
 ### Favoritos
-![Favoritos](ct7.png)
+![Favoritos](ct5.png)
 
 ---
 
 ### Búsqueda
-![Búsqueda](ct8.png)
+![Búsqueda](ct6.png)
 
-![Resultados](ct9.png)
+![Resultados](ct7.png)
 
 ---
 
