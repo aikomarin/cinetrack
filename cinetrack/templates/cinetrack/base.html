@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}CineTrack{% endblock %}</title>
+
+  <!-- CSS vendor -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Teko:wght@400;600;700&family=DM+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS app -->
+  <link rel="stylesheet" href="{% static 'cinetrack/cinetrack.css' %}">
+<!--  <link rel="stylesheet" href="{% static 'cinetrack/cinetrack_clean.css' %}">-->
+</head>
+<body data-urlname="{{ request.resolver_match.url_name|default:'' }}">
+
+  <!-- Background extra por página -->
+  {% block background_extras %}{% endblock %}
+
+  <!-- Header y navegación -->
+  <header class="cinedock-wrapper">
+    <div class="container-xl">
+      <div class="cinedock">
+        <a class="dock-brand" href="{% url 'cinetrack:home' %}">
+          <span class="logo-claqueta-anim" aria-hidden="true"></span>
+          <span class="brand-text">CineTrack</span>
+        </a>
+
+        <nav class="dock-tabs" id="cinedock-tabs">
+          <span class="tab-indicator"></span>
+
+          <a class="dock-tab"
+             href="{% url 'cinetrack:catalogo' %}"
+             {% if request.resolver_match.url_name == 'catalogo' %}aria-current="page"{% endif %}>
+            <i class="bi bi-collection"></i><span>Catálogo</span>
+          </a>
+
+          <a class="dock-tab"
+             href="{% url 'cinetrack:maratones' %}"
+             {% if request.resolver_match.url_name == 'maratones' %}aria-current="page"{% endif %}>
+            <i class="bi bi-collection"></i><span>Maratones</span>
+          </a>
+
+          <a class="dock-tab"
+             href="{% url 'cinetrack:pendientes' %}"
+             {% if request.resolver_match.url_name == 'pendientes' %}aria-current="page"{% endif %}>
+            <i class="bi bi-hourglass-split"></i><span>Pendientes</span>
+          </a>
+
+          <a class="dock-tab"
+             href="{% url 'cinetrack:favoritos' %}"
+             {% if request.resolver_match.url_name == 'favoritos' %}aria-current="page"{% endif %}>
+            <i class="bi bi-star-fill"></i><span>Favoritos</span>
+          </a>
+
+          <a class="dock-tab"
+             href="{% url 'cinetrack:volverias' %}"
+             {% if request.resolver_match.url_name == 'volverias' %}aria-current="page"{% endif %}>
+            <i class="bi bi-arrow-repeat"></i><span>Volverías a ver</span>
+          </a>
+        </nav>
+
+        <div class="dock-actions">
+          <a class="btn-appcentral-ghost" href="/"><i class="bi bi-house-door-fill"></i> <span>App Central</span></a>
+          <a class="btn-neon small" href="{% url 'cinetrack:buscar' %}"><i class="bi bi-plus-circle"></i> Agregar</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Bloque hero -->
+  <div class="page-rails">
+    {% block hero %}{% endblock %}
+  </div>
+
+  <!-- Contenido principal -->
+  <main class="container-xl py-4">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Portal global para overlays o menús -->
+  <div id="ct-portal" style="pointer-events:none;"></div>
+
+  <!-- JS vendor -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+
+  <!-- JS app -->
+  <script src="{% static 'cinetrack/cinetrack.js' %}" defer></script>
+
+  {% block scripts %}{% endblock %}
+</body>
+</html>

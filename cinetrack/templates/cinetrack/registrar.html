@@ -1,0 +1,116 @@
+{% extends 'cinetrack/base.html' %}
+{% block title %}Registrar | CineTrack{% endblock %}
+
+{% block content %}
+<div class="edit-page">
+  <!-- Fondo -->
+  <div class="edit-bg"></div>
+  <div class="edit-glow"></div>
+
+  <!-- Header -->
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="edit-title m-0">
+      <i class="bi bi-plus-square"></i> Registrar
+      <span class="mx-2 text-muted">|</span>
+      <small class="fs-5 text-light fw-semibold">Película o Serie</small>
+    </h2>
+    <a href="{% url 'cinetrack:catalogo' %}" class="btn-ghost">
+      <i class="bi bi-arrow-left-circle"></i> Volver al catálogo
+    </a>
+  </div>
+
+  {% if error %}
+    <div class="tile p-3 mb-3">{{ error }}</div>
+  {% endif %}
+  {% if formulario.non_field_errors %}
+    <div class="tile p-3 mb-3">{{ formulario.non_field_errors }}</div>
+  {% endif %}
+
+  <!-- Claqueta -->
+  <div class="clap-sep"></div>
+
+  <!-- Formulario -->
+  <form method="post" class="edit-card edit-form p-4 p-lg-5" novalidate>
+    {% csrf_token %}
+
+    <!-- Título -->
+    <div class="mb-3">
+      <label class="form-label" for="id_titulo">Título</label>
+      {{ formulario.titulo }}
+      {% if formulario.titulo.errors %}<div class="text-danger small mt-1">{{ formulario.titulo.errors }}</div>{% endif %}
+    </div>
+
+    <!-- Tipo / Plataforma -->
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label class="form-label" for="id_tipo">Tipo</label>
+        {{ formulario.tipo }}
+        {% if formulario.tipo.errors %}<div class="text-danger small mt-1">{{ formulario.tipo.errors }}</div>{% endif %}
+      </div>
+      <div class="col-md-6 mb-3">
+        <label class="form-label" for="id_plataforma">Plataforma</label>
+        {{ formulario.plataforma }}
+        {% if formulario.plataforma.errors %}<div class="text-danger small mt-1">{{ formulario.plataforma.errors }}</div>{% endif %}
+      </div>
+    </div>
+
+    <!-- Resumen -->
+    <div class="mb-4">
+      <label class="form-label" for="id_resumen">Resumen</label>
+      {{ formulario.resumen }}
+      {% if formulario.resumen.errors %}<div class="text-danger small mt-1">{{ formulario.resumen.errors }}</div>{% endif %}
+    </div>
+
+    <!-- Estado / Calificación / Veces vista -->
+    <div class="row mb-4">
+      <div class="col-md-4 mb-3">
+        <label class="form-label" for="id_estado">Estado</label>
+        {{ formulario.estado }}
+        {% if formulario.estado.errors %}<div class="text-danger small mt-1">{{ formulario.estado.errors }}</div>{% endif %}
+      </div>
+      <div class="col-md-4 mb-3">
+        <label class="form-label" for="id_calificacion">Calificación</label>
+        {{ formulario.calificacion }}
+        {% if formulario.calificacion.errors %}<div class="text-danger small mt-1">{{ formulario.calificacion.errors }}</div>{% endif %}
+      </div>
+      <div class="col-md-4 mb-3">
+        <label class="form-label" for="id_veces_vista">Veces vista</label>
+        {{ formulario.veces_vista }}
+        {% if formulario.veces_vista.errors %}<div class="text-danger small mt-1">{{ formulario.veces_vista.errors }}</div>{% endif %}
+      </div>
+    </div>
+
+    <!-- Switches -->
+    <div class="row g-3 mb-4">
+      <div class="col-md-4">
+        <div class="form-check form-switch mt-2">
+          {{ formulario.favorita }}
+          <label class="form-check-label ms-2" for="id_favorita">¿Favorita?</label>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-check form-switch mt-2">
+          {{ formulario.volveria_a_ver }}
+          <label class="form-check-label ms-2" for="id_volveria_a_ver">¿Volvería a ver?</label>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-check form-switch mt-2">
+          {{ formulario.tendra_continuacion }}
+          <label class="form-check-label ms-2" for="id_tendra_continuacion">¿Tendrá continuación?</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Acciones -->
+    <div class="d-flex justify-content-center gap-3 pt-2">
+      <button type="submit" class="btn-save">
+        <i class="bi bi-check-circle me-1"></i> Guardar
+      </button>
+      <a href="{% url 'cinetrack:buscar' %}" class="btn-ghost">
+        <i class="bi bi-x-circle"></i> Cancelar
+      </a>
+    </div>
+  </form>
+</div>
+{% endblock %}

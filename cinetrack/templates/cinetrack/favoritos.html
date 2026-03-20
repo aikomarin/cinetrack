@@ -1,0 +1,87 @@
+{% extends 'cinetrack/base.html' %}
+{% block title %}Favoritos | CineTrack{% endblock %}
+
+{% block content %}
+<div class="edit-page">
+
+  <!-- Encabezado -->
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="edit-title m-0">
+      <i class="bi bi-star-fill text-warning"></i> Favoritos
+      <span class="mx-2 text-muted">|</span>
+      <small class="fs-5 text-light fw-semibold">Tus series y películas favoritas en un solo lugar</small>
+    </h2>
+    <a href="{% url 'cinetrack:catalogo' %}" class="btn-ghost"><i class="bi bi-collection"></i> Catálogo</a>
+  </div>
+
+  {% if top3 %}
+  <!-- Podio -->
+  <section class="fav-podium-compact mb-5">
+    <div class="podium-stage equal">
+      {% for it in top3 %}
+        {% with rank=forloop.counter %}
+        <article class="podium-slot" data-rank="{{ rank }}">
+          <a class="podium-poster" href="{% url 'cinetrack:detalle' it.pk %}?from=favoritos" title="{{ it.titulo }}">
+            {% if it.imagen %}<img src="{{ it.imagen }}" alt="{{ it.titulo }}">{% else %}<div class="poster-ph"></div>{% endif %}
+          </a>
+          <div class="podium-label">
+            <h3 class="podium-title line-clamp-1">{{ it.titulo }}</h3>
+            <div class="d-flex gap-2 justify-content-center small">
+              {% if it.tipo %}<span class="badge rounded-pill bg-dark-subtle text-light">{{ it.get_tipo_display }}</span>{% endif %}
+              {% if it.plataforma %}<span class="badge rounded-pill bg-dark-subtle text-light">{{ it.get_plataforma_display }}</span>{% endif %}
+            </div>
+          </div>
+          <div class="pedestal pedestal-{{ rank }}">
+            <div class="pedestal-body">
+              <span class="medal">{{ rank }}</span>
+              <div class="spacer"></div>
+              <span class="pedestal-title">{{ it.titulo }}</span>
+            </div>
+          </div>
+        </article>
+        {% endwith %}
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  {% if peliculas %}
+  <!-- Películas -->
+  <section class="fav-rail mb-5">
+    <div class="fav-section d-flex justify-content-between align-items-center mb-3">
+      <h3 class="fav-title"><i class="bi bi-film"></i> Películas favoritas</h3>
+      <a href="{% url 'cinetrack:catalogo' %}?favorita=1&tipo=pelicula" class="btn-ghost-sm">Ver todas</a>
+    </div>
+    <div class="row g-3">
+      {% for it in peliculas %}
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+        <a href="{% url 'cinetrack:detalle' it.pk %}?from=favoritos" class="rail-poster d-block">
+          {% if it.imagen %}<img src="{{ it.imagen }}" alt="{{ it.titulo }}">{% else %}<div class="poster-ph"></div>{% endif %}
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  {% if series %}
+  <!-- Series -->
+  <section class="fav-rail mb-5">
+    <div class="fav-section d-flex justify-content-between align-items-center mb-2">
+      <h3 class="fav-title"><i class="bi bi-tv"></i> Series favoritas</h3>
+      <a href="{% url 'cinetrack:catalogo' %}?favorita=1&tipo=serie" class="btn-ghost-sm">Ver todas</a>
+    </div>
+    <div class="row g-3">
+      {% for it in series %}
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+        <a href="{% url 'cinetrack:detalle' it.pk %}?from=favoritos" class="rail-poster d-block">
+          {% if it.imagen %}<img src="{{ it.imagen }}" alt="{{ it.titulo }}">{% else %}<div class="poster-ph"></div>{% endif %}
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+</div>
+{% endblock %}

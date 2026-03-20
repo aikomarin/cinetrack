@@ -1,0 +1,141 @@
+{% extends 'cinetrack/base.html' %}
+{% block title %}{{ maraton.nombre }} · Maratón | CineTrack{% endblock %}
+
+{% block content %}
+<div class="container-xl">
+
+  <!-- Encabezado -->
+  <div class="d-flex align-items-center justify-content-between mb-3">
+    <h1 class="hero-title m-0"><i class="bi bi-film"></i> {{ maraton.nombre }}</h1>
+    <a href="{% url 'cinetrack:maratones' %}" class="btn-ghost">
+      <i class="bi bi-arrow-left-circle"></i> Volver a maratones
+    </a>
+  </div>
+
+  {% if maraton.descripcion %}
+    <p class="hero-sub mb-3">{{ maraton.descripcion }}</p>
+  {% endif %}
+
+  <!-- Buscador local -->
+  <div class="tile edit-card p-3 mb-3">
+    <form class="row g-2 align-items-end" onsubmit="return false;">
+      <div class="col-12 col-md-9">
+        <label class="form-label m-0" for="filtro-mara">Buscar</label>
+        <input id="filtro-mara" type="text" class="form-control" placeholder="Título o saga…">
+      </div>
+      <div class="col-12 col-md-3 text-md-end">
+        <button type="button" id="btn-filtrar-mara" class="btn-neon w-100 btn-center">
+          <i class="bi bi-search"></i> Buscar
+        </button>
+      </div>
+      <div class="col-12">
+        <span class="small text-light opacity-75" id="mara-count">
+          {{ maraton.contenidos.count }} títulos
+        </span>
+      </div>
+    </form>
+  </div>
+
+  {% if items %}
+    <!-- Grid de contenidos -->
+    <div class="row g-3" id="mara-grid">
+      {% for c in items %}
+      <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
+        <div class="topcard h-100 position-relative">
+
+          {% if c.favorita %}
+            <span class="position-absolute top-0 end-0 m-2 z-3" title="Favorita" aria-label="Favorita">
+              <i class="bi bi-star-fill" style="filter: drop-shadow(0 0 6px rgba(255,215,0,.45)); color:#ffd700;"></i>
+            </span>
+          {% endif %}
+
+          <div class="topcard-thumb position-relative">
+            <a href="{% url 'cinetrack:detalle' c.pk %}?from=maraton" class="d-block">
+              {% if c.imagen %}
+                <img src="{{ c.imagen }}" alt="{{ c.titulo }}">
+              {% else %}
+                <div class="d-flex align-items-center justify-content-center h-100 text-muted bg-dark" style="aspect-ratio:2/3;">
+                  <i class="bi bi-image" style="font-size:1.6rem;"></i>
+                </div>
+              {% endif %}
+            </a>
+
+            {% if c.estado %}
+              <span class="badge rounded-pill position-absolute start-0 top-0 m-2
+                           estado-{% if c.estado == 'vista' %}vista{% else %}pendiente{% endif %}">
+                {{ c.get_estado_display }}
+              </span>
+            {% endif %}
+
+            {% if c.estado == 'vista' and c.calificacion %}
+              <span class="badge rounded-pill position-absolute end-0 bottom-0 m-2
+                           cal-{{ c.get_calificacion_display|lower }}">
+                {{ c.get_calificacion_display }}
+              </span>
+            {% endif %}
+          </div>
+
+          <div class="topcard-meta">
+            <h4 class="topcard-name mt-4" title="{{ c.titulo }}">
+              <a href="{% url 'cinetrack:detalle' c.pk %}?from=maraton">{{ c.titulo }}</a>
+            </h4>
+            <div class="d-flex align-items-center justify-content-between">
+              <small class="opacity-75">
+                {{ c.get_tipo_display }}{% if c.plataforma %} · {{ c.get_plataforma_display }}{% endif %}
+              </small>
+              <!-- Quitar del maratón (icono en rojo) -->
+              <button class="btn-ghost-sm text-danger"
+                      title="Quitar del maratón"
+                      data-bs-toggle="modal"
+                      data-bs-target="#confirmarQuitarModal"
+                      data-id="{{ c.id }}"
+                      data-titulo="{{ c.titulo }}"
+                      data-form="quit-{{ c.id }}">
+                <i class="bi bi-x-circle-fill text-danger"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Form oculto para quitar del maratón -->
+          <form id="quit-{{ c.id }}" method="post" action="{% url 'cinetrack:quitar_de_maraton' maraton.id c.id %}" class="d-none">
+            {% csrf_token %}
+          </form>
+
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="tile text-center py-5">
+      <div class="display-6 mb-2">Sin contenidos</div>
+      <p class="opacity-75">Agrega películas o series a este maratón desde la pantalla de creación/edición.</p>
+    </div>
+  {% endif %}
+
+</div>
+
+<!-- Modal · Quitar del maratón -->
+<div class="modal fade" id="confirmarQuitarModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content ctmodal">
+      <button type="button" class="btn-close btn-close-white ctmodal-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+
+      <div class="ctmodal-header">
+        <span class="ctmodal-icon"><i class="bi bi-exclamation-triangle-fill"></i></span>
+        <h5 class="ctmodal-title m-0">Quitar del maratón</h5>
+      </div>
+
+      <div class="ctmodal-body">
+        <p class="m-0">¿Quitar <strong id="tituloAQuitar">"—"</strong> de este maratón?</p>
+      </div>
+
+      <div class="ctmodal-actions">
+        <button id="confirmQuitarBtn" type="button" class="btn btn-danger btn-glow">
+          <i class="bi bi-x-circle me-1"></i> Sí, quitar
+        </button>
+        <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

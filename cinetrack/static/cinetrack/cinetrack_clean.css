@@ -1,0 +1,1107 @@
+/* ----- VARIABLES ----- */
+:root {
+  /* Tipografías */
+  --font-titles: 'Bebas Neue', system-ui, sans-serif;   /* títulos principales (ej. hero, headers grandes) */
+  --font-subtitles: 'Teko', system-ui, sans-serif;      /* subtítulos, headers secundarios, labels */
+  --font-text: 'DM Sans', system-ui, sans-serif;        /* texto de párrafos y contenido general */
+
+  /* Colores de fondo */
+  --color-bg-base: #0b0712;     /* fondo principal del body */
+  --color-bg-deep: #120a1f;     /* fondo más profundo (gradientes) */
+  --color-bg-panel: #1a1030;    /* paneles, tarjetas y secciones */
+
+  /* Colores de texto */
+  --color-text-primary: #f6f3ff;  /* texto blanco principal */
+  --color-text-dim: #dcd3fb;      /* texto tenue o secundario */
+
+  /* Acentos */
+  --color-accent-main: #9b5cfb;   /* morado neón (color primario en dashboard, botones, métricas) */
+  --color-accent-dark: #6f3fe6;   /* morado oscuro (degradados, fills de barras/dashboard) */
+  --color-accent-alt: #14ffe9;    /* cian neón alterno (detalles secundarios, efectos) */
+
+  /* Líneas / bordes */
+  --color-line: rgba(255,255,255,.12); /* borde tenue global (tiles, botones, paneles) */
+
+  /* Rails (espacio lateral para rollos) */
+  --size-rail: 140px;                                  /* ancho de cada rollo vertical */
+  --size-rails-pad: calc(var(--size-rail) + 18px);     /* padding lateral para centrar contenido */
+
+  /* Logo claqueta */
+  --color-clap-body: #7c3aed;           /* cuerpo de la claqueta */
+  --color-clap-body-dark: #5b2bb5;      /* cuerpo en tono más oscuro */
+  --color-clap-stripe: #ffffff;         /* franjas blancas de la tapa */
+  --color-clap-edge: rgba(0,0,0,.28);   /* borde/sombra del logo */
+
+  /* Perforaciones laterales (film-roll) */
+  --anim-sprocket-speed: 2s;   /* velocidad de animación de agujeros */
+  --size-sprocket-step: 66px;  /* ciclo de agujero lleno + hueco */
+  --size-sprocket-hole: 30px;  /* tamaño del agujero */
+
+  /* Gradientes de acento */
+  --grad-accent: linear-gradient(135deg, var(--color-accent-main), var(--color-accent-dark));
+  /* degradado usado en botones, barras y fills del dashboard */
+
+  /* Botones */
+  --btn-radius: 16px;                                 /* radio redondeado de botones */
+  --btn-pad-y: 1rem;                                  /* padding vertical */
+  --btn-pad-x: 1.35rem;                               /* padding horizontal */
+  --btn-shadow: 0 10px 24px rgba(111,63,230,.35);     /* sombra normal de botón */
+  --btn-glow-shadow: 0 0 14px rgba(155,92,251,.55);   /* glow neón en hover */
+
+  /* Paleta de botones */
+  --btn-primary-bg: var(--grad-accent);              /* fondo degradado de botones principales */
+  --btn-primary-shadow: var(--btn-glow-shadow);      /* sombra glow en hover */
+  --btn-secondary-bg: transparent;                   /* fondo transparente de botones secundarios */
+  --btn-secondary-border: var(--color-line);         /* borde tenue */
+  --btn-secondary-color: var(--color-text-primary);  /* texto blanco principal */
+
+  /* Alias directos para usar en dashboard (más cortos) */
+  --line: var(--color-line);             /* usado en bordes de tiles/barras */
+  --accent: var(--color-accent-main);    /* acento principal (rings, barras) */
+  --accent-2: var(--color-accent-dark);  /* acento secundario (degradados dashboard) */
+}
+
+
+/* ----- GLOBALES ----- */
+
+/* RESET */
+* {
+  box-sizing: border-box; /* asegura que padding y borde se incluyan en el ancho/alto total */
+}
+
+html, body {
+  height: 100%;  /* ocupa toda la altura de la ventana */
+  margin: 0;     /* elimina márgenes por defecto */
+}
+
+body {
+  color: var(--color-text-primary); /* texto principal global */
+  font-family: var(--font-text);    /* tipografía base de párrafos */
+  background: linear-gradient(180deg, var(--color-bg-base) 0%, var(--color-bg-deep) 100%) fixed;
+  /* gradiente de fondo fijo, de base a deep */
+}
+
+/* ENLACES */
+a {
+  text-decoration: none; /* elimina subrayado */
+  color: inherit;        /* hereda color del contenedor */
+}
+
+a:hover {
+  color: #fff;           /* resalta blanco al pasar el mouse */
+}
+
+/* BOTONES */
+
+/* btn-primary - Botón primario */
+.btn-primary{
+  display: inline-flex; align-items: center; gap: .5rem; /* alinea icono/texto horizontalmente */
+  padding: var(--btn-pad-y) var(--btn-pad-x);            /* padding vertical/horizontal */
+  border-radius: var(--btn-radius);                      /* esquinas redondeadas */
+  border: none;                                          /* sin borde */
+  background: var(--btn-primary-bg);                     /* degradado morado principal */
+  color: #fff;                                           /* texto blanco */
+  font-family: var(--font-text);                         /* tipografía de texto */
+  font-weight: 800;                                      /* negrita fuerte */
+  line-height: 1;                                        /* altura de línea ajustada */
+  min-height: 56px;                                      /* altura mínima uniforme */
+  box-shadow:                                            /* sombras de glow */
+    0 14px 34px rgba(111,63,230,.45),                    /* sombra externa morada */
+    inset 0 0 0 1px rgba(255,255,255,.08);               /* línea interna tenue */
+  transition: transform .15s ease, box-shadow .2s ease, filter .2s ease; /* transiciones suaves */
+}
+.btn-primary:hover{
+  transform: translateY(-2px); /* levanta ligeramente */
+  filter: brightness(1.06);    /* aclara un poco */
+}
+
+.btn-primary-small {
+  min-height: 48px;            /* solo sobreescribe lo que cambia */
+  padding: .65rem 1rem;        /* ejemplo: un padding más compacto */
+}
+
+/* btn-secondary - Botón secundario */
+.btn-secondary{
+  display: inline-flex; align-items: center; gap: .5rem; /* disposición horizontal con espacio */
+  padding: var(--btn-pad-y) var(--btn-pad-x);            /* padding igual que primario */
+  border-radius: var(--btn-radius);                      /* esquinas redondeadas */
+  line-height: 1;                                        /* line-height compacto */
+  min-height: 56px;                                      /* altura uniforme */
+  background: rgba(255,255,255,.04);                     /* fondo translúcido */
+  border: 1px solid var(--color-line);                   /* borde tenue */
+  color: var(--color-text-primary);                      /* texto blanco principal */
+  font-family: var(--font-text);                         /* tipografía base */
+  font-weight: 600;                                      /* seminegrita */
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.06);     /* borde interno suave */
+  transition: all .18s ease;                             /* transición en hover */
+}
+.btn-secondary:hover{
+  background: rgba(255,255,255,.08); /* más visible en hover */
+}
+
+/* Botón eliminar (variante small) */
+.btn-secondary-small[data-bs-target="#confirmarEliminarModal"] {
+  color: #ff4d4f;                              /* texto rojo */
+  border: 1px solid rgba(255, 77, 79, .6);     /* borde rojo tenue */
+  border-radius: 8px;                          /* esquinas suavizadas */
+  padding: 4px 6px;                            /* padding reducido */
+  line-height: 1;                              /* compacto */
+  transition: all .2s ease;                    /* transición rápida */
+}
+.btn-secondary-small[data-bs-target="#confirmarEliminarModal"]:hover {
+  color: #fff;                                 /* texto blanco en hover */
+  background: rgba(255, 77, 79, .85);          /* fondo rojo fuerte */
+  border-color: #ff4d4f;                       /* borde rojo sólido */
+  box-shadow: 0 0 12px rgba(255, 77, 79, .55); /* glow rojo */
+}
+
+/* btn-secondary-appcentral */
+.btn-secondary-appcentral{
+  display: inline-flex;                 /* alinea ícono y texto en fila */
+  align-items: center;                  /* centra verticalmente el contenido */
+  gap: .5rem;                           /* espacio entre ícono y texto */
+  padding: .55rem .85rem;               /* padding vertical/horizontal */
+  border-radius: 10px;                  /* esquinas redondeadas */
+  border: 1px solid var(--line);        /* borde tenue global */
+  background: rgba(255,255,255,.04);    /* fondo translúcido */
+  color: var(--color-text-dim);         /* texto tenue */
+  font-family: var(--font-subtitles);   /* tipografía secundaria (Teko) */
+  text-transform: uppercase;            /* convierte texto a mayúsculas */
+  letter-spacing: .5px;                 /* espacio entre letras */
+  font-weight: 600;                     /* seminegrita */
+  transition: all .15s ease;            /* transición suave en hover */
+}
+
+.btn-secondary-appcentral i{
+  opacity: .95;                 /* ícono ligeramente atenuado */
+}
+
+.btn-secondary-appcentral:hover{
+  background: rgba(255,255,255,.08);                 /* fondo más claro en hover */
+  color: #fff;                                       /* texto blanco en hover */
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.08); /* borde interno suave */
+}
+
+/* Responsive - solo ícono en pantallas chicas */
+@media (max-width: 620px){
+  .btn-secondary-appcentral span{ display: none; }      /* oculta texto, deja solo el ícono */
+  .btn-secondary-appcentral{ padding: .55rem .6rem; }   /* padding más compacto */
+}
+
+/* Iconos en botones */
+.btn-primary i,
+.btn-secondary i{
+  font-size: 1.2rem;       /* tamaño de icono */
+  margin-right: .35rem;    /* espacio entre icono y texto */
+  opacity: 1;              /* icono visible completo */
+}
+
+
+/* ----- TEMPLATE BASE ----- */
+
+/* CINEDOCK-WRAPPER */
+header.cinedock-wrapper, .page-rails, main {
+  z-index: auto; /* nivel de apilado por defecto para header, rails y main */
+}
+
+.cinedock-wrapper {
+  position: relative;                         /* posiciona en flujo normal pero permite z-index */
+  top: auto;                                  /* sin desplazamiento vertical extra */
+  z-index: 50;                                /* sobrepone el dock frente al fondo */
+  padding: 14px var(--size-rails-pad) 10px;   /* espacio arriba, laterales según rails, abajo */
+}
+
+/* Responsive - hasta 720px */
+@media (max-width: 720px) {
+  :root {
+    --size-rail: 0px; /* elimina rails laterales en pantallas chicas */
+  }
+
+  .cinedock-wrapper {
+    padding-left: 14px;  /* margenes más estrechos */
+    padding-right: 14px;
+  }
+
+  .page-rails {
+    padding-left: 14px;  /* iguala márgenes en rails */
+    padding-right: 14px;
+  }
+
+  .film-roll-vertical {
+    display: none; /* oculta los rollos laterales para liberar espacio */
+  }
+}
+
+/* CINEDOCK */
+.cinedock {
+  display: flex;                                /* layout flexible */
+  align-items: center;                          /* centra verticalmente los elementos */
+  justify-content: space-between;               /* separa tabs y acciones */
+  gap: 14px;                                    /* espacio entre bloques internos */
+  background: linear-gradient(                  /* fondo translúcido con degradado */
+    180deg,
+    rgba(15, 10, 24, .85),
+    rgba(15, 10, 24, .72)
+  );
+  border: 1px solid var(--color-line);          /* borde tenue */
+  border-radius: 18px;                          /* esquinas redondeadas */
+  padding: 10px 14px;                           /* relleno interno */
+  backdrop-filter: blur(8px) saturate(140%);    /* efecto vidrio esmerilado */
+  box-shadow:
+    0 10px 26px rgba(0, 0, 0, .45),             /* sombra externa oscura */
+    inset 0 0 0 1px rgba(255, 255, 255, .06);   /* borde interno claro */
+}
+
+/* Responsive - hasta 940px */
+@media (max-width: 940px) {
+  .cinedock {
+    flex-wrap: wrap; /* permite que los elementos bajen a otra línea */
+    gap: 10px;       /* reduce espacio entre ellos */
+  }
+
+  .dock-actions {
+    margin-left: auto; /* empuja acciones a la derecha */
+  }
+}
+
+/* DOCK-BRAND */
+.dock-brand {
+  display: flex;                        /* ícono + texto en fila */
+  align-items: center;                  /* alineación vertical */
+  gap: 10px;                            /* separación entre ícono/texto */
+  padding: 6px 10px;                    /* relleno interno */
+  border-radius: 12px;                  /* esquinas redondeadas */
+  font-family: var(--font-titles);      /* tipografía de marca */
+  font-size: 1.6rem;                    /* tamaño del texto */
+  font-weight: 700;                     /* negrita */
+  letter-spacing: 1px;                  /* espaciado de letras */
+  text-transform: uppercase;            /* texto en mayúsculas */
+  color: var(--color-text-primary);     /* texto blanco */
+}
+.dock-brand:hover {
+  background: rgba(255, 255, 255, .06); /* fondo claro en hover */
+}
+
+/* CLAPPER-LOGO-ANIM */
+.clapper-logo-anim {
+  position: relative;                       /* base para pseudo-elementos */
+  width: 34px;                              /* ancho del cuerpo */
+  height: 26px;                             /* alto del cuerpo (sin tapa) */
+  border-radius: 4px;                       /* esquinas redondeadas */
+  background: linear-gradient(              /* degradado del cuerpo */
+    180deg,
+    var(--color-clap-body),
+    var(--color-clap-body-dark)
+  );
+  box-shadow:
+    inset 0 0 0 2px var(--color-clap-edge), /* borde interno */
+    0 4px 10px rgba(0, 0, 0, .35);          /* sombra externa */
+  display: inline-block;                    /* se comporta como inline pero admite tamaño */
+  margin-right: .5rem;                      /* separación a la derecha */
+}
+
+/* Bisagra (remache) */
+.clapper-logo-anim::after {
+  content: "";                                    /* pseudo-elemento vacío */
+  position: absolute; left: -3px; top: -4px;      /* posición en esquina sup izq */
+  width: 8px; height: 8px;                        /* tamaño del remache */
+  border-radius: 50%;                             /* forma circular */
+  background: #ddd;                               /* color gris claro */
+  box-shadow: 0 0 0 2px var(--color-clap-edge);   /* borde oscuro alrededor */
+}
+
+/* Tapa animada */
+.clapper-logo-anim::before {
+  content: "";                                          /* pseudo-elemento vacío */
+  position: absolute; left: -1px; top: -9px;            /* encima del cuerpo */
+  width: 36px; height: 10px;                            /* tamaño de la tapa */
+  border-radius: 3px;                                   /* esquinas suavizadas */
+  background: repeating-linear-gradient(                /* franjas en diagonal */
+    45deg,
+    var(--color-clap-stripe) 0 7px,
+    var(--color-clap-body-dark) 7px 14px
+  );
+  box-shadow:
+    inset 0 0 0 1px var(--color-clap-edge),             /* borde interior */
+    0 2px 6px rgba(0, 0, 0, .35);                       /* sombra externa */
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, .35));    /* sombra de la tapa */
+  transform-origin: 6px 10px;                           /* punto de giro en bisagra izq */
+  animation: clapOpen 2.2s ease-in-out infinite;        /* animación de apertura */
+}
+
+/* Hover pausa animación */
+.clapper-logo-anim:hover::before {
+  animation-play-state: paused;                         /* detiene la animación al pasar el mouse */
+}
+
+/* Animación - movimiento de la tapa */
+@keyframes clapOpen {
+  0%   { transform: rotate(0deg); }    /* cerrado */
+  35%  { transform: rotate(-32deg); }  /* abre */
+  55%  { transform: rotate(-32deg); }  /* mantiene abierto */
+  90%  { transform: rotate(0deg); }    /* cierra */
+  100% { transform: rotate(0deg); }    /* fin ciclo */
+}
+
+/* Accesibilidad - reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .clapper-logo-anim::before {
+    animation: none; /* elimina animación si el usuario lo prefiere */
+  }
+}
+
+/* BRAND-TEXT */
+.brand-text{
+  font-family: var(--font-titles);                    /* tipografía de marca (Bebas Neue) */
+  letter-spacing: .8px;                               /* espacio entre letras */
+  font-size: clamp(1.6rem, 2.2vw, 2.2rem);            /* tamaño responsivo entre 1.6 y 2.2rem */
+}
+
+/* DOCK-TABS */
+.dock-tabs {
+  position: relative;                                 /* base para pseudo-elementos si se usan */
+  display: flex;                                      /* distribuye tabs en fila */
+  align-items: center;                                /* centra verticalmente */
+  gap: 6px;                                           /* espacio entre tabs */
+}
+
+/* Responsive - hasta 620px */
+@media (max-width: 620px) {
+  .dock-tabs {
+    gap: 2px;                                         /* reduce espacio entre tabs */
+  }
+
+  .dock-tab span {
+    display: none;                                    /* oculta texto, solo deja íconos */
+  }
+}
+
+/* Accesibilidad - reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .dock-tabs .tab-indicator {
+    transition: none;                                 /* desactiva transiciones de indicador */
+  }
+}
+
+/* DOCK-TAB */
+.dock-tab {
+  display: flex;                                      /* ícono + texto en fila */
+  align-items: center;                                /* centra verticalmente */
+  gap: 8px;                                           /* espacio entre ícono/texto */
+  font-family: var(--font-subtitles);                 /* tipografía secundaria (Teko) */
+  text-transform: uppercase;                          /* texto en mayúsculas */
+  letter-spacing: .5px;                               /* espaciado de letras */
+  padding: 8px 12px;                                  /* relleno interno */
+  border-radius: 12px;                                /* esquinas redondeadas */
+  color: var(--color-text-dim);                       /* texto tenue por defecto */
+  position: relative;                                 /* necesario para ::after */
+  transition:                                         /* animaciones suaves en hover */
+    color .15s ease,
+    transform .15s ease,
+    background .15s ease;
+}
+.dock-tab:hover {
+  color: var(--color-text-primary);                   /* texto blanco al pasar el mouse */
+  transform: translateY(-1px);                        /* levanta ligeramente */
+  background: rgba(255, 255, 255, .06);               /* fondo más claro */
+}
+.dock-tab[aria-current="page"] {
+  color: var(--color-text-primary);                   /* pestaña activa en blanco */
+  font-weight: 600;                                   /* resalta con seminegrita */
+}
+.dock-tab i {
+  font-size: 1.05rem;                                 /* tamaño de icono */
+  opacity: .95;                                       /* leve atenuación */
+}
+
+/* Línea solo en hover */
+.dock-tab::after {
+  content: "";                                        /* pseudo-elemento vacío */
+  position: absolute;                                 /* posicionado relativo al tab */
+  bottom: -6px;                                       /* justo debajo del tab */
+  left: 25%;                                          /* empieza al 25% del ancho */
+  width: 50%;                                         /* ocupa la mitad */
+  height: 3px;                                        /* grosor de la línea */
+  border-radius: 6px;                                 /* bordes redondeados */
+  background: linear-gradient(                        /* gradiente morado */
+    90deg,
+    var(--color-accent-main),
+    var(--color-accent-dark)
+  );
+  box-shadow: 0 0 6px rgba(155, 92, 251, .55);        /* glow del acento */
+  transform: scaleX(0);                               /* línea oculta inicialmente */
+  transition: transform .25s ease;                    /* animación de aparición */
+}
+.dock-tab:hover::after {
+  transform: scaleX(1);                               /* línea aparece en hover */
+}
+
+/* DOCK-ACTIONS */
+.dock-actions {
+  display: flex;                                      /* íconos/botones en fila */
+  align-items: center;                                /* centrado vertical */
+  gap: 8px;                                           /* espacio entre acciones */
+}
+
+/* CT-PORTAL */
+#ct-portal {
+  z-index: 9999; /* portal siempre por encima de todo */
+}
+
+#ct-portal .ct-menu {
+  background: linear-gradient(180deg, var(--color-bg-panel), var(--color-bg-deep)); /* fondo degradado panel → deep */
+  border: 1px solid rgba(155, 92, 251, .28);                                        /* borde morado translúcido */
+  box-shadow:
+    0 14px 28px rgba(0, 0, 0, .55),                                                 /* sombra externa fuerte */
+    inset 0 0 0 1px rgba(255, 255, 255, .05);                                       /* borde interno claro */
+  border-radius: 12px;                                                              /* esquinas redondeadas */
+  padding: 4px;                                                                     /* espacio interno mínimo */
+  font-size: .9rem;                                                                 /* texto más pequeño */
+  max-width: 260px;                                                                 /* ancho máximo del menú */
+}
+
+/* Opciones dentro del menú */
+#ct-portal .ct-option {
+  color: var(--color-text-primary); /* texto blanco */
+  padding: .4rem .65rem;            /* relleno interno */
+  border-radius: 8px;               /* esquinas redondeadas */
+  font-weight: 600;                 /* seminegrita */
+  font-size: .95rem;                /* tamaño ligeramente mayor que el menú */
+  user-select: none;                /* evita seleccionar texto */
+}
+#ct-portal .ct-option:hover {
+  background: rgba(155, 92, 251, .18); /* resalta con fondo morado claro */
+}
+#ct-portal .ct-option[aria-selected="true"] {
+  background: rgba(155, 92, 251, .28);                  /* fondo más intenso si está seleccionado */
+  box-shadow: inset 0 0 0 1px rgba(155, 92, 251, .4);   /* borde interno morado */
+}
+#ct-portal .ct-option.is-placeholder {
+  color: var(--color-text-dim); /* texto tenue para placeholder */
+}
+#ct-portal .ct-option[aria-disabled="true"] {
+  opacity: .45;          /* opción desactivada */
+  cursor: not-allowed;   /* cursor bloqueado */
+}
+
+/* Scrollbar (WebKit) personalizado */
+#ct-portal .ct-menu::-webkit-scrollbar {
+  width: 10px; /* ancho de la barra */
+}
+#ct-portal .ct-menu::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, .18);      /* color del pulgar de scroll */
+  border-radius: 999px;                      /* forma circular */
+}
+
+
+/* ----- TEMPLATE HOME ----- */
+
+/* FILM-ROLL-VERTICAL */
+.film-roll-vertical {
+  position: fixed;                                /* siempre fijo en pantalla */
+  top: 0; bottom: 0;                              /* ocupa toda la altura */
+  width: var(--size-rail);                        /* ancho definido en variable */
+  background: linear-gradient(#0b0b0f, #151021);  /* degradado oscuro vertical */
+  border-left: 2px solid var(--color-line);       /* borde izq tenue */
+  border-right: 2px solid var(--color-line);      /* borde der tenue */
+  overflow: hidden;                               /* oculta contenido que sobresalga */
+  z-index: 2;                                     /* queda detrás del cinedock */
+}
+.film-roll-vertical.left  { left: 0; }            /* posición a la izquierda */
+.film-roll-vertical.right { right: 0; }           /* posición a la derecha */
+
+/* Perforaciones laterales */
+.film-roll-vertical::before,
+.film-roll-vertical::after {
+  content: "";                                    /* pseudo-elemento vacío */
+  position: absolute; top: 0; bottom: 0;          /* ocupa toda la altura */
+  width: 14px;                                    /* ancho de la franja de agujeros */
+  z-index: 3;                                     /* encima de los pósters */
+  pointer-events: none;                           /* no bloquea clics */
+  /* agujero: var(--size-sprocket-hole) | paso: var(--size-sprocket-step) */
+  background-image: linear-gradient(
+    to bottom,
+    #e7e7ea 0 var(--size-sprocket-hole),          /* color claro en agujero */
+    rgba(231,231,234,0) var(--size-sprocket-hole) var(--size-sprocket-step)
+  );
+  background-repeat: repeat-y;                                        /* repite hacia abajo */
+  background-size: 100% var(--size-sprocket-step);                    /* tamaño del ciclo */
+  background-position: 0 0;                                           /* inicia arriba */
+  animation: sprocketMove var(--anim-sprocket-speed) linear infinite; /* animación de desplazamiento */
+}
+.film-roll-vertical::before { left:  6px; }       /* perforaciones interiores a la izq */
+.film-roll-vertical::after  { right: 6px; }       /* perforaciones interiores a la der */
+
+/* Izquierda: anima en reversa para no pegarse al track */
+.film-roll-vertical.left::before,
+.film-roll-vertical.left::after {
+  animation-direction: reverse;
+}
+
+/* Derecha: dirección normal; el track vertical irá en reverse */
+.film-roll-vertical.right::before,
+.film-roll-vertical.right::after {
+  animation-direction: normal;
+}
+
+/* Track derecho en reversa para desfasar respecto a perforaciones */
+.film-roll-vertical.right .film-track-vertical {
+  animation-direction: reverse;
+}
+
+/* Animación de perforaciones (ciclo continuo) */
+@keyframes sprocketMove {
+  from { background-position: 0 0; }                            /* empieza arriba */
+  to   { background-position: 0 var(--size-sprocket-step); }    /* se mueve un paso */
+}
+
+/* Responsive: oculta rollos y libera espacio lateral */
+@media (max-width: 720px) {
+  :root { --size-rail: 0px; }                     /* rails se reducen a 0 */
+  .film-roll-vertical { display: none; }          /* oculta los laterales */
+}
+
+/* FILM-TRACK-VERTICAL */
+.film-track-vertical{
+  position: absolute; left: 0; right: 0;          /* ocupa todo el ancho interno */
+  display: flex;                                  /* apila frames en columna */
+  flex-direction: column;
+  gap: 20px;                                      /* espacio entre frames */
+  animation: verticalScroll var(--film-scroll-duration, 40s) linear infinite;
+  /* scroll vertical animado; duración controlada por variable */
+}
+/* Accesibilidad: desactiva animación */
+@media (prefers-reduced-motion: reduce){
+  .film-track-vertical{ animation: none; }
+}
+
+/* Animación de scroll vertical */
+@keyframes verticalScroll{
+  from { transform: translateY(0); }              /* arranca en posición inicial */
+  to   { transform: translateY(-50%); }           /* sube hasta -50% (si duplicas lista crea loop) */
+}
+
+/* FRAME-VERTICAL */
+.frame-vertical {
+  flex: 0 0 auto;                                 /* tamaño fijo, no se estira */
+  margin: 0 auto;                                 /* centrado horizontal */
+  width: 100px; height: 150px;                    /* tamaño de cada póster */
+  background: var(--color-bg-base);               /* fondo oscuro por defecto */
+  border-radius: 8px;                             /* esquinas redondeadas */
+  overflow: hidden;                               /* recorta el contenido */
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, .08),     /* borde interno tenue */
+    0 6px 16px rgba(0, 0, 0, .45);                /* sombra externa */
+}
+.frame-vertical img {
+  width: 100%; height: 100%;                      /* ocupa todo el frame */
+  object-fit: cover;                              /* ajusta la imagen recortando si es necesario */
+  display: block;                                 /* elimina espacio extra debajo */
+}
+
+
+/* HERO */
+.hero{
+  padding: 54px 0 24px;                     /* espacio superior grande, inferior más pequeño */
+}
+
+/* HERO-TITLE */
+.hero-title{
+  font-family: var(--font-titles);          /* tipografía de títulos (Bebas Neue) */
+  font-size: clamp(2.4rem, 6vw, 4.6rem);    /* tamaño responsivo entre 2.4rem y 4.6rem */
+  letter-spacing: 1px;                      /* espacio entre letras */
+  line-height: 1;                           /* sin espacio vertical extra */
+  text-shadow:                              /* sombra doble para resaltar sobre el fondo */
+    0 12px 32px rgba(0,0,0,.6),             /* sombra negra difusa */
+    0 0 24px rgba(255,255,255,.16);         /* halo blanco muy tenue */
+}
+
+/* HERO-SUB */
+.hero-sub{
+  color: var(--color-text-dim);                 /* texto tenue */
+  font-family: var(--font-titles);              /* misma tipografía de títulos */
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);    /* tamaño responsivo del subtítulo */
+  letter-spacing: .4px;                         /* espacio entre letras */
+  text-transform: uppercase;                    /* en mayúsculas */
+}
+
+/* DASH-GRID */
+.dash-grid{
+  display: grid;                                /* usa CSS Grid */
+  grid-template-areas:                          /* define layout de áreas */
+    "ring  bars  movies  series"
+    "ring  prog  favs   total";
+  grid-template-columns: 1.3fr 1.7fr 1fr 1fr;   /* proporción de columnas */
+  gap: 16px;                                    /* separación entre tiles */
+  margin-bottom: 28px;                          /* espacio inferior del grid */
+}
+
+/* Ubicación de métricas en el grid (según orden del HTML) */
+.dash-grid > .tile:nth-child(1){ grid-area: ring;  }    /* anillo */
+.dash-grid > .tile:nth-child(2){ grid-area: bars;  }    /* barras por plataforma */
+.dash-grid > .tile:nth-child(3){ grid-area: prog;  }    /* progreso */
+.dash-grid > .tile:nth-child(4){ grid-area: movies; }   /* Películas */
+.dash-grid > .tile:nth-child(5){ grid-area: series; }   /* Series */
+.dash-grid > .tile:nth-child(6){ grid-area: favs;   }   /* Favoritas */
+.dash-grid > .tile:nth-child(7){ grid-area: total;  }   /* Total títulos */
+
+/* Responsive (una columna) */
+@media (max-width: 1100px){
+  .dash-grid{
+    grid-template-areas:               /* apila las métricas verticalmente */
+      "ring"
+      "bars"
+      "prog"
+      "movies"
+      "series"
+      "favs"
+      "total";
+    grid-template-columns: 1fr;        /* solo una columna */
+  }
+}
+
+/* TILE */
+.tile{
+  background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04)); /* fondo translúcido con gradiente */
+  border: 1px solid var(--line);                /* borde tenue global */
+  border-radius: 18px;                          /* esquinas redondeadas */
+  padding: 16px;                                /* espacio interno */
+  box-shadow: 0 14px 28px rgba(0,0,0,.35);      /* sombra externa */
+  backdrop-filter: blur(6px);                   /* efecto vidrio esmerilado */
+  transition: transform .15s ease;              /* animación suave al hover */
+}
+.tile:hover{
+  transform: translateY(-2px);         /* levanta ligeramente el tile */
+}
+
+/* tile-header - título dentro del tile */
+.tile-header{
+  font-family: var(--font-subtitles);  /* tipografía secundaria (Teko) */
+  text-transform: uppercase;           /* mayúsculas */
+  letter-spacing: .6px;                /* espaciado entre letras */
+  color: var(--color-text-dim);        /* texto tenue */
+  font-weight: 700;                    /* negrita */
+  margin-bottom: 8px;                  /* espacio inferior */
+  display: flex;                       /* ícono + texto en fila */
+  align-items: center;                 /* centrado vertical */
+  gap: .5rem;                          /* separación entre ícono/texto */
+}
+
+/* Áreas */
+.tile-ring     { grid-area: ring; }    /* tile del donut */
+.tile-bars     { grid-area: bars; }    /* tile de barras por plataforma */
+.tile-progress { grid-area: prog; }    /* tile de progreso */
+
+.metric-total  { grid-area: total; }   /* métrica total */
+.metric-movies { grid-area: movies; }  /* métrica de películas */
+.metric-series { grid-area: series; }  /* métrica de series */
+.metric-favs   { grid-area: favs; }    /* métrica de favoritas */
+
+/* Donut (Promedio global) */
+.tile.tile-ring{
+  display: grid;                       /* organiza en grid interno */
+  grid-template-areas:
+    "head"                             /* encabezado */
+    "donut"                            /* anillo */
+    "sub";                             /* subtítulo */
+  justify-items: center;               /* centra horizontalmente */
+}
+.tile-ring .tile-header{ grid-area: head; width:100%; } /* título ocupa ancho completo */
+.tile-ring .ring{ grid-area: donut; }                   /* SVG donut */
+.tile-ring .ring-center{ grid-area: donut; }            /* centro del donut */
+.tile-ring .ring-sub{ grid-area: sub; margin-top:8px; } /* subtítulo debajo */
+
+/* ring - SVG donut */
+.ring{
+  width: 220px;                        /* ancho del círculo */
+  height: 220px;                       /* alto del círculo */
+  margin: 0;                           /* sin margen extra */
+  background: transparent !important;  /* sin fondo */
+}
+.ring-bg{
+  fill: none;                          /* sin relleno */
+  stroke: rgba(255,255,255,.12);       /* línea tenue de fondo */
+  stroke-width: 12;                    /* grosor del círculo base */
+}
+.ring-val{
+  fill: none;                               /* sin relleno */
+  stroke: var(--accent);                    /* color de progreso (acento principal) */
+  stroke-width: 12;                         /* grosor igual al fondo */
+  stroke-linecap: round;                    /* extremos redondeados */
+  stroke-dasharray: 326;                    /* perímetro (2πr con r≈52) */
+  transition: stroke-dashoffset .8s ease;   /* animación suave del avance */
+  filter: none !important;                  /* evita halo al renderizar */
+}
+
+/* ring-center - Centro del donut */
+.ring-center{
+  position: static;                    /* en flujo normal */
+  display: flex;                       /* apila verticalmente */
+  flex-direction: column;
+  align-items: center;                 /* centra horizontal */
+  justify-content: center;             /* centra vertical */
+  pointer-events: none;                /* no interactúa */
+  background: transparent !important;  /* sin fondo */
+}
+.ring-number{
+  font-size: 3rem;                     /* número grande */
+  font-weight: 900;
+  line-height: 1;
+}
+.ring-caption{
+  font-family: var(--font-subtitles);  /* etiqueta debajo */
+  opacity: .8;
+  margin-top: -2px;
+}
+
+/* bars - Barras por plataforma */
+.bars{
+  display: flex;                           /* apila las barras en columna */
+  flex-direction: column;                  /* dirección vertical */
+  gap: 10px;                               /* separación entre barras */
+  margin-top: 6px;                         /* espacio superior del bloque */
+}
+
+.bar{
+  display: grid;                           /* grid para label / track / valor */
+  grid-template-columns: 1fr auto 42px;    /* label flexible, valor auto, caja de número fija */
+  gap: 10px;                               /* separación entre columnas */
+  align-items: center;                     /* alinea verticalmente al centro */
+}
+
+.bar .label{
+  font-weight: 700;                        /* resalta el nombre de la plataforma */
+}
+
+/* track - riel de la barra (usa --pct en style del track: "--pct: 57%") */
+.bar .track{
+  position: relative;                      /* base para el .fill posicionado */
+  height: 12px;                            /* alto del riel */
+  border-radius: 999px;                    /* extremos completamente redondos */
+  background: rgba(255,255,255,.08);       /* fondo tenue del riel */
+  border: 1px solid var(--line);           /* borde tenue del riel */
+  overflow: hidden;                        /* oculta el fill fuera del riel */
+  --delay: 0s;                             /* delay por defecto para la animación */
+}
+
+/* retrasa ligeramente cada barra para un “stagger” sutil */
+.bar:nth-child(2) .track{ --delay: .08s; } /* 2ª barra: +0.08s */
+.bar:nth-child(3) .track{ --delay: .16s; } /* 3ª barra: +0.16s */
+.bar:nth-child(4) .track{ --delay: .24s; } /* 4ª barra: +0.24s */
+.bar:nth-child(5) .track{ --delay: .32s; } /* 5ª barra: +0.32s */
+
+/* growBarHome - animación de crecimiento horizontal */
+@keyframes growBarHome{
+  from{ width: 0; }                        /* arranca desde 0 */
+  to  { width: var(--pct, 100%); }         /* llega al % indicado o 100% */
+}
+
+/* fill - progreso de la barra */
+.bar .track > .fill{
+  position: absolute;                                                 /* se posiciona dentro del riel */
+  inset: 0 auto 0 0;                                                  /* ocupa alto completo, pegado a la izquierda */
+  width: 0;                                                           /* inicia en 0 y crece con la animación */
+  background: linear-gradient(90deg, var(--accent), var(--accent-2)); /* degradado morado */
+  animation: growBarHome 1.1s ease forwards;                          /* anima hasta --pct */
+  animation-delay: var(--delay);                                      /* aplica el “stagger” configurado */
+}
+
+/* value - número a la derecha (ej. 57%) */
+.bar .value{
+  font-weight: 800;                        /* más énfasis para la cifra */
+  text-align: right;                       /* alineado a la derecha */
+}
+
+/* Progreso (Vistos vs Pendientes) */
+.progress-meta{
+  display: flex;                           /* coloca los dos labels a los lados */
+  justify-content: space-between;          /* uno a la izq, otro a la der */
+  gap: 12px;                               /* espacio entre ellos en pantallas chicas */
+  font-family: var(--font-subtitles);      /* tipografía secundaria (Teko) */
+  color: var(--color-text-dim);            /* texto tenue */
+  text-transform: uppercase;               /* mayúsculas para estilo de métrica */
+  font-weight: 700;                        /* más presencia */
+  letter-spacing: .4px;                    /* separación entre letras */
+}
+
+/* progress-rail - riel del progreso global */
+.progress-rail{
+  margin-top: 10px;                        /* espacio sobre el riel */
+  height: 16px;                            /* alto del riel */
+  border-radius: 999px;                    /* extremos completamente redondos */
+  background: rgba(255,255,255,.08);       /* fondo tenue del riel */
+  border: 1px solid var(--line);           /* borde tenue */
+  overflow: hidden;                        /* oculta el fill si se sale */
+  position: relative;                      /* base para el fill posicionado */
+}
+
+/* progress-fill - avance del progreso (usa --pct en style del fill) */
+.progress-fill{
+  position: absolute;                           /* se coloca dentro del riel */
+  inset: 0;                                     /* ocupa toda la altura, se expandirá a lo ancho */
+  width: 0;                                     /* inicia en 0 y avanza con animación */
+  background: linear-gradient(90deg, var(--accent), var(--accent-2)); /* degradado del avance */
+  animation: fillProgHome 1.2s ease forwards;   /* anima hasta --pct */
+}
+
+/* fillProgHome - animación de llenado del progreso */
+@keyframes fillProgHome{
+  from{ width: 0; }                         /* parte en 0 */
+  to  { width: var(--pct, 100%); }          /* llega a --pct o 100% */
+}
+
+/* progress-caption - texto auxiliar debajo del riel */
+.progress-caption{
+  margin-top: 6px;                          /* espacio sobre el texto */
+  color: var(--color-text-dim);             /* color tenue */
+}
+
+/* Métricas (Total / Películas / Series / Favoritas) */
+.metric{
+  display: flex;                            /* layout vertical para label/valor */
+  flex-direction: column;                   /* apila elementos */
+  justify-content: center;                  /* centra verticalmente */
+  align-items: flex-start;                  /* alinea a la izquierda */
+  gap: 6px;                                 /* separación interna */
+  min-height: 120px;                        /* altura mínima del tile de métrica */
+}
+
+/* metric-icon - contenedor del ícono */
+.metric-icon{
+  width: 36px;                              /* ancho del contenedor del ícono */
+  height: 36px;                             /* alto igual al ancho */
+  display: grid;                            /* centra el ícono fácilmente */
+  place-items: center;                      /* centra horizontal/vertical */
+  border-radius: 10px;                      /* esquinas redondeadas */
+  margin-bottom: 2px;                       /* separación con el label/valor */
+  background: rgba(255,255,255,.08);        /* fondo tenue */
+  border: 1px solid var(--line);            /* borde suave */
+}
+
+/* metric-label - etiqueta de la métrica */
+.metric-label{
+  font-family: var(--font-subtitles);       /* tipografía secundaria (Teko) */
+  color: var(--color-text-dim);             /* color tenue */
+  text-transform: uppercase;                /* mayúsculas */
+  letter-spacing: .5px;                     /* separación de letras */
+  font-weight: 700;                         /* seminegrita */
+}
+
+/* metric-value - cifra principal */
+.metric-value{
+  font-size: 1.8rem;                        /* tamaño grande para la cifra */
+  font-weight: 900;                         /* negrita fuerte */
+}
+
+/* Accesibilidad: reduce motion */
+@media (prefers-reduced-motion: reduce){
+  .bar .track > .fill{ animation: none; width: var(--pct, 100%); } /* barra sin animación */
+  .ring-val{ transition: none; }                                   /* sin transición en el donut */
+  .progress-fill{ animation: none; width: var(--pct, 100%); }      /* progreso sin animación */
+}
+
+/* Separación con claqueta */
+.clap-sep {
+  position: relative;                         /* contenedor para la claqueta */
+  height: 68px;                               /* alto del separador */
+  margin: 44px 0 28px;                        /* espacio sup/inf */
+  display: grid;                              /* centra el contenido */
+  place-items: center;                        /* centrado total */
+}
+
+/* Cuerpo de la claqueta (base) */
+.clap-sep::after {
+  content: "";                                /* pseudo-elemento del cuerpo */
+  position: absolute;                         /* posicionado sobre el centro */
+  left: 50%; top: 50%;                        /* referencia al centro */
+  width: 76px; height: 34px;                  /* tamaño del cuerpo */
+  transform: translate(-50%, -2px);           /* centra y ajusta levemente */
+  border-radius: 6px;                         /* esquinas redondeadas */
+  background: linear-gradient(180deg, var(--color-clap-body), var(--color-clap-body-dark)); /* degradado del cuerpo */
+  box-shadow:
+    inset 0 0 0 2px var(--color-clap-edge),   /* borde interno oscuro */
+    0 6px 16px rgba(0,0,0,.35);               /* sombra externa */
+}
+
+/* Tapa de la claqueta (se abre/cierra) */
+.clap-sep::before {
+  content: "";                                      /* pseudo-elemento de la tapa */
+  position: absolute; left: 50%; top: 50%;          /* anclado al centro */
+  width: 90px; height: 16px;                        /* tamaño de la tapa */
+  transform-origin: calc(-38px) 16px;               /* bisagra lado izquierdo */
+  transform: translate(-50%, -26px) rotate(0deg);   /* posición inicial */
+  border-radius: 4px;                               /* esquinas suavizadas */
+  background: repeating-linear-gradient(45deg, var(--color-clap-stripe) 0 8px, var(--color-clap-body-dark) 8px 16px); /* franjas */
+  box-shadow:
+    inset 0 0 0 1px var(--color-clap-edge),         /* borde interior */
+    0 4px 10px rgba(0,0,0,.35);                     /* sombra externa */
+  animation: clapOpenSep 2.3s ease-in-out infinite; /* animación de apertura/cierre */
+}
+
+/* Animación tapa claqueta (clap-sep) */
+@keyframes clapOpenSep {
+  0%   { transform: translate(-50%, -26px) rotate(0deg); }   /* cerrada */
+  35%  { transform: translate(-50%, -26px) rotate(-28deg); } /* abre */
+  55%  { transform: translate(-50%, -26px) rotate(-28deg); } /* mantiene abierta */
+  90%  { transform: translate(-50%, -26px) rotate(0deg); }   /* cierra */
+  100% { transform: translate(-50%, -26px) rotate(0deg); }   /* fin */
+}
+
+/* Accesibilidad: desactiva animación si el usuario lo prefiere */
+@media (prefers-reduced-motion: reduce){
+  .clap-sep::before { animation: none; }      /* sin animación */
+}
+
+/* Compacto en móvil */
+@media (max-width: 720px){
+  .clap-sep { height: 48px; margin: 22px 0 18px; }                                  /* separador más bajo */
+  .clap-sep::after { width: 60px; height: 16px; transform: translate(-50%, -1px); } /* cuerpo más pequeño */
+  .clap-sep::before {
+    width: 70px; height: 11px;                                                      /* tapa más pequeña */
+    transform: translate(-50%, -20px) rotate(-6deg);                                /* ligera apertura */
+    transform-origin: 14px 9px;                                                     /* recalibra la bisagra */
+  }
+}
+
+/* Top 5 Favoritos */
+/* toprated-section */
+.toprated-section{
+  margin-top: 20px;                         /* espacio superior */
+  margin-bottom: 56px;                      /* separación con la siguiente sección */
+  position: relative;                       /* base para elementos absolutos internos */
+}
+
+/* toprated-head */
+.toprated-head{
+  display: flex;                             /* título + acciones en fila */
+  align-items: center;                       /* centrado vertical */
+  justify-content: space-between;            /* extremos separados */
+  margin: 8px 0 12px;                        /* margen alrededor del encabezado */
+}
+
+/* section-title (variantes) */
+.fav-rail .section-title {
+  font-family: var(--font-subtitles);        /* usa subtítulos (Teko) en fav-rail */
+  letter-spacing: .6px;                      /* espaciado de letras */
+  color: var(--color-text-primary);          /* más contraste en favorito */
+}
+
+.section-title {
+  margin: 0;                                 /* resetea margen */
+  font-family: var(--font-subtitles);        /* tipografía secundaria (Teko) */
+  text-transform: uppercase;                 /* mayúsculas */
+  letter-spacing: .6px;                      /* espaciado de letras */
+  color: var(--color-text-dim);              /* color tenue por defecto */
+  display: flex;                             /* ícono + texto en fila */
+  align-items: center;                       /* centrado vertical */
+  gap: .5rem;                                /* espacio entre ícono/texto */
+}
+
+/* toprated-rail */
+.toprated-rail{
+  --gap: 14px;                               /* separación configurable entre cards */
+  display: flex;                             /* carrusel horizontal */
+  gap: var(--gap);                           /* separación entre items */
+  overflow-x: auto;                          /* scroll horizontal */
+  scroll-snap-type: x mandatory;             /* snap por card */
+  padding-bottom: 6px;                       /* espacio para la scrollbar */
+  scrollbar-width: thin;                     /* scrollbar delgada (Firefox) */
+}
+
+/* Scrollbar (WebKit) */
+.toprated-rail::-webkit-scrollbar {
+  height: 8px;                                /* alto de la scrollbar */
+}
+.toprated-rail::-webkit-scrollbar-thumb{
+  background: rgba(255,255,255,.18);          /* color del pulgar */
+  border-radius: 10px;                        /* esquinas redondeadas */
+}
+
+/* Desktop grande: 5 cards por fila visibles */
+@media (min-width: 1100px){
+  .toprated-rail .topcard{
+    flex: 0 0 calc((100% - (var(--gap) * 4)) / 5) !important;   /* ancho fijo para 5 columnas */
+    max-width: calc((100% - (var(--gap) * 4)) / 5) !important;  /* evita crecer más */
+  }
+}
+
+/* Tablets/medianas: ancho fijo */
+@media (min-width: 721px) and (max-width: 1099px){
+  .toprated-rail .topcard{
+    flex: 0 0 240px;                          /* ancho de card */
+    max-width: 240px;                         /* límite máximo */
+  }
+}
+
+/* Móviles: card grande y scrollable */
+@media (max-width: 720px){
+  .toprated-rail .topcard{
+    flex: 0 0 70vw !important;                /* 70% del viewport */
+    max-width: 70vw !important;               /* ancho máximo móvil */
+  }
+}
+
+/* topcard */
+.topcard {
+  display: flex;                               /* layout vertical interno */
+  flex-direction: column;                      /* apila thumb/meta/acciones */
+  height: 100%;                                /* ocupa la altura disponible */
+}
+
+/* asegura que las acciones queden abajo */
+.topcard .topcard-meta > .d-flex.align-items-center.justify-content-between {
+  margin-top: auto;                            /* empuja acciones al final */
+}
+
+/* topcard-thumb */
+.topcard-thumb {
+  position: relative;                          /* base para badges/overlays */
+  width: 100%;                                 /* ocupa el ancho de la card */
+  aspect-ratio: 2 / 3;                         /* proporción de póster */
+  overflow: hidden;                            /* recorta sobrante */
+  flex: 0 0 auto;                              /* no crece/encoge */
+  border-radius: inherit;                      /* respeta redondeado de la card */
+}
+
+.topcard-thumb img {
+  width: 100%;                                 /* llena el ancho */
+  height: 100%;                                /* llena el alto */
+  object-fit: cover;                           /* recorta sin deformar */
+  display: block;                              /* elimina espacios fantasma */
+}
+
+/* recent-thumb-ph (placeholder de thumb reciente) */
+.recent-thumb-ph{
+  width: 100%; height: 100%;                   /* ocupa todo el contenedor */
+  display: grid; place-items: center;          /* centra el contenido */
+  color: #9aa;                                 /* color del ícono/texto placeholder */
+  font-size: 1.6rem;                           /* tamaño del icono/texto */
+}
+
+/* topcard-meta */
+.topcard-meta {
+  flex: 1 1 auto;                               /* ocupa el espacio restante */
+  display: flex;                                /* layout vertical */
+  flex-direction: column;                       /* apila título/acciones */
+}
+
+/* asegura que las acciones queden abajo (duplicado intencional para refuerzo) */
+.topcard .topcard-meta > .d-flex.align-items-center.justify-content-between {
+  margin-top: auto;                            /* fija las acciones al fondo */
+}
+
+/* topcard-name */
+.topcard-name {
+  font-size: 0.95rem;                          /* texto algo más pequeño */
+  font-weight: 600;                            /* seminegrita */
+  line-height: 1.3;                            /* altura de línea */
+  min-height: 2.6em;                           /* reserva espacio ~2 líneas */
+  max-height: 2.6em;                           /* limita a ~2 líneas */
+  overflow: hidden;                            /* oculta exceso */
+  display: -webkit-box;                        /* caja flexible para clamping */
+  -webkit-line-clamp: 2;                       /* clamp a 2 líneas */
+  -webkit-box-orient: vertical;                /* orientación vertical */
+  text-overflow: ellipsis;                     /* agrega puntos suspensivos */
+}
+
+/* Actividad Reciente */

@@ -1,0 +1,99 @@
+{% extends 'cinetrack/base.html' %}
+{% block title %}{% if maraton %}Editar maratón{% else %}Nuevo maratón{% endif %} | CineTrack{% endblock %}
+
+{% block content %}
+<div class="edit-page">
+  <div class="edit-bg"></div>
+  <div class="edit-glow"></div>
+
+  <!-- Header -->
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="edit-title m-0">
+      {% if maraton %}
+        <i class="bi bi-pencil-square"></i> Editar maratón
+        <span class="mx-2 text-muted">|</span>
+        <small class="fs-5 text-light fw-semibold">{{ maraton.nombre }}</small>
+      {% else %}
+        <i class="bi bi-plus-circle"></i> Nuevo maratón
+        <span class="mx-2 text-muted">|</span>
+        <small class="fs-5 text-light fw-semibold">Agrupa películas y series</small>
+      {% endif %}
+    </h2>
+    <a href="{% url 'cinetrack:maratones' %}" class="btn-ghost">
+      <i class="bi bi-arrow-left-circle"></i> Volver a maratones
+    </a>
+  </div>
+
+  <!-- Formulario (crea o edita según la URL) -->
+  <form method="post" class="edit-card edit-form p-4 p-lg-5" novalidate>
+    {% csrf_token %}
+
+    <!-- Nombre -->
+    <div class="mb-3">
+      <label class="form-label" for="id_nombre">Nombre</label>
+      {{ form.nombre }}
+      {% if form.nombre.errors %}<div class="text-danger small mt-1">{{ form.nombre.errors }}</div>{% endif %}
+    </div>
+
+    <!-- Descripción -->
+    <div class="mb-4">
+      <label class="form-label" for="id_descripcion">Descripción</label>
+      {{ form.descripcion }}
+      {% if form.descripcion.errors %}<div class="text-danger small mt-1">{{ form.descripcion.errors }}</div>{% endif %}
+    </div>
+
+    <!-- Buscador local -->
+    <div class="row g-2 align-items-end mb-3">
+      <!-- antes: col-12 col-md-9 -->
+      <div class="col-12 col-lg-10">
+        <label class="form-label m-0" for="filtro-contenidos">Buscar</label>
+        <input id="filtro-contenidos" type="text" class="form-control input-search" placeholder="Título o saga…">
+      </div>
+
+      <!-- antes: col-12 col-md-3 -->
+      <div class="col-12 col-lg-2 text-lg-end">
+        <button type="button" id="btn-filtrar" class="btn-neon w-100 btn-center">
+          <i class="bi bi-search"></i> Buscar
+        </button>
+      </div>
+    </div>
+
+    <!-- Contenidos (grid seleccionable) -->
+    <div class="mb-4">
+      <label class="form-label">Selecciona contenidos</label>
+      <div class="row g-3" id="contenidos-grid">
+        {% for c in form.contenidos.field.queryset %}
+        <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+          <input id="cont-{{ c.pk }}" type="checkbox" name="contenidos" value="{{ c.pk }}"
+                 class="d-none"
+                 {% if c in form.instance.contenidos.all %}checked{% endif %}>
+          <label for="cont-{{ c.pk }}" class="d-block selectable-card h-100">
+            <div class="rail-poster mb-2">
+              {% if c.imagen %}
+                <img src="{{ c.imagen }}" alt="{{ c.titulo }}">
+              {% else %}
+                <div class="poster-ph"><i class="bi bi-image"></i></div>
+              {% endif %}
+            </div>
+            <div class="small text-center line-clamp-2">{{ c.titulo }}</div>
+          </label>
+        </div>
+        {% endfor %}
+      </div>
+      {% if form.contenidos.errors %}
+        <div class="text-danger small mt-1">{{ form.contenidos.errors }}</div>
+      {% endif %}
+    </div>
+
+    <!-- Acciones -->
+    <div class="d-flex justify-content-center gap-3 pt-2">
+      <button type="submit" class="btn-save">
+        <i class="bi bi-check-circle me-1"></i> {% if maraton %}Actualizar{% else %}Guardar{% endif %}
+      </button>
+      <a href="{% url 'cinetrack:maratones' %}" class="btn-ghost">
+        <i class="bi bi-x-circle"></i> Cancelar
+      </a>
+    </div>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,121 @@
+{% extends 'cinetrack/base.html' %}
+{% block title %}Maratones | CineTrack{% endblock %}
+
+{% block content %}
+<div class="container-xl">
+
+  <!-- Encabezado -->
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="hero-title m-0"><i class="bi bi-film"></i> Maratones</h1>
+    <a href="{% url 'cinetrack:crear_maraton' %}" class="btn-neon">
+      <i class="bi bi-plus-circle"></i> Nuevo maratón
+    </a>
+  </div>
+  <p class="hero-sub mb-3">Organiza tus películas y series en categorías de maratón</p>
+
+  {% if maratones %}
+  <div class="row g-4">
+    {% for m in maratones %}
+    {% with portada=m.contenidos.first %}
+    <div class="col-12 col-md-6">
+      <div class="tile p-0 mara-card" style="--m-bg: url('{{ portada.imagen|default:'' }}');">
+
+        <!-- Cover difuminado + mini portadas -->
+        <div class="mara-cover">
+          <div class="mara-preview">
+            {% for c in m.contenidos.all|slice:":6" %}
+              <div class="mara-thumb">
+                {% if c.imagen %}
+                  <img src="{{ c.imagen }}" alt="{{ c.titulo }}">
+                {% else %}
+                  <span class="plat-ph"><i class="bi bi-image"></i></span>
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- Body en dos columnas -->
+        <div class="p-3 p-lg-4 mara-body">
+          <!-- Columna izquierda: título, descripción, cantidad -->
+          <div class="mara-info">
+            <h3 class="mt-1 mara-title">
+              <a href="{% url 'cinetrack:detalle_maraton' m.pk %}">{{ m.nombre }}</a>
+            </h3>
+            <p class="small text-light opacity-75 mara-desc mb-3">
+              {{ m.descripcion|default:"(Sin descripción)" }}
+            </p>
+            <span class="badge rounded-pill mara-chip">
+              <i class="bi bi-collection-play me-1"></i> {{ m.contenidos.count }} títulos
+            </span>
+          </div>
+
+          <!-- Columna derecha: editar/eliminar arriba, ver detalle abajo -->
+          <div class="mara-side">
+            <div class="actions mt-1">
+              <a href="{% url 'cinetrack:editar_maraton' m.pk %}" class="btn-ghost-sm" title="Editar maratón">
+                <i class="bi bi-pencil"></i>
+              </a>
+              <button class="btn-ghost-sm text-danger"
+                      title="Eliminar maratón"
+                      data-bs-toggle="modal"
+                      data-bs-target="#confirmarEliminarModal"
+                      data-id="{{ m.id }}"
+                      data-titulo="{{ m.nombre }}"
+                      data-form="del-m-{{ m.id }}">
+                <i class="bi bi-trash-fill text-danger"></i>
+              </button>
+            </div>
+            <a href="{% url 'cinetrack:detalle_maraton' m.pk %}" class="btn-ghost-sm view mt-4">
+              <i class="bi bi-eye"></i> Ver detalle
+            </a>
+          </div>
+        </div>
+
+        <!-- Form oculto para eliminar -->
+        <form id="del-m-{{ m.id }}" method="post" action="{% url 'cinetrack:eliminar_maraton' m.id %}" class="d-none">
+          {% csrf_token %}
+        </form>
+      </div>
+    </div>
+    {% endwith %}
+    {% endfor %}
+  </div>
+  {% else %}
+    <div class="tile text-center py-5">
+      <div class="display-6 mb-2">Aún no hay maratones</div>
+      <p class="opacity-75">Crea tu primer maratón para empezar a agrupar películas y series.</p>
+      <a href="{% url 'cinetrack:crear_maraton' %}" class="btn-neon">
+        <i class="bi bi-plus-circle"></i> Crear maratón
+      </a>
+    </div>
+  {% endif %}
+
+</div>
+
+<!-- Modal · Eliminar -->
+<div class="modal fade" id="confirmarEliminarModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content ctmodal">
+      <button type="button" class="btn-close btn-close-white ctmodal-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+
+      <div class="ctmodal-header">
+        <span class="ctmodal-icon"><i class="bi bi-exclamation-triangle-fill"></i></span>
+        <h5 class="ctmodal-title m-0">Confirmar eliminación</h5>
+      </div>
+
+      <div class="ctmodal-body">
+        <p class="m-0">¿Eliminar el maratón <strong id="tituloAEliminar">"—"</strong>?</p>
+        <small class="opacity-75 d-block mt-2">Esta acción no se puede deshacer.</small>
+      </div>
+
+      <div class="ctmodal-actions">
+        <button id="confirmDeleteBtn" type="button" class="btn btn-danger btn-glow">
+          <i class="bi bi-trash3 me-1"></i> Sí, eliminar
+        </button>
+        <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

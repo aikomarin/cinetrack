@@ -1,0 +1,141 @@
+{% extends 'cinetrack/base.html' %}
+{% block title %}{{ contenido.titulo }} | CineTrack{% endblock %}
+
+{% block content %}
+<div class="detail-page">
+  <div class="detail-bg" style="--detail-bg:url('{{ contenido.imagen|default:'' }}');"></div>
+  <div class="detail-glow"></div>
+
+  <div class="container-xl">
+    <!-- Header -->
+    <header class="detail-head">
+      <h1 class="detail-title m-0">
+        {{ contenido.titulo }}
+        <small class="detail-year">{{ contenido.fecha|date:"Y"|default:"—" }}</small>
+      </h1>
+    </header>
+
+    <!-- Card principal -->
+    <section class="detail-card p-3 p-md-4 p-lg-5">
+      <div class="row g-4 align-items-start">
+        <!-- Póster -->
+        <div class="col-lg-4">
+          <div class="detail-poster">
+            {% if contenido.imagen %}
+              <img src="{{ contenido.imagen }}" alt="Póster de {{ contenido.titulo }}">
+            {% else %}
+              <div class="detail-poster-ph">
+                <i class="bi bi-image"></i>
+                <span>Sin imagen</span>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+
+        <!-- Meta / Info -->
+        <div class="col-lg-8">
+          <!-- Badges -->
+          <div class="detail-badges mb-3">
+            <span class="badge tipo">{{ contenido.get_tipo_display }}</span>
+            <span class="badge plataforma">{{ contenido.get_plataforma_display|default:"—" }}</span>
+            <span class="badge estado-{% if contenido.estado == 'vista' %}vista{% else %}pendiente{% endif %}">
+              {{ contenido.get_estado_display }}
+            </span>
+            {% if contenido.calificacion %}
+              <span class="badge cal-{{ contenido.get_calificacion_display|lower }}">
+                {{ contenido.get_calificacion_display }}
+              </span>
+            {% endif %}
+            {% if contenido.favorita %}
+              <span class="badge rounded-pill bg-warning text-dark" title="Favorita">⭐ Favorita</span>
+            {% endif %}
+          </div>
+
+          <!-- Resumen -->
+          {% if contenido.resumen %}
+          <div class="detail-section mb-3">
+            <h3 class="detail-sub">Resumen</h3>
+            <p class="detail-text" style="text-align: justify;">{{ contenido.resumen|linebreaksbr }}</p>
+          </div>
+          {% endif %}
+
+          <!-- Datos clave -->
+          <div class="detail-grid">
+            <div class="detail-stat">
+              <span class="label">Fecha</span>
+              <span class="value">{{ contenido.fecha|date:"d/m/Y"|default:"—" }}</span>
+            </div>
+
+            <div class="detail-stat">
+              <span class="label">Veces vista</span>
+              <span class="value">{% if contenido.veces_vista %}{{ contenido.veces_vista }}{% else %}-{% endif %}</span>
+            </div>
+
+            <div class="detail-stat">
+              <span class="label">¿Volverías a verla?</span>
+              {% if contenido.estado != 'vista' %}
+                <span class="value">—</span>
+              {% else %}
+                <span class="value">{{ contenido.volveria_a_ver|yesno:"Sí,No" }}</span>
+              {% endif %}
+            </div>
+
+            <div class="detail-stat">
+              <span class="label">¿Tendrá continuación?</span>
+              {% if contenido.estado != 'vista' %}
+                <span class="value">—</span>
+              {% else %}
+                <span class="value">{{ contenido.tendra_continuacion|yesno:"Sí,No" }}</span>
+              {% endif %}
+            </div>
+
+            <div class="detail-stat">
+              <span class="label">Favorita</span>
+              {% if contenido.estado != 'vista' %}
+                <span class="value">—</span>
+              {% else %}
+                <span class="value">{{ contenido.favorita|yesno:"Sí,No" }}</span>
+              {% endif %}
+            </div>
+          </div>
+
+          <!-- CTA inferior -->
+          <div class="d-none d-md-block" style="height: 56px;"></div>
+          <div class="detail-foot mt-3 d-flex gap-2">
+            {% if origen == "grupo" and clave_saga %}
+              <a href="{% url 'cinetrack:grupo_saga' clave_saga %}?page={{ request.GET.page }}" class="btn-ghost">
+                <i class="bi bi-arrow-left"></i> Volver al grupo
+              </a>
+            {% elif origen == "favoritos" %}
+              <a href="{% url 'cinetrack:favoritos' %}" class="btn-ghost">
+                <i class="bi bi-arrow-left"></i> Volver a favoritos
+              </a>
+            {% elif origen == "pendientes" %}
+              <a href="{% url 'cinetrack:pendientes' %}" class="btn-ghost">
+                <i class="bi bi-arrow-left"></i> Volver a pendientes
+              </a>
+            {% elif origen == "volveria_a_ver" %}
+              <a href="{% url 'cinetrack:volverias' %}" class="btn-ghost">
+                <i class="bi bi-arrow-left"></i> Regresar a Volverías a Ver
+              </a>
+            {% elif en_grupo and clave_saga %}
+              <a href="{% url 'cinetrack:grupo_saga' clave_saga %}?page={{ request.GET.page }}" class="btn-ghost">
+                <i class="bi bi-arrow-left"></i> Volver al grupo
+              </a>
+            {% else %}
+              <a href="{% url 'cinetrack:catalogo' %}?page={{ request.GET.page }}" class="btn-ghost">
+                <i class="bi bi-arrow-left"></i> Volver al catálogo
+              </a>
+            {% endif %}
+
+            <a href="{% url 'cinetrack:editar' contenido.pk %}?page={{ request.GET.page }}" class="btn-neon small">
+              <i class="bi bi-pencil-square"></i> Editar
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+{% endblock %}

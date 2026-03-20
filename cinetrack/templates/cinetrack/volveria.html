@@ -1,0 +1,77 @@
+{% extends 'cinetrack/base.html' %}
+{% block title %}Volvería a ver | CineTrack{% endblock %}
+
+{% block content %}
+<div class="edit-page">
+
+  <!-- Header con slogan en línea -->
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="edit-title m-0 d-flex align-items-center gap-3">
+      <span><i class="bi bi-arrow-repeat"></i> Volvería a ver</span>
+      <span class="text-muted">|</span>
+      <small class="fs-5 text-light fw-semibold">Porque una vez no fue suficiente</small>
+    </h2>
+    <div class="d-flex gap-2">
+      <a href="{% url 'cinetrack:buscar' %}" class="btn-ghost">
+        <i class="bi bi-plus-circle"></i> Agregar
+      </a>
+      <a href="{% url 'cinetrack:catalogo' %}" class="btn-ghost">
+        <i class="bi bi-collection"></i> Catálogo
+      </a>
+    </div>
+  </div>
+
+  <!-- Películas -->
+  <section class="fav-rail mb-5">
+    <div class="fav-section d-flex justify-content-between align-items-center mb-2">
+      <h3 class="fav-title"><i class="bi bi-film"></i> Películas</h3>
+      <a href="{% url 'cinetrack:catalogo' %}?volveria_a_ver=1&estado=vista&tipo=pelicula" class="btn-ghost-sm">Ver todas</a>
+    </div>
+
+    {% if peliculas %}
+      <div class="rew-grid-7x2">
+        {% for it in peliculas %}
+          <article class="rail-card position-relative">
+            <a href="{% url 'cinetrack:detalle' it.pk %}?from=volveria_a_ver" class="rail-poster d-block" title="{{ it.titulo }}">
+              {% if it.imagen %}
+                <img class="rew-fit" src="{{ it.imagen }}" alt="{{ it.titulo }}">
+              {% else %}
+                <div class="poster-ph"><i class="bi bi-image"></i></div>
+              {% endif %}
+            </a>
+          </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="tile text-center p-4">Sin películas marcadas como “Volvería a ver”.</div>
+    {% endif %}
+  </section>
+
+  <!-- Series -->
+  <section class="fav-rail">
+    <div class="fav-section d-flex justify-content-between align-items-center mb-2">
+      <h3 class="fav-title"><i class="bi bi-tv"></i> Series</h3>
+      <a href="{% url 'cinetrack:catalogo' %}?volveria_a_ver=1&estado=vista&tipo=serie" class="btn-ghost-sm">Ver todas</a>
+    </div>
+
+    {% if series %}
+      <div class="rew-grid-7x2">
+        {% for it in series %}
+          <article class="rail-card position-relative">
+            <a href="{% url 'cinetrack:detalle' it.pk %}?from=volveria_a_ver" class="rail-poster d-block" title="{{ it.titulo }}">
+              {% if it.imagen %}
+                <img class="rew-fit" src="{{ it.imagen }}" alt="{{ it.titulo }}">
+              {% else %}
+                <div class="poster-ph"><i class="bi bi-image"></i></div>
+              {% endif %}
+            </a>
+          </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="tile text-center p-4">Sin series marcadas como “Volvería a ver”.</div>
+    {% endif %}
+  </section>
+
+</div>
+{% endblock %}

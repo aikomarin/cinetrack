@@ -1,0 +1,251 @@
+{% extends 'cinetrack/base.html' %}
+{% load static %}
+
+{% block title %}Catálogo · CineTrack{% endblock %}
+
+{% block content %}
+<div class="container-xl">
+
+  <!-- Hero / Título -->
+  <div class="d-flex align-items-center justify-content-between mb-3">
+    <h1 class="hero-title m-0"><i class="bi bi-collection-play"></i> Catálogo registrado</h1>
+  </div>
+  <p class="hero-sub mb-3">Explora tu colección por tipo, plataforma y estado</p>
+
+  <!-- Filtros + Buscador -->
+  <div class="tile edit-card p-3 mb-3">
+    <form method="get" class="row g-2 align-items-end">
+
+      <!-- Fila 1: filtros + botón Filtrar -->
+      <div class="col-12 col-md-3">
+        <label class="form-label m-0" for="f_tipo">Tipo</label>
+        <select id="f_tipo" name="tipo" class="form-select">
+          <option value="">Todos</option>
+          <option value="pelicula" {% if filtros.tipo == "pelicula" %}selected{% endif %}>Película</option>
+          <option value="serie" {% if filtros.tipo == "serie" %}selected{% endif %}>Serie</option>
+        </select>
+      </div>
+
+      <div class="col-12 col-md-4">
+        <label class="form-label m-0" for="f_plat">Plataforma</label>
+        <select id="f_plat" name="plataforma" class="form-select">
+          <option value="">Todas</option>
+          {% for clave, nombre in plataformas %}
+            <option value="{{ clave }}" {% if filtros.plataforma == clave %}selected{% endif %}>{{ nombre }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="col-12 col-md-3">
+        <label class="form-label m-0" for="f_estado">Estado</label>
+        <select id="f_estado" name="estado" class="form-select">
+          <option value="">Todos</option>
+          <option value="pendiente" {% if filtros.estado == "pendiente" %}selected{% endif %}>Pendiente</option>
+          <option value="vista" {% if filtros.estado == "vista" %}selected{% endif %}>Vista</option>
+        </select>
+      </div>
+
+      <div class="col-12 col-md-2 text-md-end">
+        <button type="submit" class="btn-neon w-100 btn-center">
+          <i class="bi bi-funnel"></i> Filtrar
+        </button>
+      </div>
+
+      <!-- Fila 2: buscador (debajo) -->
+      <div class="col-12 col-md-8 col-lg-9 mt-2">
+        <label class="form-label m-0" for="f_buscar">Buscar</label>
+        <input id="f_buscar" type="text" name="buscar" value="{{ buscar|default:'' }}" class="form-control" placeholder="Título o saga…">
+      </div>
+
+      <div class="col-12 col-md-3 col-lg-2 mt-2 ms-md-auto text-md-end">
+        <button type="submit" class="btn-neon w-100 btn-center">
+          <i class="bi bi-search"></i> Buscar
+        </button>
+      </div>
+
+      <!-- Chips de filtros activos -->
+      <div class="col-12 mt-2 d-flex flex-wrap gap-2 filter-chips">
+        {% if filtros.tipo %}
+          <span class="badge tipo rounded-pill">{{ filtros.tipo|capfirst }}</span>
+        {% endif %}
+        {% if filtros.plataforma %}
+          <span class="badge plataforma rounded-pill">{{ plataforma_nombre }}</span>
+        {% endif %}
+        {% if filtros.estado %}
+          <span class="badge estado-{% if filtros.estado == 'vista' %}vista{% else %}pendiente{% endif %} rounded-pill">
+            {{ filtros.estado|capfirst }}</span>
+        {% endif %}
+        {% if filtros.buscar %}
+          <span class="badge busqueda rounded-pill">“{{ filtros.buscar }}”</span>
+        {% endif %}
+
+        {% if filtros.tipo or filtros.plataforma or filtros.estado or filtros.buscar %}
+          <a href="{% url 'cinetrack:catalogo' %}" class="btn-ghost-sm"><i class="bi bi-x-circle"></i> Limpiar</a>
+        {% endif %}
+        <span class="ms-auto small text-light opacity-75 align-self-center">
+          {% if page_obj %}{{ page_obj.paginator.count }} resultados{% else %}0 resultados{% endif %}
+        </span>
+      </div>
+    </form>
+  </div>
+
+  <!-- Grid (Alfabético) · 1 card por grupo -->
+  {% if page_groups and page_groups|length > 0 %}
+  <div class="row g-3">
+    {% for grp in page_groups %}
+      {% with c=grp.items.0 %}
+      <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
+        <div class="topcard h-100 position-relative">
+
+          {% if c.favorita %}
+            <span class="position-absolute top-0 end-0 m-2 z-3" title="Favorita" aria-label="Favorita">
+              <i class="bi bi-star-fill" style="filter: drop-shadow(0 0 6px rgba(255,215,0,.45)); color:#ffd700;"></i>
+            </span>
+          {% endif %}
+
+          <div class="topcard-thumb position-relative">
+              {% if grp.grouped %}
+                <a href="{% url 'cinetrack:grupo_saga' grp.key %}?page={{ page_obj.number }}" class="d-block">
+              {% else %}
+                <a href="{% url 'cinetrack:detalle' c.pk %}?page={{ page_obj.number }}" class="d-block">
+              {% endif %}
+              {% if c.imagen %}
+                <img src="{{ c.imagen }}" alt="{{ grp.saga }}">
+              {% else %}
+                <div class="d-flex align-items-center justify-content-center h-100 text-muted bg-dark" style="aspect-ratio:2/3;">
+                  <i class="bi bi-image" style="font-size:1.6rem;"></i>
+                </div>
+              {% endif %}
+            </a>
+
+            <!-- Estado: vista / pendiente -->
+            <span class="badge rounded-pill position-absolute start-0 top-0 m-2
+                         estado-{% if c.estado == 'vista' %}vista{% else %}pendiente{% endif %}">
+              {{ c.get_estado_display }}
+            </span>
+
+            <!-- Conteo de saga (+N) -->
+            {% if grp.grouped and grp.count > 1 %}
+              <span class="badge rounded-pill position-absolute start-0 bottom-0 m-2 group-count" title="Títulos en la saga">
+                +{{ grp.count|add:"-1" }}
+              </span>
+            {% endif %}
+
+            <!-- Calificación (solo si vista) -->
+            {% if c.estado == 'vista' and c.calificacion %}
+              <span class="badge rounded-pill position-absolute end-0 bottom-0 m-2
+                           cal-{{ c.get_calificacion_display|lower }}">
+                {{ c.get_calificacion_display }}
+              </span>
+            {% endif %}
+          </div>
+
+          <div class="topcard-meta">
+            <h4 class="topcard-name mt-4">
+              {% if grp.grouped %}
+                <a href="{% url 'cinetrack:grupo_saga' grp.key %}?page={{ page_obj.number }}">{{ grp.saga }}</a>
+              {% else %}
+                {{ c.titulo }}
+              {% endif %}
+            </h4>
+            <div class="d-flex align-items-center justify-content-between">
+              <small class="opacity-75">
+                {{ c.get_tipo_display }} {{ c.get_plataforma_display }}
+              </small>
+              {% if grp.grouped %}
+                <a href="{% url 'cinetrack:grupo_saga' grp.key %}?page={{ page_obj.number }}" class="btn-ghost-sm" title="Ver grupo">
+                  <i class="bi bi-collection"></i>
+                </a>
+              {% else %}
+                <div class="d-flex gap-2">
+                  <a href="{% url 'cinetrack:editar' c.pk %}?page={{ page_obj.number }}" class="btn-ghost-sm" title="Editar">
+                    <i class="bi bi-pencil"></i>
+                  </a>
+                  <button class="btn-ghost-sm"
+                          title="Eliminar"
+                          data-bs-toggle="modal"
+                          data-bs-target="#confirmarEliminarModal"
+                          data-id="{{ c.id }}"
+                          data-titulo="{{ c.titulo }}"
+                          data-form="del-{{ c.id }}">
+                    <i class="bi bi-trash"></i>
+                  </button>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+
+          {% if not grp.grouped %}
+          <!-- Form oculto para eliminar -->
+          <form id="del-{{ c.id }}" method="post" action="{% url 'cinetrack:eliminar' c.id %}" class="d-none">
+            {% csrf_token %}
+          </form>
+          {% endif %}
+
+        </div>
+      </div>
+      {% endwith %}
+    {% endfor %}
+  </div>
+
+  <!-- Paginación -->
+  <nav aria-label="Page navigation" class="mt-4">
+    <ul class="pagination justify-content-center">
+      {% if page_obj.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="?page=1{% if filtros.tipo %}&tipo={{ filtros.tipo }}{% endif %}{% if filtros.plataforma %}&plataforma={{ filtros.plataforma }}{% endif %}{% if filtros.estado %}&estado={{ filtros.estado }}{% endif %}">&laquo; Primero</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if filtros.tipo %}&tipo={{ filtros.tipo }}{% endif %}{% if filtros.plataforma %}&plataforma={{ filtros.plataforma }}{% endif %}{% if filtros.estado %}&estado={{ filtros.estado }}{% endif %}">Anterior</a>
+        </li>
+      {% endif %}
+
+      <li class="page-item disabled"><span class="page-link">Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</span></li>
+
+      {% if page_obj.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ page_obj.next_page_number }}{% if filtros.tipo %}&tipo={{ filtros.tipo }}{% endif %}{% if filtros.plataforma %}&plataforma={{ filtros.plataforma }}{% endif %}{% if filtros.estado %}&estado={{ filtros.estado }}{% endif %}">Siguiente</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}{% if filtros.tipo %}&tipo={{ filtros.tipo }}{% endif %}{% if filtros.plataforma %}&plataforma={{ filtros.plataforma }}{% endif %}{% if filtros.estado %}&estado={{ filtros.estado }}{% endif %}">Último &raquo;</a>
+        </li>
+      {% endif %}
+    </ul>
+  </nav>
+
+  {% else %}
+    <div class="tile text-center py-5">
+      <div class="display-6 mb-2">Sin resultados</div>
+      <p class="opacity-75">Prueba cambiando los filtros o agrega nuevos títulos.</p>
+      <a href="{% url 'cinetrack:buscar' %}" class="btn-neon"><i class="bi bi-plus-circle"></i> Agregar contenido</a>
+    </div>
+  {% endif %}
+
+</div>
+
+<!-- Modal · Eliminar -->
+<div class="modal fade" id="confirmarEliminarModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content ctmodal">
+      <button type="button" class="btn-close btn-close-white ctmodal-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+
+      <div class="ctmodal-header">
+        <span class="ctmodal-icon"><i class="bi bi-exclamation-triangle-fill"></i></span>
+        <h5 class="ctmodal-title m-0">Confirmar eliminación</h5>
+      </div>
+
+      <div class="ctmodal-body">
+        <p class="m-0">¿Estás seguro que deseas eliminar <strong id="tituloAEliminar">"—"</strong>?</p>
+        <small class="opacity-75 d-block mt-2">Esta acción no se puede deshacer.</small>
+      </div>
+
+      <div class="ctmodal-actions">
+        <button id="confirmDeleteBtn" type="button" class="btn btn-danger btn-glow">
+          <i class="bi bi-trash3 me-1"></i> Sí, eliminar
+        </button>
+        <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

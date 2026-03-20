@@ -1,0 +1,171 @@
+{% extends 'cinetrack/base.html' %}
+{% load static %}
+
+{% block title %}Buscar contenido · CineTrack{% endblock %}
+
+{% block content %}
+<div class="container-xl">
+
+  <!-- Encabezado -->
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="hero-title m-0"><i class="bi bi-search"></i> Buscar película o serie</h1>
+    <a href="{% url 'cinetrack:registrar' %}" class="btn-ghost">
+      <i class="bi bi-pencil-square"></i> Registrar manualmente
+    </a>
+  </div>
+  <p class="hero-sub mb-3">Escribe el título y agrega el resultado con tu configuración</p>
+
+  <!-- Form de búsqueda -->
+  <div class="tile mb-3">
+    <form method="post" class="row g-2 align-items-end">
+      {% csrf_token %}
+      <div class="col-12 col-md-9">
+        <label class="form-label mb-3">Título</label>
+        <input type="text"
+               name="query"
+               required
+               value="{{ request.POST.query }}"
+               class="form-control"
+               placeholder="Ej. El conjuro">
+      </div>
+      <div class="col-12 col-md-3 d-flex justify-content-md-end">
+        <button type="submit" class="btn-neon w-100 btn-center">
+          <i class="bi bi-search"></i> Buscar
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Mensajes -->
+  {% if messages %}
+    <div class="tile p-3 mb-3">
+      {% for message in messages %}
+        <p class="m-0 {{ message.tags }}">{{ message }}</p>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <!-- Resultados -->
+  {% if resultados %}
+    <h2 class="section-title mb-3"><i class="bi bi-stars"></i> Resultados</h2>
+
+    <div class="row g-3">
+      {% for r in resultados %}
+      <div class="col-12">
+        <form method="post" action="{% url 'cinetrack:guardar_desde_busqueda' %}" class="tile edit-card edit-form p-4 p-lg-5">
+          {% csrf_token %}
+          <div class="row g-3">
+
+            <!-- Póster -->
+            <div class="col-md-3">
+              {% if r.imagen %}
+                <div class="detail-poster">
+                  <img src="{{ r.imagen }}" alt="{{ r.titulo }}">
+                </div>
+              {% else %}
+                <div class="detail-poster detail-poster-ph">
+                  <i class="bi bi-image"></i>
+                </div>
+              {% endif %}
+            </div>
+
+            <!-- Meta y opciones -->
+            <div class="col-md-9 d-flex flex-column">
+              <h4 class="mb-2">{{ r.titulo }}</h4>
+              <p class="detail-text mb-2" style="text-align:justify;">{{ r.resumen }}</p>
+              <p class="small opacity-75 mb-3">
+                <strong>Fecha:</strong> {{ r.fecha|date:"d/m/Y"|default:"—" }}
+              </p>
+
+              <!-- Campos ocultos -->
+              <input type="hidden" name="titulo" value="{{ r.titulo }}">
+              <input type="hidden" name="resumen" value="{{ r.resumen }}">
+              <input type="hidden" name="fecha" value="{{ r.fecha|date:'Y-m-d' }}">
+              <input type="hidden" name="imagen" value="{{ r.imagen }}">
+              <input type="hidden" name="tipo" value="{{ r.tipo }}">
+
+              <!-- Fila única de opciones -->
+              <div class="row mb-4">
+                <div class="col-md-3 mb-3">
+                  <label class="form-label">Estado</label>
+                  <select name="estado" class="form-select">
+                    <option value="" selected disabled>Selecciona…</option>
+                    <option value="pendiente">Pendiente</option>
+                    <option value="vista">Vista</option>
+                  </select>
+                </div>
+                <div class="col-md-3 mb-3">
+                  <label class="form-label">Plataforma</label>
+                  <select name="plataforma" class="form-select" required>
+                    <option value="" selected disabled>Selecciona…</option>
+                    {% for value, label in plataformas %}
+                      <option value="{{ value }}">{{ label }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+                <div class="col-md-3 mb-3">
+                  <label class="form-label">Calificación</label>
+                  <select name="calificacion" class="form-select">
+                    <option value="" selected disabled>Selecciona…</option>
+                    <option value="excelente">Excelente</option>
+                    <option value="buena">Buena</option>
+                    <option value="meh">Regular</option>
+                    <option value="mala">Mala</option>
+                    <option value="horrible">Horrible</option>
+                  </select>
+                </div>
+                <div class="col-md-3 mb-3">
+                  <label class="form-label">Veces vista</label>
+                  <input type="number" name="veces_vista" min="0" class="form-control">
+                </div>
+              </div>
+
+              <!-- Switches -->
+              <div class="row g-3 mb-4">
+                <div class="col-md-4">
+                  <div class="form-check form-switch mt-2">
+                    <input type="checkbox" name="favorita" class="form-check-input" id="fav{{ forloop.counter }}">
+                    <label class="form-check-label ms-2" for="fav{{ forloop.counter }}">¿Favorita?</label>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-check form-switch mt-2">
+                    <input type="checkbox" name="volveria_a_ver" class="form-check-input" id="volveria{{ forloop.counter }}">
+                    <label class="form-check-label ms-2" for="volveria{{ forloop.counter }}">¿Volvería a ver?</label>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-check form-switch mt-2">
+                    <input type="checkbox" name="tendra_continuacion" class="form-check-input" id="cont{{ forloop.counter }}">
+                    <label class="form-check-label ms-2" for="cont{{ forloop.counter }}">¿Tendrá continuación?</label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Guardar -->
+              <div class="d-flex justify-content-center pt-2">
+                <button type="submit" class="btn-save">
+                  <i class="bi bi-check-circle me-1"></i> Guardar
+                </button>
+              </div>
+
+            </div>
+          </div>
+        </form>
+      </div>
+      {% endfor %}
+    </div>
+
+  {% elif request.method == "POST" %}
+    <!-- Estado vacío tras una búsqueda sin resultados -->
+    <div class="tile text-center py-5">
+      <div class="display-6 mb-2">Sin resultados</div>
+      <p class="opacity-75">Prueba con otro título o registra el contenido manualmente.</p>
+      <a href="{% url 'cinetrack:registrar' %}" class="btn-neon">
+        <i class="bi bi-plus-circle"></i> Registrar manualmente
+      </a>
+    </div>
+  {% endif %}
+
+</div>
+{% endblock %}

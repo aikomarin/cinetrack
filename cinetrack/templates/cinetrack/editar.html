@@ -1,0 +1,141 @@
+{% extends 'cinetrack/base.html' %}
+{% block title %}Editar | CineTrack{% endblock %}
+
+{% block content %}
+<div class="edit-page {% if contenido.estado == 'vista' %}is-vista{% elif contenido.estado == 'pendiente' %}is-pendiente{% endif %}">
+
+  <!-- Fondo cinematográfico con el póster -->
+  <div class="edit-bg" style="--edit-bg: url('{{ contenido.imagen|default:'' }}');"></div>
+  <div class="edit-glow"></div>
+
+  <!-- Header superior -->
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="edit-title m-0">
+      <i class="bi bi-pencil-square"></i> Editar
+      <span class="mx-2 text-muted">|</span>
+      <small class="fs-5 text-light fw-semibold">{{ contenido.get_tipo_display }}</small>
+    </h2>
+    {% if en_grupo %}
+      <a href="{% url 'cinetrack:grupo_saga' clave_saga|urlencode %}?page={{ request.GET.page }}" class="btn-ghost">
+        <i class="bi bi-arrow-left-circle"></i> Volver al grupo
+      </a>
+    {% else %}
+      <a href="{% url 'cinetrack:catalogo' %}?page={{ request.GET.page }}" class="btn-ghost">
+        <i class="bi bi-arrow-left-circle"></i> Volver al catálogo
+      </a>
+    {% endif %}
+  </div>
+
+  <!-- Mensajes de error -->
+  {% if formulario.non_field_errors %}
+    <div class="tile p-3 mb-3">
+      {{ formulario.non_field_errors }}
+    </div>
+  {% endif %}
+
+  <!-- Card del formulario -->
+  <form method="post" class="tile edit-card edit-form p-4 p-lg-5">
+    {% csrf_token %}
+
+    <div class="row g-4">
+      <!-- Columna: Póster -->
+      <div class="col-lg-4">
+        <div class="edit-poster">
+          {% if contenido.imagen %}
+            <img src="{{ contenido.imagen }}" alt="{{ contenido.titulo }}">
+          {% else %}
+            <div class="d-flex align-items-center justify-content-center ratio ratio-2x3 text-muted">
+              <i class="bi bi-image" style="font-size:3rem;"></i>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- Columna: Campos -->
+      <div class="col-lg-8">
+
+        <!-- Título -->
+        <div class="mb-3">
+          <label class="form-label" for="id_titulo">Título</label>
+          {{ formulario.titulo }}
+          {% if formulario.titulo.errors %}<div class="text-danger small mt-1">{{ formulario.titulo.errors }}</div>{% endif %}
+        </div>
+
+        <!-- Tipo / Fecha -->
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label class="form-label" for="id_tipo">Tipo</label>
+            {{ formulario.tipo }}
+            {% if formulario.tipo.errors %}<div class="text-danger small mt-1">{{ formulario.tipo.errors }}</div>{% endif %}
+          </div>
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Fecha</label>
+            <input type="text" class="form-control" value="{{ contenido.fecha|date:'d/m/Y' }}" readonly>
+          </div>
+        </div>
+
+        <!-- Resumen -->
+        <div class="mb-4">
+          <label class="form-label" for="id_resumen">Resumen</label>
+          <textarea name="resumen" id="id_resumen" class="form-control">{{ contenido.resumen }}</textarea>
+        </div>
+
+        <!-- Estado / Plataforma / Calificación / Veces vista -->
+        <div class="row mb-4">
+          <div class="col-md-3 mb-3">
+            <label class="form-label" for="id_estado">Estado</label>
+            {{ formulario.estado }}
+            {% if formulario.estado.errors %}<div class="text-danger small mt-1">{{ formulario.estado.errors }}</div>{% endif %}
+          </div>
+          <div class="col-md-3 mb-3">
+            <label class="form-label" for="id_plataforma">Plataforma</label>
+            {{ formulario.plataforma }}
+            {% if formulario.plataforma.errors %}<div class="text-danger small mt-1">{{ formulario.plataforma.errors }}</div>{% endif %}
+          </div>
+          <div class="col-md-3 mb-3">
+            <label class="form-label" for="id_calificacion">Calificación</label>
+            {{ formulario.calificacion }}
+            {% if formulario.calificacion.errors %}<div class="text-danger small mt-1">{{ formulario.calificacion.errors }}</div>{% endif %}
+          </div>
+          <div class="col-md-3 mb-3">
+            <label class="form-label" for="id_veces_vista">Veces vista</label>
+            {{ formulario.veces_vista }}
+            {% if formulario.veces_vista.errors %}<div class="text-danger small mt-1">{{ formulario.veces_vista.errors }}</div>{% endif %}
+          </div>
+        </div>
+
+        <!-- Switches -->
+        <div class="row g-3 mb-4">
+          <div class="col-md-4">
+            <div class="form-check form-switch mt-2">
+              {{ formulario.favorita }}
+              <label class="form-check-label ms-2" for="id_favorita">¿Favorita?</label>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-check form-switch mt-2">
+              {{ formulario.volveria_a_ver }}
+              <label class="form-check-label ms-2" for="id_volveria_a_ver">¿Volvería a ver?</label>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-check form-switch mt-2">
+              {{ formulario.tendra_continuacion }}
+              <label class="form-check-label ms-2" for="id_tendra_continuacion">¿Tendrá continuación?</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Guardar -->
+        <div class="d-flex justify-content-center pt-2">
+          <button type="submit" class="btn-save">
+            <i class="bi bi-check-circle me-1"></i> Guardar cambios
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </form>
+
+</div>
+{% endblock %}

@@ -1,0 +1,272 @@
+{% extends 'cinetrack/base.html' %}
+{% block title %}Inicio | CineTrack{% endblock %}
+
+{% block background_extras %}
+  <!-- Rollo izquierdo -->
+  <div class="film-roll-vertical left">
+    <div class="film-track-vertical">
+      {% for item in contenidos|slice:":16" %}
+        {% if item.imagen %}
+          <div class="frame-vertical"><img src="{{ item.imagen }}" alt="{{ item.titulo }}"></div>
+        {% endif %}
+      {% endfor %}
+      <!-- Duplicado para scroll infinito -->
+      {% for item in contenidos|slice:":16" %}
+        {% if item.imagen %}
+          <div class="frame-vertical"><img src="{{ item.imagen }}" alt="{{ item.titulo }}"></div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Rollo derecho -->
+  <div class="film-roll-vertical right">
+    <div class="film-track-vertical">
+      {% for item in contenidos|slice:"16:32" %}
+        {% if item.imagen %}
+          <div class="frame-vertical"><img src="{{ item.imagen }}" alt="{{ item.titulo }}"></div>
+        {% endif %}
+      {% endfor %}
+      <!-- Duplicado para scroll infinito -->
+      {% for item in contenidos|slice:"16:32" %}
+        {% if item.imagen %}
+          <div class="frame-vertical"><img src="{{ item.imagen }}" alt="{{ item.titulo }}"></div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
+
+{% block hero %}
+<header class="hero text-center">
+  <h1 class="hero-title">🎬 Bienvenido a CineTrack</h1>
+  <p class="hero-sub">Tu catálogo personal de películas y series</p>
+  <div class="d-flex justify-content-center gap-3 mt-3">
+    <a href="{% url 'cinetrack:catalogo' %}" class="btn-neon">
+      <i class="bi bi-collection"></i> Ver catálogo
+    </a>
+    <a href="{% url 'cinetrack:buscar' %}" class="btn-ghost">
+      <i class="bi bi-plus-circle"></i> Agregar nuevo
+    </a>
+  </div>
+</header>
+{% endblock %}
+
+{% block content %}
+<div class="container-xl py-3">
+
+  <!-- Dashboard de estadísticas -->
+  <section class="dash-grid">
+
+    <!-- Donut de promedio -->
+    <div class="tile tile-ring">
+      <div class="tile-header"><i class="bi bi-star-half"></i> Promedio global</div>
+      <svg viewBox="0 0 120 120" class="ring">
+        <circle class="ring-bg" cx="60" cy="60" r="52"></circle>
+        <circle class="ring-val" cx="60" cy="60" r="52"
+                style="stroke-dashoffset: {{ desplazamiento_donut }};"></circle>
+      </svg>
+      <div class="ring-center">
+        <div class="ring-number">{{ estadisticas.promedio }}</div>
+        <div class="ring-caption">/ 5</div>
+      </div>
+      <div class="ring-sub">Basado en {{ estadisticas.calificados }} calificados</div>
+    </div>
+
+    <!-- Barras por plataforma -->
+    <div class="tile tile-bars">
+      <div class="tile-header"><i class="bi bi-hdd-stack"></i> Plataformas más vistas</div>
+      <div class="bars">
+        {% for p in barras_plataforma %}
+          <div class="bar">
+            <span class="label">{{ p.nombre }}</span>
+            <div class="track" style="--pct: {{ p.porcentaje }}%">
+              <div class="fill"></div>
+            </div>
+            <span class="value">{{ p.cantidad }}</span>
+          </div>
+        {% empty %}
+          <div class="text-soft">Aún no hay suficientes datos por plataforma.</div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Progreso vistos vs pendientes -->
+    <div class="tile tile-progress">
+      <div class="tile-header"><i class="bi bi-eye-fill"></i> Avance de visualización</div>
+      <div class="progress-meta">
+        <span>Vistos: <strong>{{ estadisticas.vistos }}</strong></span>
+        <span>Pendientes: <strong>{{ estadisticas.pendientes }}</strong></span>
+        <span>Total: <strong>{{ estadisticas.total }}</strong></span>
+      </div>
+      <div class="progress-rail">
+        <div class="progress-fill" style="--pct: {{ porcentaje_completado }}%"></div>
+      </div>
+      <div class="progress-caption">{{ porcentaje_completado }}% completado</div>
+    </div>
+
+    <!-- Métricas -->
+    <div class="tile metric metric-total">
+      <div class="metric-icon"><i class="bi bi-collection-play"></i></div>
+      <div class="metric-label">Total títulos</div>
+      <div class="metric-value">{{ estadisticas.total }}</div>
+    </div>
+
+    <div class="tile metric metric-movies">
+      <div class="metric-icon"><i class="bi bi-film"></i></div>
+      <div class="metric-label">Películas</div>
+      <div class="metric-value">{{ estadisticas.peliculas }}</div>
+    </div>
+
+    <div class="tile metric metric-series">
+      <div class="metric-icon"><i class="bi bi-tv"></i></div>
+      <div class="metric-label">Series</div>
+      <div class="metric-value">{{ estadisticas.series }}</div>
+    </div>
+
+    <div class="tile metric metric-favs">
+      <div class="metric-icon"><i class="bi bi-star-fill"></i></div>
+      <div class="metric-label">Favoritas</div>
+      <div class="metric-value">{{ estadisticas.favoritas }}</div>
+    </div>
+
+  </section>
+
+  <div class="clap-sep"></div>
+
+  <!-- Top 5 calificaciones -->
+  <section class="toprated-section">
+    <div class="toprated-head">
+      <h2 class="section-title"><i class="bi bi-trophy"></i> Top 5 calificaciones</h2>
+    </div>
+
+    <div class="toprated-rail" tabindex="0">
+      {% for it in top_calificados %}
+        <article class="topcard">
+          <a class="topcard-thumb" href="{% url 'cinetrack:detalle' it.pk %}">
+            {% if it.imagen %}
+              <img src="{{ it.imagen }}" alt="{{ it.titulo }}">
+            {% else %}
+              <div class="recent-thumb-ph"><i class="bi bi-image"></i></div>
+            {% endif %}
+          </a>
+          <div class="topcard-meta text-center">
+            <h3 class="topcard-name mt-4" title="{{ it.titulo }}">
+              <a href="{% url 'cinetrack:detalle' it.pk %}">{{ it.titulo }}</a>
+            </h3>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <div class="clap-sep"></div>
+
+  <!-- Actividad reciente -->
+  <section class="recent-section">
+    <div class="recent-head">
+      <h2 class="section-title"><i class="bi bi-clock-history"></i> Actividad reciente</h2>
+      <a href="{% url 'cinetrack:catalogo' %}?orden=recientes" class="btn-neon small">
+        <i class="bi bi-lightning"></i> Ver todo
+      </a>
+    </div>
+
+    {% if actividad_reciente %}
+      <div class="recent-grid">
+        {% for it in actividad_reciente %}
+          <article class="recent-card">
+            <div class="recent-thumb">
+              {% if it.imagen %}
+                <img src="{{ it.imagen }}" alt="{{ it.titulo }}">
+              {% else %}
+                <div class="recent-thumb-ph">
+                  <i class="bi bi-image"></i>
+                </div>
+              {% endif %}
+            </div>
+
+            <div class="recent-meta">
+              <h3 class="recent-name" title="{{ it.titulo }}">{{ it.titulo }}</h3>
+
+              <div class="recent-tags">
+                {% if it.tipo %}<span class="tag">{{ it.tipo }}</span>{% endif %}
+                {% if it.plataforma %}<span class="tag">{{ it.plataforma }}</span>{% endif %}
+                {% if it.estado %}<span class="tag">{{ it.estado }}</span>{% endif %}
+              </div>
+
+              <div class="recent-foot">
+                <span class="recent-date">
+                  {% with it.fecha_agregado|default:it.fecha|default:it.created_at as f %}
+                    {% if f %}{{ f|date:"d M Y" }}{% else %}—{% endif %}
+                  {% endwith %}
+                </span>
+                <div class="recent-actions">
+                  <a href="{% url 'cinetrack:detalle' it.pk %}" class="btn-ghost btn-ghost-sm">
+                    <i class="bi bi-search"></i> Ver
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="tile text-center p-4">
+        <div class="tile-header" style="justify-content:center;">
+          No hay actividad reciente todavía.
+        </div>
+        <a href="{% url 'cinetrack:buscar' %}" class="btn-neon small">
+          <i class="bi bi-plus-circle"></i> Agrega tu primer título
+        </a>
+      </div>
+    {% endif %}
+  </section>
+
+  <div class="clap-sep"></div>
+
+  <!-- Lo más visto por plataforma -->
+  <section class="plat-tops-section">
+    <div class="plat-head">
+      <h2 class="section-title"><i class="bi bi-collection-play"></i> Lo más visto por plataforma</h2>
+    </div>
+
+    {% if tops_plataformas %}
+      <div class="plat-grid">
+        {% for plat in tops_plataformas %}
+          <article class="plat-tile">
+            <header class="plat-tile-head">
+              <span class="plat-name">{{ plat.nombre }}</span>
+            </header>
+
+            {% if plat.items %}
+              <ol class="plat-mini-rail">
+                {% for it in plat.items|slice:":5" %}
+                  <li class="plat-mini-item">
+                    <a href="{% url 'cinetrack:detalle' it.pk %}" class="plat-mini-card" title="{{ it.titulo }}">
+                      {% if it.imagen %}
+                        <img src="{{ it.imagen }}" alt="{{ it.titulo }}">
+                      {% else %}
+                        <span class="plat-ph"><i class="bi bi-image"></i></span>
+                      {% endif %}
+                    </a>
+                    <span class="plat-mini-title">{{ it.titulo }}</span>
+                  </li>
+                {% endfor %}
+              </ol>
+            {% else %}
+              <div class="plat-empty">Sin datos aún.</div>
+            {% endif %}
+          </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="tile text-center p-4">
+        <div class="tile-header" style="justify-content:center;">
+          No hay datos por plataforma todavía.
+        </div>
+      </div>
+    {% endif %}
+  </section>
+
+</div>
+{% endblock %}

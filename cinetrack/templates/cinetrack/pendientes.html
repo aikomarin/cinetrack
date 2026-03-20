@@ -1,0 +1,117 @@
+{% extends 'cinetrack/base.html' %}
+{% block title %}Pendientes | CineTrack{% endblock %}
+
+{% block content %}
+<div class="edit-page" data-move-url="{% url 'cinetrack:mover_fase' 0 %}">
+
+  <!-- Fondo -->
+  <div class="edit-bg"></div>
+  <div class="edit-glow"></div>
+
+  <!-- Encabezado -->
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="edit-title m-0">
+      <i class="bi bi-hourglass-split"></i> Pendientes
+      <span class="mx-2 text-muted">|</span>
+      <small class="fs-5 text-light fw-semibold">Tablero & Focus</small>
+    </h2>
+    <div class="d-flex gap-2">
+      <a href="{% url 'cinetrack:buscar' %}" class="btn-ghost"><i class="bi bi-plus-circle"></i> Agregar</a>
+      <a href="{% url 'cinetrack:catalogo' %}" class="btn-ghost"><i class="bi bi-collection"></i> Catálogo</a>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tile p-0 mb-3">
+    <ul class="nav nav-pills p-2" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="tab-kanban" data-bs-toggle="pill" data-bs-target="#pane-kanban" type="button" role="tab" aria-controls="pane-kanban" aria-selected="true">
+          <i class="bi bi-columns-gap me-1"></i> Tablero
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="tab-focus" data-bs-toggle="pill" data-bs-target="#pane-focus" type="button" role="tab" aria-controls="pane-focus" aria-selected="false">
+          <i class="bi bi-bullseye me-1"></i> Focus
+        </button>
+      </li>
+    </ul>
+  </div>
+
+  <div class="tab-content">
+
+    <!-- Tablero (Kanban) -->
+    <section class="tab-pane fade show active" id="pane-kanban" role="tabpanel" aria-labelledby="tab-kanban">
+      <div class="edit-card p-3">
+        <div class="row g-3">
+          {% for fase, label, icon, items in fases %}
+          <div class="col-12 col-md-6 col-xl-3">
+            <div class="tile h-100 d-flex flex-column">
+              <div class="tile-header"><i class="bi {{ icon }}"></i> {{ label }}</div>
+
+              <!-- Columna (solo posters) -->
+              <div class="flex-grow-1 kanban-col posters-only"
+                   data-fase="{{ fase }}"
+                   data-dnd-col>
+
+                <!-- Placeholder sin items -->
+                <div class="kan-empty"{% if items %} style="display:none"{% endif %}>Sin items aquí.</div>
+
+                {% for it in items %}
+                <article class="kan-item" draggable="true" data-id="{{ it.id }}" data-dnd-item>
+                  <a class="kan-poster" href="{% url 'cinetrack:detalle' it.pk %}?from=pendientes" title="{{ it.titulo }}">
+                    {% if it.imagen %}
+                      <img src="{{ it.imagen }}" alt="{{ it.titulo }}">
+                    {% else %}
+                      <div class="poster-ph"><i class="bi bi-image"></i></div>
+                    {% endif %}
+                  </a>
+                  <div class="kan-badges">
+                    {% if it.tipo %}<span class="badge tipo rounded-pill">{{ it.get_tipo_display }}</span>{% endif %}
+                    {% if it.plataforma %}<span class="badge plataforma rounded-pill">{{ it.get_plataforma_display }}</span>{% endif %}
+                  </div>
+                </article>
+                {% endfor %}
+
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <!-- Focus (Lista compacta) -->
+    <section class="tab-pane fade" id="pane-focus" role="tabpanel" aria-labelledby="tab-focus">
+      <div class="edit-card p-3">
+        <div class="d-flex align-items-center justify-content-between mb-2">
+          <div class="tile-header"><i class="bi bi-bullseye"></i> Enfoque de hoy</div>
+        </div>
+
+        <div class="d-grid gap-2" data-focus-list>
+          {% with fases.0.3 as primeros %}
+            {% for it in primeros|slice:":3" %}
+            <article class="tile d-flex align-items-center p-2">
+              <a class="kan-poster me-2" href="{% url 'cinetrack:detalle' it.pk %}?from=pendientes" style="width:40px;">
+                {% if it.imagen %}
+                  <img src="{{ it.imagen }}" alt="{{ it.titulo }}">
+                {% else %}
+                  <div class="poster-ph"><i class="bi bi-image"></i></div>
+                {% endif %}
+              </a>
+              <div class="flex-grow-1">
+                <div class="fw-bold">{{ it.titulo }}</div>
+                <small class="opacity-75">{{ it.get_tipo_display }} · {{ it.get_plataforma_display }}</small>
+              </div>
+            </article>
+            {% empty %}
+              <div class="text-soft small p-2">Nada en foco.</div>
+            {% endfor %}
+          {% endwith %}
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+</div>
+{% endblock %}
