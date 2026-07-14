@@ -4,6 +4,8 @@
 ![Django](https://img.shields.io/badge/Django-5.2-green)
 **![PostgreSQL](https://img.shields.io/badge/PostgreSQL-PostgreSQL-blue)**
 
+[![Live Demo](https://img.shields.io/badge/Live-Demo-7B3FE4?style=for-the-badge)](https://cinetrack-1wf6.onrender.com)
+
 CineTrack is a Django web application that allows users to organize and manage their personal movie and TV series collection. It integrates with The Movie Database (TMDB) API to simplify content registration and includes features such as favorites, viewing status tracking, ratings, franchises, and personal watchlists.
 
 ## Features
