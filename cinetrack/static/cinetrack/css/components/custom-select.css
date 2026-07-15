@@ -1,0 +1,67 @@
+/* ==== CUSTOM SELECT (ct-*) ==== */
+
+/* Contenedor y select real */
+.ct-select{ position:relative; font-family:var(--ui-font); }
+.ct-select select{
+  opacity:0; position:absolute; inset:0; width:100%; height:100%; pointer-events:none;
+}
+
+/* Trigger */
+.ct-trigger{
+  display:flex; align-items:center; justify-content:space-between; gap:.6rem;
+  width:100%;
+  border:1px solid var(--line); border-radius:14px; padding:.85rem .95rem;
+  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+  color:var(--ink); font-weight:700; letter-spacing:.3px;
+  box-shadow:0 10px 22px rgba(0,0,0,.25), inset 0 0 0 1px rgba(255,255,255,.05);
+  transition:border-color .15s ease, box-shadow .2s ease, transform .06s ease;
+  cursor:pointer;
+}
+.ct-trigger:hover{ transform:translateY(-1px); }
+.ct-trigger:focus-visible{
+  outline:none; border-color:rgba(155,92,251,.65);
+  box-shadow:0 0 0 3px rgba(155,92,251,.15), 0 12px 28px rgba(0,0,0,.35);
+}
+
+/* Caret */
+.ct-caret{
+  width:18px; height:18px; flex:0 0 18px;
+  background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%239b5cfb' d='M5.5 7.5L10 12l4.5-4.5H5.5z'/></svg>") no-repeat center/contain;
+  opacity:.9; transition:transform .15s ease;
+}
+.ct-open .ct-caret{ transform:rotate(180deg); }
+
+/* Portal en capa alta */
+#ct-portal{ z-index:9999; }
+
+/* Menú (el JS lo monta en #ct-portal y posiciona por inline left/top/bottom) */
+#ct-portal .ct-menu{
+  background:linear-gradient(180deg, var(--bg-2, #1a1030), #120a1f);
+  border:1px solid rgba(155,92,251,.28);
+  box-shadow:0 14px 28px rgba(0,0,0,.55), inset 0 0 0 1px rgba(255,255,255,.05);
+  border-radius:12px;
+  padding:4px;
+  font-size:.9rem;
+  max-width:260px;
+}
+
+/* Opción */
+#ct-portal .ct-option{
+  color:var(--ink, #f6f3ff);
+  padding:.4rem .65rem;
+  border-radius:8px;
+  font-weight:600;
+  font-size:.95rem;
+  user-select:none;
+}
+#ct-portal .ct-option:hover{ background:rgba(155,92,251,.18); }
+#ct-portal .ct-option[aria-selected="true"]{
+  background:rgba(155,92,251,.28);
+  box-shadow:inset 0 0 0 1px rgba(155,92,251,.4);
+}
+#ct-portal .ct-option.is-placeholder{ color:var(--ink-dim); }
+#ct-portal .ct-option[aria-disabled="true"]{ opacity:.45; cursor:not-allowed; }
+
+/* Scrollbar (WebKit) */
+#ct-portal .ct-menu::-webkit-scrollbar{ width:10px; }
+#ct-portal .ct-menu::-webkit-scrollbar-thumb{ background:rgba(255,255,255,.18); border-radius:999px; }

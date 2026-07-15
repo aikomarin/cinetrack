@@ -1,0 +1,101 @@
+/* Póster */
+.edit-poster{
+  position:sticky; top:18px;
+  border-radius:14px; border:1px solid var(--line);
+  background:#0b0b0f; overflow:hidden;
+  box-shadow:0 12px 28px rgba(0,0,0,.5);
+}
+.edit-poster img{
+  width:100%; height:100%; display:block; object-fit:cover; aspect-ratio:2/3;
+  transform:scale(1.01); transition:transform .35s ease;
+}
+.edit-poster:hover img{ transform:scale(1.03); }
+
+/* Labels */
+.form-label{
+  margin-bottom:.35rem;
+  font-family:var(--ui-font);
+  text-transform:uppercase;
+  letter-spacing:.5px;
+  color:var(--ink-dim);
+  font-weight:700;
+}
+
+/* Inputs / Select / Textarea */
+.edit-form input[type="text"],
+.edit-form input[type="number"],
+.edit-form input[type="date"],
+.edit-form select,
+.edit-form textarea{
+  width:100%;
+  color:var(--ink);
+  background:rgba(255,255,255,.05);
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:.7rem .9rem;
+  outline:none;
+  transition:box-shadow .18s ease, border-color .18s ease, background .18s ease, transform .12s ease;
+}
+.edit-form input:hover,
+.edit-form select:hover,
+.edit-form textarea:hover{ background:rgba(255,255,255,.06); }
+.edit-form input:focus,
+.edit-form select:focus,
+.edit-form textarea:focus{
+  border-color:transparent;
+  box-shadow:0 0 0 3px rgba(155,92,251,.45), 0 0 16px rgba(111,63,230,.4);
+  transform:translateY(-1px);
+}
+/* Fecha readonly */
+.edit-form input[readonly]{ opacity:.9; background:rgba(255,255,255,.04); }
+
+/* Textarea “guion” */
+.edit-form textarea{
+  min-height:140px; resize:vertical; line-height:1.55; font-weight:500;
+  background-image:
+    linear-gradient(rgba(255,255,255,.04), rgba(255,255,255,.04)),
+    repeating-linear-gradient(to bottom,
+      rgba(255,255,255,.05) 0 32px,
+      rgba(255,255,255,.06) 32px 33px);
+  background-clip:padding-box;
+}
+
+/* Textarea oscuro (sin fondo blanco) */
+.edit-form textarea.form-control,
+.edit-form textarea {
+  background-color: transparent !important; /* quita el blanco */
+  color: #F6F3FF;
+}
+
+.edit-form textarea.form-control::placeholder {
+  color: rgba(246,243,255,.55);
+}
+
+.edit-form textarea.form-control:focus {
+  background-color: transparent !important;
+  border-color: rgba(180,70,255,.6);
+  box-shadow: 0 0 0 .25rem rgba(180,70,255,.15);
+  outline: none;
+}
+
+/* Switches */
+.form-check.form-switch .form-check-input{
+  width:46px; height:26px; cursor:pointer;
+  background-color:rgba(255,255,255,.14);
+  border:1px solid var(--line);
+  transition:box-shadow .18s ease, filter .18s ease;
+}
+.form-check.form-switch .form-check-input:focus{ box-shadow:0 0 0 3px rgba(155,92,251,.35); }
+.form-check-label{ font-weight:700; color:var(--ink); opacity:.92; }
+/* Colores por campo */
+#id_favorita.form-check-input:checked{ background-color:#ffd700; border-color:rgba(0,0,0,.15); }
+#id_volveria_a_ver.form-check-input:checked{ background-color:#1e90ff; border-color:rgba(0,0,0,.15); }
+#id_tendra_continuacion.form-check-input:checked{ background-color:#2ecc71; border-color:rgba(0,0,0,.15); }
+/* Fix de alineación switches */
+.edit-form .row.g-3.mb-4 .form-check.form-switch{
+  display:flex; align-items:center; gap:.28rem !important; padding-left:0;
+}
+.edit-form .row.g-3.mb-4 .form-check-input{ margin:0 !important; }
+.edit-form .row.g-3.mb-4 label.form-check-label[for="id_tendra_continuacion"]{
+  white-space:nowrap !important; margin-left:.25rem !important;
+}

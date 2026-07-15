@@ -1,0 +1,49 @@
+/* Card */
+
+/* La card será un contenedor en columna */
+.topcard {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.topcard-thumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2 / 3;     /* 👈 alto fijo del póster */
+  overflow: hidden;        /* corta sobrante al hacer cover */
+  flex: 0 0 auto;
+  border-radius: inherit;  /* respeta redondeado de la card si aplica */
+}
+
+.topcard-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;       /* llena sin deformar */
+  display: block;
+}
+
+/* La sección meta empuja acciones al fondo */
+.topcard-meta {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.topcard .topcard-meta > .d-flex.align-items-center.justify-content-between {
+  margin-top: auto;        /* 👈 acciones siempre abajo */
+}
+
+/* Título con altura mínima para evitar saltos */
+.topcard-name {
+  font-size: 0.95rem;     /* más pequeño que el default h4 */
+  font-weight: 600;
+  line-height: 1.3;
+  min-height: 2.6em;      /* asegura espacio uniforme (~2 líneas) */
+  max-height: 2.6em;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;  /* máximo 2 líneas */
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+}
