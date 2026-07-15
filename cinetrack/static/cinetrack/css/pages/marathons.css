@@ -1,0 +1,79 @@
+/* ===== MARATONES (final) ===== */
+.selectable-card {
+  cursor: pointer;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+.selectable-card.selected {
+  box-shadow: 0 0 12px 3px rgba(180, 70, 255, 0.7);
+  transform: scale(1.02);
+}
+
+/* Card */
+.mara-card{ border-radius:18px; overflow:hidden }
+
+/* Portada (solo blur de la misma imagen) */
+.mara-card > .mara-cover{
+  position:relative;
+  height:160px;
+  overflow:visible;                 /* no recorta las mini-portadas */
+}
+.mara-card > .mara-cover::before{
+  content:"";
+  position:absolute;
+  inset:-24px;                      /* evita cortes del blur */
+  background-image:var(--m-bg);
+  background-size:cover;
+  background-position:center;
+  filter:blur(20px);
+  transform:scale(1.12);            /* compensa el blur */
+  z-index:0;
+  pointer-events:none;
+}
+/* todo lo demás va encima del blur */
+.mara-card > .mara-cover > *{ position:relative; z-index:1 }
+
+/* Mini-portadas colgando del borde inferior */
+.mara-card .mara-preview{
+  position:absolute;
+  left:14px; right:14px; bottom:-28px;
+  display:flex; gap:10px; overflow:visible; z-index:2;
+}
+.mara-card .mara-thumb{
+  width:70px; aspect-ratio:2/3; border-radius:12px; overflow:hidden;
+  box-shadow:0 6px 18px rgba(0,0,0,.35); flex:0 0 auto;
+}
+.mara-card .mara-thumb img{ width:100%; height:100%; object-fit:cover; display:block }
+
+/* Cuerpo en 2 columnas */
+.mara-body{
+  margin-top:28px;                  /* espacio por el colgado */
+  display:grid;
+  grid-template-columns:1fr auto;   /* izq: info  · der: acciones */
+  column-gap:1.25rem;
+  align-items:start;
+}
+.mara-side{ display:flex; flex-direction:column; align-items:flex-end; gap:.65rem }
+.mara-side .actions{ display:flex; gap:.5rem }
+
+/* Tipografías */
+.mara-title{
+  font-family:var(--ui-font,'Teko',system-ui,sans-serif);
+  line-height:1.1; letter-spacing:.3px;
+}
+.mara-desc{ font-family:var(--text-font,'DM Sans',system-ui,sans-serif) }
+
+/* Chip cantidad */
+.mara-chip{ background:rgba(180,70,255,.18); border:1px solid rgba(180,70,255,.35) }
+
+/* Responsive */
+@media (max-width:768px){
+  .mara-body{ grid-template-columns:1fr; row-gap:.75rem }
+  .mara-side{ align-items:flex-end }
+}
+@media (max-width:576px){
+  .mara-card > .mara-cover{ height:120px }
+  .mara-card .mara-thumb{ width:56px }
+}
+

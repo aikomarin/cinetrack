@@ -19,6 +19,8 @@
 @import url("./css/pages/pending.css");
 @import url("./css/pages/favorites.css");
 @import url("./css/pages/rewatch.css");
+@import url("./css/pages/groups.css");
+@import url("./css/pages/marathons.css");
 
 /* ==== TILE (tarjetas base) ==== */
 .tile {
@@ -126,8 +128,6 @@
   color: var(--ink);
 }
 
-/* ===== RENOMBRAR SAGA ===== */
-
 /* Contenedor tarjeta */
 .saga-rename{
   border:1px solid var(--line);
@@ -138,185 +138,6 @@
     0 8px 26px rgba(10,0,40,.32),
     inset 0 1px 0 rgba(255,255,255,.05);
   backdrop-filter:blur(6px);
-}
-
-/* Label */
-.saga-rename .form-label{
-  font-family:var(--ui-font);
-  text-transform:uppercase;
-  letter-spacing:.6px;
-  color:var(--ink-dim);
-  font-weight:700;
-  margin-bottom:10px;
-}
-
-/* Grid: input + botón */
-.saga-form{
-  display:grid;
-  grid-template-columns:1fr auto;
-  gap:12px;
-  align-items:stretch;
-}
-
-/* Input */
-.saga-input{
-  display:block;
-  width:100%;
-  height:56px;
-  border-radius:14px;
-  border:1px solid var(--line);
-  background:rgba(255,255,255,.05);
-  color:var(--ink);
-  padding:0 16px;
-  font-family:var(--text-font);
-  font-size:1rem;
-  line-height:1;
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.05);
-}
-.saga-input::placeholder{color:rgba(255,255,255,.55);}
-.saga-input:focus{
-  outline:none;
-  box-shadow:0 0 0 2px rgba(155,92,251,.35);
-}
-
-/* Botón */
-.saga-btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  height:56px;
-  padding:0 1.35rem;
-  border-radius:14px;
-  border:none;
-  background:linear-gradient(135deg,var(--accent),var(--accent-2));
-  color:#fff;
-  font-family:var(--text-font);
-  font-weight:800;
-  line-height:1;
-  box-shadow:
-    0 14px 34px rgba(111,63,230,.45),
-    inset 0 0 0 1px rgba(255,255,255,.08);
-  transition:transform .15s ease,filter .2s ease;
-}
-.saga-btn:hover{
-  transform:translateY(-2px);
-  filter:brightness(1.06);
-}
-
-/* Contenedor genérico */
-.saga-msg{
-  margin-top:12px;
-  padding:10px 14px;
-  border-radius:12px;
-  font-family:var(--text-font);
-  font-size:.95rem;
-  font-weight:600;
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
-
-/* Éxito */
-.saga-msg.success{
-  background:rgba(20,255,233,.08);
-  border:1px solid rgba(20,255,233,.45);
-  color:var(--accent-3); /* cian neon */
-  box-shadow:0 0 12px rgba(20,255,233,.25);
-}
-
-/* Error */
-.saga-msg.error{
-  background:rgba(255,77,79,.08);
-  border:1px solid rgba(255,77,79,.45);
-  color:#ff4d4f;
-  box-shadow:0 0 12px rgba(255,77,79,.25);
-}
-
-/* Responsive */
-@media(max-width:720px){
-  .saga-form{
-    grid-template-columns:1fr;
-  }
-  .saga-btn{width:100%;}
-}
-
-/* ===== MARATONES (final) ===== */
-.selectable-card {
-  cursor: pointer;
-  border-radius: 12px;
-  transition: all 0.2s ease;
-}
-
-.selectable-card.selected {
-  box-shadow: 0 0 12px 3px rgba(180, 70, 255, 0.7);
-  transform: scale(1.02);
-}
-
-/* Card */
-.mara-card{ border-radius:18px; overflow:hidden }
-
-/* Portada (solo blur de la misma imagen) */
-.mara-card > .mara-cover{
-  position:relative;
-  height:160px;
-  overflow:visible;                 /* no recorta las mini-portadas */
-}
-.mara-card > .mara-cover::before{
-  content:"";
-  position:absolute;
-  inset:-24px;                      /* evita cortes del blur */
-  background-image:var(--m-bg);
-  background-size:cover;
-  background-position:center;
-  filter:blur(20px);
-  transform:scale(1.12);            /* compensa el blur */
-  z-index:0;
-  pointer-events:none;
-}
-/* todo lo demás va encima del blur */
-.mara-card > .mara-cover > *{ position:relative; z-index:1 }
-
-/* Mini-portadas colgando del borde inferior */
-.mara-card .mara-preview{
-  position:absolute;
-  left:14px; right:14px; bottom:-28px;
-  display:flex; gap:10px; overflow:visible; z-index:2;
-}
-.mara-card .mara-thumb{
-  width:70px; aspect-ratio:2/3; border-radius:12px; overflow:hidden;
-  box-shadow:0 6px 18px rgba(0,0,0,.35); flex:0 0 auto;
-}
-.mara-card .mara-thumb img{ width:100%; height:100%; object-fit:cover; display:block }
-
-/* Cuerpo en 2 columnas */
-.mara-body{
-  margin-top:28px;                  /* espacio por el colgado */
-  display:grid;
-  grid-template-columns:1fr auto;   /* izq: info  · der: acciones */
-  column-gap:1.25rem;
-  align-items:start;
-}
-.mara-side{ display:flex; flex-direction:column; align-items:flex-end; gap:.65rem }
-.mara-side .actions{ display:flex; gap:.5rem }
-
-/* Tipografías */
-.mara-title{
-  font-family:var(--ui-font,'Teko',system-ui,sans-serif);
-  line-height:1.1; letter-spacing:.3px;
-}
-.mara-desc{ font-family:var(--text-font,'DM Sans',system-ui,sans-serif) }
-
-/* Chip cantidad */
-.mara-chip{ background:rgba(180,70,255,.18); border:1px solid rgba(180,70,255,.35) }
-
-/* Responsive */
-@media (max-width:768px){
-  .mara-body{ grid-template-columns:1fr; row-gap:.75rem }
-  .mara-side{ align-items:flex-end }
-}
-@media (max-width:576px){
-  .mara-card > .mara-cover{ height:120px }
-  .mara-card .mara-thumb{ width:56px }
 }
 
 /* ==== ARREGLOS FINALES ==== */
