@@ -1,0 +1,150 @@
+/* ================================
+   FAVORITOS · PODIO DORADO 1-2-3
+   ================================ */
+
+.fav-podium-gold {
+  position: relative;
+  padding: 2rem 1rem 3rem;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow: 0 10px 28px rgba(10,0,40,.32), inset 0 1px 0 rgba(255,255,255,.05);
+  overflow: hidden;
+}
+
+.podium-stage {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: end;
+  gap: 1rem;
+  position: relative;
+  min-height: 360px;
+}
+
+/* === Slots === */
+.podium-slot {
+  text-align: center;
+  position: relative;
+  transition: transform .4s ease, filter .3s ease;
+}
+.podium-slot .podium-poster img,
+.podium-slot .poster-ph {
+  width: 100%;
+  max-width: 200px;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(10,0,40,.4);
+  margin-inline: auto;
+  display: block;
+}
+
+/* labels */
+.podium-label {
+  margin-top: .6rem;
+}
+.podium-title {
+  font-family: var(--brand-font);
+  font-size: 1rem;
+  letter-spacing: .3px;
+  margin-bottom: .3rem;
+  color: var(--ink);
+}
+
+/* Position adjustments */
+.podium-slot.is-center { transform: translateY(-20px) scale(1.05); z-index: 3; }
+.podium-slot.is-left   { transform: translateY(0) scale(.95); }
+.podium-slot.is-right  { transform: translateY(0) scale(.95); }
+
+/* === Navegación === */
+.podium-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.25);
+  background: rgba(0,0,0,.25);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background .2s ease, transform .2s ease;
+}
+.podium-nav:hover {
+  background: rgba(0,0,0,.45);
+  transform: translateY(-50%) scale(1.1);
+}
+.podium-nav.prev { left: .5rem; }
+.podium-nav.next { right: .5rem; }
+
+/* Estado base (sin mover layout) */
+.podium-slot .podium-poster img{
+  outline: 4px solid transparent;
+  outline-offset: -4px;
+  transition: outline-color .25s ease;
+  border-radius: 14px;
+}
+
+/* Cuando el mouse está sobre el PEDESTAL 1 ⇒ borde dorado al póster */
+.podium-slot:has(.pedestal-1:hover) .podium-poster img{
+  outline-color: #ffd700;
+}
+
+/* (Opcional) Si quieres también al pasar por todo el slot del #1 */
+.podium-slot[data-rank="1"]:hover .podium-poster img{
+  outline-color: #ffd700;
+}
+
+/* Extra opcional: plata y bronce si te sirven */
+.podium-slot:has(.pedestal-2:hover) .podium-poster img{ outline-color: #c0c0c0; }
+.podium-slot:has(.pedestal-3:hover) .podium-poster img{ outline-color: #cd7f32; }
+
+/* === Pedestales === */
+.pedestal {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85%;
+  height: 70px;
+  border-radius: 10px 10px 0 0;
+  background: gold;
+  background: linear-gradient(180deg, #ffd700, #e6b800);
+  box-shadow: 0 10px 20px rgba(0,0,0,.35);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  font-family: var(--brand-font);
+  font-size: 1.2rem;
+}
+.pedestal .medal {
+  font-family: var(--brand-font);
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin-top: .4rem;
+  color: #fff;
+  text-shadow: 0 2px 6px rgba(0,0,0,.5);
+}
+.pedestal .crown {
+  font-size: 1.6rem;
+  position: absolute;
+  top: -1.6rem;
+  text-shadow: 0 2px 6px rgba(0,0,0,.5);
+}
+
+/* Podium differences */
+.pedestal-1 {
+  height: 70px;
+  z-index: 2;
+  background: linear-gradient(180deg, #ffd700, #e6b800);
+}
+.pedestal-2 {
+  height: 70px;
+  background: linear-gradient(180deg, #c0c0c0, #a0a0a0);
+}
+.pedestal-3 {
+  height: 70px;
+  background: linear-gradient(180deg, #cd7f32, #a0522d);
+}
+

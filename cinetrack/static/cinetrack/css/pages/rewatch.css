@@ -1,0 +1,33 @@
+/* ==== VOLVERÍA A VER ==== */
+.rewatch-badge{
+  background:#1e90ff;
+  color:#fff;
+  font-weight:700;
+  box-shadow:0 6px 16px rgba(30,144,255,.35);
+}
+
+/* Rail con scroll limpio (sin barra visible, si te gusta así) */
+.rail-track{ overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:.25rem; }
+.rail-card{ scroll-snap-align:start; }
+.rail-track::-webkit-scrollbar{ height:0; }
+
+/* Grid fijo: 7 columnas x 2 filas, sin scroll */
+.rew-grid-7x2{
+  display:grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  grid-auto-rows: 1fr;      /* 2 filas iguales por altura del contenido */
+  gap: 16px;
+}
+
+/* Forzar que las cards se adapten a la celda sin romper tu card base */
+.rew-grid-7x2 .rail-card{ width:100%; height:100%; }
+
+/* Póster completo sin recortes dentro de la card existente */
+.rew-grid-7x2 .rail-poster{ width:100%; height:100%; display:block; border-radius: inherit; }
+.rew-grid-7x2 .rail-poster img.rew-fit{
+  width:100%; height:100%;
+  object-fit: contain;      /* NO se cortan */
+  border-radius: inherit;
+  background: rgba(0,0,0,.22); /* bandas negras discretas cuando aplique */
+}
+
