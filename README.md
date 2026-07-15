@@ -123,31 +123,31 @@ Below are some screenshots of the application.
 
 ### Home Dashboard
 
-![Home](docs/ct1.png)
+![Home](docs/screenshots/ct1.png)
 
 ### Catalog
 
-![Catalog](docs/ct2.png)
+![Catalog](docs/screenshots/ct2.png)
 
 ### Pending Board
 
-![Pending](docs/ct3.png)
+![Pending](docs/screenshots/ct3.png)
 
 ### Focus Mode
 
-![Focus](docs/ct4.png)
+![Focus](docs/screenshots/ct4.png)
 
 ### Favorites
 
-![Favorites](docs/ct5.png)
+![Favorites](docs/screenshots/ct5.png)
 
 ### TMDB Search
 
-![Search](docs/ct6.png)
+![Search](docs/screenshots/ct6.png)
 
 ### Search Results
 
-![Results](docs/ct7.png)
+![Results](docs/screenshots/ct7.png)
 
 
 ## Learning Objectives
