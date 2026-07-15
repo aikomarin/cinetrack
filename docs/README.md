@@ -13,5 +13,5 @@ Este directorio reúne la documentación de producto y la documentación técnic
 - [Modelo de datos](architecture/data-model.md)
 - [API REST](api.md)
 - [Integración con TMDB](integrations/tmdb.md)
-- [Decisiones técnicas](technical-decisions.md)
+- [Decisiones técnicas](decisions/README.md)
 - [Changelog](changelog.md)

@@ -4,7 +4,7 @@
 
 Este documento presenta la organización general de CineTrack, las responsabilidades de sus componentes y los flujos principales de la aplicación actual.
 
-El detalle de las entidades persistidas se encuentra en el [modelo de datos](data-model.md). El comportamiento específico de la fuente externa utilizada por CineTrack se documenta en la [integración con TMDB](../integrations/tmdb.md). Las razones que motivaron elecciones concretas se mantienen en las [decisiones técnicas](../technical-decisions.md).
+El detalle de las entidades persistidas se encuentra en el [modelo de datos](data-model.md). El comportamiento específico de la fuente externa utilizada por CineTrack se documenta en la [integración con TMDB](../integrations/tmdb.md). Las razones que motivaron elecciones concretas se mantienen en las [decisiones técnicas](../decisions/README.md).
 
 Este overview describe exclusivamente el sistema implementado. No define funcionalidades futuras ni sustituye la documentación especializada.
 
@@ -125,13 +125,11 @@ La aplicación adapta las diferencias entre los resultados externos antes de ent
 
 Las siguientes decisiones explican elecciones relevantes para la arquitectura actual:
 
-- contrato explícito de serialización para la API REST;
-- normalización de datos externos de TMDB;
-- protección CSRF en operaciones de escritura;
-- agrupación automática de sagas;
-- separación entre estado y fase Kanban;
-- validación backend del flujo Kanban;
-- restricción de operaciones de modificación a `POST`;
-- API REST pública de solo lectura.
+- [separar estado de visualización y fase Kanban](../decisions/0002-separate-viewing-status-and-kanban-phase.md);
+- [definir explícitamente el contrato serializado de `Contenido`](../decisions/0003-define-explicit-content-api-schema.md);
+- [normalizar respuestas de TMDB en el límite de integración](../decisions/0004-normalize-tmdb-responses-at-integration-boundary.md);
+- [inferir sagas desde títulos y permitir alias](../decisions/0005-infer-sagas-from-content-titles.md);
+- [proteger escrituras web mediante POST y CSRF](../decisions/0006-protect-web-writes-with-post-and-csrf.md);
+- [exponer la API REST de `Contenido` como solo lectura](../decisions/0007-expose-content-rest-api-as-read-only.md).
 
-El contexto, la decisión y el motivo de cada una se conservan en [Decisiones técnicas de CineTrack](../technical-decisions.md).
+El índice completo se conserva en [Decisiones técnicas de CineTrack](../decisions/README.md).
