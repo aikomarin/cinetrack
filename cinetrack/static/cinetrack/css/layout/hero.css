@@ -1,0 +1,18 @@
+/* ===== HERO ===== */
+.hero{
+  padding:54px 0 24px;
+}
+.hero-title{
+  font-family:var(--brand-font);
+  font-size: clamp(2.4rem, 6vw, 4.6rem);
+  letter-spacing:1px;
+  line-height:1;
+  text-shadow: 0 12px 32px rgba(0,0,0,.6), 0 0 24px rgba(255,255,255,.16);
+}
+.hero-sub{
+  color:var(--ink-dim);
+  font-family:var(--ui-font);
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  letter-spacing:.4px;
+  text-transform:uppercase;
+}

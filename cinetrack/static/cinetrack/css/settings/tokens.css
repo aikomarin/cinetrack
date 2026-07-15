@@ -1,0 +1,32 @@
+:root{
+  /* Tipografías */
+  --brand-font: 'Bebas Neue', system-ui, sans-serif;
+  --ui-font: 'Teko', system-ui, sans-serif;
+  --text-font: 'DM Sans', system-ui, sans-serif;
+
+  /* Paleta */
+  --bg-0:#0b0712;               /* fondo base */
+  --bg-1:#120a1f;               /* profundo */
+  --bg-2:#1a1030;               /* paneles */
+  --ink:#f6f3ff;                /* texto primario */
+  --ink-dim:#dcd3fb;            /* texto tenue */
+  --accent:#9b5cfb;             /* morado neon */
+  --accent-2:#6f3fe6;           /* morado oscuro */
+  --accent-3:#14ffe9;           /* cian neon sutil */
+  --line:rgba(255,255,255,.12);
+
+  /* Rails (espacio lateral para rollos) */
+  --rail-w: 140px;                         /* ancho de cada rollo vertical */
+  --rails-pad: calc(var(--rail-w) + 18px); /* padding para centrar contenido */
+
+  /* Logo claqueta */
+  --clap-body:#7c3aed;
+  --clap-body-dark:#5b2bb5;
+  --clap-stripe:#ffffff;
+  --clap-edge:rgba(0,0,0,.28);
+
+  /* ===== Perforaciones laterales (animación por background-position) ===== */
+  --sprocket-speed: 1s;   /* velocidad visible; ajusta 8–14s a gusto */
+  --sprocket-step: 66px;   /* 30px lleno + 36px hueco */
+  --sprocket-hole: 30px;
+}

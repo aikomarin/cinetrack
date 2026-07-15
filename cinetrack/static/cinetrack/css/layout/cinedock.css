@@ -1,0 +1,169 @@
+/* ==== NAVBAR (CINEDOCK) ==== */
+.cinedock-wrapper{
+  position: relative;   /* deja de ser sticky */
+  top: auto;
+  z-index: 50;
+  padding: 14px var(--rails-pad) 10px;
+}
+.cinedock{
+  display:flex; align-items:center; justify-content:space-between; gap:14px;
+  background: linear-gradient(180deg, rgba(15,10,24,.85), rgba(15,10,24,.72));
+  border:1px solid var(--line); border-radius:18px;
+  padding:10px 14px;
+  backdrop-filter: blur(8px) saturate(140%);
+  box-shadow: 0 10px 26px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.06);
+}
+
+/* ==== DOCK BRAND ==== */
+.dock-brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:6px 10px;
+  border-radius:12px;
+}
+.dock-brand:hover{
+  background:rgba(255,255,255,.06);
+}
+.brand-text{
+  font-family: var(--brand-font);
+  letter-spacing: .8px;
+  font-size: clamp(1.6rem, 2.2vw, 2.2rem);
+}
+
+/* ==== DOCK TABS ==== */
+.dock-tabs {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ==== DOCK TAB ==== */
+.dock-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--ui-font);
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  color: var(--ink-dim);
+  transition: color .15s ease, transform .15s ease, background .15s ease;
+  position: relative;
+}
+
+.dock-tab:hover {
+  color: #fff;
+  transform: translateY(-1px);
+  background: rgba(255,255,255,.06);
+}
+
+.dock-tab[aria-current="page"] {
+  color: #fff;
+  font-weight: 600;
+}
+
+.dock-tab i {
+  font-size: 1.05rem;
+  opacity: .95;
+}
+
+/* Línea solo en hover */
+.dock-tab::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 25%;
+  width: 50%;
+  height: 3px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  box-shadow: 0 0 6px rgba(155,92,251,.55);
+  transform: scaleX(0);
+  transition: transform .25s ease;
+}
+
+.dock-tab:hover::after {
+  transform: scaleX(1);
+}
+
+/* ==== DOCK ACTIONS ==== */
+.dock-actions{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+/* Botón/busqueda minimal */
+.dock-search{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:40px; height:40px;
+  border-radius:10px;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.04);
+  transition: all .15s ease;
+}
+/* Botón/busqueda hover */
+.dock-search:hover{
+  background: rgba(255,255,255,.08)
+}
+/* Botón AppCentral tipo "ghost pill" */
+.btn-appcentral-ghost{
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+  padding:.55rem .85rem;
+  border-radius:10px;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.04);
+  color: var(--ink-dim);
+  font-family: var(--ui-font);
+  text-transform: uppercase;
+  letter-spacing:.5px;
+  font-weight:600;
+  transition: all .15s ease;
+}
+.btn-appcentral-ghost i{ opacity:.95; }
+.btn-appcentral-ghost:hover{
+  background: rgba(255,255,255,.08);
+  color:#fff;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.08);
+}
+
+/* ==== LOGO CLAQUETA ANIMADA ==== */
+.logo-claqueta-anim{
+  position: relative;
+  width: 34px;                 /* ancho total del logo */
+  height: 26px;                /* alto del cuerpo (sin tapa) */
+  border-radius: 4px;
+  background: linear-gradient(180deg, var(--clap-body), var(--clap-body-dark));
+  box-shadow: inset 0 0 0 2px var(--clap-edge), 0 4px 10px rgba(0,0,0,.35);
+  display: inline-block;
+  margin-right: .5rem;
+}
+/* --- Bisagra (remache) --- */
+.logo-claqueta-anim::after{
+  content:"";
+  position:absolute; left:-3px; top:-4px;
+  width:8px; height:8px; border-radius:50%;
+  background: #ddd;
+  box-shadow: 0 0 0 2px var(--clap-edge);
+}
+/* --- Tapa animada --- */
+.logo-claqueta-anim::before{
+  content:"";
+  position:absolute; left:-1px; top:-9px;
+  width: 36px; height: 10px; border-radius: 3px;
+  background: repeating-linear-gradient(45deg, var(--clap-stripe) 0 7px, #6b21a8 7px 14px);
+  box-shadow: inset 0 0 0 1px var(--clap-edge), 0 2px 6px rgba(0,0,0,.35);
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,.35));
+  transform-origin: 6px 10px;   /* bisagra en esquina izq */
+  animation: clapOpen 2.2s ease-in-out infinite;
+}
+/* --- Hover --- */
+.logo-claqueta-anim:hover::before{
+  animation-play-state: paused;
+}

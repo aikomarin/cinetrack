@@ -1,0 +1,73 @@
+/* ==== ROLLOS LATERALES ==== */
+.film-roll-vertical{
+  position: fixed;
+  top: 0; bottom: 0;
+  width: var(--rail-w);
+  background: linear-gradient(#0b0b0f, #151021);
+  border-left: 2px solid var(--line);
+  border-right: 2px solid var(--line);
+  overflow: hidden;
+  z-index: 2;
+}
+.film-roll-vertical.left{ left: 0; }
+.film-roll-vertical.right{ right: 0; }
+
+/* ===== Perforaciones laterales (animación por background-position) ===== */
+.film-roll-vertical::before,
+.film-roll-vertical::after{
+  content:"";
+  position:absolute; top:0; bottom:0; width:14px;
+  z-index: 3;                 /* por encima de los posters */
+  pointer-events: none;
+  background-image: linear-gradient(
+    to bottom,
+    #e7e7ea 0 var(--sprocket-hole),
+    rgba(231,231,234,0) var(--sprocket-hole) var(--sprocket-step)
+  );
+  background-repeat: repeat-y;
+  background-size: 100% var(--sprocket-step);
+  background-position: 0 0;
+  animation: sprocketMove var(--sprocket-speed) linear infinite;
+}
+
+.film-roll-vertical::before{ left: 6px; }
+.film-roll-vertical::after { right: 6px; }
+
+/* LADO IZQUIERDO: todo SUBE */
+.film-roll-vertical.left::before,
+.film-roll-vertical.left::after{
+  animation-direction: normal;
+}
+.film-roll-vertical.left .film-track-vertical{
+  animation-direction: normal;
+}
+
+/* LADO DERECHO: todo BAJA */
+.film-roll-vertical.right::before,
+.film-roll-vertical.right::after{
+  animation-direction: reverse;
+}
+.film-roll-vertical.right .film-track-vertical{
+  animation-direction: reverse;
+}
+
+/* Posters (tu pista) */
+.film-track-vertical{
+  position:absolute; left:0; right:0;
+  display:flex; flex-direction:column; gap:20px;
+  animation: verticalScroll 40s linear infinite;
+}
+.film-roll-vertical.right .film-track-vertical{
+  animation-direction: reverse;
+}
+.frame-vertical{
+  flex:0 0 auto; margin:0 auto;
+  width:100px; height:150px; background:#0b0b0f; border-radius:8px; overflow:hidden;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.08), 0 6px 16px rgba(0,0,0,.45);
+}
+.frame-vertical img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}

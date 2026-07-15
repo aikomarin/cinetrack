@@ -1,0 +1,56 @@
+/* ==== KEYFRAMES ==== */
+/* --- Animación abrir/cerrar Logo --- */
+@keyframes clapOpen{
+  0%   { transform: rotate(0deg); }
+  35%  { transform: rotate(-32deg); }
+  55%  { transform: rotate(-32deg); }
+  90%  { transform: rotate(0deg); }
+  100% { transform: rotate(0deg); }
+}
+
+/* Animación abrir/cerrar Separador de Secciones  */
+@keyframes clapOpenSep {
+  0%, 100% { transform: translate(-50%, -26px) rotate(0deg); }
+  30%      { transform: translate(-50%, -26px) rotate(-12deg); } /* antes -28deg */
+  55%      { transform: translate(-50%, -26px) rotate(-12deg); }
+}
+
+@keyframes tileFade{
+  0%   { opacity:0;   transform: scale(.96); }
+  10%  { opacity:.85; transform: scale(1);   }
+  60%  { opacity:.85; transform: scale(1.01);}
+  100% { opacity:0;   transform: scale(1.02);}
+}
+
+@keyframes verticalScroll {
+  from{ transform: translateY(0) }
+  to{   transform: translateY(-50%) }
+}
+
+@keyframes growBar {
+  from { width: 0; }
+  to   { width: var(--pct); }
+}
+
+@keyframes fillProg {
+  to { width: var(--pct); }
+}
+
+/* Desplaza el patrón exactamente 1 período (seamless) */
+@keyframes sprocketMove{
+  to { background-position: 0 -66px; }
+}
+
+@keyframes glowDrift{ from{filter:saturate(120%) brightness(1);} to{filter:saturate(140%) brightness(1.08);} }
+
+@keyframes pulseGlow{
+  0%{ box-shadow:0 0 14px rgba(111,63,230,.55), inset 0 0 0 1px rgba(255,255,255,.08); }
+  50%{ box-shadow:0 0 22px rgba(155,92,251,.75), 0 0 42px rgba(20,255,233,.35), inset 0 0 0 1px rgba(255,255,255,.12); }
+  100%{ box-shadow:0 0 14px rgba(111,63,230,.55), inset 0 0 0 1px rgba(255,255,255,.08); }
+}
+
+@keyframes floatUp{ from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);} }
+
+/* Modal de Eliminar */
+@keyframes ctmodal-pop{ from{ transform:translateY(8px) scale(.98); opacity:0; }
+                        to  { transform:translateY(0)  scale(1);   opacity:1; } }
