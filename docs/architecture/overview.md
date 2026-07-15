@@ -4,7 +4,7 @@
 
 Este documento presenta la organización general de CineTrack, las responsabilidades de sus componentes y los flujos principales de la aplicación actual.
 
-El detalle de las entidades persistidas se encuentra en el [modelo de datos](../data-model.md). El comportamiento específico de la fuente externa utilizada por CineTrack se documenta en la [integración con TMDB](../integrations/tmdb.md). Las razones que motivaron elecciones concretas se mantienen en las [decisiones técnicas](../technical-decisions.md).
+El detalle de las entidades persistidas se encuentra en el [modelo de datos](data-model.md). El comportamiento específico de la fuente externa utilizada por CineTrack se documenta en la [integración con TMDB](../integrations/tmdb.md). Las razones que motivaron elecciones concretas se mantienen en las [decisiones técnicas](../technical-decisions.md).
 
 Este overview describe exclusivamente el sistema implementado. No define funcionalidades futuras ni sustituye la documentación especializada.
 
@@ -107,13 +107,13 @@ Los recursos consultados, la normalización y el manejo de errores externos se d
 
 La gestión de maratones utiliza vistas y formularios de Django para trabajar con colecciones personalizadas de contenidos. Los flujos web permiten consultar y administrar maratones y su selección de contenidos.
 
-La relación persistida entre `Maraton` y `Contenido` se documenta en el [modelo de datos](../data-model.md).
+La relación persistida entre `Maraton` y `Contenido` se documenta en el [modelo de datos](data-model.md).
 
 ## 6. Persistencia
 
 CineTrack utiliza PostgreSQL como base de datos y accede a la información mediante el ORM de Django. La configuración admite una URL de conexión completa o variables individuales para la conexión local.
 
-Las entidades, campos, relaciones, valores controlados y restricciones actuales se describen en el [modelo de datos](../data-model.md).
+Las entidades, campos, relaciones, valores controlados y restricciones actuales se describen en el [modelo de datos](data-model.md).
 
 ## 7. Integraciones externas
 

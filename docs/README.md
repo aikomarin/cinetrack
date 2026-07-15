@@ -10,7 +10,7 @@ Este directorio reúne la documentación de producto y la documentación técnic
 ## Documentación técnica actual
 
 - [Arquitectura](architecture/overview.md)
-- [Modelo de datos](data-model.md)
+- [Modelo de datos](architecture/data-model.md)
 - [API REST](api.md)
 - [Integración con TMDB](integrations/tmdb.md)
 - [Decisiones técnicas](technical-decisions.md)
