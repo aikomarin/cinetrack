@@ -110,12 +110,14 @@ ALLOWED_HOSTS=
 
 CineTrack exposes a REST API built with Django REST Framework.
 
-Main endpoint:
+The current API is public and read-only. Main endpoint:
 
 
 ```text
-/api/cinetrack/contenidos/
+/cinetrack/api/contenidos/
 ```
+
+See the [REST API documentation](docs/api.md) for the complete current contract.
 
 ## Screenshots
 

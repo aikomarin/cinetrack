@@ -50,7 +50,7 @@ Parte de las reglas y transformaciones reutilizadas por distintas vistas se encu
 
 ### Interfaces
 
-Las vistas HTML y la API REST operan sobre la misma aplicación y persistencia. Las operaciones de escritura se realizan actualmente mediante los flujos de la interfaz web; la API expuesta es de solo lectura.
+Las vistas HTML y la API REST operan sobre la misma aplicación y persistencia. Las operaciones de escritura se realizan actualmente mediante los flujos de la interfaz web; la API expuesta es pública y de solo lectura.
 
 ## 4. Interfaces y enrutamiento
 
@@ -60,14 +60,7 @@ Las rutas de la interfaz web se agrupan por las funcionalidades actuales, entre 
 
 La API REST se incorpora al mismo enrutamiento mediante un `DefaultRouter` de Django REST Framework. Actualmente expone `Contenido` mediante `ContenidoViewSet`, implementado como `ReadOnlyModelViewSet`.
 
-Los endpoints disponibles son:
-
-```text
-GET /cinetrack/api/contenidos/       -> Lista de contenidos
-GET /cinetrack/api/contenidos/{id}/  -> Detalle de un contenido
-```
-
-Las operaciones `POST`, `PUT`, `PATCH` y `DELETE` no están expuestas por esta API.
+La API utiliza el prefijo `/cinetrack/api/`. Sus endpoints, métodos, campos, permisos y capacidades actuales se documentan en [API REST de CineTrack](../api.md).
 
 ## 5. Flujos principales
 
