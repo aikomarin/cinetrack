@@ -2,15 +2,15 @@
 .modal .modal-dialog .modal-content.ctmodal{
   background: linear-gradient(180deg,
               rgba(30, 20, 50, .88),  /* morado oscuro casi sólido */
-              rgba(20, 15, 30, .95)) !important;
-  color: var(--ink) !important;
-  border: 1px solid rgba(255,255,255,.08) !important;
-  border-radius: 18px !important;
+              rgba(20, 15, 30, .95));
+  color: var(--ink);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 18px;
   box-shadow:
     0 24px 60px rgba(0,0,0,.65),
     0 0 0 1px rgba(255,255,255,.04) inset,
-    0 0 36px rgba(155,92,251,.25) !important;
-  backdrop-filter: blur(14px) saturate(150%) !important;
+    0 0 36px rgba(155,92,251,.25);
+  backdrop-filter: blur(14px) saturate(150%);
   overflow: hidden;
   animation: ctmodal-pop .28s ease-out both;
 }
@@ -21,7 +21,7 @@
     radial-gradient(800px 500px at 25% 25%, rgba(155,92,251,.22), transparent),
     radial-gradient(700px 420px at 70% 75%, rgba(20,255,233,.12), transparent),
     #000;
-  opacity: .65 !important;
+  opacity: .65;
 }
 
 /* Partes internas del modal (nuestra estructura custom) */
@@ -73,18 +73,18 @@
 .btn-glow{
   --c1: var(--accent, #9b5cfb);
   --c2: var(--accent-2, #6f3fe6);
-  border: 1px solid transparent !important;
-  background: linear-gradient(135deg, var(--c1), var(--c2)) !important;
-  color:#fff !important; font-weight:800;
+  border: 1px solid transparent;
+  background: linear-gradient(135deg, var(--c1), var(--c2));
+  color:#fff; font-weight:800;
   box-shadow: 0 0 14px rgba(155,92,251,.55), inset 0 0 0 1px rgba(255,255,255,.08);
 }
 .btn-glow:hover{ filter: brightness(1.06); box-shadow: 0 0 18px rgba(155,92,251,.7); }
 
 .ctmodal .btn-outline-light{
-  color: var(--ink) !important;
-  border-color: rgba(255,255,255,.22) !important;
+  color: var(--ink);
+  border-color: rgba(255,255,255,.22);
 }
 .ctmodal .btn-outline-light:hover{
-  background: rgba(255,255,255,.08) !important;
-  border-color: rgba(255,255,255,.3) !important;
+  background: rgba(255,255,255,.08);
+  border-color: rgba(255,255,255,.3);
 }

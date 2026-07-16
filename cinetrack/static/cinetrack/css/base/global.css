@@ -1,7 +1,7 @@
 body {
   color: var(--ink);
   font-family: var(--text-font);
-  background: linear-gradient(180deg, #0b0516 0%, #2a0f4f 100%) fixed !important;
+  background: linear-gradient(180deg, #0b0516 0%, #2a0f4f 100%) fixed;
 }
 
 /* ==== CAPAS BASE ==== */

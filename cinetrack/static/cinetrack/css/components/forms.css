@@ -63,7 +63,7 @@
 /* Textarea oscuro (sin fondo blanco) */
 .edit-form textarea.form-control,
 .edit-form textarea {
-  background-color: transparent !important; /* quita el blanco */
+  background-color: transparent; /* quita el blanco */
   color: #F6F3FF;
 }
 
@@ -72,7 +72,7 @@
 }
 
 .edit-form textarea.form-control:focus {
-  background-color: transparent !important;
+  background-color: transparent;
   border-color: rgba(180,70,255,.6);
   box-shadow: 0 0 0 .25rem rgba(180,70,255,.15);
   outline: none;
@@ -93,11 +93,11 @@
 #id_tendra_continuacion.form-check-input:checked{ background-color:#2ecc71; border-color:rgba(0,0,0,.15); }
 /* Fix de alineación switches */
 .edit-form .row.g-3.mb-4 .form-check.form-switch{
-  display:flex; align-items:center; gap:.28rem !important; padding-left:0;
+  display:flex; align-items:center; gap:.28rem; padding-left:0;
 }
-.edit-form .row.g-3.mb-4 .form-check-input{ margin:0 !important; }
+.edit-form .row.g-3.mb-4 .form-check-input{ margin:0; }
 .edit-form .row.g-3.mb-4 label.form-check-label[for="id_tendra_continuacion"]{
-  white-space:nowrap !important; margin-left:.25rem !important;
+  white-space:nowrap; margin-left:.25rem !important;
 }
 
 .edit-poster-placeholder {
