@@ -162,23 +162,6 @@
   .pedestal-1, .pedestal-2, .pedestal-3 { height: 70px; }
 }
 
-.favorite-star {
-  color: #ffd700;
-  filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.45));
-}
-
-.catalog-card-placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  aspect-ratio: 2 / 3;
-}
-
-.catalog-card-placeholder i {
-  font-size: 1.6rem;
-}
-
 .detail-text-justified {
   text-align: justify;
 }
