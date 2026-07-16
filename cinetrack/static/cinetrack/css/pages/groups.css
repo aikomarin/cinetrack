@@ -2,24 +2,10 @@
 
 /* Contenedor tarjeta */
 .saga-rename{
-  border:1px solid var(--line);
-  border-radius:18px;
-  padding:16px;
   background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
   box-shadow:
     0 8px 26px rgba(10,0,40,.32),
     inset 0 1px 0 rgba(255,255,255,.05);
-  backdrop-filter:blur(6px);
-}
-
-/* Label */
-.saga-rename .form-label{
-  font-family:var(--ui-font);
-  text-transform:uppercase;
-  letter-spacing:.6px;
-  color:var(--ink-dim);
-  font-weight:700;
-  margin-bottom:10px;
 }
 
 /* Grid: input + botón */
@@ -73,35 +59,6 @@
 .saga-btn:hover{
   transform:translateY(-2px);
   filter:brightness(1.06);
-}
-
-/* Contenedor genérico */
-.saga-msg{
-  margin-top:12px;
-  padding:10px 14px;
-  border-radius:12px;
-  font-family:var(--text-font);
-  font-size:.95rem;
-  font-weight:600;
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
-
-/* Éxito */
-.saga-msg.success{
-  background:rgba(20,255,233,.08);
-  border:1px solid rgba(20,255,233,.45);
-  color:var(--accent-3); /* cian neon */
-  box-shadow:0 0 12px rgba(20,255,233,.25);
-}
-
-/* Error */
-.saga-msg.error{
-  background:rgba(255,77,79,.08);
-  border:1px solid rgba(255,77,79,.45);
-  color:#ff4d4f;
-  box-shadow:0 0 12px rgba(255,77,79,.25);
 }
 
 /* Responsive */
