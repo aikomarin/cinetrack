@@ -7,7 +7,6 @@
   grid-template-columns: 1fr 1fr 1fr;
   align-items: end;
   gap: 1rem;
-  position: relative;
   min-height: 360px;
 }
 
@@ -46,11 +45,6 @@
   outline: 4px solid transparent;
   outline-offset: -4px;
   transition: outline-color .25s ease;
-}
-
-/* Cuando el mouse está sobre el PEDESTAL 1 ⇒ borde dorado al póster */
-.podium-slot:has(.pedestal-1:hover) .podium-poster img{
-  outline-color: #ffd700;
 }
 
 /* (Opcional) Si quieres también al pasar por todo el slot del #1 */
