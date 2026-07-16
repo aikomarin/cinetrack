@@ -17,13 +17,6 @@
 }
 .btn-center i{ flex: 0 0 auto; }  /* evita que el ícono se estire */
 
-/* Igualar altura al campo (úsala solo donde quieres el alto del input) */
-:root{ --field-h: 56px; }          /* ajusta si tu input es más alto/bajo */
-.btn-searchH{ height: var(--field-h); line-height: 1; }
-
-/* Llenar el ancho de su columna (opcional) */
-.btn-fill{ width: 100%; }
-
 /* Restaura el alto normal en cualquier otro .btn-neon (navbar, etc.) */
 .btn-neon:not(#btn-filtrar):not(#btn-filtrar-mara) {
   height: auto;
@@ -160,23 +153,6 @@
   background: rgba(255,255,255,.08) !important;
   border-color: rgba(255,255,255,.3) !important;
 }
-
-/* Botón Buscar */
-.btn-search{
-  width: 60%;
-  min-width: 180px;
-  height: 56px;
-  padding: 0 1.2rem;
-  border-radius: 12px;
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-  font-weight: 800;
-  letter-spacing: .5px;
-}
-.btn-search i{ font-size: 1.2em; }
 
 /* ==== ENLACES ==== */
 a{text-decoration:none;color:inherit}
