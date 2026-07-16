@@ -16,42 +16,17 @@
 @import url("./css/pages/catalog.css");
 @import url("./css/pages/detail.css");
 @import url("./css/pages/search.css");
+@import url("./css/components/tiles.css");
+@import url("./css/layout/page-shell.css");
+@import url("./css/components/surfaces.css");
 @import url("./css/pages/pending.css");
 @import url("./css/pages/favorites.css");
 @import url("./css/pages/rewatch.css");
 @import url("./css/pages/groups.css");
 @import url("./css/pages/marathons.css");
-@import url("./css/components/tiles.css");
-@import url("./css/layout/page-shell.css");
-@import url("./css/components/surfaces.css");
 
   gap: .5rem;
 }
-/* Tiles de columnas (suave, sin exagerar) */
-.tile {
-  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-  border: 1px solid rgba(255,255,255,.12);
-  border-radius: 18px;
-  box-shadow: 0 8px 26px rgba(10,0,40,.32), inset 0 1px 0 rgba(255,255,255,.05);
-}
-.tile .tile-header {
-  font-family: var(--brand-font);
-  letter-spacing: .6px;
-  color: var(--ink);
-}
-
-/* Contenedor tarjeta */
-.saga-rename{
-  border:1px solid var(--line);
-  border-radius:18px;
-  padding:16px;
-  background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
-  box-shadow:
-    0 8px 26px rgba(10,0,40,.32),
-    inset 0 1px 0 rgba(255,255,255,.05);
-  backdrop-filter:blur(6px);
-}
-
 /* ==== ARREGLOS FINALES ==== */
 /* ===== Buscador: icono dentro del input ===== */
 .input-search{

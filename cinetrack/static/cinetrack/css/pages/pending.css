@@ -78,3 +78,15 @@
 .focus-list .title { font-weight: 700; line-height: 1.2; }
 .focus-list .meta { opacity: .75; font-size: .85rem; }
 
+/* Tiles de columnas (suave, sin exagerar) */
+.tile {
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 18px;
+  box-shadow: 0 8px 26px rgba(10,0,40,.32), inset 0 1px 0 rgba(255,255,255,.05);
+}
+.tile .tile-header {
+  font-family: var(--brand-font);
+  letter-spacing: .6px;
+  color: var(--ink);
+}
