@@ -18,6 +18,7 @@
   align-items:center;
   gap:.5rem;
   color:#fff;
+  text-decoration:none;
   border:none;
   border-radius:12px;
   background: linear-gradient(135deg, var(--c1), var(--c2));
@@ -30,6 +31,7 @@
               filter .2s ease;
 }
 .btn-neon:hover{
+  color:#fff;
   transform:translateY(-1px);
   filter:brightness(1.06);
   box-shadow:0 14px 30px rgba(111,63,230,.45);
@@ -48,6 +50,7 @@
   align-items:center;
   gap:.5rem;
   color:#e9d5ff;
+  text-decoration:none;
   border:1px solid var(--line);
   border-radius:12px;
   background:rgba(255,255,255,.04);
@@ -56,10 +59,13 @@
   transition:all .18s ease;
 }
 .btn-ghost:hover{
+  color:#fff;
   background:rgba(255,255,255,.08);
   border-color:rgba(255,255,255,.22);
 }
 .btn-ghost-sm{
+  color:inherit;
+  text-decoration:none;
   padding:.45rem .6rem;
   border-radius:10px;
   border:1px solid var(--line);
@@ -68,7 +74,7 @@
   font-weight:500;
   transition:all .15s ease;
 }
-.btn-ghost-sm:hover{ background:rgba(255,255,255,.08); }
+.btn-ghost-sm:hover{ color:#fff; background:rgba(255,255,255,.08); }
 
 /* Botón Guardar */
 .btn-save{
@@ -76,12 +82,14 @@
   display:inline-flex; align-items:center; gap:.55rem;
   padding:.8rem 1.2rem; font-weight:900; letter-spacing:.2px;
   border-radius:12px; border:1px solid transparent; color:#fff;
+  text-decoration:none;
   background:linear-gradient(135deg, var(--c1), var(--c2));
   box-shadow:0 0 14px rgba(111,63,230,.55), inset 0 0 0 1px rgba(255,255,255,.08);
   transition:transform .12s ease, box-shadow .18s ease, filter .12s ease;
   animation:pulseGlow 2.2s ease-in-out infinite;
 }
 .btn-save:hover{
+  color:#fff;
   transform:translateY(-1px);
   box-shadow:0 0 18px rgba(155,92,251,.7);
   filter:brightness(1.06);
