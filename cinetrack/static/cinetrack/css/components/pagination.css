@@ -11,6 +11,7 @@
   border: 1px solid var(--line);
   background: rgba(255,255,255,.05);
   color: var(--ink-dim);
+  text-decoration: none;
   font-family: var(--ui-font);
   font-weight: 700;
   padding: .55rem .9rem;
