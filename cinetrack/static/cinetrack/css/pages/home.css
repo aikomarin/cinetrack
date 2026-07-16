@@ -409,12 +409,3 @@
 
 /* Quitar badge de ranking */
 .plat-rank{ display:none !important; }
-
-/* Placeholder */
-.plat-ph{
-  width:100%; height:100%;
-  display:grid; place-items:center;
-  color:var(--ink-dim);
-  background: rgba(255,255,255,.06);
-}
-
