@@ -18,6 +18,15 @@
 }
 
 /* Imágenes reales */
+.kan-poster {
+  color: inherit;
+  text-decoration: none;
+}
+
+.kan-poster:hover {
+  color: #fff;
+}
+
 .kan-poster img {
   width: 100%;
   aspect-ratio: 2/3;
@@ -26,6 +35,15 @@
   transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
   box-shadow: 0 8px 22px rgba(10,0,40,.28);
   filter: saturate(1.02);
+}
+
+.rail-poster {
+  color: inherit;
+  text-decoration: none;
+}
+
+.rail-poster:hover {
+  color: #fff;
 }
 
 .rail-poster img {
