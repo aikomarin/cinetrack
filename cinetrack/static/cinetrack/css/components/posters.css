@@ -1,7 +1,59 @@
-/* Placeholder */
+/* Base audiovisual sin imagen */
+.poster-ph {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #aaa;
+  background: rgba(255,255,255,.06);
+}
+
+/* Placeholder compacto */
 .plat-ph{
   width:100%; height:100%;
   display:grid; place-items:center;
   color:var(--ink-dim);
   background: rgba(255,255,255,.06);
+}
+
+/* Imágenes reales */
+.kan-poster img {
+  width: 100%;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+  display: block;
+  transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+  box-shadow: 0 8px 22px rgba(10,0,40,.28);
+  filter: saturate(1.02);
+}
+
+.rail-poster img {
+  width: 100%;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+  display: block;
+  border-radius: 14px;
+  box-shadow: 0 8px 22px rgba(10,0,40,.3);
+  transition: transform .16s ease, box-shadow .16s ease;
+}
+
+/* Variantes de placeholder */
+.kan-poster .poster-ph {
+  transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+  box-shadow: 0 8px 22px rgba(10,0,40,.28);
+  filter: saturate(1.02);
+}
+
+.rail-poster .poster-ph {
+  display: block;
+  border-radius: 14px;
+  box-shadow: 0 8px 22px rgba(10,0,40,.3);
+  transition: transform .16s ease, box-shadow .16s ease;
+  filter: saturate(1.02);
+}
+
+.rail-poster:hover img {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(10,0,40,.36);
 }

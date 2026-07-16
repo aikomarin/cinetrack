@@ -16,8 +16,7 @@
   position: relative;
   transition: transform .4s ease, filter .3s ease;
 }
-.podium-slot .podium-poster img,
-.podium-slot .poster-ph {
+.podium-slot .podium-poster img {
   width: 100%;
   max-width: 200px;
   aspect-ratio: 2/3;
@@ -26,6 +25,16 @@
   box-shadow: 0 12px 30px rgba(10,0,40,.4);
   margin-inline: auto;
   display: block;
+}
+
+.podium-slot .poster-ph {
+  max-width: 200px;
+  display: block;
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(10,0,40,.4);
+  margin-inline: auto;
+  transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+  filter: saturate(1.02);
 }
 
 /* labels */

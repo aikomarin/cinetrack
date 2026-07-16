@@ -47,14 +47,7 @@
 }
 .kan-item { position: relative; width: 100%; }
 .kan-poster { display:block; border-radius: 16px; overflow: hidden; }
-.kan-poster img, .poster-ph {
-  width: 100%; aspect-ratio: 2/3; object-fit: cover; display: block;
-  transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
-  box-shadow: 0 8px 22px rgba(10,0,40,.28);
-  filter: saturate(1.02);
-}
 .kan-poster:hover img { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(10,0,40,.36); }
-.poster-ph { display:flex; align-items:center; justify-content:center; background: rgba(255,255,255,.06); color:#aaa; }
 
 /* Badges superpuestos */
 .kan-badges {

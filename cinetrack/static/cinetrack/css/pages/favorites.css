@@ -14,16 +14,6 @@
   padding-bottom: .25rem;
 }
 .rail-card { position: relative; scroll-snap-align: start; }
-.rail-poster img, .rail-poster .poster-ph {
-  width: 100%; aspect-ratio: 2/3; object-fit: cover; display: block;
-  border-radius: 14px;
-  box-shadow: 0 8px 22px rgba(10,0,40,.3);
-  transition: transform .16s ease, box-shadow .16s ease;
-}
-.rail-poster:hover img {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(10,0,40,.36);
-}
 .rail-badges {
   position: absolute; left: .5rem; bottom: .5rem;
   display: flex; gap: .35rem; flex-wrap: wrap;
@@ -54,4 +44,3 @@
   font-family: var(--ui-font);
   font-size: 1.2rem;
 }
-
