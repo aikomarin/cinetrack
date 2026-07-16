@@ -1,9 +1,4 @@
 /* ==== ARREGLOS FINALES ==== */
-/* Restaura el alto normal en cualquier otro .btn-neon (navbar, etc.) */
-.btn-neon:not(#btn-filtrar):not(#btn-filtrar-mara) {
-  height: auto;
-}
-
 /* ==== ENLACES ==== */
 a{text-decoration:none;color:inherit}
 a:hover{color:#fff}
@@ -17,5 +12,3 @@ a:hover{color:#fff}
   color: var(--ink-dim);
   display:flex; align-items:center; gap:.5rem;
 }
-
-.ctmodal{ animation: ctmodal-pop .28s ease-out both; }
