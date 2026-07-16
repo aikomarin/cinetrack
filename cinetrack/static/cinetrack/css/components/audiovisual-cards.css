@@ -14,6 +14,12 @@
   overflow: hidden;        /* corta sobrante al hacer cover */
   flex: 0 0 auto;
   border-radius: inherit;  /* respeta redondeado de la card si aplica */
+  color: inherit;
+  text-decoration: none;
+}
+
+.topcard-thumb:hover {
+  color: #fff;
 }
 
 .topcard-thumb img {
@@ -46,6 +52,15 @@
   -webkit-line-clamp: 2;  /* máximo 2 líneas */
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
+}
+
+.topcard-name a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.topcard-name a:hover {
+  color: #fff;
 }
 
 .favorite-star {
