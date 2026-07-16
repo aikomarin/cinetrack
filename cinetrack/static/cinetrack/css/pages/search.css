@@ -26,8 +26,6 @@
   opacity: 1;
 }
 .tile form .form-control::-webkit-input-placeholder{ color: rgba(255,255,255,.62); }
-.tile form .form-control:-ms-input-placeholder{ color: rgba(255,255,255,.62); }
-.tile form .form-control::-ms-input-placeholder{ color: rgba(255,255,255,.62); }
 
 /* Etiqueta “Título” más grande (solo input de búsqueda) */
 .tile form .col-12.col-md-9:has(input[name="query"]) > .form-label{
@@ -89,4 +87,3 @@
 .edit-card input[name="tendra_continuacion"].form-check-input:checked{
   background-color:#2ecc71; border-color:rgba(0,0,0,.15);
 }
-

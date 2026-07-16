@@ -40,15 +40,6 @@
 .input-search::-moz-placeholder,
 #filtro-contenidos::-moz-placeholder,
 #filtro-mara::-moz-placeholder{ color: rgba(246,243,255,.8); opacity:1; }
-/* IE/Edge legacy */
-.edit-form input.form-control:-ms-input-placeholder,
-.input-search:-ms-input-placeholder,
-#filtro-contenidos:-ms-input-placeholder,
-#filtro-mara:-ms-input-placeholder{ color: rgba(246,243,255,.8); }
-.edit-form input.form-control::-ms-input-placeholder,
-.input-search::-ms-input-placeholder,
-#filtro-contenidos::-ms-input-placeholder,
-#filtro-mara::-ms-input-placeholder{ color: rgba(246,243,255,.8); }
 /* Estándar */
 .edit-form input.form-control::placeholder,
 .input-search::placeholder,
@@ -262,4 +253,3 @@ a:hover{color:#fff}
 }
 
 .ctmodal{ animation: ctmodal-pop .28s ease-out both; }
-
