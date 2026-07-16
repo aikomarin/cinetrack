@@ -23,3 +23,5 @@
   margin-bottom: 8px;
   display: flex;
   align-items: center;
+  gap: .5rem;
+}
