@@ -56,7 +56,7 @@
 
 /* Tipografías */
 .mara-title{
-  font-family:var(--ui-font,'Teko',system-ui,sans-serif);
+  font-family:var(--ui-font);
   line-height:1.1; letter-spacing:.3px;
 }
 
