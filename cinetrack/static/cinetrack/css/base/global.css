@@ -4,5 +4,9 @@ body {
   background: linear-gradient(180deg, #0b0516 0%, #2a0f4f 100%) fixed;
 }
 
-/* Layout: Base stacking context */
-header.cinedock-wrapper, .page-rails, main{ z-index: auto; }
+/* Layout: Contexto de apilamiento principal */
+header.cinedock-wrapper,
+.page-rails,
+main {
+  z-index: auto;
+}

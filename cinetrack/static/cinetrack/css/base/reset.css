@@ -1,6 +1,10 @@
-/* Utility: Document reset */
-*{box-sizing:border-box}
-html, body {
+/* Base: Reinicio del documento */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
   height: 100%;
   margin: 0;
 }
