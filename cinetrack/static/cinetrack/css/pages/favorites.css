@@ -1,4 +1,4 @@
-/* ==== FAVORITAS ==== */
+/* Page: Favorites */
 .fav-rail .section-title {
   font-family: var(--ui-font);
   letter-spacing: .6px;
@@ -19,7 +19,7 @@
   display: flex; gap: .35rem; flex-wrap: wrap;
 }
 
-/* Tiles */
+/* Page: Favorite tiles */
 .fav-title {
   display: flex;
   align-items: center;
@@ -36,7 +36,7 @@
 
 .fav-title i {
   font-size: 1.4rem;
-  color: #9b5cfb; /* morado marca */
+  color: #9b5cfb;
   filter: drop-shadow(0 0 6px rgba(155,92,251,.5));
 }
 

@@ -31,43 +31,42 @@
 @import url("./css/components/section-titles.css");
 @import url("./css/vendor/flatpickr-theme.css");
 
-/* ==== RESPONSIVE ==== */
-/* --- Cinedock (barra) --- */
+/* Layout: Legacy responsive rules */
+/* Layout: Responsive Cinedock */
 @media (max-width: 940px){
   .cinedock{ flex-wrap:wrap; gap:10px; }
   .dock-actions{ margin-left:auto; }
 }
 @media (max-width: 620px){
   .dock-tabs{ gap:2px; }
-  .dock-tab span{ display:none; }  /* solo íconos */
+  .dock-tab span{ display:none; }
 }
 @media (prefers-reduced-motion: reduce){
   .dock-tabs .tab-indicator{ transition:none; }
 }
 @media (max-width: 620px){
-  .btn-appcentral-ghost span{ display:none; } /* solo ícono */
+  .btn-appcentral-ghost span{ display:none; }
   .btn-appcentral-ghost{ padding:.55rem .6rem; }
 }
-/* --- Cinedock Wrapper + Rails (rollos) --- */
+/* Layout: Responsive Cinedock rails */
 @media (max-width: 1100px){ :root{ --rail-w: 120px; } }
 @media (max-width: 900px){  :root{ --rail-w: 96px; }  }
 @media (max-width: 720px){
-  :root{ --rail-w: 0px; }           /* oculta espacio para rollos */
+  :root{ --rail-w: 0px; }
   .film-roll-vertical{ display:none; }
   .cinedock-wrapper{ padding-left:14px; padding-right:14px; }
   .page-rails{ padding-left:14px; padding-right:14px; }
 }
-/* --- Logo Claqueta --- */
+/* Layout: Reduced-motion clapboard logo */
 @media (prefers-reduced-motion: reduce){
   .logo-claqueta-anim::before{ animation: none; }
 }
-/* --- Separador Secciones Claqueta --- */
-/* Respeta reduced motion */
+/* Layout: Reduced-motion clapboard separator */
 @media (prefers-reduced-motion: reduce){
   .clap-sep::before{ animation: none; }
 }
 
-/* Compacto en móvil */
+/* Layout: Compact clapboard separator */
 @media (max-width: 720px){
   .clap-sep{ height: 48px; margin: 22px 0 18px; }
   .clap-sep::after{ width: 60px; height: 16px; transform: translate(-50%, -1px); }
@@ -77,7 +76,7 @@
     transform-origin: 14px 9px;
   }
 }
-/* --- Dashboard Grid --- */
+/* Page: Responsive Home dashboard */
 @media (max-width:1100px){
   .dash-grid{
     grid-template-areas:
@@ -91,36 +90,36 @@
     grid-template-columns: 1fr;
   }
 }
-/* --- Contenedores Bootstrap principales también respetan rails en pantallas muy anchas --- */
+/* Bootstrap override: Keep wide containers aligned with film rails. */
 @media (min-width: 1400px){
   .container-xl { max-width: 1200px; }
 }
 
-/* --- Top 5 --- */
-/* Desktop: EXACTAMENTE 5 tarjetas visibles */
+/* Page: Responsive top-rated rail */
+/* Layout: Display five top-rated cards on desktop. */
 @media (min-width: 1100px){
   .toprated-rail .topcard{
     flex: 0 0 calc((100% - (var(--gap) * 4)) / 5) !important;
     max-width: calc((100% - (var(--gap) * 4)) / 5) !important;
   }
 }
-/* Tablets/medianas */
+/* Layout: Size top-rated cards on medium viewports. */
 @media (min-width: 721px) and (max-width: 1099px){
   .toprated-rail .topcard{ flex: 0 0 240px; max-width: 240px; }
 }
-/* Móviles: una card grande y scrollable */
+/* Layout: Display large scrollable cards on narrow viewports. */
 @media (max-width: 720px){
   .toprated-rail .topcard{ flex: 0 0 70vw !important; max-width: 70vw !important; }
 }
 
-/* --- Actividad Reciente --- */
+/* Page: Responsive recent activity */
 @media (min-width: 1400px){ .recent-grid{ grid-template-columns: repeat(6, 1fr); } }
 @media (max-width: 1399px){ .recent-grid{ grid-template-columns: repeat(4, 1fr); } }
 @media (max-width: 1100px){ .recent-grid{ grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 780px) { .recent-grid{ grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 520px) { .recent-grid{ grid-template-columns: 1fr; } }
 
-/* --- Más Visto por Plataforma --- */
+/* Page: Responsive platform activity */
 @media (max-width:1100px){
   .plat-mini-rail{ grid-template-columns: repeat(4, minmax(0,1fr)); }
   .plat-mini-rail > .plat-mini-item:nth-child(n+5){ display:none; }
@@ -130,31 +129,31 @@
   .plat-mini-rail > .plat-mini-item:nth-child(n+4){ display:none; }
 }
 
-/* Edit Page */
+/* Page: Responsive edit form */
 @media (min-width:992px){ .edit-form .row.g-4{ --bs-gutter-x:1.2rem; } }
 @media (max-width:576px){ .edit-card{ padding:18px !important; } .edit-page{ padding-bottom:44px; } }
 
-/* Modal de Eliminar */
+/* Component: Reduced-motion confirmation modal */
 @media (prefers-reduced-motion: reduce){ .ctmodal{ animation:none; } }
 
-/* Page Detail */
+/* Page: Responsive detail */
 @media (max-width: 768px){
   .detail-head{ flex-direction:column; align-items:flex-start; gap:.6rem; }
   .detail-actions{ margin-top:.5rem; }
 }
 
-/* Botón Guardar - Search Page */
+/* Page: Responsive search save action */
 @media (max-width: 991.98px){
   .btn-save{ margin-left: auto; }
 }
 
-/* Search Page */
+/* Page: Responsive search */
 @media (max-width: 575.98px){
   .form-check.form-switch{ min-width: 0; }
   .detail-text{ font-size: .95rem; }
 }
 
-/* Favoritos */
+/* Page: Responsive favorites podium */
 @media (max-width: 768px) {
   .podium-stage { grid-template-columns: 1fr; min-height: auto; }
   .podium-slot { transform: none !important; }

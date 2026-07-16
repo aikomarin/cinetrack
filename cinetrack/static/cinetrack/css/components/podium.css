@@ -1,6 +1,4 @@
-/* ================================
-   FAVORITOS · PODIO DORADO 1-2-3
-   ================================ */
+/* Component: Favorites podium */
 
 .podium-stage {
   display: grid;
@@ -10,7 +8,7 @@
   min-height: 360px;
 }
 
-/* === Slots === */
+/* Component: Podium slots */
 .podium-slot {
   text-align: center;
   position: relative;
@@ -44,7 +42,7 @@
   filter: saturate(1.02);
 }
 
-/* labels */
+/* Component: Podium labels */
 .podium-label {
   margin-top: .6rem;
 }
@@ -56,23 +54,23 @@
   color: var(--ink);
 }
 
-/* Estado base (sin mover layout) */
+/* State: Base poster outline */
 .podium-slot .podium-poster img{
   outline: 4px solid transparent;
   outline-offset: -4px;
   transition: outline-color .25s ease;
 }
 
-/* (Opcional) Si quieres también al pasar por todo el slot del #1 */
+/* State: Highlight the first-place poster from the complete slot. */
 .podium-slot[data-rank="1"]:hover .podium-poster img{
   outline-color: #ffd700;
 }
 
-/* Extra opcional: plata y bronce si te sirven */
+/* State: Highlight silver and bronze posters from their pedestals. */
 .podium-slot:has(.pedestal-2:hover) .podium-poster img{ outline-color: #c0c0c0; }
 .podium-slot:has(.pedestal-3:hover) .podium-poster img{ outline-color: #cd7f32; }
 
-/* === Pedestales === */
+/* Component: Podium pedestals */
 .pedestal {
   position: absolute;
   bottom: 0;
@@ -97,7 +95,7 @@
   color: #fff;
   text-shadow: 0 2px 6px rgba(0,0,0,.5);
 }
-/* Podium differences */
+/* Component: Pedestal rank variants */
 .pedestal-1 {
   z-index: 2;
 }

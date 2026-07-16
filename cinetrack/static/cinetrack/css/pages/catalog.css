@@ -1,21 +1,20 @@
-/* ==== ESPACIADO DE CHIPS DE FILTROS ==== */
+/* Page: Catalog filter chips */
  .filter-chips{ padding-top: 14px; }
 
 .filter-chips .badge {
-  display: inline-flex;               /* flex en lugar de inline-block */
-  align-items: center;                /* centra vertical */
-  justify-content: center;            /* centra horizontal */
-  line-height: 1.2;                   /* ajusta altura de línea */
-  padding: .4rem .9rem;               /* equilibrio entre alto y ancho */
-  font-weight: 600;                   /* más consistente con tus botones */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.2;
+  padding: .4rem .9rem;
+  font-weight: 600;
 }
 
-/* ==== CATÁLOGO - BADGE DE GRUPOS ==== */
+/* Page: Catalog group badge */
 .group-count {
-  background: var(--brand-purple, #7c3aed); /* morado de marca */
+  background: var(--brand-purple, #7c3aed);
   color: #fff;
   font-weight: 600;
   font-size: 0.75rem;
   padding: 0.35rem 0.6rem;
 }
-

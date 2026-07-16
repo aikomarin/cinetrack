@@ -1,4 +1,4 @@
-/* ===== CLAQUETA SEPARADOR (entre secciones) ===== */
+/* Layout: Clapboard section separator */
 .clap-sep {
   position: relative;
   height: 68px;
@@ -7,7 +7,7 @@
   place-items: center;
 }
 
-/* Cuerpo de la claqueta (base) */
+/* Component: Clapboard body */
 .clap-sep::after {
   content:"";
   position:absolute; left:50%; top:50%;
@@ -18,12 +18,12 @@
   box-shadow: inset 0 0 0 2px rgba(0,0,0,.28), 0 6px 16px rgba(0,0,0,.35);
 }
 
-/* Tapa de la claqueta (se abre/cierra) */
+/* Component: Animated clapboard top */
 .clap-sep::before {
   content:"";
   position:absolute; left:50%; top:50%;
   width: 90px; height: 16px;
-  transform-origin: calc(-38px) 16px;  /* bisagra izq */
+  transform-origin: calc(-38px) 16px;
   transform: translate(-50%, -26px) rotate(0deg);
   border-radius: 4px;
   background: repeating-linear-gradient(45deg, #fff 0 8px, #6b21a8 8px 16px);

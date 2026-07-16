@@ -1,6 +1,5 @@
-/* ===== RENOMBRAR SAGA ===== */
-
-/* Contenedor tarjeta */
+/* Page: Saga rename form */
+/* Page: Saga rename surface */
 .saga-rename{
   background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
   box-shadow:
@@ -8,14 +7,14 @@
     inset 0 1px 0 rgba(255,255,255,.05);
 }
 
-/* Grid: input + botón */
+/* Layout: Saga rename controls */
 .saga-form{
   display:grid;
   grid-template-columns:1fr auto;
   gap:12px;
 }
 
-/* Input */
+/* Page: Saga rename input */
 .saga-input{
   display:block;
   width:100%;
@@ -36,7 +35,7 @@
   box-shadow:0 0 0 2px rgba(155,92,251,.35);
 }
 
-/* Botón */
+/* Page: Saga rename action */
 .saga-btn{
   display:inline-flex;
   align-items:center;
@@ -60,7 +59,7 @@
   filter:brightness(1.06);
 }
 
-/* Responsive */
+/* Page: Responsive saga rename form */
 @media(max-width:720px){
   .saga-form{
     grid-template-columns:1fr;

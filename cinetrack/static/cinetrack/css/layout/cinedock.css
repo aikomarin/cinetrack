@@ -1,6 +1,6 @@
-/* ==== NAVBAR (CINEDOCK) ==== */
+/* Layout: Cinedock navigation */
 .cinedock-wrapper{
-  position: relative;   /* deja de ser sticky */
+  position: relative;
   top: auto;
   z-index: 50;
   padding: 14px var(--rails-pad) 10px;
@@ -14,7 +14,7 @@
   box-shadow: 0 10px 26px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.06);
 }
 
-/* ==== DOCK BRAND ==== */
+/* Component: Cinedock brand */
 .dock-brand{
   display:flex;
   align-items:center;
@@ -34,7 +34,7 @@
   font-size: clamp(1.6rem, 2.2vw, 2.2rem);
 }
 
-/* ==== DOCK TABS ==== */
+/* Component: Cinedock tabs */
 .dock-tabs {
   position: relative;
   display: flex;
@@ -42,7 +42,7 @@
   gap: 6px;
 }
 
-/* ==== DOCK TAB ==== */
+/* Component: Cinedock tab */
 .dock-tab {
   display: flex;
   align-items: center;
@@ -74,7 +74,7 @@
   opacity: .95;
 }
 
-/* Línea solo en hover */
+/* State: Tab hover indicator */
 .dock-tab::after {
   content: "";
   position: absolute;
@@ -93,13 +93,13 @@
   transform: scaleX(1);
 }
 
-/* ==== DOCK ACTIONS ==== */
+/* Component: Cinedock actions */
 .dock-actions{
   display:flex;
   align-items:center;
   gap:8px;
 }
-/* Botón/busqueda minimal */
+/* Component: Cinedock search action */
 .dock-search{
   display:inline-flex;
   align-items:center;
@@ -112,12 +112,12 @@
   text-decoration:none;
   transition: all .15s ease;
 }
-/* Botón/busqueda hover */
+/* State: Cinedock search hover */
 .dock-search:hover{
   background: rgba(255,255,255,.08);
   color:#fff;
 }
-/* Botón AppCentral tipo "ghost pill" */
+/* Component: AppCentral navigation action */
 .btn-appcentral-ghost{
   display:inline-flex;
   align-items:center;
@@ -141,18 +141,18 @@
   box-shadow: inset 0 0 0 1px rgba(255,255,255,.08);
 }
 
-/* ==== LOGO CLAQUETA ANIMADA ==== */
+/* Component: Animated clapboard logo */
 .logo-claqueta-anim{
   position: relative;
-  width: 34px;                 /* ancho total del logo */
-  height: 26px;                /* alto del cuerpo (sin tapa) */
+  width: 34px;
+  height: 26px;
   border-radius: 4px;
   background: linear-gradient(180deg, var(--clap-body), var(--clap-body-dark));
   box-shadow: inset 0 0 0 2px var(--clap-edge), 0 4px 10px rgba(0,0,0,.35);
   display: inline-block;
   margin-right: .5rem;
 }
-/* --- Bisagra (remache) --- */
+/* Component: Clapboard hinge */
 .logo-claqueta-anim::after{
   content:"";
   position:absolute; left:-3px; top:-4px;
@@ -160,7 +160,7 @@
   background: #ddd;
   box-shadow: 0 0 0 2px var(--clap-edge);
 }
-/* --- Tapa animada --- */
+/* Component: Clapboard animated top */
 .logo-claqueta-anim::before{
   content:"";
   position:absolute; left:-1px; top:-9px;
@@ -168,10 +168,10 @@
   background: repeating-linear-gradient(45deg, var(--clap-stripe) 0 7px, #6b21a8 7px 14px);
   box-shadow: inset 0 0 0 1px var(--clap-edge), 0 2px 6px rgba(0,0,0,.35);
   filter: drop-shadow(0 2px 4px rgba(0,0,0,.35));
-  transform-origin: 6px 10px;   /* bisagra en esquina izq */
+  transform-origin: 6px 10px;
   animation: clapOpen 2.2s ease-in-out infinite;
 }
-/* --- Hover --- */
+/* State: Clapboard hover */
 .logo-claqueta-anim:hover::before{
   animation-play-state: paused;
 }

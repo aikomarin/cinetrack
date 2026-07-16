@@ -1,4 +1,4 @@
-/* Base audiovisual sin imagen */
+/* Component: Poster placeholders */
 .poster-ph {
   width: 100%;
   aspect-ratio: 2 / 3;
@@ -9,7 +9,7 @@
   background: rgba(255,255,255,.06);
 }
 
-/* Placeholder compacto */
+/* Component: Compact poster placeholder */
 .plat-ph{
   width:100%; height:100%;
   display:grid; place-items:center;
@@ -17,7 +17,7 @@
   background: rgba(255,255,255,.06);
 }
 
-/* Imágenes reales */
+/* Component: Poster images */
 .kan-poster {
   color: inherit;
   text-decoration: none;
@@ -56,7 +56,7 @@
   transition: transform .16s ease, box-shadow .16s ease;
 }
 
-/* Variantes de placeholder */
+/* Component: Contextual poster placeholders */
 .kan-poster .poster-ph {
   transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
   box-shadow: 0 8px 22px rgba(10,0,40,.28);

@@ -1,4 +1,4 @@
-/* ===== SEARCH PAGE ===== */
+/* Page: Search */
 .tile form .form-label{
   font-size: .9rem;
   margin-bottom: .45rem;
@@ -12,7 +12,7 @@
   color: #fff;
   padding: .6rem .8rem;
   font-size: 1rem;
-  -webkit-text-fill-color: #fff; /* Safari */
+  -webkit-text-fill-color: #fff; /* Component: Safari search field text color */
 }
 .tile form .form-control:focus{
   border-color: rgba(168,85,247,.6);
@@ -20,14 +20,14 @@
   outline: 0;
 }
 
-/* Placeholder visible */
+/* Component: Search field placeholder */
 .tile form .form-control::placeholder{
   color: rgba(255,255,255,.62);
   opacity: 1;
 }
 .tile form .form-control::-webkit-input-placeholder{ color: rgba(255,255,255,.62); }
 
-/* Etiqueta “Título” más grande (solo input de búsqueda) */
+/* Component: Search title label */
 .tile form .col-12.col-md-9:has(input[name="query"]) > .form-label{
   font-size: 1.3rem;
   line-height: 1.15;
@@ -36,7 +36,7 @@
   font-weight: 700;
 }
 
-/* Switches */
+/* Component: Search switches */
 .form-check.form-switch{ min-width: 150px; }
 .form-check.form-switch .form-check-input{ cursor: pointer; }
 .form-check.form-switch .form-check-label{
@@ -44,7 +44,7 @@
   user-select: none;
 }
 
-/* Poster y meta en resultados */
+/* Page: Search result poster and metadata */
 .detail-poster{
   position: relative;
   aspect-ratio: 2/3;
@@ -70,14 +70,14 @@
   opacity: .92;
 }
 
-/* Mensajes (Django messages) */
+/* Component: Django messages */
 .tile p.success, .tile p.info, .tile p.warning, .tile p.error{ margin: 0 0 .25rem 0; }
 .tile p.success{ color: #79ffa8; }
 .tile p.info{ color: #9ad1ff; }
 .tile p.warning{ color: #ffd27a; }
 .tile p.error{ color: #ff9a9a; }
 
-/* Colores switches */
+/* State: Search switch colors */
 .edit-card input[name="favorita"].form-check-input:checked{
   background-color:#ffd700; border-color:rgba(0,0,0,.15);
 }

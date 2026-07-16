@@ -1,6 +1,5 @@
-/* =========================
-   FLATPICKR / FECHA CINETRACK
-   ========================= */
+/* Component: CineTrack Flatpickr theme */
+/* JavaScript hook: .ct-date-input and .ct-date-input-visible are initialized by Flatpickr; update JavaScript and form widgets before renaming. */
 
 .ct-date-input,
 .ct-date-input-visible {
@@ -71,7 +70,7 @@
 }
 
 
-/* Calendario */
+/* Component: Flatpickr calendar */
 
 .flatpickr-calendar {
   width: 330px;
@@ -105,7 +104,7 @@
 }
 
 
-/* Cabecera */
+/* Component: Flatpickr header */
 
 .flatpickr-months {
   min-height: 52px;
@@ -156,7 +155,7 @@
 }
 
 
-/* Flechas */
+/* Component: Flatpickr navigation */
 
 .flatpickr-prev-month,
 .flatpickr-next-month {
@@ -189,7 +188,7 @@
 }
 
 
-/* Días de la semana */
+/* Component: Flatpickr weekdays */
 
 .flatpickr-weekdays {
   margin-top: 8px;
@@ -209,7 +208,7 @@ span.flatpickr-weekday {
 }
 
 
-/* Días */
+/* Component: Flatpickr days */
 
 .flatpickr-days,
 .dayContainer {
@@ -311,7 +310,7 @@ span.flatpickr-weekday {
   transform: none;
 }
 
-/* Flecha exterior del popup */
+/* Component: Flatpickr popup arrow */
 
 .flatpickr-calendar.arrowTop::before {
   border-bottom-color: rgba(183, 125, 255, 0.42);
@@ -328,4 +327,3 @@ span.flatpickr-weekday {
 .flatpickr-calendar.arrowBottom::after {
   border-top-color: #12091f;
 }
-

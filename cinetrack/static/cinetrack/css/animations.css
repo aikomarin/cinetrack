@@ -1,5 +1,5 @@
-/* ==== KEYFRAMES ==== */
-/* --- Animación abrir/cerrar Logo --- */
+/* Utility: Shared animations */
+/* Component: Clapboard logo animation */
 @keyframes clapOpen{
   0%   { transform: rotate(0deg); }
   35%  { transform: rotate(-32deg); }
@@ -8,10 +8,10 @@
   100% { transform: rotate(0deg); }
 }
 
-/* Animación abrir/cerrar Separador de Secciones  */
+/* Component: Clapboard separator animation */
 @keyframes clapOpenSep {
   0%, 100% { transform: translate(-50%, -26px) rotate(0deg); }
-  30%      { transform: translate(-50%, -26px) rotate(-12deg); } /* antes -28deg */
+    30%      { transform: translate(-50%, -26px) rotate(-12deg); }
   55%      { transform: translate(-50%, -26px) rotate(-12deg); }
 }
 
@@ -36,7 +36,7 @@
   to { width: var(--pct); }
 }
 
-/* Desplaza el patrón exactamente 1 período (seamless) */
+/* Layout: Keep the sprocket pattern animation seamless. */
 @keyframes sprocketMove{
   to { background-position: 0 -66px; }
 }
@@ -51,6 +51,6 @@
 
 @keyframes floatUp{ from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);} }
 
-/* Modal de Eliminar */
+/* Component: Confirmation modal animation */
 @keyframes ctmodal-pop{ from{ transform:translateY(8px) scale(.98); opacity:0; }
                         to  { transform:translateY(0)  scale(1);   opacity:1; } }

@@ -1,16 +1,14 @@
-/* ===== Utilidades de botones ===== */
-
-/* Centra icono + texto horizontal y verticalmente */
+/* Component: Buttons */
+/* Utility: Center button content */
 .btn-center{
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: .5rem;
 }
-.btn-center i{ flex: 0 0 auto; }  /* evita que el ícono se estire */
+.btn-center i{ flex: 0 0 auto; }
 
-/* ==== BOTONES ==== */
-/* Botón neon (principal) */
+/* Component: Primary neon button */
 .btn-neon{
   --c1: var(--accent);
   --c2: var(--accent-2);
@@ -37,14 +35,14 @@
   box-shadow:0 14px 30px rgba(111,63,230,.45);
 }
 
-/* Variante neon pequeña */
+/* Component: Compact neon button variant */
 .btn-neon.small{
   padding:.55rem .8rem;
   border-radius:10px;
   font-size:.95rem;
 }
 
-/* Botón ghost */
+/* Component: Ghost buttons */
 .btn-ghost{
   display:inline-flex;
   align-items:center;
@@ -76,7 +74,7 @@
 }
 .btn-ghost-sm:hover{ color:#fff; background:rgba(255,255,255,.08); }
 
-/* Botón Guardar */
+/* Component: Save button */
 .btn-save{
   --c1: var(--accent); --c2: var(--accent-2);
   display:inline-flex; align-items:center; gap:.55rem;

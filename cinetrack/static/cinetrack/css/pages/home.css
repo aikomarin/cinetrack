@@ -1,4 +1,4 @@
-/* ==== DASHBOARD GRID ==== */
+/* Page: Home dashboard */
 .dash-grid{
   display:grid;
   grid-template-areas:
@@ -9,16 +9,16 @@
   margin-bottom:28px;
 }
 
-/* Ubicación de métricas en el grid */
+/* Layout: Dashboard metric areas */
 .dash-grid > .tile:nth-child(1){ grid-area: ring;  }
 .dash-grid > .tile:nth-child(2){ grid-area: bars;  }
 .dash-grid > .tile:nth-child(3){ grid-area: prog;  }
-.dash-grid > .tile:nth-child(4){ grid-area: movies; }  /* Películas */
-.dash-grid > .tile:nth-child(5){ grid-area: series; }  /* Series */
-.dash-grid > .tile:nth-child(6){ grid-area: favs;   }  /* Favoritas */
-.dash-grid > .tile:nth-child(7){ grid-area: total;  }  /* Total títulos */
+.dash-grid > .tile:nth-child(4){ grid-area: movies; }
+.dash-grid > .tile:nth-child(5){ grid-area: series; }
+.dash-grid > .tile:nth-child(6){ grid-area: favs;   }
+.dash-grid > .tile:nth-child(7){ grid-area: total;  }
 
-/* Áreas principales */
+/* Layout: Dashboard primary areas */
 .tile-ring     { grid-area: ring; }
 .tile.tile-ring{
   display: grid;
@@ -26,60 +26,60 @@
     "head"
     "donut"
     "sub";
-  justify-items: center;   /* centra horizontalmente los hijos */
+  justify-items: center;
 }
 .tile-ring .tile-header{ grid-area: head; width: 100%; }
-.tile-ring .ring{ grid-area: donut; }              /* SVG */
+.tile-ring .ring{ grid-area: donut; }
 .tile-ring .ring-center{
-  grid-area: donut;         /* se superpone al SVG */
-  position: static;         /* anula el absolute anterior */
+  grid-area: donut;
+  position: static;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;  /* centrado perfecto */
-  margin: 0;                /* sin empujes extra */
+  justify-content: center;
+  margin: 0;
 }
 .tile-ring .ring-sub{ grid-area: sub; }
 .tile-bars     { grid-area: bars; }
 .tile-progress { grid-area: prog; }
 
-/* Áreas de métricas */
+/* Layout: Dashboard metric cards */
 .metric-total  { grid-area: total; }
 .metric-movies { grid-area: movies; }
 .metric-series { grid-area: series; }
 .metric-favs   { grid-area: favs; }
 
-/* ==== DONUT (Promedio global) ==== */
+/* Component: Global rating chart */
 .ring{
   grid-area: donut;
   width: 220px;
   height: 220px;
-  margin: 0;                  /* lo centra la celda */
+  margin: 0;
   background: transparent !important;
 }
 
-/* Círculo de fondo */
+/* Component: Rating chart background */
 .ring-bg{
   fill: none;
   stroke: rgba(255,255,255,.12);
   stroke-width: 12;
 }
 
-/* Círculo de valor */
+/* Component: Rating chart value */
 .ring-val{
   fill: none;
-  stroke: var(--accent);      /* color del progreso */
+  stroke: var(--accent);
   stroke-width: 12;
   stroke-linecap: round;
   stroke-dasharray: 326;
   transition: stroke-dashoffset .8s ease;
-  filter: none !important;    /* <– quita el artefacto */
+  filter: none !important;    /* Component: Prevent SVG filter artifacts. */
 }
 
-/* Centro del donut (número y texto) */
+/* Component: Rating chart label */
 .ring-center{
   grid-area: donut;
-  position: static;           /* importante: NO absolute */
+  position: static;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -102,7 +102,7 @@
 
 .ring-sub{ grid-area: sub; margin-top: 8px; }
 
-/* ==== BARRAS POR PLATAFORMA ==== */
+/* Component: Platform bars */
 .bars {
   display: flex;
   flex-direction: column;
@@ -128,10 +128,10 @@
   background: rgba(255,255,255,.08);
   border: 1px solid var(--line);
   overflow: hidden;
-  --delay: 0s; /* valor base */
+  --delay: 0s;
 }
 
-/* Delays escalonados para animación */
+/* State: Stagger platform bar animations. */
 .bar:nth-child(2) .track { --delay: .08s; }
 .bar:nth-child(3) .track { --delay: .16s; }
 .bar:nth-child(4) .track { --delay: .24s; }
@@ -151,7 +151,7 @@
   text-align: right;
 }
 
-/* ==== PROGRESO VISTOS VS PENDIENTES ==== */
+/* Component: Viewing progress */
 .progress-meta {
   display: flex;
   justify-content: space-between;
@@ -186,7 +186,7 @@
   color: var(--ink-dim);
 }
 
-/* ==== MÉTRICAS PEQUEÑAS ==== */
+/* Component: Summary metrics */
 .metric {
   display: flex;
   flex-direction: column;
@@ -220,10 +220,10 @@
   font-weight: 900;
 }
 
-/* ==== TOP 5 CALIFICACIONES (CARRUSEL) ==== */
+/* Component: Top-rated rail */
 .toprated-section{
   margin-top: 20px;
-  margin-bottom: 56px;   /* separación con la siguiente sección */
+  margin-bottom: 56px;
   position: relative;
 }
 
@@ -232,7 +232,7 @@
   margin: 8px 0 12px;
 }
 
-/* Rail horizontal con scroll-snap */
+/* Layout: Scrollable top-rated rail */
 .toprated-rail{
   --gap: 14px;
   display:flex; gap: var(--gap);
@@ -247,7 +247,7 @@
   border-radius: 10px;
 }
 
-/* ==== ACTIVIDAD RECIENTE ==== */
+/* Component: Recent activity */
 .recent-section{
   margin-top: 10px;
 }
@@ -278,7 +278,7 @@
   box-shadow: 0 16px 28px rgba(0,0,0,.45);
 }
 
-/* Poster */
+/* Component: Recent activity poster */
 .recent-thumb{
   position:relative;
   aspect-ratio: 2/3;
@@ -293,7 +293,7 @@
   color: #9aa; font-size: 1.6rem;
 }
 
-/* Meta */
+/* Component: Recent activity metadata */
 .recent-meta{
   display:flex; flex-direction:column; gap:6px;
   padding: 10px 12px 12px;
@@ -304,7 +304,7 @@
   font-size:1.05rem;
   font-weight:800;
   line-height:1.1;
-  max-height: 2.2em;          /* 2 líneas */
+  max-height: 2.2em;
   overflow: hidden;
 }
 
@@ -335,44 +335,44 @@
   font-size:.9rem;
 }
 
-/* === MÁS VISTO POR PLATAFORMA === */
+/* Component: Most watched by platform */
 .plat-grid{
   display:grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px 26px;
 }
 
-/* Card de plataforma */
+/* Component: Platform card */
 .plat-tile{
   background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
   border:1px solid var(--line);
   border-radius:16px;
-  padding: 14px 10px;              /* menos padding lateral */
+  padding: 14px 10px;
   box-shadow: 0 12px 24px rgba(0,0,0,.35);
   overflow:hidden;
 }
 
-/* Head */
+/* Component: Platform card header */
 .plat-tile-head{
   display:flex; align-items:center; justify-content:space-between;
-  margin: 0 4px 10px;              /* compensa padding lateral reducido */
+  margin: 0 4px 10px;
 }
 .plat-name{ font-weight:900; letter-spacing:.4px; }
-/* Quitar contador ghost */
+/* State: Hide the legacy platform counter. */
 .plat-count{ display:none !important; }
 
-/* Rail interno: 5 columnas fijas */
+/* Layout: Five-column platform rail */
 .plat-mini-rail{
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 12px;
   align-items: start;
-  justify-items: center;           /* centra cada póster en su columna */
-  margin: 0;                       /* elimina espacios extras */
+  justify-items: center;
+  margin: 0;
   padding: 0;
 }
 
-/* Máximo 5 elementos */
+/* Layout: Limit platform rails to five items. */
 .plat-mini-rail > .plat-mini-item:nth-child(n+6){
   display: none;
 }
@@ -383,7 +383,7 @@
   width: 100%;
 }
 
-/* Póster consistente 2:3 */
+/* Component: Platform poster */
 .plat-mini-card{
   width: 100%;
   aspect-ratio: 2 / 3;
@@ -407,8 +407,8 @@
   display: block;
 }
 
-/* Ocultar títulos */
+/* State: Hide platform item titles. */
 .plat-mini-title{ display: none !important; }
 
-/* Quitar badge de ranking */
+/* State: Hide legacy platform ranking badges. */
 .plat-rank{ display:none !important; }

@@ -1,37 +1,39 @@
-/* ===== MARATONES (final) ===== */
+/* Page: Marathons */
+/* JavaScript hook: Bootstrap .small identifies selectable content titles; update JavaScript and templates before changing it. */
 .selectable-card {
   cursor: pointer;
   border-radius: 12px;
   transition: all 0.2s ease;
 }
 
+/* JavaScript hook: .selected reflects checkbox selection state. */
 .selectable-card.selected {
   box-shadow: 0 0 12px 3px rgba(180, 70, 255, 0.7);
   transform: scale(1.02);
 }
 
-/* Card */
+/* Page: Marathon card */
 .mara-card{ overflow:hidden }
 
-/* Portada (solo blur de la misma imagen) */
+/* Component: Blurred marathon cover */
 .mara-card > .mara-cover{
   position:relative;
   height:160px;
-  overflow:visible;                 /* no recorta las mini-portadas */
+  overflow:visible;
 }
 .mara-card > .mara-cover::before{
   content:"";
   position:absolute;
-  inset:-24px;                      /* evita cortes del blur */
+  inset:-24px;
   background-image:var(--m-bg);
   background-size:cover;
   background-position:center;
   filter:blur(20px);
-  transform:scale(1.12);            /* compensa el blur */
+  transform:scale(1.12);
   z-index:0;
   pointer-events:none;
 }
-/* Mini-portadas colgando del borde inferior */
+/* Component: Overlapping marathon thumbnails */
 .mara-card .mara-preview{
   position:absolute;
   left:14px; right:14px; bottom:-28px;
@@ -43,18 +45,18 @@
 }
 .mara-card .mara-thumb img{ width:100%; height:100%; object-fit:cover; display:block }
 
-/* Cuerpo en 2 columnas */
+/* Layout: Marathon card body */
 .mara-body{
-  margin-top:28px;                  /* espacio por el colgado */
+  margin-top:28px;
   display:grid;
-  grid-template-columns:1fr auto;   /* izq: info  · der: acciones */
+  grid-template-columns:1fr auto;
   column-gap:1.25rem;
   align-items:start;
 }
 .mara-side{ display:flex; flex-direction:column; align-items:flex-end; gap:.65rem }
 .mara-side .actions{ display:flex; gap:.5rem }
 
-/* Tipografías */
+/* Page: Marathon typography */
 .mara-title{
   font-family:var(--ui-font);
   line-height:1.1; letter-spacing:.3px;
@@ -67,10 +69,10 @@
   color:#fff;
 }
 
-/* Chip cantidad */
+/* Component: Marathon count badge */
 .mara-chip{ background:rgba(180,70,255,.18); border:1px solid rgba(180,70,255,.35) }
 
-/* Responsive */
+/* Page: Responsive marathon card */
 @media (max-width:768px){
   .mara-body{ grid-template-columns:1fr; row-gap:.75rem }
   .mara-side{ align-items:flex-end }
@@ -115,13 +117,13 @@
   font-weight: 600;
 }
 
-/* ===== Placeholder blanco (cross-browser) ===== */
-/* WebKit/Blink */
+/* Component: Cross-browser marathon filter placeholders */
+/* Component: WebKit and Blink placeholder */
 #filtro-contenidos::-webkit-input-placeholder,
 #filtro-mara::-webkit-input-placeholder{ color: rgba(246,243,255,.8); }
-/* Firefox */
+/* Component: Firefox placeholder */
 #filtro-contenidos::-moz-placeholder,
 #filtro-mara::-moz-placeholder{ color: rgba(246,243,255,.8); opacity:1; }
-/* Estándar */
+/* Component: Standard placeholder */
 #filtro-contenidos::placeholder,
 #filtro-mara::placeholder{ color: rgba(246,243,255,.8); }

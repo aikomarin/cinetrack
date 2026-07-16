@@ -1,4 +1,4 @@
-/* ==== ROLLOS LATERALES ==== */
+/* Layout: Vertical film rails */
 .film-roll-vertical{
   position: fixed;
   top: 0; bottom: 0;
@@ -12,12 +12,12 @@
 .film-roll-vertical.left{ left: 0; }
 .film-roll-vertical.right{ right: 0; }
 
-/* ===== Perforaciones laterales (animación por background-position) ===== */
+/* Layout: Animated sprocket holes */
 .film-roll-vertical::before,
 .film-roll-vertical::after{
   content:"";
   position:absolute; top:0; bottom:0; width:14px;
-  z-index: 3;                 /* por encima de los posters */
+    z-index: 3;
   pointer-events: none;
   background-image: linear-gradient(
     to bottom,
@@ -33,7 +33,7 @@
 .film-roll-vertical::before{ left: 6px; }
 .film-roll-vertical::after { right: 6px; }
 
-/* LADO IZQUIERDO: todo SUBE */
+/* State: Left rail direction */
 .film-roll-vertical.left::before,
 .film-roll-vertical.left::after{
   animation-direction: normal;
@@ -42,7 +42,7 @@
   animation-direction: normal;
 }
 
-/* LADO DERECHO: todo BAJA */
+/* State: Right rail direction */
 .film-roll-vertical.right::before,
 .film-roll-vertical.right::after{
   animation-direction: reverse;
@@ -51,7 +51,7 @@
   animation-direction: reverse;
 }
 
-/* Posters (tu pista) */
+/* Layout: Film poster track */
 .film-track-vertical{
   position:absolute; left:0; right:0;
   display:flex; flex-direction:column; gap:20px;

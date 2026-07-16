@@ -1,59 +1,59 @@
-/* ==== BADGES ==== */
-/* Tipo (Película / Serie) */
+/* Component: Badges */
+/* Component: Content type badge */
 .badge.tipo {
-  background: linear-gradient(135deg, #9b5cfb, #6f3fe6); /* tu morado de marca */
+  background: linear-gradient(135deg, #9b5cfb, #6f3fe6);
   color: #fff;
   font-weight: 700;
 }
 
-/* Plataforma */
+/* Component: Platform badge */
 .badge.plataforma {
   background-color: #00b4d8;
   color: #fff;
   font-weight: 700;
 }
 
-/* Estado */
+/* Component: Viewing status badges */
 .badge.estado-vista {
-  background-color: #ff9914;  /* verde vivo */
+  background-color: #ff9914;
   color: #fff;
   font-weight: 700;
 }
 .badge.estado-pendiente {
-  background-color: #dc3545;  /* rojo coral */
+  background-color: #dc3545;
   color: #fff;
   font-weight: 700;
 }
 
-/* Búsqueda */
+/* Component: Search badge */
 .badge.busqueda {
   background: #5f0f40;
   color: #fff;
 }
 
-/* Calificación */
+/* Component: Rating badges */
 .badge.cal-excelente {
-  background-color: #2b9348;  /* verde oscuro */
+  background-color: #2b9348;
   color: #fff;
   font-weight: 700;
 }
 .badge.cal-buena {
-  background-color: #80b918;  /* verde lima */
+  background-color: #80b918;
   color: #fff;
   font-weight: 700;
 }
 .badge.cal-regular {
-  background-color: #bfd200;  /* amarillo verdoso */
+  background-color: #bfd200;
   color: #000;
   font-weight: 700;
 }
 .badge.cal-mala {
-  background-color: #d4d700;  /* amarillo */
+  background-color: #d4d700;
   color: #000;
   font-weight: 700;
 }
 .badge.cal-horrible {
-  background-color: #ffff3f;  /* amarillo chillón */
+  background-color: #ffff3f;
   color: #000;
   font-weight: 700;
 }

@@ -1,7 +1,7 @@
-/* ==== MODAL DE ELIMINAR ==== */
+/* Component: Confirmation modal */
 .modal .modal-dialog .modal-content.ctmodal{
   background: linear-gradient(180deg,
-              rgba(30, 20, 50, .88),  /* morado oscuro casi sólido */
+              rgba(30, 20, 50, .88),
               rgba(20, 15, 30, .95));
   color: var(--ink);
   border: 1px solid rgba(255,255,255,.08);
@@ -15,7 +15,7 @@
   animation: ctmodal-pop .28s ease-out both;
 }
 
-/* Backdrop más sutil y morado (evita el look “leche”) */
+/* Bootstrap override: Apply the CineTrack modal backdrop. */
 .modal-backdrop.show{
   background:
     radial-gradient(800px 500px at 25% 25%, rgba(155,92,251,.22), transparent),
@@ -24,7 +24,7 @@
   opacity: .65;
 }
 
-/* Partes internas del modal (nuestra estructura custom) */
+/* Component: Confirmation modal content */
 .ctmodal-close{
   position:absolute; right:10px; top:10px; z-index:2;
   filter: drop-shadow(0 2px 6px rgba(0,0,0,.5)); opacity:.9;
@@ -52,9 +52,9 @@
   border-top: 1px solid rgba(255,255,255,.06);
 }
 
-/* Botón de eliminar (ícono basura) */
+/* Component: Destructive modal trigger */
 .btn-ghost-sm[data-bs-target="#confirmarEliminarModal"] {
-  color: #ff4d4f;                /* rojo principal */
+  color: #ff4d4f;
   border: 1px solid rgba(255,77,79,.6);
   border-radius: 8px;
   padding: 4px 6px;
@@ -69,7 +69,7 @@
   box-shadow: 0 0 12px rgba(255,77,79,.55);
 }
 
-/* Modal de Eliminar */
+/* Bootstrap override: Apply confirmation modal button variants. */
 .btn-glow{
   --c1: var(--accent, #9b5cfb);
   --c2: var(--accent-2, #6f3fe6);

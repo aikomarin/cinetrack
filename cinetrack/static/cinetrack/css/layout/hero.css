@@ -1,4 +1,4 @@
-/* ===== HERO ===== */
+/* Layout: Hero */
 .hero{
   padding:54px 0 24px;
 }
@@ -9,6 +9,7 @@
   line-height:1;
   text-shadow: 0 12px 32px rgba(0,0,0,.6), 0 0 24px rgba(255,255,255,.16);
 }
+/* JavaScript hook: .hero-sub is updated after group deletion; update JavaScript and templates before renaming. */
 .hero-sub{
   color:var(--ink-dim);
   font-family:var(--ui-font);

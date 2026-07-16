@@ -1,6 +1,5 @@
-/* ==== EDIT PAGE ==== */
-
-/* Lienzo y fondo vivo */
+/* Layout: Page shell */
+/* JavaScript hook: .edit-page provides Pending with data-move-url; update JavaScript and templates before renaming. */
 .edit-page{ position:relative; padding-top:8px; }
 .edit-bg{
   position:fixed; inset:0; z-index:-2;
@@ -22,7 +21,7 @@
   mix-blend-mode:screen;
   animation:glowDrift 8s ease-in-out infinite alternate;
 }
-/* Matiz por estado */
+/* State: Viewing status page glow */
 .edit-page.is-vista .edit-glow{
   background:
     radial-gradient(900px 420px at 30% 30%, rgba(46,204,113,.20), transparent 70%),
@@ -34,7 +33,7 @@
     radial-gradient(700px 360px at 72% 70%, rgba(155,92,251,.12), transparent 70%);
 }
 
-/* Título */
+/* Layout: Page title */
 .edit-title{
   font-family:var(--brand-font);
   letter-spacing:.6px;
@@ -47,4 +46,3 @@
   letter-spacing:.5px;
   color:var(--ink-dim);
 }
-

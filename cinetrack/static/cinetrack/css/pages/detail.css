@@ -1,6 +1,6 @@
-/*==== DETAIL PAGE ==== */
+/* Page: Detail */
 
-/* Fondo con blur del póster */
+/* Page: Poster-derived background */
 .detail-page{
   position: relative;
   padding-top: 12px;
@@ -31,7 +31,7 @@
   animation: glowDrift 8s ease-in-out infinite alternate;
 }
 
-/* Header */
+/* Page: Detail header */
 .detail-head{
   display:flex;
   align-items:flex-start;
@@ -58,7 +58,7 @@
   gap:.6rem;
 }
 
-/* Card principal */
+/* Page: Detail surface */
 .detail-card{
   background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
   border: 1px solid var(--line);
@@ -78,7 +78,7 @@
   pointer-events:none;
 }
 
-/* Poster */
+/* Page: Detail poster */
 .detail-poster{
   border-radius: 14px;
   overflow: hidden;
@@ -102,7 +102,7 @@
   font-size:1.4rem;
 }
 
-/* Badges */
+/* Page: Detail badges */
 .detail-badges .badge{
   font-weight:700;
   letter-spacing:.3px;
@@ -111,7 +111,7 @@
   box-shadow: 0 4px 10px rgba(0,0,0,.35);
 }
 
-/* Sección resumen */
+/* Page: Detail summary */
 .detail-section .detail-sub{
   font-family: var(--ui-font);
   text-transform: uppercase;
@@ -127,7 +127,7 @@
   opacity:.95;
 }
 
-/* Grid de stats */
+/* Page: Detail statistics */
 .detail-grid{
   display:grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -160,7 +160,7 @@
   color: var(--ink);
 }
 
-/* Footer interno */
+/* Page: Detail actions */
 .detail-foot{
   display:flex;
   align-items:center;

@@ -1,6 +1,4 @@
-/* Card */
-
-/* La card será un contenedor en columna */
+/* Component: Audiovisual cards */
 .topcard {
   display: flex;
   flex-direction: column;
@@ -10,10 +8,10 @@
 .topcard-thumb {
   position: relative;
   width: 100%;
-  aspect-ratio: 2 / 3;     /* 👈 alto fijo del póster */
-  overflow: hidden;        /* corta sobrante al hacer cover */
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
   flex: 0 0 auto;
-  border-radius: inherit;  /* respeta redondeado de la card si aplica */
+  border-radius: inherit;
   color: inherit;
   text-decoration: none;
 }
@@ -34,11 +32,11 @@
 .topcard-thumb img {
   width: 100%;
   height: 100%;
-  object-fit: cover;       /* llena sin deformar */
+  object-fit: cover;
   display: block;
 }
 
-/* La sección meta empuja acciones al fondo */
+/* Layout: Keep card actions aligned at the bottom */
 .topcard-meta {
   flex: 1 1 auto;
   display: flex;
@@ -46,19 +44,19 @@
 }
 
 .topcard .topcard-meta > .d-flex.align-items-center.justify-content-between {
-  margin-top: auto;        /* 👈 acciones siempre abajo */
+  margin-top: auto;
 }
 
-/* Título con altura mínima para evitar saltos */
+/* JavaScript hook: .topcard-name is queried by marathon filtering; update JavaScript and templates before renaming. */
 .topcard-name {
-  font-size: 0.95rem;     /* más pequeño que el default h4 */
+  font-size: 0.95rem;
   font-weight: 600;
   line-height: 1.3;
-  min-height: 2.6em;      /* asegura espacio uniforme (~2 líneas) */
+  min-height: 2.6em;
   max-height: 2.6em;
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 2;  /* máximo 2 líneas */
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
 }
