@@ -107,3 +107,14 @@
   color: rgba(245, 241, 255, 0.82);
   font-weight: 600;
 }
+
+/* ===== Placeholder blanco (cross-browser) ===== */
+/* WebKit/Blink */
+#filtro-contenidos::-webkit-input-placeholder,
+#filtro-mara::-webkit-input-placeholder{ color: rgba(246,243,255,.8); }
+/* Firefox */
+#filtro-contenidos::-moz-placeholder,
+#filtro-mara::-moz-placeholder{ color: rgba(246,243,255,.8); opacity:1; }
+/* Estándar */
+#filtro-contenidos::placeholder,
+#filtro-mara::placeholder{ color: rgba(246,243,255,.8); }
