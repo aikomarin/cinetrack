@@ -1,0 +1,25 @@
+/* ==== TILE (tarjetas base) ==== */
+.tile {
+  background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px;
+  box-shadow: 0 14px 28px rgba(0,0,0,.35);
+  backdrop-filter: blur(6px);
+  animation: floatUp .5s ease both;
+  transition: transform .15s ease;
+}
+.tile:hover {
+  transform: translateY(-2px);
+}
+
+/* Header dentro de cada tile */
+.tile-header {
+  font-family: var(--ui-font);
+  text-transform: uppercase;
+  letter-spacing: .6px;
+  color: var(--ink-dim);
+  font-weight: 700;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;

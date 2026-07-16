@@ -1,0 +1,50 @@
+/* ==== EDIT PAGE ==== */
+
+/* Lienzo y fondo vivo */
+.edit-page{ position:relative; padding-top:8px; }
+.edit-bg{
+  position:fixed; inset:0; z-index:-2;
+  --bg-img: var(--edit-bg, none);
+  background-image:
+    var(--bg-img),
+    radial-gradient(1200px 600px at 20% 20%, rgba(155,92,251,.18), rgba(0,0,0,0)),
+    radial-gradient(1000px 520px at 80% 80%, rgba(20,255,233,.12), rgba(0,0,0,0));
+  background-size:cover, auto, auto;
+  background-position:center;
+  filter:blur(20px) saturate(120%);
+  opacity:.35;
+}
+.edit-glow{
+  position:fixed; inset:0; z-index:-1; pointer-events:none;
+  background:
+    radial-gradient(900px 420px at 30% 30%, rgba(155,92,251,.16), transparent 70%),
+    radial-gradient(700px 360px at 72% 70%, rgba(20,255,233,.12), transparent 70%);
+  mix-blend-mode:screen;
+  animation:glowDrift 8s ease-in-out infinite alternate;
+}
+/* Matiz por estado */
+.edit-page.is-vista .edit-glow{
+  background:
+    radial-gradient(900px 420px at 30% 30%, rgba(46,204,113,.20), transparent 70%),
+    radial-gradient(700px 360px at 72% 70%, rgba(155,92,251,.12), transparent 70%);
+}
+.edit-page.is-pendiente .edit-glow{
+  background:
+    radial-gradient(900px 420px at 30% 30%, rgba(231,76,60,.18), transparent 70%),
+    radial-gradient(700px 360px at 72% 70%, rgba(155,92,251,.12), transparent 70%);
+}
+
+/* Título */
+.edit-title{
+  font-family:var(--brand-font);
+  letter-spacing:.6px;
+  text-shadow:0 14px 28px rgba(0,0,0,.5);
+  display:flex; align-items:center; gap:.6rem;
+}
+.edit-title small{
+  font-family:var(--ui-font);
+  text-transform:uppercase;
+  letter-spacing:.5px;
+  color:var(--ink-dim);
+}
+
