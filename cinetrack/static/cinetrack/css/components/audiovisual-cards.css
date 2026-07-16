@@ -22,6 +22,15 @@
   color: #fff;
 }
 
+.topcard-thumb > a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.topcard-thumb > a:hover {
+  color: #fff;
+}
+
 .topcard-thumb img {
   width: 100%;
   height: 100%;
