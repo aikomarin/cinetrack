@@ -11,7 +11,7 @@
 }
 
 /* Card */
-.mara-card{ border-radius:18px; overflow:hidden }
+.mara-card{ overflow:hidden }
 
 /* Portada (solo blur de la misma imagen) */
 .mara-card > .mara-cover{
@@ -31,9 +31,6 @@
   z-index:0;
   pointer-events:none;
 }
-/* todo lo demás va encima del blur */
-.mara-card > .mara-cover > *{ position:relative; z-index:1 }
-
 /* Mini-portadas colgando del borde inferior */
 .mara-card .mara-preview{
   position:absolute;
@@ -62,7 +59,6 @@
   font-family:var(--ui-font,'Teko',system-ui,sans-serif);
   line-height:1.1; letter-spacing:.3px;
 }
-.mara-desc{ font-family:var(--text-font,'DM Sans',system-ui,sans-serif) }
 
 /* Chip cantidad */
 .mara-chip{ background:rgba(180,70,255,.18); border:1px solid rgba(180,70,255,.35) }
