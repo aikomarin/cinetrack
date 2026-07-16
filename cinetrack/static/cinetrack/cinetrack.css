@@ -1,6 +1,7 @@
 @import url("./css/settings/tokens.css");
 @import url("./css/base/reset.css");
 @import url("./css/base/global.css");
+@import url("./css/utilities/text.css");
 @import url("./css/layout/hero.css");
 @import url("./css/layout/film-rails.css");
 @import url("./css/layout/cinedock.css");
