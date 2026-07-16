@@ -4,43 +4,6 @@
   height: auto;
 }
 
-/* Botón de eliminar (ícono basura) */
-.btn-ghost-sm[data-bs-target="#confirmarEliminarModal"] {
-  color: #ff4d4f;                /* rojo principal */
-  border: 1px solid rgba(255,77,79,.6);
-  border-radius: 8px;
-  padding: 4px 6px;
-  line-height: 1;
-  transition: all .2s ease;
-}
-
-.btn-ghost-sm[data-bs-target="#confirmarEliminarModal"]:hover {
-  color: #fff;
-  background: rgba(255,77,79,.85);
-  border-color: #ff4d4f;
-  box-shadow: 0 0 12px rgba(255,77,79,.55);
-}
-
-/* Modal de Eliminar */
-.btn-glow{
-  --c1: var(--accent, #9b5cfb);
-  --c2: var(--accent-2, #6f3fe6);
-  border: 1px solid transparent !important;
-  background: linear-gradient(135deg, var(--c1), var(--c2)) !important;
-  color:#fff !important; font-weight:800;
-  box-shadow: 0 0 14px rgba(155,92,251,.55), inset 0 0 0 1px rgba(255,255,255,.08);
-}
-.btn-glow:hover{ filter: brightness(1.06); box-shadow: 0 0 18px rgba(155,92,251,.7); }
-
-.ctmodal .btn-outline-light{
-  color: var(--ink) !important;
-  border-color: rgba(255,255,255,.22) !important;
-}
-.ctmodal .btn-outline-light:hover{
-  background: rgba(255,255,255,.08) !important;
-  border-color: rgba(255,255,255,.3) !important;
-}
-
 /* ==== ENLACES ==== */
 a{text-decoration:none;color:inherit}
 a:hover{color:#fff}
