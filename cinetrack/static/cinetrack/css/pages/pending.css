@@ -90,3 +90,8 @@
   letter-spacing: .6px;
   color: var(--ink);
 }
+
+.kan-poster-small {
+  width: 40px;
+  flex-shrink: 0;
+}

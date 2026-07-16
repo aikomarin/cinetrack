@@ -99,3 +99,14 @@
 .edit-form .row.g-3.mb-4 label.form-check-label[for="id_tendra_continuacion"]{
   white-space:nowrap !important; margin-left:.25rem !important;
 }
+
+.edit-poster-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 2 / 3;
+}
+
+.edit-poster-placeholder i {
+  font-size: 3rem;
+}
