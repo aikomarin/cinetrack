@@ -14,22 +14,6 @@
   font-weight: 700;
 }
 
-/* Página: Póster y metadatos del resultado de búsqueda */
-.detail-poster {
-  position: relative;
-  aspect-ratio: 2/3;
-  width: 100%;
-  border-radius: 14px;
-  overflow: hidden;
-  background: rgba(255,255,255,.04);
-  box-shadow: 0 6px 20px rgba(0,0,0,.25);
-}
-.detail-poster img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
 .detail-poster.detail-poster-ph {
   display: grid;
   place-items: center;

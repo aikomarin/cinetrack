@@ -542,13 +542,12 @@
 ## css/components/surfaces.css
 
 ```css
-.edit-card {
+.edit-card,
+.detail-card {
   background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
   border: 1px solid var(--color-border-subtle);
   border-radius: 20px;
   box-shadow: 0 18px 36px rgba(0,0,0,.45);
-  backdrop-filter: blur(8px) saturate(135%);
-  animation: floatUp .45s ease both;
   position: relative;
   overflow: hidden;
 }
@@ -562,10 +561,6 @@
 
 `box-shadow`: proyecta una sombra negra con 45 % de opacidad, desplazada 18 píxeles hacia abajo y difuminada 36 píxeles.
 
-`backdrop-filter`: desenfoca ocho píxeles el contenido situado detrás y aumenta su saturación al 135 %.
-
-`animation`: ejecuta `floatUp` durante 0.45 segundos, conserva tanto el estado inicial como el final de la animación y utiliza una aceleración suave.
-
 `position: relative`: convierte la superficie en la referencia de posicionamiento de su pseudoelemento `::after`.
 
 `overflow: hidden`: recorta el pseudoelemento y cualquier contenido que sobresalga de las esquinas redondeadas.
@@ -573,7 +568,25 @@
 ---
 
 ```css
-.edit-card::after {
+.edit-card {
+  backdrop-filter: blur(8px) saturate(135%);
+  animation: floatUp .45s ease both;
+}
+.detail-card {
+  backdrop-filter: blur(8px) saturate(140%);
+  animation: floatUp .5s ease both;
+}
+```
+
+`.edit-card` conserva saturación del 135 % y `floatUp` durante 0.45 segundos.
+
+`.detail-card` conserva saturación del 140 % y `floatUp` durante 0.5 segundos.
+
+---
+
+```css
+.edit-card::after,
+.detail-card::after {
   content: "";
   position: absolute;
   inset: -1px;
@@ -769,6 +782,8 @@
 `box-shadow`: añade un anillo morado de `0.25rem` con 15 % de opacidad.
 
 `outline: none`: elimina el contorno nativo.
+
+Las capas de `.edit-form textarea` y `.edit-form textarea.form-control` se conservan intencionalmente. La regla base aporta dimensiones, líneas, resize y transición; el selector con `.form-control` mantiene la especificidad necesaria para neutralizar el fondo de Bootstrap. En hover, el shorthand de fondo oculta temporalmente el patrón de líneas; en focus, la regla más específica conserva el borde y el anillo morados actuales, mientras la transformación procede del estado base.
 
 ---
 
@@ -1750,6 +1765,50 @@ Los filtros de Maratones conservan sus IDs, el color de placeholder con 80 % de 
 ```
 
 `font-size: 3rem`: muestra el icono con un tamaño de tres veces la fuente base.
+
+---
+
+```css
+.detail-poster {
+  position: relative;
+  aspect-ratio: 2/3;
+  width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--color-border-subtle);
+  background: rgba(255,255,255,.04);
+  box-shadow: 0 6px 20px rgba(0,0,0,.25);
+}
+```
+
+La base compartida del póster de Detail y Search conserva el resultado computado que anteriormente producía la combinación global de ambas hojas de página.
+
+`position: relative`: establece la referencia para contenido superpuesto.
+
+`aspect-ratio: 2/3` y `width: 100%`: mantienen la proporción vertical y ocupan el ancho disponible.
+
+`border-radius`, `overflow` y `border`: conservan el recorte, redondeo y borde tenue.
+
+`background` y `box-shadow`: mantienen el fondo blanco al 4 % y la sombra negra al 25 % que prevalecían desde Search.
+
+---
+
+```css
+.detail-poster img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 2/3;
+  transform: scale(1.01);
+  transition: transform .35s ease;
+}
+.detail-poster:hover img {
+  transform: scale(1.03);
+}
+```
+
+La imagen conserva ajuste `cover`, escala inicial del 101 %, transición de 0.35 segundos y escala del 103 % al pasar el cursor.
 
 ---
 
