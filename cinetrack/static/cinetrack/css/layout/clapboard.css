@@ -1,5 +1,5 @@
-.clap-sep,
-.logo-claqueta-anim {
+.clapboard-separator,
+.clapboard-logo-animation {
   --clapboard-body-color-start: #7c3aed;
   --clapboard-body-color-end: #5b2bb5;
   --clapboard-stripe-color: #ffffff;
@@ -7,7 +7,7 @@
 }
 
 /* Layout: Separador de secciones con claqueta */
-.clap-sep {
+.clapboard-separator {
   position: relative;
   height: 68px;
   margin: 44px 0 28px;
@@ -16,7 +16,7 @@
 }
 
 /* Componente: Cuerpo de la claqueta */
-.clap-sep::after {
+.clapboard-separator::after {
   content: "";
   position: absolute;
   left: 50%;
@@ -30,7 +30,7 @@
 }
 
 /* Componente: Tapa animada de la claqueta */
-.clap-sep::before {
+.clapboard-separator::before {
   content: "";
   position: absolute;
   left: 50%;

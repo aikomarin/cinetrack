@@ -3,34 +3,34 @@
 
 {% block background_extras %}
   <!-- Rollo izquierdo -->
-  <div class="film-roll-vertical left">
-    <div class="film-track-vertical">
+  <div class="film-rail-vertical left">
+    <div class="film-rail-track-vertical">
       {% for item in contenidos|slice:":16" %}
         {% if item.imagen %}
-          <div class="frame-vertical"><img src="{{ item.imagen }}" alt="{{ item.titulo }}"></div>
+          <div class="film-frame-vertical"><img src="{{ item.imagen }}" alt="{{ item.titulo }}"></div>
         {% endif %}
       {% endfor %}
       <!-- Duplicado para scroll infinito -->
       {% for item in contenidos|slice:":16" %}
         {% if item.imagen %}
-          <div class="frame-vertical"><img src="{{ item.imagen }}" alt="{{ item.titulo }}"></div>
+          <div class="film-frame-vertical"><img src="{{ item.imagen }}" alt="{{ item.titulo }}"></div>
         {% endif %}
       {% endfor %}
     </div>
   </div>
 
   <!-- Rollo derecho -->
-  <div class="film-roll-vertical right">
-    <div class="film-track-vertical">
+  <div class="film-rail-vertical right">
+    <div class="film-rail-track-vertical">
       {% for item in contenidos|slice:"16:32" %}
         {% if item.imagen %}
-          <div class="frame-vertical"><img src="{{ item.imagen }}" alt="{{ item.titulo }}"></div>
+          <div class="film-frame-vertical"><img src="{{ item.imagen }}" alt="{{ item.titulo }}"></div>
         {% endif %}
       {% endfor %}
       <!-- Duplicado para scroll infinito -->
       {% for item in contenidos|slice:"16:32" %}
         {% if item.imagen %}
-          <div class="frame-vertical"><img src="{{ item.imagen }}" alt="{{ item.titulo }}"></div>
+          <div class="film-frame-vertical"><img src="{{ item.imagen }}" alt="{{ item.titulo }}"></div>
         {% endif %}
       {% endfor %}
     </div>
@@ -132,7 +132,7 @@
 
   </section>
 
-  <div class="clap-sep"></div>
+  <div class="clapboard-separator"></div>
 
   <!-- Top 5 calificaciones -->
   <section class="toprated-section">
@@ -160,7 +160,7 @@
     </div>
   </section>
 
-  <div class="clap-sep"></div>
+  <div class="clapboard-separator"></div>
 
   <!-- Actividad reciente -->
   <section class="recent-activity-section">
@@ -224,7 +224,7 @@
     {% endif %}
   </section>
 
-  <div class="clap-sep"></div>
+  <div class="clapboard-separator"></div>
 
   <!-- Lo más visto por plataforma -->
   <section class="platform-top-section">

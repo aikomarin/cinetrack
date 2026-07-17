@@ -44,16 +44,16 @@
     <div class="container-xl">
       <div class="cinedock">
 
-        <a class="dock-brand" href="{% url 'cinetrack:home' %}">
-          <span class="logo-claqueta-anim" aria-hidden="true"></span>
-          <span class="brand-text">CineTrack</span>
+        <a class="dock-layout-brand" href="{% url 'cinetrack:home' %}">
+          <span class="clapboard-logo-animation" aria-hidden="true"></span>
+          <span class="dock-brand-text">CineTrack</span>
         </a>
 
-        <nav class="dock-tabs" id="cinedock-tabs">
+        <nav class="dock-layout-tabs" id="cinedock-tabs">
           <span class="tab-indicator"></span>
 
           <a
-            class="dock-tab"
+            class="dock-layout-tab"
             href="{% url 'cinetrack:catalogo' %}"
             {% if request.resolver_match.url_name == "catalogo" or request.resolver_match.url_name == "detalle" or request.resolver_match.url_name == "editar" or request.resolver_match.url_name == "grupo_saga" %}aria-current="page"{% endif %}
           >
@@ -62,7 +62,7 @@
           </a>
 
           <a
-            class="dock-tab"
+            class="dock-layout-tab"
             href="{% url 'cinetrack:maratones' %}"
             {% if request.resolver_match.url_name == "maratones" or request.resolver_match.url_name == "crear_maraton" or request.resolver_match.url_name == "detalle_maraton" or request.resolver_match.url_name == "editar_maraton" %}aria-current="page"{% endif %}
           >
@@ -71,7 +71,7 @@
           </a>
 
           <a
-            class="dock-tab"
+            class="dock-layout-tab"
             href="{% url 'cinetrack:pendientes' %}"
             {% if request.resolver_match.url_name == "pendientes" %}
               aria-current="page"
@@ -82,7 +82,7 @@
           </a>
 
           <a
-            class="dock-tab"
+            class="dock-layout-tab"
             href="{% url 'cinetrack:favoritos' %}"
             {% if request.resolver_match.url_name == "favoritos" %}
               aria-current="page"
@@ -93,7 +93,7 @@
           </a>
 
           <a
-            class="dock-tab"
+            class="dock-layout-tab"
             href="{% url 'cinetrack:volverias' %}"
             {% if request.resolver_match.url_name == "volverias" %}
               aria-current="page"
@@ -104,7 +104,7 @@
           </a>
         </nav>
 
-        <div class="dock-actions">
+        <div class="dock-layout-actions">
           <a class="btn-appcentral-ghost" href="/">
             <i class="bi bi-house-door-fill"></i>
             <span>App Central</span>

@@ -57,7 +57,7 @@
 ---
 
 ```css
-.dock-brand {
+.dock-layout-brand {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -85,7 +85,7 @@
 ---
 
 ```css
-.dock-brand:hover {
+.dock-layout-brand:hover {
   background: rgba(255,255,255,.06);
   color: #fff;
 }
@@ -98,7 +98,7 @@
 ---
 
 ```css
-.brand-text {
+.dock-brand-text {
   font-family: var(--brand-font);
   letter-spacing: .8px;
   font-size: clamp(1.6rem, 2.2vw, 2.2rem);
@@ -114,7 +114,7 @@
 ---
 
 ```css
-.dock-tabs {
+.dock-layout-tabs {
   position: relative;
   display: flex;
   align-items: center;
@@ -133,7 +133,7 @@
 ---
 
 ```css
-.dock-tab {
+.dock-layout-tab {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -176,7 +176,7 @@
 ---
 
 ```css
-.dock-tab:hover {
+.dock-layout-tab:hover {
   color: #fff;
   transform: translateY(-1px);
   background: rgba(255,255,255,.06);
@@ -192,7 +192,7 @@
 ---
 
 ```css
-.dock-tab[aria-current="page"] {
+.dock-layout-tab[aria-current="page"] {
   color: #fff;
   font-weight: 600;
 }
@@ -205,7 +205,7 @@
 ---
 
 ```css
-.dock-tab i {
+.dock-layout-tab i {
   font-size: 1.05rem;
   opacity: .95;
 }
@@ -218,7 +218,7 @@
 ---
 
 ```css
-.dock-tab::after {
+.dock-layout-tab::after {
   content: "";
   position: absolute;
   bottom: -6px;
@@ -235,7 +235,7 @@
 
 `content: ""`: crea un pseudoelemento vacío para dibujar el indicador.
 
-`position: absolute`: permite ubicar el indicador respecto a `.dock-tab`.
+`position: absolute`: permite ubicar el indicador respecto a `.dock-layout-tab`.
 
 `bottom: -6px`: sitúa el indicador 6 píxeles debajo de la pestaña.
 
@@ -258,7 +258,7 @@
 ---
 
 ```css
-.dock-tab:hover::after {
+.dock-layout-tab:hover::after {
   transform: scaleX(1);
 }
 ```
@@ -268,7 +268,7 @@
 ---
 
 ```css
-.dock-actions {
+.dock-layout-actions {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -412,7 +412,7 @@
 ---
 
 ```css
-.logo-claqueta-anim {
+.clapboard-logo-animation {
   position: relative;
   width: 34px;
   height: 26px;
@@ -443,7 +443,7 @@
 ---
 
 ```css
-.logo-claqueta-anim::after {
+.clapboard-logo-animation::after {
   content: "";
   position: absolute;
   left: -3px;
@@ -477,7 +477,7 @@
 ---
 
 ```css
-.logo-claqueta-anim::before {
+.clapboard-logo-animation::before {
   content: "";
   position: absolute;
   left: -1px;
@@ -518,7 +518,7 @@
 `animation`: ejecuta continuamente la animación `clapOpen`, con una duración de 2.2 segundos y aceleración suave al inicio y al final.
 
 ```css
-.logo-claqueta-anim:hover::before {
+.clapboard-logo-animation:hover::before {
   animation-play-state: paused;
 }
 ```
@@ -528,7 +528,7 @@
 ## css/layout/clapboard.css
 
 ```css
-.clap-sep {
+.clapboard-separator {
   position: relative;
   height: 68px;
   margin: 44px 0 28px;
@@ -550,7 +550,7 @@
 ---
 
 ```css
-.clap-sep::after {
+.clapboard-separator::after {
   content: "";
   position: absolute;
   left: 50%;
@@ -566,7 +566,7 @@
 
 `content: ""`: crea un pseudoelemento vacío para dibujar el cuerpo.
 
-`position: absolute`: permite ubicar el cuerpo respecto a `.clap-sep`.
+`position: absolute`: permite ubicar el cuerpo respecto a `.clapboard-separator`.
 
 `left: 50%`: coloca el borde izquierdo en el centro horizontal del separador.
 
@@ -587,7 +587,7 @@
 ---
 
 ```css
-.clap-sep::before {
+.clapboard-separator::before {
   content: "";
   position: absolute;
   left: 50%;
@@ -605,7 +605,7 @@
 
 `content: ""`: crea un pseudoelemento vacío para dibujar la tapa.
 
-`position: absolute`: permite ubicar la tapa respecto a `.clap-sep`.
+`position: absolute`: permite ubicar la tapa respecto a `.clapboard-separator`.
 
 `left: 50%`: coloca el borde izquierdo en el centro horizontal del separador.
 
@@ -634,7 +634,7 @@ La clase `.tile-header-centered` fue retirada. Sus consumidores utilizan ahora l
 ## css/layout/film-rails.css
 
 ```css
-.film-roll-vertical {
+.film-rail-vertical {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -668,7 +668,7 @@ La clase `.tile-header-centered` fue retirada. Sus consumidores utilizan ahora l
 ---
 
 ```css
-.film-roll-vertical.left {
+.film-rail-vertical.left {
   left: 0;
 }
 ```
@@ -678,7 +678,7 @@ La clase `.tile-header-centered` fue retirada. Sus consumidores utilizan ahora l
 ---
 
 ```css
-.film-roll-vertical.right {
+.film-rail-vertical.right {
   right: 0;
 }
 ```
@@ -688,8 +688,8 @@ La clase `.tile-header-centered` fue retirada. Sus consumidores utilizan ahora l
 ---
 
 ```css
-.film-roll-vertical::before,
-.film-roll-vertical::after {
+.film-rail-vertical::before,
+.film-rail-vertical::after {
   content: "";
   position: absolute;
   top: 0;
@@ -736,7 +736,7 @@ La clase `.tile-header-centered` fue retirada. Sus consumidores utilizan ahora l
 ---
 
 ```css
-.film-roll-vertical::before {
+.film-rail-vertical::before {
   left: 6px;
 }
 ```
@@ -746,7 +746,7 @@ La clase `.tile-header-centered` fue retirada. Sus consumidores utilizan ahora l
 ---
 
 ```css
-.film-roll-vertical::after {
+.film-rail-vertical::after {
   right: 6px;
 }
 ```
@@ -756,8 +756,8 @@ La clase `.tile-header-centered` fue retirada. Sus consumidores utilizan ahora l
 ---
 
 ```css
-.film-roll-vertical.left::before,
-.film-roll-vertical.left::after {
+.film-rail-vertical.left::before,
+.film-rail-vertical.left::after {
   animation-direction: normal;
 }
 ```
@@ -767,7 +767,7 @@ La clase `.tile-header-centered` fue retirada. Sus consumidores utilizan ahora l
 ---
 
 ```css
-.film-roll-vertical.left .film-track-vertical {
+.film-rail-vertical.left .film-rail-track-vertical {
   animation-direction: normal;
 }
 ```
@@ -777,8 +777,8 @@ La clase `.tile-header-centered` fue retirada. Sus consumidores utilizan ahora l
 ---
 
 ```css
-.film-roll-vertical.right::before,
-.film-roll-vertical.right::after {
+.film-rail-vertical.right::before,
+.film-rail-vertical.right::after {
   animation-direction: reverse;
 }
 ```
@@ -788,7 +788,7 @@ La clase `.tile-header-centered` fue retirada. Sus consumidores utilizan ahora l
 ---
 
 ```css
-.film-roll-vertical.right .film-track-vertical {
+.film-rail-vertical.right .film-rail-track-vertical {
   animation-direction: reverse;
 }
 ```
@@ -798,7 +798,7 @@ La clase `.tile-header-centered` fue retirada. Sus consumidores utilizan ahora l
 ---
 
 ```css
-.film-track-vertical {
+.film-rail-track-vertical {
   position: absolute;
   left: 0;
   right: 0;
@@ -826,7 +826,7 @@ La clase `.tile-header-centered` fue retirada. Sus consumidores utilizan ahora l
 ---
 
 ```css
-.frame-vertical {
+.film-frame-vertical {
   flex: 0 0 auto;
   margin: 0 auto;
   width: 100px;
@@ -857,7 +857,7 @@ La clase `.tile-header-centered` fue retirada. Sus consumidores utilizan ahora l
 ---
 
 ```css
-.frame-vertical img {
+.film-frame-vertical img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -1078,6 +1078,6 @@ La clase `.tile-header-centered` fue retirada. Sus consumidores utilizan ahora l
 
 `layout/film-rails.css` declara globalmente `--film-rail-width: 140px` y `--film-rail-content-offset: calc(var(--film-rail-width) + 18px)`. El alcance global permite que Film Rails, Cinedock y las reglas responsive compartan la misma geometría.
 
-`.film-roll-vertical` declara localmente `--film-sprocket-cycle-duration: 1s`, `--film-sprocket-pattern-step: 66px` y `--film-sprocket-hole-height: 30px`; sus pseudoelementos las reciben por herencia.
+`.film-rail-vertical` declara localmente `--film-sprocket-cycle-duration: 1s`, `--film-sprocket-pattern-step: 66px` y `--film-sprocket-hole-height: 30px`; sus pseudoelementos las reciben por herencia.
 
-`layout/clapboard.css` declara las cuatro variables `--clapboard-*` sobre el alcance compartido `.clap-sep, .logo-claqueta-anim`. El separador y el logotipo comparten una sola definición sin exponer esos valores en `:root`.
+`layout/clapboard.css` declara las cuatro variables `--clapboard-*` sobre el alcance compartido `.clapboard-separator, .clapboard-logo-animation`. El separador y el logotipo comparten una sola definición sin exponer esos valores en `:root`.

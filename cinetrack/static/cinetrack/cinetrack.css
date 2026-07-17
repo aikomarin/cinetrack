@@ -36,14 +36,14 @@
 /* Layout: Responsive Cinedock */
 @media (max-width: 940px){
   .cinedock{ flex-wrap:wrap; gap:10px; }
-  .dock-actions{ margin-left:auto; }
+  .dock-layout-actions{ margin-left:auto; }
 }
 @media (max-width: 620px){
-  .dock-tabs{ gap:2px; }
-  .dock-tab span{ display:none; }
+  .dock-layout-tabs{ gap:2px; }
+  .dock-layout-tab span{ display:none; }
 }
 @media (prefers-reduced-motion: reduce){
-  .dock-tabs .tab-indicator{ transition:none; }
+  .dock-layout-tabs .tab-indicator{ transition:none; }
 }
 @media (max-width: 620px){
   .btn-appcentral-ghost span{ display:none; }
@@ -51,24 +51,24 @@
 }
 /* Layout: Responsive Cinedock rails */
 @media (max-width: 720px){
-  .film-roll-vertical{ display:none; }
+  .film-rail-vertical{ display:none; }
   .cinedock-wrapper{ padding-left:14px; padding-right:14px; }
   .page-rails{ padding-left:14px; padding-right:14px; }
 }
 /* Layout: Reduced-motion clapboard logo */
 @media (prefers-reduced-motion: reduce){
-  .logo-claqueta-anim::before{ animation: none; }
+  .clapboard-logo-animation::before{ animation: none; }
 }
 /* Layout: Reduced-motion clapboard separator */
 @media (prefers-reduced-motion: reduce){
-  .clap-sep::before{ animation: none; }
+  .clapboard-separator::before{ animation: none; }
 }
 
 /* Layout: Compact clapboard separator */
 @media (max-width: 720px){
-  .clap-sep{ height: 48px; margin: 22px 0 18px; }
-  .clap-sep::after{ width: 60px; height: 16px; transform: translate(-50%, -1px); }
-  .clap-sep::before{
+  .clapboard-separator{ height: 48px; margin: 22px 0 18px; }
+  .clapboard-separator::after{ width: 60px; height: 16px; transform: translate(-50%, -1px); }
+  .clapboard-separator::before{
     width: 70px; height: 11px;
     transform: translate(-50%, -20px) rotate(-6deg);
     transform-origin: 14px 9px;

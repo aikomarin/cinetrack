@@ -4,7 +4,7 @@
 }
 
 /* Layout: Rieles verticales de película */
-.film-roll-vertical {
+.film-rail-vertical {
   --film-sprocket-cycle-duration: 1s;
   --film-sprocket-pattern-step: 66px;
   --film-sprocket-hole-height: 30px;
@@ -18,16 +18,16 @@
   overflow: hidden;
   z-index: 2;
 }
-.film-roll-vertical.left {
+.film-rail-vertical.left {
   left: 0;
 }
-.film-roll-vertical.right {
+.film-rail-vertical.right {
   right: 0;
 }
 
 /* Layout: Perforaciones animadas de la película */
-.film-roll-vertical::before,
-.film-roll-vertical::after {
+.film-rail-vertical::before,
+.film-rail-vertical::after {
   content: "";
   position: absolute;
   top: 0;
@@ -46,33 +46,33 @@
   animation: sprocketMove var(--film-sprocket-cycle-duration) linear infinite;
 }
 
-.film-roll-vertical::before {
+.film-rail-vertical::before {
   left: 6px;
 }
-.film-roll-vertical::after {
+.film-rail-vertical::after {
   right: 6px;
 }
 
 /* Estado: Dirección del riel izquierdo */
-.film-roll-vertical.left::before,
-.film-roll-vertical.left::after {
+.film-rail-vertical.left::before,
+.film-rail-vertical.left::after {
   animation-direction: normal;
 }
-.film-roll-vertical.left .film-track-vertical {
+.film-rail-vertical.left .film-rail-track-vertical {
   animation-direction: normal;
 }
 
 /* Estado: Dirección del riel derecho */
-.film-roll-vertical.right::before,
-.film-roll-vertical.right::after {
+.film-rail-vertical.right::before,
+.film-rail-vertical.right::after {
   animation-direction: reverse;
 }
-.film-roll-vertical.right .film-track-vertical {
+.film-rail-vertical.right .film-rail-track-vertical {
   animation-direction: reverse;
 }
 
 /* Layout: Carril vertical de pósteres */
-.film-track-vertical {
+.film-rail-track-vertical {
   position: absolute;
   left: 0;
   right: 0;
@@ -81,7 +81,7 @@
   gap: 20px;
   animation: verticalScroll 40s linear infinite;
 }
-.frame-vertical {
+.film-frame-vertical {
   flex: 0 0 auto;
   margin: 0 auto;
   width: 100px;
@@ -91,7 +91,7 @@
   overflow: hidden;
   box-shadow: inset 0 0 0 1px rgba(255,255,255,.08), 0 6px 16px rgba(0,0,0,.45);
 }
-.frame-vertical img {
+.film-frame-vertical img {
   width: 100%;
   height: 100%;
   object-fit: cover;

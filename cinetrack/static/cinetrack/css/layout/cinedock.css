@@ -19,7 +19,7 @@
 }
 
 /* Componente: Marca de Cinedock */
-.dock-brand {
+.dock-layout-brand {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -28,18 +28,18 @@
   color: inherit;
   text-decoration: none;
 }
-.dock-brand:hover {
+.dock-layout-brand:hover {
   background: rgba(255,255,255,.06);
   color: #fff;
 }
-.brand-text {
+.dock-brand-text {
   font-family: var(--brand-font);
   letter-spacing: .8px;
   font-size: clamp(1.6rem, 2.2vw, 2.2rem);
 }
 
 /* Componente: Pestañas de Cinedock */
-.dock-tabs {
+.dock-layout-tabs {
   position: relative;
   display: flex;
   align-items: center;
@@ -47,7 +47,7 @@
 }
 
 /* Componente: Pestaña de Cinedock */
-.dock-tab {
+.dock-layout-tab {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -62,24 +62,24 @@
   position: relative;
 }
 
-.dock-tab:hover {
+.dock-layout-tab:hover {
   color: #fff;
   transform: translateY(-1px);
   background: rgba(255,255,255,.06);
 }
 
-.dock-tab[aria-current="page"] {
+.dock-layout-tab[aria-current="page"] {
   color: #fff;
   font-weight: 600;
 }
 
-.dock-tab i {
+.dock-layout-tab i {
   font-size: 1.05rem;
   opacity: .95;
 }
 
 /* Estado: Indicador al pasar sobre una pestaña */
-.dock-tab::after {
+.dock-layout-tab::after {
   content: "";
   position: absolute;
   bottom: -6px;
@@ -93,12 +93,12 @@
   transition: transform .25s ease;
 }
 
-.dock-tab:hover::after {
+.dock-layout-tab:hover::after {
   transform: scaleX(1);
 }
 
 /* Componente: Acciones de Cinedock */
-.dock-actions {
+.dock-layout-actions {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -149,7 +149,7 @@
 }
 
 /* Componente: Logo animado de claqueta */
-.logo-claqueta-anim {
+.clapboard-logo-animation {
   position: relative;
   width: 34px;
   height: 26px;
@@ -160,7 +160,7 @@
   margin-right: .5rem;
 }
 /* Componente: Bisagra de la claqueta */
-.logo-claqueta-anim::after {
+.clapboard-logo-animation::after {
   content: "";
   position: absolute;
   left: -3px;
@@ -172,7 +172,7 @@
   box-shadow: 0 0 0 2px var(--clapboard-edge-color);
 }
 /* Componente: Tapa animada de la claqueta */
-.logo-claqueta-anim::before {
+.clapboard-logo-animation::before {
   content: "";
   position: absolute;
   left: -1px;
@@ -187,6 +187,6 @@
   animation: clapOpen 2.2s ease-in-out infinite;
 }
 /* Estado: Claqueta al pasar el cursor */
-.logo-claqueta-anim:hover::before {
+.clapboard-logo-animation:hover::before {
   animation-play-state: paused;
 }
