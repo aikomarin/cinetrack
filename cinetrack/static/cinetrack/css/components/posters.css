@@ -57,7 +57,7 @@
 }
 
 /* Componente: Marcadores de posición de pósteres */
-.poster-ph {
+.poster-placeholder {
   width: 100%;
   aspect-ratio: 2 / 3;
   display: flex;
@@ -68,7 +68,7 @@
 }
 
 /* Componente: Marcador de posición compacto de póster */
-.plat-ph {
+.platform-placeholder {
   width: 100%;
   height: 100%;
   display: grid;
@@ -117,13 +117,13 @@
 }
 
 /* Componente: Marcadores de posición contextuales de pósteres */
-.kanban-poster .poster-ph {
+.kanban-poster .poster-placeholder {
   transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
   box-shadow: 0 8px 22px rgba(10,0,40,.28);
   filter: saturate(1.02);
 }
 
-.rail-poster .poster-ph {
+.rail-poster .poster-placeholder {
   display: block;
   border-radius: 14px;
   box-shadow: 0 8px 22px rgba(10,0,40,.3);
@@ -136,7 +136,7 @@
   box-shadow: 0 12px 28px rgba(10,0,40,.36);
 }
 
-.catalog-card-placeholder {
+.catalog-placeholder-card {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -144,6 +144,6 @@
   aspect-ratio: 2 / 3;
 }
 
-.catalog-card-placeholder i {
+.catalog-placeholder-card i {
   font-size: 1.6rem;
 }

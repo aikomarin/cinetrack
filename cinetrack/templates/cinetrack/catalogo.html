@@ -103,7 +103,7 @@
             </span>
           {% endif %}
 
-          <div class="topcard-thumb position-relative">
+          <div class="top-card-thumb position-relative">
               {% if grp.grouped %}
                 <a href="{% url 'cinetrack:grupo_saga' grp.key %}?page={{ page_obj.number }}" class="d-block">
               {% else %}
@@ -112,7 +112,7 @@
               {% if c.imagen %}
                 <img src="{{ c.imagen }}" alt="{{ grp.saga }}">
               {% else %}
-                <div class="catalog-card-placeholder">
+                <div class="catalog-placeholder-card">
                   <i class="bi bi-image"></i>
                 </div>
               {% endif %}
@@ -140,8 +140,8 @@
             {% endif %}
           </div>
 
-          <div class="topcard-meta">
-            <h4 class="topcard-name mt-4">
+          <div class="top-card-meta">
+            <h4 class="top-card-name mt-4">
               {% if grp.grouped %}
                 <a href="{% url 'cinetrack:grupo_saga' grp.key %}?page={{ page_obj.number }}">{{ grp.saga }}</a>
               {% else %}
@@ -227,19 +227,19 @@
 <div class="modal fade" id="confirmarEliminarModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content ctmodal">
-      <button type="button" class="btn-close btn-close-white ctmodal-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      <button type="button" class="btn-close btn-close-white confirmation-modal-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
 
-      <div class="ctmodal-header">
-        <span class="ctmodal-icon"><i class="bi bi-exclamation-triangle-fill"></i></span>
-        <h5 class="ctmodal-title m-0">Confirmar eliminación</h5>
+      <div class="confirmation-modal-header">
+        <span class="confirmation-modal-icon"><i class="bi bi-exclamation-triangle-fill"></i></span>
+        <h5 class="confirmation-modal-title m-0">Confirmar eliminación</h5>
       </div>
 
-      <div class="ctmodal-body">
+      <div class="confirmation-modal-body">
         <p class="m-0">¿Estás seguro que deseas eliminar <strong id="tituloAEliminar">"—"</strong>?</p>
         <small class="opacity-75 d-block mt-2">Esta acción no se puede deshacer.</small>
       </div>
 
-      <div class="ctmodal-actions">
+      <div class="confirmation-modal-actions">
         <button id="confirmDeleteBtn" type="button" class="btn btn-danger btn-glow">
           <i class="bi bi-trash3 me-1"></i> Sí, eliminar
         </button>

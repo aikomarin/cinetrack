@@ -143,15 +143,15 @@
     <div class="toprated-rail" tabindex="0">
       {% for it in top_calificados %}
         <article class="topcard">
-          <a class="topcard-thumb" href="{% url 'cinetrack:detalle' it.pk %}">
+          <a class="top-card-thumb" href="{% url 'cinetrack:detalle' it.pk %}">
             {% if it.imagen %}
               <img src="{{ it.imagen }}" alt="{{ it.titulo }}">
             {% else %}
               <div class="recent-activity-poster-placeholder"><i class="bi bi-image"></i></div>
             {% endif %}
           </a>
-          <div class="topcard-meta text-center">
-            <h3 class="topcard-name mt-4" title="{{ it.titulo }}">
+          <div class="top-card-meta text-center">
+            <h3 class="top-card-name mt-4" title="{{ it.titulo }}">
               <a href="{% url 'cinetrack:detalle' it.pk %}">{{ it.titulo }}</a>
             </h3>
           </div>
@@ -248,7 +248,7 @@
                       {% if it.imagen %}
                         <img src="{{ it.imagen }}" alt="{{ it.titulo }}">
                       {% else %}
-                        <span class="plat-ph"><i class="bi bi-image"></i></span>
+                        <span class="platform-placeholder"><i class="bi bi-image"></i></span>
                       {% endif %}
                     </a>
                     <span class="platform-preview-title">{{ it.titulo }}</span>

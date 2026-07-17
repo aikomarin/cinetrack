@@ -153,8 +153,8 @@
 
 /* Page: Responsive favorites podium */
 @media (max-width: 768px) {
-  .podium-stage { grid-template-columns: 1fr; min-height: auto; }
-  .podium-slot { transform: none !important; }
+  .ranking-podium-stage { grid-template-columns: 1fr; min-height: auto; }
+  .ranking-podium-slot { transform: none !important; }
   .pedestal { position: static; transform: none; margin: .5rem auto 0; }
-  .pedestal-1, .pedestal-2, .pedestal-3 { height: 70px; }
+  .ranking-podium-1, .ranking-podium-2, .ranking-podium-3 { height: 70px; }
 }

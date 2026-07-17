@@ -547,7 +547,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const term = (input?.value || '').toLowerCase();
       let visibles = 0;
       grid.querySelectorAll('.col-6, .col-sm-4, .col-md-3, .col-lg-3, .col-xl-2').forEach(col => {
-        const title = (col.querySelector('.topcard-name')?.innerText || '').toLowerCase();
+        const title = (col.querySelector('.top-card-name')?.innerText || '').toLowerCase();
         const show = title.includes(term);
         col.style.display = show ? '' : 'none';
         if (show) visibles++;

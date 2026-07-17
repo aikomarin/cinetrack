@@ -25,7 +25,7 @@
 }
 
 /* Componente: Contenido del modal de confirmación */
-.ctmodal-close {
+.confirmation-modal-close {
   position: absolute;
   right: 10px;
   top: 10px;
@@ -33,17 +33,17 @@
   filter: drop-shadow(0 2px 6px rgba(0,0,0,.5));
   opacity: .9;
 }
-.ctmodal-close:hover {
+.confirmation-modal-close:hover {
   opacity: 1;
 }
 
-.ctmodal-header {
+.confirmation-modal-header {
   display: flex;
   align-items: center;
   gap: .6rem;
   padding: 18px 18px 10px 18px;
 }
-.ctmodal-icon {
+.confirmation-modal-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -54,18 +54,18 @@
   box-shadow: inset 0 0 0 1px rgba(155,92,251,.35);
   color: #ffd15c;
 }
-.ctmodal-header .ctmodal-title {
+.confirmation-modal-header .confirmation-modal-title {
   font-family: var(--font-family-interface);
   font-weight: 900;
   letter-spacing: .3px;
 }
 
-.ctmodal-body {
+.confirmation-modal-body {
   padding: 6px 18px 4px 18px;
   color: var(--color-text-primary);
 }
 
-.ctmodal-actions {
+.confirmation-modal-actions {
   display: flex;
   align-items: center;
   justify-content: flex-end;

@@ -49,12 +49,12 @@
             </span>
           {% endif %}
 
-          <div class="topcard-thumb position-relative">
+          <div class="top-card-thumb position-relative">
             <a href="{% url 'cinetrack:detalle' c.pk %}?origen=maraton&maraton_id={{ maraton.pk }}" class="d-block">
               {% if c.imagen %}
                 <img src="{{ c.imagen }}" alt="{{ c.titulo }}">
               {% else %}
-                <div class="catalog-card-placeholder">
+                <div class="catalog-placeholder-card">
                   <i class="bi bi-image"></i>
                 </div>
               {% endif %}
@@ -75,8 +75,8 @@
             {% endif %}
           </div>
 
-          <div class="topcard-meta">
-            <h4 class="topcard-name mt-4" title="{{ c.titulo }}">
+          <div class="top-card-meta">
+            <h4 class="top-card-name mt-4" title="{{ c.titulo }}">
               <a href="{% url 'cinetrack:detalle' c.pk %}?origen=maraton&maraton_id={{ maraton.pk }}">{{ c.titulo }}</a>
             </h4>
             <div class="d-flex align-items-center justify-content-between">
@@ -119,18 +119,18 @@
 <div class="modal fade" id="confirmarQuitarModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content ctmodal">
-      <button type="button" class="btn-close btn-close-white ctmodal-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      <button type="button" class="btn-close btn-close-white confirmation-modal-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
 
-      <div class="ctmodal-header">
-        <span class="ctmodal-icon"><i class="bi bi-exclamation-triangle-fill"></i></span>
-        <h5 class="ctmodal-title m-0">Quitar del maratón</h5>
+      <div class="confirmation-modal-header">
+        <span class="confirmation-modal-icon"><i class="bi bi-exclamation-triangle-fill"></i></span>
+        <h5 class="confirmation-modal-title m-0">Quitar del maratón</h5>
       </div>
 
-      <div class="ctmodal-body">
+      <div class="confirmation-modal-body">
         <p class="m-0">¿Quitar <strong id="tituloAQuitar">"—"</strong> de este maratón?</p>
       </div>
 
-      <div class="ctmodal-actions">
+      <div class="confirmation-modal-actions">
         <button id="confirmQuitarBtn" type="button" class="btn btn-danger btn-glow">
           <i class="bi bi-x-circle me-1"></i> Sí, quitar
         </button>

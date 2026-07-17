@@ -1369,7 +1369,7 @@ Los filtros de Maratones conservan sus IDs, el color de placeholder con 80 % de 
 ---
 
 ```css
-.ctmodal-close {
+.confirmation-modal-close {
   position: absolute;
   right: 10px;
   top: 10px;
@@ -1392,7 +1392,7 @@ Los filtros de Maratones conservan sus IDs, el color de placeholder con 80 % de 
 ---
 
 ```css
-.ctmodal-close:hover {
+.confirmation-modal-close:hover {
   opacity: 1;
 }
 ```
@@ -1402,7 +1402,7 @@ Los filtros de Maratones conservan sus IDs, el color de placeholder con 80 % de 
 ---
 
 ```css
-.ctmodal-header {
+.confirmation-modal-header {
   display: flex;
   align-items: center;
   gap: .6rem;
@@ -1421,7 +1421,7 @@ Los filtros de Maratones conservan sus IDs, el color de placeholder con 80 % de 
 ---
 
 ```css
-.ctmodal-icon {
+.confirmation-modal-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1451,7 +1451,7 @@ Los filtros de Maratones conservan sus IDs, el color de placeholder con 80 % de 
 ---
 
 ```css
-.ctmodal-header .ctmodal-title {
+.confirmation-modal-header .confirmation-modal-title {
   font-family: var(--font-family-interface);
   font-weight: 900;
   letter-spacing: .3px;
@@ -1467,7 +1467,7 @@ Los filtros de Maratones conservan sus IDs, el color de placeholder con 80 % de 
 ---
 
 ```css
-.ctmodal-body {
+.confirmation-modal-body {
   padding: 6px 18px 4px 18px;
   color: var(--color-text-primary);
 }
@@ -1480,7 +1480,7 @@ Los filtros de Maratones conservan sus IDs, el color de placeholder con 80 % de 
 ---
 
 ```css
-.ctmodal-actions {
+.confirmation-modal-actions {
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -1788,7 +1788,7 @@ La imagen conserva ajuste `cover`, escala inicial del 101 %, transición de 0.35
 ---
 
 ```css
-.poster-ph {
+.poster-placeholder {
   width: 100%;
   aspect-ratio: 2 / 3;
   display: flex;
@@ -1814,7 +1814,7 @@ La imagen conserva ajuste `cover`, escala inicial del 101 %, transición de 0.35
 ---
 
 ```css
-.plat-ph {
+.platform-placeholder {
   width: 100%;
   height: 100%;
   display: grid;
@@ -1939,7 +1939,7 @@ La imagen conserva ajuste `cover`, escala inicial del 101 %, transición de 0.35
 ---
 
 ```css
-.kanban-poster .poster-ph {
+.kanban-poster .poster-placeholder {
   transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
   box-shadow: 0 8px 22px rgba(10,0,40,.28);
   filter: saturate(1.02);
@@ -1955,7 +1955,7 @@ La imagen conserva ajuste `cover`, escala inicial del 101 %, transición de 0.35
 ---
 
 ```css
-.rail-poster .poster-ph {
+.rail-poster .poster-placeholder {
   display: block;
   border-radius: 14px;
   box-shadow: 0 8px 22px rgba(10,0,40,.3);
@@ -1990,7 +1990,7 @@ La imagen conserva ajuste `cover`, escala inicial del 101 %, transición de 0.35
 ---
 
 ```css
-.catalog-card-placeholder {
+.catalog-placeholder-card {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2010,7 +2010,7 @@ La imagen conserva ajuste `cover`, escala inicial del 101 %, transición de 0.35
 ---
 
 ```css
-.catalog-card-placeholder i {
+.catalog-placeholder-card i {
   font-size: 1.6rem;
 }
 ```
@@ -2051,7 +2051,7 @@ La clase `.rail-track` fue eliminada porque nunca tuvo consumidores reales.
 ---
 
 ```css
-.topcard-thumb {
+.top-card-thumb {
   position: relative;
   width: 100%;
   aspect-ratio: 2 / 3;
@@ -2082,7 +2082,7 @@ La clase `.rail-track` fue eliminada porque nunca tuvo consumidores reales.
 ---
 
 ```css
-.topcard-thumb:hover {
+.top-card-thumb:hover {
   color: #fff;
 }
 ```
@@ -2092,7 +2092,7 @@ La clase `.rail-track` fue eliminada porque nunca tuvo consumidores reales.
 ---
 
 ```css
-.topcard-thumb > a {
+.top-card-thumb > a {
   color: inherit;
   text-decoration: none;
 }
@@ -2105,7 +2105,7 @@ La clase `.rail-track` fue eliminada porque nunca tuvo consumidores reales.
 ---
 
 ```css
-.topcard-thumb > a:hover {
+.top-card-thumb > a:hover {
   color: #fff;
 }
 ```
@@ -2115,7 +2115,7 @@ La clase `.rail-track` fue eliminada porque nunca tuvo consumidores reales.
 ---
 
 ```css
-.topcard-thumb img {
+.top-card-thumb img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -2132,7 +2132,7 @@ La clase `.rail-track` fue eliminada porque nunca tuvo consumidores reales.
 ---
 
 ```css
-.topcard-meta {
+.top-card-meta {
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
@@ -2148,7 +2148,7 @@ La clase `.rail-track` fue eliminada porque nunca tuvo consumidores reales.
 ---
 
 ```css
-.topcard .topcard-meta > .d-flex.align-items-center.justify-content-between {
+.topcard .top-card-meta > .d-flex.align-items-center.justify-content-between {
   margin-top: auto;
 }
 ```
@@ -2158,7 +2158,7 @@ La clase `.rail-track` fue eliminada porque nunca tuvo consumidores reales.
 ---
 
 ```css
-.topcard-name {
+.top-card-name {
   font-size: 0.95rem;
   font-weight: 600;
   line-height: 1.3;
@@ -2193,7 +2193,7 @@ La clase `.rail-track` fue eliminada porque nunca tuvo consumidores reales.
 ---
 
 ```css
-.topcard-name a {
+.top-card-name a {
   color: inherit;
   text-decoration: none;
 }
@@ -2206,7 +2206,7 @@ La clase `.rail-track` fue eliminada porque nunca tuvo consumidores reales.
 ---
 
 ```css
-.topcard-name a:hover {
+.top-card-name a:hover {
   color: #fff;
 }
 ```
@@ -2329,7 +2329,7 @@ La clase `.rail-track` fue eliminada porque nunca tuvo consumidores reales.
 ---
 
 ```css
-.podium-stage {
+.ranking-podium-stage {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: end;
@@ -2351,7 +2351,7 @@ La clase `.rail-track` fue eliminada porque nunca tuvo consumidores reales.
 ---
 
 ```css
-.podium-slot {
+.ranking-podium-slot {
   text-align: center;
   position: relative;
   transition: transform .4s ease, filter .3s ease;
@@ -2367,7 +2367,7 @@ La clase `.rail-track` fue eliminada porque nunca tuvo consumidores reales.
 ---
 
 ```css
-.podium-poster {
+.ranking-podium-poster {
   color: inherit;
   text-decoration: none;
 }
@@ -2380,7 +2380,7 @@ La clase `.rail-track` fue eliminada porque nunca tuvo consumidores reales.
 ---
 
 ```css
-.podium-poster:hover {
+.ranking-podium-poster:hover {
   color: #fff;
 }
 ```
@@ -2390,7 +2390,7 @@ La clase `.rail-track` fue eliminada porque nunca tuvo consumidores reales.
 ---
 
 ```css
-.podium-slot .podium-poster img {
+.ranking-podium-slot .ranking-podium-poster img {
   width: 100%;
   max-width: 200px;
   aspect-ratio: 2/3;
@@ -2421,7 +2421,7 @@ La clase `.rail-track` fue eliminada porque nunca tuvo consumidores reales.
 ---
 
 ```css
-.podium-slot .poster-ph {
+.ranking-podium-slot .poster-placeholder {
   max-width: 200px;
   display: block;
   border-radius: 14px;
@@ -2449,7 +2449,7 @@ La clase `.rail-track` fue eliminada porque nunca tuvo consumidores reales.
 ---
 
 ```css
-.podium-label {
+.ranking-podium-label {
   margin-top: .6rem;
 }
 ```
@@ -2459,7 +2459,7 @@ La clase `.rail-track` fue eliminada porque nunca tuvo consumidores reales.
 ---
 
 ```css
-.podium-title {
+.ranking-podium-title {
   font-family: var(--brand-font);
   font-size: 1rem;
   letter-spacing: .3px;
@@ -2481,7 +2481,7 @@ La clase `.rail-track` fue eliminada porque nunca tuvo consumidores reales.
 ---
 
 ```css
-.podium-slot .podium-poster img {
+.ranking-podium-slot .ranking-podium-poster img {
   outline: 4px solid transparent;
   outline-offset: -4px;
   transition: outline-color .25s ease;
@@ -2497,7 +2497,7 @@ La clase `.rail-track` fue eliminada porque nunca tuvo consumidores reales.
 ---
 
 ```css
-.podium-slot[data-rank="1"]:hover .podium-poster img {
+.ranking-podium-slot[data-rank="1"]:hover .ranking-podium-poster img {
   outline-color: #ffd700;
 }
 ```
@@ -2507,7 +2507,7 @@ La clase `.rail-track` fue eliminada porque nunca tuvo consumidores reales.
 ---
 
 ```css
-.podium-slot:has(.pedestal-2:hover) .podium-poster img {
+.ranking-podium-slot:has(.ranking-podium-2:hover) .ranking-podium-poster img {
   outline-color: #c0c0c0;
 }
 ```
@@ -2517,7 +2517,7 @@ La clase `.rail-track` fue eliminada porque nunca tuvo consumidores reales.
 ---
 
 ```css
-.podium-slot:has(.pedestal-3:hover) .podium-poster img {
+.ranking-podium-slot:has(.ranking-podium-3:hover) .ranking-podium-poster img {
   outline-color: #cd7f32;
 }
 ```
@@ -2546,7 +2546,7 @@ La clase `.rail-track` fue eliminada porque nunca tuvo consumidores reales.
 }
 ```
 
-`position: absolute`: saca el pedestal del flujo y permite colocarlo dentro de `.podium-slot`.
+`position: absolute`: saca el pedestal del flujo y permite colocarlo dentro de `.ranking-podium-slot`.
 
 `bottom: 0`: lo fija a la parte inferior de la posición.
 
@@ -2599,7 +2599,7 @@ La clase `.rail-track` fue eliminada porque nunca tuvo consumidores reales.
 ---
 
 ```css
-.pedestal-1 {
+.ranking-podium-1 {
   z-index: 2;
 }
 ```
@@ -2609,7 +2609,7 @@ La clase `.rail-track` fue eliminada porque nunca tuvo consumidores reales.
 ---
 
 ```css
-.pedestal-2 {
+.ranking-podium-2 {
   background: linear-gradient(180deg, #c0c0c0, #a0a0a0);
 }
 ```
@@ -2619,7 +2619,7 @@ La clase `.rail-track` fue eliminada porque nunca tuvo consumidores reales.
 ---
 
 ```css
-.pedestal-3 {
+.ranking-podium-3 {
   background: linear-gradient(180deg, #cd7f32, #a0522d);
 }
 ```

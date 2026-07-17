@@ -17,25 +17,25 @@
   {% if top3 %}
   <!-- Podio -->
   <section class="fav-podium-compact mb-5">
-    <div class="podium-stage">
+    <div class="ranking-podium-stage">
       {% for it in top3 %}
         {% with rank=forloop.counter %}
-        <article class="podium-slot" data-rank="{{ rank }}">
-          <a class="podium-poster" href="{% url 'cinetrack:detalle' it.pk %}?origen=favoritos" title="{{ it.titulo }}">
-            {% if it.imagen %}<img src="{{ it.imagen }}" alt="{{ it.titulo }}">{% else %}<div class="poster-ph"></div>{% endif %}
+        <article class="ranking-podium-slot" data-rank="{{ rank }}">
+          <a class="ranking-podium-poster" href="{% url 'cinetrack:detalle' it.pk %}?origen=favoritos" title="{{ it.titulo }}">
+            {% if it.imagen %}<img src="{{ it.imagen }}" alt="{{ it.titulo }}">{% else %}<div class="poster-placeholder"></div>{% endif %}
           </a>
-          <div class="podium-label">
-            <h3 class="podium-title line-clamp-1">{{ it.titulo }}</h3>
+          <div class="ranking-podium-label">
+            <h3 class="ranking-podium-title line-clamp-1">{{ it.titulo }}</h3>
             <div class="d-flex gap-2 justify-content-center small">
               {% if it.tipo %}<span class="badge rounded-pill bg-dark-subtle text-light">{{ it.get_tipo_display }}</span>{% endif %}
               {% if it.plataforma %}<span class="badge rounded-pill bg-dark-subtle text-light">{{ it.get_plataforma_display }}</span>{% endif %}
             </div>
           </div>
-          <div class="pedestal pedestal-{{ rank }}">
-            <div class="pedestal-body">
+          <div class="pedestal ranking-podium-{{ rank }}">
+            <div class="ranking-podium-pedestal-body">
               <span class="medal">{{ rank }}</span>
               <div></div>
-              <span class="pedestal-title">{{ it.titulo }}</span>
+              <span class="ranking-podium-pedestal-title">{{ it.titulo }}</span>
             </div>
           </div>
         </article>
@@ -56,7 +56,7 @@
       {% for it in peliculas %}
       <div class="col-6 col-sm-4 col-md-3 col-lg-2">
         <a href="{% url 'cinetrack:detalle' it.pk %}?origen=favoritos" class="rail-poster d-block">
-          {% if it.imagen %}<img src="{{ it.imagen }}" alt="{{ it.titulo }}">{% else %}<div class="poster-ph"></div>{% endif %}
+          {% if it.imagen %}<img src="{{ it.imagen }}" alt="{{ it.titulo }}">{% else %}<div class="poster-placeholder"></div>{% endif %}
         </a>
       </div>
       {% endfor %}
@@ -75,7 +75,7 @@
       {% for it in series %}
       <div class="col-6 col-sm-4 col-md-3 col-lg-2">
         <a href="{% url 'cinetrack:detalle' it.pk %}?origen=favoritos" class="rail-poster d-block">
-          {% if it.imagen %}<img src="{{ it.imagen }}" alt="{{ it.titulo }}">{% else %}<div class="poster-ph"></div>{% endif %}
+          {% if it.imagen %}<img src="{{ it.imagen }}" alt="{{ it.titulo }}">{% else %}<div class="poster-placeholder"></div>{% endif %}
         </a>
       </div>
       {% endfor %}

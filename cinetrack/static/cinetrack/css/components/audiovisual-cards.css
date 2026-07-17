@@ -5,7 +5,7 @@
   height: 100%;
 }
 
-.topcard-thumb {
+.top-card-thumb {
   position: relative;
   width: 100%;
   aspect-ratio: 2 / 3;
@@ -16,20 +16,20 @@
   text-decoration: none;
 }
 
-.topcard-thumb:hover {
+.top-card-thumb:hover {
   color: #fff;
 }
 
-.topcard-thumb > a {
+.top-card-thumb > a {
   color: inherit;
   text-decoration: none;
 }
 
-.topcard-thumb > a:hover {
+.top-card-thumb > a:hover {
   color: #fff;
 }
 
-.topcard-thumb img {
+.top-card-thumb img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -37,18 +37,18 @@
 }
 
 /* Layout: Mantiene las acciones de la tarjeta alineadas en la parte inferior */
-.topcard-meta {
+.top-card-meta {
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
 }
 
-.topcard .topcard-meta > .d-flex.align-items-center.justify-content-between {
+.topcard .top-card-meta > .d-flex.align-items-center.justify-content-between {
   margin-top: auto;
 }
 
-/* Hook de JavaScript: el filtro de maratones consulta .topcard-name; actualiza JavaScript y templates antes de renombrarla. */
-.topcard-name {
+/* Hook de JavaScript: el filtro de maratones consulta .top-card-name; actualiza JavaScript y templates antes de renombrarla. */
+.top-card-name {
   font-size: 0.95rem;
   font-weight: 600;
   line-height: 1.3;
@@ -61,11 +61,11 @@
   text-overflow: ellipsis;
 }
 
-.topcard-name a {
+.top-card-name a {
   color: inherit;
   text-decoration: none;
 }
 
-.topcard-name a:hover {
+.top-card-name a:hover {
   color: #fff;
 }

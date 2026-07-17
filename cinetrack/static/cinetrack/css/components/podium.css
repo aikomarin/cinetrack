@@ -1,5 +1,5 @@
 /* Componente: Podio de favoritos */
-.podium-stage {
+.ranking-podium-stage {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: end;
@@ -8,19 +8,19 @@
 }
 
 /* Componente: Posiciones del podio */
-.podium-slot {
+.ranking-podium-slot {
   text-align: center;
   position: relative;
   transition: transform .4s ease, filter .3s ease;
 }
-.podium-poster {
+.ranking-podium-poster {
   color: inherit;
   text-decoration: none;
 }
-.podium-poster:hover {
+.ranking-podium-poster:hover {
   color: #fff;
 }
-.podium-slot .podium-poster img {
+.ranking-podium-slot .ranking-podium-poster img {
   width: 100%;
   max-width: 200px;
   aspect-ratio: 2/3;
@@ -31,7 +31,7 @@
   display: block;
 }
 
-.podium-slot .poster-ph {
+.ranking-podium-slot .poster-placeholder {
   max-width: 200px;
   display: block;
   border-radius: 14px;
@@ -42,10 +42,10 @@
 }
 
 /* Componente: Etiquetas del podio */
-.podium-label {
+.ranking-podium-label {
   margin-top: .6rem;
 }
-.podium-title {
+.ranking-podium-title {
   font-family: var(--brand-font);
   font-size: 1rem;
   letter-spacing: .3px;
@@ -54,22 +54,22 @@
 }
 
 /* Estado: Contorno base del póster */
-.podium-slot .podium-poster img {
+.ranking-podium-slot .ranking-podium-poster img {
   outline: 4px solid transparent;
   outline-offset: -4px;
   transition: outline-color .25s ease;
 }
 
 /* Estado: Resalta el póster del primer lugar desde la posición completa. */
-.podium-slot[data-rank="1"]:hover .podium-poster img {
+.ranking-podium-slot[data-rank="1"]:hover .ranking-podium-poster img {
   outline-color: #ffd700;
 }
 
 /* Estado: Resalta los pósteres de plata y bronce desde sus pedestales. */
-.podium-slot:has(.pedestal-2:hover) .podium-poster img {
+.ranking-podium-slot:has(.ranking-podium-2:hover) .ranking-podium-poster img {
   outline-color: #c0c0c0;
 }
-.podium-slot:has(.pedestal-3:hover) .podium-poster img {
+.ranking-podium-slot:has(.ranking-podium-3:hover) .ranking-podium-poster img {
   outline-color: #cd7f32;
 }
 
@@ -99,12 +99,12 @@
   text-shadow: 0 2px 6px rgba(0,0,0,.5);
 }
 /* Variante: Posiciones de los pedestales */
-.pedestal-1 {
+.ranking-podium-1 {
   z-index: 2;
 }
-.pedestal-2 {
+.ranking-podium-2 {
   background: linear-gradient(180deg, #c0c0c0, #a0a0a0);
 }
-.pedestal-3 {
+.ranking-podium-3 {
   background: linear-gradient(180deg, #cd7f32, #a0522d);
 }
