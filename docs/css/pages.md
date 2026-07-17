@@ -1,5 +1,7 @@
 ## css/pages/home.css
 
+La variante local `.tile-header-centered` fue sustituida en los estados vacíos por la utilidad de Bootstrap `.justify-content-center`. La clase base `.tile-header` continúa aportando el contenedor flex, la alineación vertical y el gap; la utilidad conserva el mismo `justify-content: center`.
+
 
 .dash-grid {
   display: grid;
@@ -2167,6 +2169,8 @@
 
 
 ## css/pages/groups.css
+
+Las clases `.saga-input` y `.saga-btn` se conservan. `.saga-input` define las dimensiones, el fondo, el borde, el placeholder y el foco específicos del formulario de saga; `.form-control` no reproduce ese resultado. `.saga-btn` conserva una altura, padding, radio, sombra, transición, desplazamiento en hover y comportamiento responsive distintos de los botones compartidos, por lo que sustituirla alteraría el diseño.
 
 ```css
 .saga-rename {

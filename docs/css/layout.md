@@ -629,13 +629,7 @@
 
 ---
 
-```css
-.tile-header-centered {
-  justify-content: center;
-}
-```
-
-`justify-content: center`: centra horizontalmente el contenido de un encabezado de tarjeta cuando este utiliza un contenedor Flexbox o Grid compatible.
+La clase `.tile-header-centered` fue retirada. Sus consumidores utilizan ahora la utilidad de Bootstrap `.justify-content-center`, que conserva el mismo centrado horizontal.
 
 ## css/layout/film-rails.css
 

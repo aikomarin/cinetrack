@@ -1,15 +1,4 @@
 /* Componente: Botones */
-/* Utilidad: Contenido centrado del botón */
-.btn-center {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: .5rem;
-}
-.btn-center i {
-  flex: 0 0 auto;
-}
-
 /* Componente: Botón neón principal */
 .btn-neon {
   --c1: var(--accent);

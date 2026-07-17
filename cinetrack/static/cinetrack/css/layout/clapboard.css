@@ -44,6 +44,3 @@
   box-shadow: inset 0 0 0 1px rgba(0,0,0,.28), 0 4px 10px rgba(0,0,0,.35);
   animation: clapOpenSep 2.3s ease-in-out infinite;
 }
-.tile-header-centered {
-  justify-content: center;
-}

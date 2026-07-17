@@ -1,31 +1,6 @@
 ## css/components/buttons.css
 
-```css
-.btn-center {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: .5rem;
-}
-```
-
-`display: inline-flex`: mantiene el botón en línea y organiza su contenido mediante Flexbox.
-
-`align-items: center`: centra verticalmente el contenido del botón.
-
-`justify-content: center`: centra horizontalmente el contenido.
-
-`gap: .5rem`: deja medio `rem` de separación entre los elementos internos.
-
----
-
-```css
-.btn-center i {
-  flex: 0 0 auto;
-}
-```
-
-`flex: 0 0 auto`: evita que el icono crezca o se reduzca dentro del botón y conserva su tamaño natural.
+La utilidad local `.btn-center` fue eliminada. Sus consumidores combinan ahora `.btn-neon` con las utilidades de Bootstrap `.justify-content-center` en el botón y `.flex-shrink-0` en el icono: `.btn-neon` ya aporta `inline-flex`, alineación vertical y separación, mientras las utilidades conservan el centrado horizontal y el tamaño natural del icono.
 
 ---
 
