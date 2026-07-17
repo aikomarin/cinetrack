@@ -78,16 +78,16 @@
 }
 
 /* Componente: Imágenes de pósteres */
-.kan-poster {
+.kanban-poster {
   color: inherit;
   text-decoration: none;
 }
 
-.kan-poster:hover {
+.kanban-poster:hover {
   color: #fff;
 }
 
-.kan-poster img {
+.kanban-poster img {
   width: 100%;
   aspect-ratio: 2/3;
   object-fit: cover;
@@ -117,7 +117,7 @@
 }
 
 /* Componente: Marcadores de posición contextuales de pósteres */
-.kan-poster .poster-ph {
+.kanban-poster .poster-ph {
   transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
   box-shadow: 0 8px 22px rgba(10,0,40,.28);
   filter: saturate(1.02);

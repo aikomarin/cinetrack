@@ -57,15 +57,15 @@
                 <div class="kan-empty"{% if items %} style="display:none"{% endif %}>Sin items aquí.</div>
 
                 {% for it in items %}
-                <article class="kan-item" draggable="true" data-id="{{ it.id }}" data-dnd-item>
-                  <a class="kan-poster" href="{% url 'cinetrack:detalle' it.pk %}?origen=pendientes" title="{{ it.titulo }}">
+                <article class="kanban-item" draggable="true" data-id="{{ it.id }}" data-dnd-item>
+                  <a class="kanban-poster" href="{% url 'cinetrack:detalle' it.pk %}?origen=pendientes" title="{{ it.titulo }}">
                     {% if it.imagen %}
                       <img src="{{ it.imagen }}" alt="{{ it.titulo }}">
                     {% else %}
                       <div class="poster-ph"><i class="bi bi-image"></i></div>
                     {% endif %}
                   </a>
-                  <div class="kan-badges">
+                  <div class="kanban-badges">
                     {% if it.tipo %}<span class="badge tipo rounded-pill">{{ it.get_tipo_display }}</span>{% endif %}
                     {% if it.plataforma %}<span class="badge plataforma rounded-pill">{{ it.get_plataforma_display }}</span>{% endif %}
                   </div>
@@ -91,7 +91,7 @@
           {% with fases.0.3 as primeros %}
             {% for it in primeros|slice:":3" %}
             <article class="tile d-flex align-items-center p-2">
-              <a class="kan-poster kan-poster-small me-2" href="{% url 'cinetrack:detalle' it.pk %}?origen=pendientes" style="width:40px;">
+              <a class="kanban-poster kan-poster-small me-2" href="{% url 'cinetrack:detalle' it.pk %}?origen=pendientes" style="width:40px;">
                 {% if it.imagen %}
                   <img src="{{ it.imagen }}" alt="{{ it.titulo }}">
                 {% else %}

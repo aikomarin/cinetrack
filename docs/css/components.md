@@ -1837,7 +1837,7 @@ La imagen conserva ajuste `cover`, escala inicial del 101 %, transición de 0.35
 ---
 
 ```css
-.kan-poster {
+.kanban-poster {
   color: inherit;
   text-decoration: none;
 }
@@ -1850,7 +1850,7 @@ La imagen conserva ajuste `cover`, escala inicial del 101 %, transición de 0.35
 ---
 
 ```css
-.kan-poster:hover {
+.kanban-poster:hover {
   color: #fff;
 }
 ```
@@ -1860,7 +1860,7 @@ La imagen conserva ajuste `cover`, escala inicial del 101 %, transición de 0.35
 ---
 
 ```css
-.kan-poster img {
+.kanban-poster img {
   width: 100%;
   aspect-ratio: 2/3;
   object-fit: cover;
@@ -1939,7 +1939,7 @@ La imagen conserva ajuste `cover`, escala inicial del 101 %, transición de 0.35
 ---
 
 ```css
-.kan-poster .poster-ph {
+.kanban-poster .poster-ph {
   transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
   box-shadow: 0 8px 22px rgba(10,0,40,.28);
   filter: saturate(1.02);

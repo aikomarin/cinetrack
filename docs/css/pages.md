@@ -2898,7 +2898,7 @@ Las clases `.saga-name-input` y `.saga-save-button` se conservan. `.saga-name-in
 ---
 
 ```css
-.kan-item {
+.kanban-item {
   position: relative;
   width: 100%;
 }
@@ -2911,7 +2911,7 @@ Las clases `.saga-name-input` y `.saga-save-button` se conservan. `.saga-name-in
 ---
 
 ```css
-.kan-poster {
+.kanban-poster {
   display: block;
   border-radius: 16px;
   overflow: hidden;
@@ -2927,7 +2927,7 @@ Las clases `.saga-name-input` y `.saga-save-button` se conservan. `.saga-name-in
 ---
 
 ```css
-.kan-poster:hover img {
+.kanban-poster:hover img {
   transform: translateY(-2px);
   box-shadow: 0 14px 30px rgba(10,0,40,.36);
 }
@@ -2940,7 +2940,7 @@ Las clases `.saga-name-input` y `.saga-save-button` se conservan. `.saga-name-in
 ---
 
 ```css
-.kan-badges {
+.kanban-badges {
   position: absolute;
   left: .6rem;
   bottom: .6rem;
