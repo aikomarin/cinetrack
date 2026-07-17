@@ -297,6 +297,47 @@
 
 `filter: brightness(1.06)`: aumenta el brillo del botón un 6 %.
 
+---
+
+```css
+.btn-glow {
+  --c1: var(--accent, #9b5cfb);
+  --c2: var(--color-accent-dark, #6f3fe6);
+  border: 1px solid transparent;
+  background: linear-gradient(135deg, var(--c1), var(--c2));
+  color: #fff;
+  font-weight: 800;
+  box-shadow: 0 0 14px rgba(155,92,251,.55), inset 0 0 0 1px rgba(255,255,255,.08);
+}
+```
+
+`--c1`: usa `--accent`, actualmente `#9b5cfb`, con ese mismo respaldo.
+
+`--c2`: usa `--color-accent-dark`, actualmente `#6f3fe6`, con ese mismo respaldo.
+
+`border`: reserva un borde transparente de un píxel.
+
+`background`: crea un degradado diagonal entre ambos morados.
+
+`color: #fff`: muestra el contenido en blanco.
+
+`font-weight: 800`: aplica un grosor intenso.
+
+`box-shadow`: añade un resplandor morado y una línea blanca interior.
+
+---
+
+```css
+.btn-glow:hover {
+  filter: brightness(1.06);
+  box-shadow: 0 0 18px rgba(155,92,251,.7);
+}
+```
+
+`filter`: aumenta el brillo un 6 %.
+
+`box-shadow`: amplía el resplandor morado y aumenta su opacidad al 70 %.
+
 ## css/components/badges.css
 
 ```css
@@ -454,6 +495,19 @@
 
 `font-weight: 700`: aplica negrita al texto.
 
+---
+
+```css
+.favorite-star {
+  color: #ffd700;
+  filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.45));
+}
+```
+
+`color: #ffd700`: muestra la estrella en dorado.
+
+`filter`: añade un resplandor dorado difuminado de seis píxeles con 45 % de opacidad.
+
 ## css/components/section-titles.css
 
 ```css
@@ -542,70 +596,6 @@
 `box-shadow`: dibuja una línea blanca interior con 8 % de opacidad y un resplandor morado exterior con 18 % de opacidad.
 
 ## css/components/forms.css
-
-```css
-.edit-poster {
-  position: sticky;
-  top: 18px;
-  border-radius: 14px;
-  border: 1px solid var(--color-border-subtle);
-  background: #0b0b0f;
-  overflow: hidden;
-  box-shadow: 0 12px 28px rgba(0,0,0,.5);
-}
-```
-
-`position: sticky`: mantiene el póster visible dentro de su contenedor durante el desplazamiento.
-
-`top: 18px`: deja 18 píxeles entre el póster fijado y la parte superior.
-
-`border-radius: 14px`: redondea sus esquinas.
-
-`border`: dibuja un borde con `--color-border-subtle`, actualmente `rgba(255,255,255,.12)`.
-
-`background: #0b0b0f`: aplica un fondo negro azulado.
-
-`overflow: hidden`: recorta la imagen en las esquinas redondeadas.
-
-`box-shadow`: proyecta una sombra negra con 50 % de opacidad.
-
----
-
-```css
-.edit-poster img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-  aspect-ratio: 2/3;
-  transform: scale(1.01);
-  transition: transform .35s ease;
-}
-```
-
-`width` y `height: 100%`: hacen que la imagen ocupe todo el contenedor.
-
-`display: block`: elimina el espacio inferior propio de imágenes en línea.
-
-`object-fit: cover`: llena el área conservando la proporción y recortando el excedente.
-
-`aspect-ratio: 2/3`: mantiene una proporción vertical de póster.
-
-`transform: scale(1.01)`: amplía la imagen un 1 %.
-
-`transition`: suaviza los cambios de escala durante 0.35 segundos.
-
----
-
-```css
-.edit-poster:hover img {
-  transform: scale(1.03);
-}
-```
-
-`transform: scale(1.03)`: amplía la imagen un 3 % al pasar el cursor.
-
----
 
 ```css
 .form-label {
@@ -909,33 +899,6 @@
 `white-space: nowrap`: impide que la etiqueta se divida en varias líneas.
 
 `margin-left: .25rem !important`: deja `0.25rem` a la izquierda y prevalece sobre el margen utilitario de Bootstrap.
-
----
-
-```css
-.edit-poster-placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  aspect-ratio: 2 / 3;
-}
-```
-
-`display: flex`: organiza el contenido del placeholder con Flexbox.
-
-`align-items` y `justify-content: center`: centran su contenido vertical y horizontalmente.
-
-`aspect-ratio: 2 / 3`: conserva la proporción vertical de un póster.
-
----
-
-```css
-.edit-poster-placeholder i {
-  font-size: 3rem;
-}
-```
-
-`font-size: 3rem`: muestra el icono con un tamaño de tres veces la fuente base.
 
 ---
 
@@ -1502,47 +1465,6 @@
 ---
 
 ```css
-.btn-glow {
-  --c1: var(--accent, #9b5cfb);
-  --c2: var(--color-accent-dark, #6f3fe6);
-  border: 1px solid transparent;
-  background: linear-gradient(135deg, var(--c1), var(--c2));
-  color: #fff;
-  font-weight: 800;
-  box-shadow: 0 0 14px rgba(155,92,251,.55), inset 0 0 0 1px rgba(255,255,255,.08);
-}
-```
-
-`--c1`: usa `--accent`, actualmente `#9b5cfb`, con ese mismo respaldo.
-
-`--c2`: usa `--color-accent-dark`, actualmente `#6f3fe6`, con ese mismo respaldo.
-
-`border`: reserva un borde transparente de un píxel.
-
-`background`: crea un degradado diagonal entre ambos morados.
-
-`color: #fff`: muestra el contenido en blanco.
-
-`font-weight: 800`: aplica un grosor intenso.
-
-`box-shadow`: añade un resplandor morado y una línea blanca interior.
-
----
-
-```css
-.btn-glow:hover {
-  filter: brightness(1.06);
-  box-shadow: 0 0 18px rgba(155,92,251,.7);
-}
-```
-
-`filter`: aumenta el brillo un 6 %.
-
-`box-shadow`: amplía el resplandor morado y aumenta su opacidad al 70 %.
-
----
-
-```css
 .ctmodal .btn-outline-light {
   color: var(--color-text-primary);
   border-color: rgba(255,255,255,.22);
@@ -1642,6 +1564,97 @@
 `gap: .5rem`: deja medio `rem` entre ellos.
 
 ## css/components/posters.css
+
+```css
+.edit-poster {
+  position: sticky;
+  top: 18px;
+  border-radius: 14px;
+  border: 1px solid var(--color-border-subtle);
+  background: #0b0b0f;
+  overflow: hidden;
+  box-shadow: 0 12px 28px rgba(0,0,0,.5);
+}
+```
+
+`position: sticky`: mantiene el póster visible dentro de su contenedor durante el desplazamiento.
+
+`top: 18px`: deja 18 píxeles entre el póster fijado y la parte superior.
+
+`border-radius: 14px`: redondea sus esquinas.
+
+`border`: dibuja un borde con `--color-border-subtle`, actualmente `rgba(255,255,255,.12)`.
+
+`background: #0b0b0f`: aplica un fondo negro azulado.
+
+`overflow: hidden`: recorta la imagen en las esquinas redondeadas.
+
+`box-shadow`: proyecta una sombra negra con 50 % de opacidad.
+
+---
+
+```css
+.edit-poster img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 2/3;
+  transform: scale(1.01);
+  transition: transform .35s ease;
+}
+```
+
+`width` y `height: 100%`: hacen que la imagen ocupe todo el contenedor.
+
+`display: block`: elimina el espacio inferior propio de imágenes en línea.
+
+`object-fit: cover`: llena el área conservando la proporción y recortando el excedente.
+
+`aspect-ratio: 2/3`: mantiene una proporción vertical de póster.
+
+`transform: scale(1.01)`: amplía la imagen un 1 %.
+
+`transition`: suaviza los cambios de escala durante 0.35 segundos.
+
+---
+
+```css
+.edit-poster:hover img {
+  transform: scale(1.03);
+}
+```
+
+`transform: scale(1.03)`: amplía la imagen un 3 % al pasar el cursor.
+
+---
+
+```css
+.edit-poster-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 2 / 3;
+}
+```
+
+`display: flex`: organiza el contenido del placeholder con Flexbox.
+
+`align-items` y `justify-content: center`: centran su contenido vertical y horizontalmente.
+
+`aspect-ratio: 2 / 3`: conserva la proporción vertical de un póster.
+
+---
+
+```css
+.edit-poster-placeholder i {
+  font-size: 3rem;
+}
+```
+
+`font-size: 3rem`: muestra el icono con un tamaño de tres veces la fuente base.
+
+---
 
 ```css
 .poster-ph {
@@ -1843,6 +1856,36 @@
 
 `box-shadow`: amplía la sombra y aumenta su opacidad al 36 %.
 
+---
+
+```css
+.catalog-card-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  aspect-ratio: 2 / 3;
+}
+```
+
+`display: flex`: organiza el contenido mediante Flexbox.
+
+`align-items` y `justify-content: center`: centran el contenido en ambos ejes.
+
+`height: 100%`: ocupa toda la altura disponible.
+
+`aspect-ratio: 2 / 3`: conserva la proporción vertical de póster.
+
+---
+
+```css
+.catalog-card-placeholder i {
+  font-size: 1.6rem;
+}
+```
+
+`font-size: 1.6rem`: muestra el icono al 160 % del tamaño base.
+
 ## css/components/audiovisual-cards.css
 
 ```css
@@ -2023,49 +2066,6 @@
 ```
 
 `color: #fff`: muestra el título en blanco al pasar el cursor.
-
----
-
-```css
-.favorite-star {
-  color: #ffd700;
-  filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.45));
-}
-```
-
-`color: #ffd700`: muestra la estrella en dorado.
-
-`filter`: añade un resplandor dorado difuminado de seis píxeles con 45 % de opacidad.
-
----
-
-```css
-.catalog-card-placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  aspect-ratio: 2 / 3;
-}
-```
-
-`display: flex`: organiza el contenido mediante Flexbox.
-
-`align-items` y `justify-content: center`: centran el contenido en ambos ejes.
-
-`height: 100%`: ocupa toda la altura disponible.
-
-`aspect-ratio: 2 / 3`: conserva la proporción vertical de póster.
-
----
-
-```css
-.catalog-card-placeholder i {
-  font-size: 1.6rem;
-}
-```
-
-`font-size: 1.6rem`: muestra el icono al 160 % del tamaño base.
 
 ## css/components/pagination.css
 

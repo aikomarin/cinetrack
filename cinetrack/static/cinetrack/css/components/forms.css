@@ -1,26 +1,3 @@
-/* Componente: Póster del formulario */
-.edit-poster {
-  position: sticky;
-  top: 18px;
-  border-radius: 14px;
-  border: 1px solid var(--color-border-subtle);
-  background: #0b0b0f;
-  overflow: hidden;
-  box-shadow: 0 12px 28px rgba(0,0,0,.5);
-}
-.edit-poster img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-  aspect-ratio: 2/3;
-  transform: scale(1.01);
-  transition: transform .35s ease;
-}
-.edit-poster:hover img {
-  transform: scale(1.03);
-}
-
 /* Componente: Etiquetas de formulario */
 .form-label {
   margin-bottom: .35rem;
@@ -139,17 +116,6 @@
 .edit-form .row.g-3.mb-4 label.form-check-label[for="id_tendra_continuacion"] {
   white-space: nowrap;
   margin-left: .25rem !important;
-}
-
-.edit-poster-placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  aspect-ratio: 2 / 3;
-}
-
-.edit-poster-placeholder i {
-  font-size: 3rem;
 }
 
 /* Componente: Campo de búsqueda con icono */

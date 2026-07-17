@@ -106,3 +106,18 @@
   box-shadow: 0 0 18px rgba(155,92,251,.7);
   filter: brightness(1.06);
 }
+
+/* Sobrescritura de Bootstrap: Aplica las variantes de botones del modal de confirmación. */
+.btn-glow {
+  --c1: var(--accent, #9b5cfb);
+  --c2: var(--color-accent-dark, #6f3fe6);
+  border: 1px solid transparent;
+  background: linear-gradient(135deg, var(--c1), var(--c2));
+  color: #fff;
+  font-weight: 800;
+  box-shadow: 0 0 14px rgba(155,92,251,.55), inset 0 0 0 1px rgba(255,255,255,.08);
+}
+.btn-glow:hover {
+  filter: brightness(1.06);
+  box-shadow: 0 0 18px rgba(155,92,251,.7);
+}
