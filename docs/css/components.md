@@ -1579,26 +1579,26 @@ Los filtros de Maratones conservan sus IDs, el color de placeholder con 80 % de 
 
 ```css
 .surface-card {
-  background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
-  border: 1px solid var(--color-border-subtle);
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  border: 1px solid rgba(255,255,255,.12);
   border-radius: 18px;
   padding: 16px;
-  box-shadow: 0 14px 28px rgba(0,0,0,.35);
+  box-shadow: 0 8px 26px rgba(10,0,40,.32), inset 0 1px 0 rgba(255,255,255,.05);
   backdrop-filter: blur(6px);
   animation: floatUp .5s ease both;
   transition: transform .15s ease;
 }
 ```
 
-`background`: crea un degradado vertical blanco semitransparente, del 8 % de opacidad arriba al 4 % abajo.
+`background`: crea un degradado vertical blanco semitransparente, del 6 % de opacidad arriba al 2 % abajo.
 
-`border: 1px solid var(--color-border-subtle)`: aplica el borde tenue `rgba(255,255,255,.12)` definido por `--color-border-subtle`.
+`border: 1px solid rgba(255,255,255,.12)`: aplica un borde blanco con 12 % de opacidad.
 
 `border-radius: 18px`: redondea las esquinas del panel.
 
 `padding: 16px`: deja 16 píxeles entre el borde y el contenido.
 
-`box-shadow`: proyecta una sombra negra con 35 % de opacidad.
+`box-shadow`: proyecta una sombra morada oscura con 32 % de opacidad y añade un borde luminoso interior.
 
 `backdrop-filter: blur(6px)`: desenfoca seis píxeles el contenido situado detrás.
 
@@ -1649,6 +1649,22 @@ Los filtros de Maratones conservan sus IDs, el color de placeholder con 80 % de 
 `align-items: center`: centra verticalmente sus elementos.
 
 `gap: .5rem`: deja medio `rem` entre ellos.
+
+---
+
+```css
+.surface-card .surface-card-header {
+  font-family: var(--brand-font);
+  letter-spacing: .6px;
+  color: var(--color-text-primary);
+}
+```
+
+`font-family: var(--brand-font)`: aplica la tipografía de marca a los encabezados contenidos en superficies.
+
+`letter-spacing: .6px`: conserva la separación de 0.6 píxeles.
+
+`color: var(--color-text-primary)`: aplica el color de texto principal.
 
 ## css/components/posters.css
 

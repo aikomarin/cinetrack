@@ -1,10 +1,10 @@
 /* Componente: Paneles */
 .surface-card {
-  background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
-  border: 1px solid var(--color-border-subtle);
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  border: 1px solid rgba(255,255,255,.12);
   border-radius: 18px;
   padding: 16px;
-  box-shadow: 0 14px 28px rgba(0,0,0,.35);
+  box-shadow: 0 8px 26px rgba(10,0,40,.32), inset 0 1px 0 rgba(255,255,255,.05);
   backdrop-filter: blur(6px);
   animation: floatUp .5s ease both;
   transition: transform .15s ease;
@@ -24,4 +24,10 @@
   display: flex;
   align-items: center;
   gap: .5rem;
+}
+
+.surface-card .surface-card-header {
+  font-family: var(--brand-font);
+  letter-spacing: .6px;
+  color: var(--color-text-primary);
 }

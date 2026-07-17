@@ -2122,21 +2122,6 @@ La estructura de relleno y centrado procede de `.poster-placeholder-fill`, docum
 Las clases `.saga-name-input` y `.saga-save-button` se conservan. `.saga-name-input` define las dimensiones, el fondo, el borde, el placeholder y el foco específicos del formulario de saga; `.form-control` no reproduce ese resultado. `.saga-save-button` conserva una altura, padding, radio, sombra, transición, desplazamiento en hover y comportamiento responsive distintos de los botones compartidos, por lo que sustituirla alteraría el diseño.
 
 ```css
-.saga-rename-panel {
-  background: linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
-  box-shadow:
-    0 8px 26px rgba(10,0,40,.32),
-    inset 0 1px 0 rgba(255,255,255,.05);
-}
-```
-
-`background: linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02))`: aplica el fondo con el valor `linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02))`.
-
-`box-shadow: 0 8px 26px rgba(10,0,40,.32), inset 0 1px 0 rgba(255,255,255,.05)`: aplica la sombra con el valor `0 8px 26px rgba(10,0,40,.32), inset 0 1px 0 rgba(255,255,255,.05)`.
-
----
-
-```css
 .saga-rename-form {
   display: grid;
   grid-template-columns: 1fr auto;
@@ -3037,41 +3022,6 @@ Las clases `.saga-name-input` y `.saga-save-button` se conservan. `.saga-name-in
 `opacity: .75`: establece la opacidad con el valor `.75`.
 
 `font-size: .85rem`: establece el tamaño de fuente con el valor `.85rem`.
-
----
-
-```css
-.surface-card {
-  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-  border: 1px solid rgba(255,255,255,.12);
-  border-radius: 18px;
-  box-shadow: 0 8px 26px rgba(10,0,40,.32), inset 0 1px 0 rgba(255,255,255,.05);
-}
-```
-
-`background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02))`: aplica el fondo con el valor `linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02))`.
-
-`border: 1px solid rgba(255,255,255,.12)`: aplica el borde con el valor `1px solid rgba(255,255,255,.12)`.
-
-`border-radius: 18px`: redondea las esquinas con el valor `18px`.
-
-`box-shadow: 0 8px 26px rgba(10,0,40,.32), inset 0 1px 0 rgba(255,255,255,.05)`: aplica la sombra con el valor `0 8px 26px rgba(10,0,40,.32), inset 0 1px 0 rgba(255,255,255,.05)`.
-
----
-
-```css
-.surface-card .surface-card-header {
-  font-family: var(--brand-font);
-  letter-spacing: .6px;
-  color: var(--color-text-primary);
-}
-```
-
-`font-family: var(--brand-font)`: aplica la familia tipográfica con el valor `var(--brand-font)`.
-
-`letter-spacing: .6px`: separa las letras con el valor `.6px`.
-
-`color: var(--color-text-primary)`: aplica el color del contenido con el valor `var(--color-text-primary)`.
 
 ---
 
