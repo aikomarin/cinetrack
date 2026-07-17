@@ -1,3 +1,11 @@
+## Límites con Vendor
+
+Bootstrap 5.3, Bootstrap Icons y el JavaScript `bootstrap.bundle` se cargan desde CDN en `base.html`. Sus clases, atributos y comportamientos pertenecen a Bootstrap y constituyen un contrato externo: no deben renombrarse, trasladarse ni reinterpretarse durante las refactorizaciones de CSS propio. CineTrack puede combinarlos con clases propias o aplicar overrides desde sus módulos, pero no modifica los archivos distribuidos por Bootstrap.
+
+Flatpickr, su hoja de estilos base y la localización española también se cargan desde CDN en `base.html`. Las clases generadas por la librería —por ejemplo `.flatpickr-calendar`, `.flatpickr-day`, `.selected`, `.startRange` y `.endRange`— pertenecen a Flatpickr y no deben renombrarse. Los atributos, estados y estructura que Flatpickr genera se consideran parte de su API de integración.
+
+`css/vendor/flatpickr-theme.css` es código propio de CineTrack situado en la capa Vendor porque adapta visualmente esa integración. El archivo contiene clases propias, como `.ct-date-input` y `.ct-date-input-visible`, junto con overrides que consumen selectores de Flatpickr. Los valores visuales del tema son responsabilidad del proyecto, pero los nombres `.flatpickr-*` y sus estados asociados siguen perteneciendo a la librería y deben conservarse en futuras refactorizaciones. No existen renombres pendientes dentro de esta frontera Vendor.
+
 ## css/vendor/flatpickr-theme.css
 
 ```css
