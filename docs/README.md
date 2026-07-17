@@ -15,3 +15,7 @@ Este directorio reúne la documentación de producto y la documentación técnic
 - [Integración con TMDB](integrations/tmdb.md)
 - [Decisiones técnicas](decisions/README.md)
 - [Changelog](changelog.md)
+- [Componentes CSS](css/components.md)
+
+
+.\.venv\Scripts\Activate.ps1

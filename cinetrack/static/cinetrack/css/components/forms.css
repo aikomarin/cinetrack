@@ -142,3 +142,69 @@
 .input-search::placeholder {
   color: rgba(246,243,255,.8);
 }
+
+/* Componente: Controles compartidos dentro de paneles */
+.tile form .form-control {
+  background-color: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 12px;
+  color: #fff;
+  padding: .6rem .8rem;
+  font-size: 1rem;
+  -webkit-text-fill-color: #fff; /* Componente: Color del texto del campo de búsqueda en Safari */
+}
+.tile form .form-control:focus {
+  border-color: rgba(168,85,247,.6);
+  box-shadow: 0 0 0 .2rem rgba(168,85,247,.15);
+  outline: 0;
+}
+
+/* Componente: Marcador de posición de controles dentro de paneles */
+.tile form .form-control::placeholder {
+  color: rgba(255,255,255,.62);
+  opacity: 1;
+}
+.tile form .form-control::-webkit-input-placeholder {
+  color: rgba(255,255,255,.62);
+}
+
+/* Componente: Interruptores compartidos */
+.form-check.form-switch {
+  min-width: 150px;
+}
+.form-check.form-switch .form-check-label {
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Estado: Colores de los interruptores según el nombre del campo */
+.edit-card input[name="favorita"].form-check-input:checked {
+  background-color: #ffd700;
+  border-color: rgba(0,0,0,.15);
+}
+.edit-card input[name="volveria_a_ver"].form-check-input:checked {
+  background-color: #1e90ff;
+  border-color: rgba(0,0,0,.15);
+}
+.edit-card input[name="tendra_continuacion"].form-check-input:checked {
+  background-color: #2ecc71;
+  border-color: rgba(0,0,0,.15);
+}
+
+/* Componente: Marcadores de posición de filtros compatibles entre navegadores */
+/* Componente: Marcador de posición para WebKit y Blink */
+#filtro-contenidos::-webkit-input-placeholder,
+#filtro-mara::-webkit-input-placeholder {
+  color: rgba(246,243,255,.8);
+}
+/* Componente: Marcador de posición para Firefox */
+#filtro-contenidos::-moz-placeholder,
+#filtro-mara::-moz-placeholder {
+  color: rgba(246,243,255,.8);
+  opacity: 1;
+}
+/* Componente: Marcador de posición estándar */
+#filtro-contenidos::placeholder,
+#filtro-mara::placeholder {
+  color: rgba(246,243,255,.8);
+}

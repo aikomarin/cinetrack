@@ -5,30 +5,6 @@
   letter-spacing: .2px;
 }
 
-.tile form .form-control {
-  background-color: rgba(255,255,255,.03);
-  border: 1px solid rgba(255,255,255,.14);
-  border-radius: 12px;
-  color: #fff;
-  padding: .6rem .8rem;
-  font-size: 1rem;
-  -webkit-text-fill-color: #fff; /* Componente: Color del texto del campo de búsqueda en Safari */
-}
-.tile form .form-control:focus {
-  border-color: rgba(168,85,247,.6);
-  box-shadow: 0 0 0 .2rem rgba(168,85,247,.15);
-  outline: 0;
-}
-
-/* Componente: Marcador de posición del campo de búsqueda */
-.tile form .form-control::placeholder {
-  color: rgba(255,255,255,.62);
-  opacity: 1;
-}
-.tile form .form-control::-webkit-input-placeholder {
-  color: rgba(255,255,255,.62);
-}
-
 /* Componente: Etiqueta del título de búsqueda */
 .tile form .col-12.col-md-9:has(input[name="query"]) > .form-label {
   font-size: 1.3rem;
@@ -36,18 +12,6 @@
   margin-bottom: .55rem;
   letter-spacing: .4px;
   font-weight: 700;
-}
-
-/* Componente: Interruptores de búsqueda */
-.form-check.form-switch {
-  min-width: 150px;
-}
-.form-check.form-switch .form-check-input {
-  cursor: pointer;
-}
-.form-check.form-switch .form-check-label {
-  cursor: pointer;
-  user-select: none;
 }
 
 /* Página: Póster y metadatos del resultado de búsqueda */
@@ -94,18 +58,4 @@
 }
 .tile p.error {
   color: #ff9a9a;
-}
-
-/* Estado: Colores de los interruptores de búsqueda */
-.edit-card input[name="favorita"].form-check-input:checked {
-  background-color: #ffd700;
-  border-color: rgba(0,0,0,.15);
-}
-.edit-card input[name="volveria_a_ver"].form-check-input:checked {
-  background-color: #1e90ff;
-  border-color: rgba(0,0,0,.15);
-}
-.edit-card input[name="tendra_continuacion"].form-check-input:checked {
-  background-color: #2ecc71;
-  border-color: rgba(0,0,0,.15);
 }

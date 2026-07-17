@@ -950,6 +950,103 @@
 
 `color`: aplica el blanco lavanda con 80 % de opacidad al placeholder estándar.
 
+---
+
+```css
+.tile form .form-control {
+  background-color: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 12px;
+  color: #fff;
+  padding: .6rem .8rem;
+  font-size: 1rem;
+  -webkit-text-fill-color: #fff;
+}
+```
+
+Este bloque define la apariencia compartida de los controles de formulario contenidos en paneles `.tile`. El selector y sus valores se conservan sin limitar su alcance a una página.
+
+---
+
+```css
+.tile form .form-control:focus {
+  border-color: rgba(168,85,247,.6);
+  box-shadow: 0 0 0 .2rem rgba(168,85,247,.15);
+  outline: 0;
+}
+```
+
+El estado enfocado conserva el borde morado translúcido, el anillo exterior y la eliminación del contorno nativo.
+
+---
+
+```css
+.tile form .form-control::placeholder {
+  color: rgba(255,255,255,.62);
+  opacity: 1;
+}
+.tile form .form-control::-webkit-input-placeholder {
+  color: rgba(255,255,255,.62);
+}
+```
+
+Los placeholders de controles dentro de paneles mantienen blanco con 62 % de opacidad y la variante compatible con WebKit.
+
+---
+
+```css
+.form-check.form-switch {
+  min-width: 150px;
+}
+.form-check.form-switch .form-check-label {
+  cursor: pointer;
+  user-select: none;
+}
+```
+
+Los switches conservan un ancho mínimo de 150 píxeles. Sus etiquetas muestran cursor de interacción e impiden seleccionar accidentalmente el texto.
+
+La regla compartida de `.form-check-input` ya declara `cursor: pointer`, por lo que la declaración idéntica procedente de Search quedó consolidada sin duplicarse.
+
+---
+
+```css
+.edit-card input[name="favorita"].form-check-input:checked {
+  background-color: #ffd700;
+  border-color: rgba(0,0,0,.15);
+}
+.edit-card input[name="volveria_a_ver"].form-check-input:checked {
+  background-color: #1e90ff;
+  border-color: rgba(0,0,0,.15);
+}
+.edit-card input[name="tendra_continuacion"].form-check-input:checked {
+  background-color: #2ecc71;
+  border-color: rgba(0,0,0,.15);
+}
+```
+
+Las rutas por atributo `name` mantienen los colores dorado, azul y verde de los estados activados. Conviven con las rutas por ID para cubrir formularios con distintas formas de generar identificadores.
+
+---
+
+```css
+#filtro-contenidos::-webkit-input-placeholder,
+#filtro-mara::-webkit-input-placeholder {
+  color: rgba(246,243,255,.8);
+}
+#filtro-contenidos::-moz-placeholder,
+#filtro-mara::-moz-placeholder {
+  color: rgba(246,243,255,.8);
+  opacity: 1;
+}
+#filtro-contenidos::placeholder,
+#filtro-mara::placeholder {
+  color: rgba(246,243,255,.8);
+}
+```
+
+Los filtros de Maratones conservan sus IDs, el color de placeholder con 80 % de opacidad y las variantes compatibles con WebKit y Firefox.
+
 ## css/components/custom-select.css
 
 ```css

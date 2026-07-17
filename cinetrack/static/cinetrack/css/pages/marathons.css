@@ -153,21 +153,3 @@
   color: rgba(245, 241, 255, 0.82);
   font-weight: 600;
 }
-
-/* Componente: Marcadores de posición de filtros compatibles entre navegadores */
-/* Componente: Marcador de posición para WebKit y Blink */
-#filtro-contenidos::-webkit-input-placeholder,
-#filtro-mara::-webkit-input-placeholder {
-  color: rgba(246,243,255,.8);
-}
-/* Componente: Marcador de posición para Firefox */
-#filtro-contenidos::-moz-placeholder,
-#filtro-mara::-moz-placeholder {
-  color: rgba(246,243,255,.8);
-  opacity: 1;
-}
-/* Componente: Marcador de posición estándar */
-#filtro-contenidos::placeholder,
-#filtro-mara::placeholder {
-  color: rgba(246,243,255,.8);
-}
