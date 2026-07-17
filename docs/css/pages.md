@@ -945,26 +945,16 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 
 ```css
 .recent-activity-poster-placeholder {
-  width: 100%;
-  height: 100%;
-  display: grid;
-  place-items: center;
   color: #9aa;
   font-size: 1.6rem;
 }
 ```
 
-`width: 100%`: establece el ancho en `100%`.
-
-`height: 100%`: establece la altura en `100%`.
-
-`display: grid`: establece el modelo de presentación como `grid`.
-
-`place-items: center`: alinea el contenido de Grid mediante `center`.
-
 `color: #9aa`: aplica el color `#9aa` al contenido.
 
 `font-size: 1.6rem`: establece el tamaño de fuente en `1.6rem`.
+
+La estructura de relleno y centrado procede de `.poster-placeholder-fill`, documentada en `css/components/posters.css`.
 
 ---
 

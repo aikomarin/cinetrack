@@ -67,12 +67,16 @@
   background: rgba(255,255,255,.06);
 }
 
-/* Componente: Marcador de posición compacto de póster */
-.platform-placeholder {
+/* Componente: Marcador de posición que rellena su contenedor */
+.poster-placeholder-fill {
   width: 100%;
   height: 100%;
   display: grid;
   place-items: center;
+}
+
+/* Componente: Marcador de posición compacto de póster */
+.platform-placeholder {
   color: var(--color-text-secondary);
   background: rgba(255,255,255,.06);
 }
@@ -111,6 +115,10 @@
   aspect-ratio: 2/3;
   object-fit: cover;
   display: block;
+}
+
+.rail-poster img,
+.rail-poster .poster-placeholder {
   border-radius: 14px;
   box-shadow: 0 8px 22px rgba(10,0,40,.3);
   transition: transform .16s ease, box-shadow .16s ease;
@@ -125,9 +133,6 @@
 
 .rail-poster .poster-placeholder {
   display: block;
-  border-radius: 14px;
-  box-shadow: 0 8px 22px rgba(10,0,40,.3);
-  transition: transform .16s ease, box-shadow .16s ease;
   filter: saturate(1.02);
 }
 

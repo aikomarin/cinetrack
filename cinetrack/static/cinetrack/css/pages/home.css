@@ -346,10 +346,6 @@
   display: block;
 }
 .recent-activity-poster-placeholder {
-  width: 100%;
-  height: 100%;
-  display: grid;
-  place-items: center;
   color: #9aa;
   font-size: 1.6rem;
 }

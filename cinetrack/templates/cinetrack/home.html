@@ -147,7 +147,7 @@
             {% if it.imagen %}
               <img src="{{ it.imagen }}" alt="{{ it.titulo }}">
             {% else %}
-              <div class="recent-activity-poster-placeholder"><i class="bi bi-image"></i></div>
+              <div class="poster-placeholder-fill recent-activity-poster-placeholder"><i class="bi bi-image"></i></div>
             {% endif %}
           </a>
           <div class="top-card-meta text-center">
@@ -179,7 +179,7 @@
               {% if it.imagen %}
                 <img src="{{ it.imagen }}" alt="{{ it.titulo }}">
               {% else %}
-                <div class="recent-activity-poster-placeholder">
+                <div class="poster-placeholder-fill recent-activity-poster-placeholder">
                   <i class="bi bi-image"></i>
                 </div>
               {% endif %}
@@ -248,7 +248,7 @@
                       {% if it.imagen %}
                         <img src="{{ it.imagen }}" alt="{{ it.titulo }}">
                       {% else %}
-                        <span class="platform-placeholder"><i class="bi bi-image"></i></span>
+                        <span class="poster-placeholder-fill platform-placeholder"><i class="bi bi-image"></i></span>
                       {% endif %}
                     </a>
                     <span class="platform-preview-title">{{ it.titulo }}</span>

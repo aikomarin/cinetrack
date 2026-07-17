@@ -1814,13 +1814,11 @@ La imagen conserva ajuste `cover`, escala inicial del 101 %, transición de 0.35
 ---
 
 ```css
-.platform-placeholder {
+.poster-placeholder-fill {
   width: 100%;
   height: 100%;
   display: grid;
   place-items: center;
-  color: var(--color-text-secondary);
-  background: rgba(255,255,255,.06);
 }
 ```
 
@@ -1829,6 +1827,17 @@ La imagen conserva ajuste `cover`, escala inicial del 101 %, transición de 0.35
 `display: grid`: organiza el contenido mediante Grid.
 
 `place-items: center`: centra el contenido en ambos ejes.
+
+Esta base estructural se combina con `.platform-placeholder` y `.recent-activity-poster-placeholder` sin modificar sus variantes visuales.
+
+---
+
+```css
+.platform-placeholder {
+  color: var(--color-text-secondary);
+  background: rgba(255,255,255,.06);
+}
+```
 
 `color: var(--color-text-secondary)`: aplica el lavanda claro `#dcd3fb`.
 
@@ -1916,9 +1925,6 @@ La imagen conserva ajuste `cover`, escala inicial del 101 %, transición de 0.35
   aspect-ratio: 2/3;
   object-fit: cover;
   display: block;
-  border-radius: 14px;
-  box-shadow: 0 8px 22px rgba(10,0,40,.3);
-  transition: transform .16s ease, box-shadow .16s ease;
 }
 ```
 
@@ -1929,6 +1935,17 @@ La imagen conserva ajuste `cover`, escala inicial del 101 %, transición de 0.35
 `object-fit: cover`: llena el área sin deformar la imagen.
 
 `display: block`: elimina el espacio inferior de imágenes en línea.
+
+---
+
+```css
+.rail-poster img,
+.rail-poster .poster-placeholder {
+  border-radius: 14px;
+  box-shadow: 0 8px 22px rgba(10,0,40,.3);
+  transition: transform .16s ease, box-shadow .16s ease;
+}
+```
 
 `border-radius: 14px`: redondea las esquinas.
 
@@ -1957,20 +1974,11 @@ La imagen conserva ajuste `cover`, escala inicial del 101 %, transición de 0.35
 ```css
 .rail-poster .poster-placeholder {
   display: block;
-  border-radius: 14px;
-  box-shadow: 0 8px 22px rgba(10,0,40,.3);
-  transition: transform .16s ease, box-shadow .16s ease;
   filter: saturate(1.02);
 }
 ```
 
 `display: block`: hace que el placeholder se comporte como bloque dentro del enlace.
-
-`border-radius: 14px`: redondea sus esquinas.
-
-`box-shadow`: aplica la misma sombra que al póster real del rail.
-
-`transition`: suaviza los cambios de posición y sombra durante 0.16 segundos.
 
 `filter: saturate(1.02)`: aumenta la saturación un 2 %.
 

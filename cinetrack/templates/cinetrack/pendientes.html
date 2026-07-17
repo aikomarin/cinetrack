@@ -91,7 +91,7 @@
           {% with fases.0.3 as primeros %}
             {% for it in primeros|slice:":3" %}
             <article class="surface-card d-flex align-items-center p-2">
-              <a class="kanban-poster kan-poster-small me-2" href="{% url 'cinetrack:detalle' it.pk %}?origen=pendientes" style="width:40px;">
+              <a class="kanban-poster kan-poster-small me-2" href="{% url 'cinetrack:detalle' it.pk %}?origen=pendientes">
                 {% if it.imagen %}
                   <img src="{{ it.imagen }}" alt="{{ it.titulo }}">
                 {% else %}
