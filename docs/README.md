@@ -16,6 +16,7 @@ Este directorio reúne la documentación de producto y la documentación técnic
 - [Decisiones técnicas](decisions/README.md)
 - [Changelog](changelog.md)
 - [Componentes CSS](css/components.md)
+  - `components/rails.css`: carriles horizontales compartidos y sus tarjetas.
 
 
 .\.venv\Scripts\Activate.ps1

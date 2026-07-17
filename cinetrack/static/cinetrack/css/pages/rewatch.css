@@ -6,19 +6,6 @@
   box-shadow: 0 6px 16px rgba(30,144,255,.35);
 }
 
-/* Layout: Carril desplazable para volver a ver */
-.rail-track {
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding-bottom: .25rem;
-}
-.rail-card {
-  scroll-snap-align: start;
-}
-.rail-track::-webkit-scrollbar {
-  height: 0;
-}
-
 /* Layout: Cuadrícula fija para volver a ver */
 .rew-grid-7x2 {
   display: grid;
