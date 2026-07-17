@@ -91,15 +91,18 @@
   opacity: .92;
 }
 /* Estado: Colores del interruptor activado según el campo */
-#id_favorita.form-check-input:checked {
+#id_favorita.form-check-input:checked,
+.elevated-panel input[name="favorita"].form-check-input:checked {
   background-color: #ffd700;
   border-color: rgba(0,0,0,.15);
 }
-#id_volveria_a_ver.form-check-input:checked {
+#id_volveria_a_ver.form-check-input:checked,
+.elevated-panel input[name="volveria_a_ver"].form-check-input:checked {
   background-color: #1e90ff;
   border-color: rgba(0,0,0,.15);
 }
-#id_tendra_continuacion.form-check-input:checked {
+#id_tendra_continuacion.form-check-input:checked,
+.elevated-panel input[name="tendra_continuacion"].form-check-input:checked {
   background-color: #2ecc71;
   border-color: rgba(0,0,0,.15);
 }
@@ -128,18 +131,24 @@
 /* Componente: Marcadores de posición claros compatibles entre navegadores */
 /* Componente: Marcador de posición para WebKit y Blink */
 .edit-form input.form-control::-webkit-input-placeholder,
-.input-search::-webkit-input-placeholder {
+.input-search::-webkit-input-placeholder,
+#filtro-contenidos::-webkit-input-placeholder,
+#filtro-mara::-webkit-input-placeholder {
   color: rgba(246,243,255,.8);
 }
 /* Componente: Marcador de posición para Firefox */
 .edit-form input.form-control::-moz-placeholder,
-.input-search::-moz-placeholder {
+.input-search::-moz-placeholder,
+#filtro-contenidos::-moz-placeholder,
+#filtro-mara::-moz-placeholder {
   color: rgba(246,243,255,.8);
   opacity: 1;
 }
 /* Componente: Marcador de posición estándar */
 .edit-form input.form-control::placeholder,
-.input-search::placeholder {
+.input-search::placeholder,
+#filtro-contenidos::placeholder,
+#filtro-mara::placeholder {
   color: rgba(246,243,255,.8);
 }
 
@@ -175,36 +184,4 @@
 .form-check.form-switch .form-check-label {
   cursor: pointer;
   user-select: none;
-}
-
-/* Estado: Colores de los interruptores según el nombre del campo */
-.elevated-panel input[name="favorita"].form-check-input:checked {
-  background-color: #ffd700;
-  border-color: rgba(0,0,0,.15);
-}
-.elevated-panel input[name="volveria_a_ver"].form-check-input:checked {
-  background-color: #1e90ff;
-  border-color: rgba(0,0,0,.15);
-}
-.elevated-panel input[name="tendra_continuacion"].form-check-input:checked {
-  background-color: #2ecc71;
-  border-color: rgba(0,0,0,.15);
-}
-
-/* Componente: Marcadores de posición de filtros compatibles entre navegadores */
-/* Componente: Marcador de posición para WebKit y Blink */
-#filtro-contenidos::-webkit-input-placeholder,
-#filtro-mara::-webkit-input-placeholder {
-  color: rgba(246,243,255,.8);
-}
-/* Componente: Marcador de posición para Firefox */
-#filtro-contenidos::-moz-placeholder,
-#filtro-mara::-moz-placeholder {
-  color: rgba(246,243,255,.8);
-  opacity: 1;
-}
-/* Componente: Marcador de posición estándar */
-#filtro-contenidos::placeholder,
-#filtro-mara::placeholder {
-  color: rgba(246,243,255,.8);
 }

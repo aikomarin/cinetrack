@@ -1535,25 +1535,6 @@ La estructura de relleno y centrado procede de `.poster-placeholder-fill`, docum
 ---
 
 ```css
-.detail-text {
-  font-size: .975rem;
-  line-height: 1.55;
-  color: var(--color-text-primary, #e9e9e9);
-  opacity: .92;
-}
-```
-
-`font-size: .975rem`: establece el tamaño de fuente en `.975rem`.
-
-`line-height: 1.55`: establece la altura de línea en `1.55`.
-
-`color: var(--color-text-primary, #e9e9e9)`: aplica el color `var(--color-text-primary, #e9e9e9)` al contenido.
-
-`opacity: .92`: muestra el elemento con una opacidad de `.92`.
-
----
-
-```css
 .surface-card p.success, .surface-card p.info, .surface-card p.warning, .surface-card p.error {
   margin: 0 0 .25rem 0;
 }
@@ -1855,25 +1836,6 @@ La estructura de relleno y centrado procede de `.poster-placeholder-fill`, docum
 `font-size: 1rem`: establece el tamaño de fuente con el valor `1rem`.
 
 `margin-bottom: .35rem`: aplica el margen inferior con el valor `.35rem`.
-
----
-
-```css
-.detail-text {
-  font-size: 1.05rem;
-  line-height: 1.6;
-  color: var(--color-text-primary);
-  opacity: .95;
-}
-```
-
-`font-size: 1.05rem`: establece el tamaño de fuente con el valor `1.05rem`.
-
-`line-height: 1.6`: establece la altura de línea con el valor `1.6`.
-
-`color: var(--color-text-primary)`: aplica el color del contenido con el valor `var(--color-text-primary)`.
-
-`opacity: .95`: establece la opacidad con el valor `.95`.
 
 ---
 

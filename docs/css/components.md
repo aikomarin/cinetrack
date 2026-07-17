@@ -812,7 +812,8 @@ Las capas de `.edit-form textarea` y `.edit-form textarea.form-control` se conse
 ---
 
 ```css
-#id_favorita.form-check-input:checked {
+#id_favorita.form-check-input:checked,
+.elevated-panel input[name="favorita"].form-check-input:checked {
   background-color: #ffd700;
   border-color: rgba(0,0,0,.15);
 }
@@ -825,7 +826,8 @@ Las capas de `.edit-form textarea` y `.edit-form textarea.form-control` se conse
 ---
 
 ```css
-#id_volveria_a_ver.form-check-input:checked {
+#id_volveria_a_ver.form-check-input:checked,
+.elevated-panel input[name="volveria_a_ver"].form-check-input:checked {
   background-color: #1e90ff;
   border-color: rgba(0,0,0,.15);
 }
@@ -838,7 +840,8 @@ Las capas de `.edit-form textarea` y `.edit-form textarea.form-control` se conse
 ---
 
 ```css
-#id_tendra_continuacion.form-check-input:checked {
+#id_tendra_continuacion.form-check-input:checked,
+.elevated-panel input[name="tendra_continuacion"].form-check-input:checked {
   background-color: #2ecc71;
   border-color: rgba(0,0,0,.15);
 }
@@ -908,7 +911,9 @@ Las capas de `.edit-form textarea` y `.edit-form textarea.form-control` se conse
 
 ```css
 .edit-form input.form-control::-webkit-input-placeholder,
-.input-search::-webkit-input-placeholder {
+.input-search::-webkit-input-placeholder,
+#filtro-contenidos::-webkit-input-placeholder,
+#filtro-mara::-webkit-input-placeholder {
   color: rgba(246,243,255,.8);
 }
 ```
@@ -919,7 +924,9 @@ Las capas de `.edit-form textarea` y `.edit-form textarea.form-control` se conse
 
 ```css
 .edit-form input.form-control::-moz-placeholder,
-.input-search::-moz-placeholder {
+.input-search::-moz-placeholder,
+#filtro-contenidos::-moz-placeholder,
+#filtro-mara::-moz-placeholder {
   color: rgba(246,243,255,.8);
   opacity: 1;
 }
@@ -933,7 +940,9 @@ Las capas de `.edit-form textarea` y `.edit-form textarea.form-control` se conse
 
 ```css
 .edit-form input.form-control::placeholder,
-.input-search::placeholder {
+.input-search::placeholder,
+#filtro-contenidos::placeholder,
+#filtro-mara::placeholder {
   color: rgba(246,243,255,.8);
 }
 ```
@@ -999,43 +1008,6 @@ Los switches conservan un ancho mínimo de 150 píxeles. Sus etiquetas muestran 
 La regla compartida de `.form-check-input` ya declara `cursor: pointer`, por lo que la declaración idéntica procedente de Search quedó consolidada sin duplicarse.
 
 ---
-
-```css
-.elevated-panel input[name="favorita"].form-check-input:checked {
-  background-color: #ffd700;
-  border-color: rgba(0,0,0,.15);
-}
-.elevated-panel input[name="volveria_a_ver"].form-check-input:checked {
-  background-color: #1e90ff;
-  border-color: rgba(0,0,0,.15);
-}
-.elevated-panel input[name="tendra_continuacion"].form-check-input:checked {
-  background-color: #2ecc71;
-  border-color: rgba(0,0,0,.15);
-}
-```
-
-Las rutas por atributo `name` mantienen los colores dorado, azul y verde de los estados activados. Conviven con las rutas por ID para cubrir formularios con distintas formas de generar identificadores.
-
----
-
-```css
-#filtro-contenidos::-webkit-input-placeholder,
-#filtro-mara::-webkit-input-placeholder {
-  color: rgba(246,243,255,.8);
-}
-#filtro-contenidos::-moz-placeholder,
-#filtro-mara::-moz-placeholder {
-  color: rgba(246,243,255,.8);
-  opacity: 1;
-}
-#filtro-contenidos::placeholder,
-#filtro-mara::placeholder {
-  color: rgba(246,243,255,.8);
-}
-```
-
-Los filtros de Maratones conservan sus IDs, el color de placeholder con 80 % de opacidad y las variantes compatibles con WebKit y Firefox.
 
 ## css/components/custom-select.css
 
