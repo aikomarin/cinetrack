@@ -129,7 +129,7 @@
 
 /* Page: Responsive edit form */
 @media (min-width:992px){ .edit-form .row.g-4{ --bs-gutter-x:1.2rem; } }
-@media (max-width:576px){ .edit-card{ padding:18px !important; } .edit-page{ padding-bottom:44px; } }
+@media (max-width:576px){ .edit-card{ padding:18px !important; } .page-shell{ padding-bottom:44px; } }
 
 /* Component: Reduced-motion confirmation modal */
 @media (prefers-reduced-motion: reduce){ .ctmodal{ animation:none; } }

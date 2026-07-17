@@ -930,7 +930,7 @@ La clase `.tile-header-centered` fue retirada. Sus consumidores utilizan ahora l
 ## css/layout/page-shell.css
 
 ```css
-.edit-page {
+.page-shell {
   position: relative;
   padding-top: 8px;
 }
@@ -943,7 +943,7 @@ La clase `.tile-header-centered` fue retirada. Sus consumidores utilizan ahora l
 ---
 
 ```css
-.edit-bg {
+.page-shell-background {
   position: fixed;
   inset: 0;
   z-index: -2;
@@ -980,7 +980,7 @@ La clase `.tile-header-centered` fue retirada. Sus consumidores utilizan ahora l
 ---
 
 ```css
-.edit-glow {
+.page-shell-glow {
   position: fixed;
   inset: 0;
   z-index: -1;
@@ -997,7 +997,7 @@ La clase `.tile-header-centered` fue retirada. Sus consumidores utilizan ahora l
 
 `inset: 0`: extiende la capa hasta los cuatro bordes de la ventana.
 
-`z-index: -1`: coloca el resplandor detrás del contenido y delante de `.edit-bg`, que usa `-2`.
+`z-index: -1`: coloca el resplandor detrás del contenido y delante de `.page-shell-background`, que usa `-2`.
 
 `pointer-events: none`: evita que la capa intercepte interacciones del usuario.
 
@@ -1010,7 +1010,7 @@ La clase `.tile-header-centered` fue retirada. Sus consumidores utilizan ahora l
 ---
 
 ```css
-.edit-page.is-vista .edit-glow {
+.page-shell.is-vista .page-shell-glow {
   background:
     radial-gradient(900px 420px at 30% 30%, rgba(46,204,113,.20), transparent 70%),
     radial-gradient(700px 360px at 72% 70%, rgba(155,92,251,.12), transparent 70%);
@@ -1022,7 +1022,7 @@ La clase `.tile-header-centered` fue retirada. Sus consumidores utilizan ahora l
 ---
 
 ```css
-.edit-page.is-pendiente .edit-glow {
+.page-shell.is-pendiente .page-shell-glow {
   background:
     radial-gradient(900px 420px at 30% 30%, rgba(231,76,60,.18), transparent 70%),
     radial-gradient(700px 360px at 72% 70%, rgba(155,92,251,.12), transparent 70%);
@@ -1034,7 +1034,7 @@ La clase `.tile-header-centered` fue retirada. Sus consumidores utilizan ahora l
 ---
 
 ```css
-.edit-title {
+.page-shell-title {
   font-family: var(--brand-font);
   letter-spacing: .6px;
   text-shadow: 0 14px 28px rgba(0,0,0,.5);
@@ -1059,7 +1059,7 @@ La clase `.tile-header-centered` fue retirada. Sus consumidores utilizan ahora l
 ---
 
 ```css
-.edit-title small {
+.page-shell-title small {
   font-family: var(--font-family-interface);
   text-transform: uppercase;
   letter-spacing: .5px;

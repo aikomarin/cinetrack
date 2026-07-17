@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const csrftoken = getCookie('csrftoken') || '';
 
   // Base para POST (viene del HTML; ej: "/cinetrack/mover-fase/0/")
-  const moveUrlBase = document.querySelector('.edit-page')?.dataset.moveUrl || '';
+  const moveUrlBase = document.querySelector('.page-shell')?.dataset.moveUrl || '';
 
   // Estado DnD
   let draggedId = null;

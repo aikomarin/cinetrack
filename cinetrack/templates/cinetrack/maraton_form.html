@@ -2,13 +2,13 @@
 {% block title %}{% if maraton %}Editar maratón{% else %}Nuevo maratón{% endif %} | CineTrack{% endblock %}
 
 {% block content %}
-<div class="edit-page">
-  <div class="edit-bg"></div>
-  <div class="edit-glow"></div>
+<div class="page-shell">
+  <div class="page-shell-background"></div>
+  <div class="page-shell-glow"></div>
 
   <!-- Header -->
   <div class="d-flex justify-content-between align-items-center mb-3">
-    <h2 class="edit-title m-0">
+    <h2 class="page-shell-title m-0">
       {% if maraton %}
         <i class="bi bi-pencil-square"></i> Editar maratón
         <span class="mx-2 text-muted">|</span>
