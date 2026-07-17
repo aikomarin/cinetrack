@@ -2129,10 +2129,10 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 
 ## css/pages/groups.css
 
-Las clases `.saga-input` y `.saga-btn` se conservan. `.saga-input` define las dimensiones, el fondo, el borde, el placeholder y el foco específicos del formulario de saga; `.form-control` no reproduce ese resultado. `.saga-btn` conserva una altura, padding, radio, sombra, transición, desplazamiento en hover y comportamiento responsive distintos de los botones compartidos, por lo que sustituirla alteraría el diseño.
+Las clases `.saga-name-input` y `.saga-save-button` se conservan. `.saga-name-input` define las dimensiones, el fondo, el borde, el placeholder y el foco específicos del formulario de saga; `.form-control` no reproduce ese resultado. `.saga-save-button` conserva una altura, padding, radio, sombra, transición, desplazamiento en hover y comportamiento responsive distintos de los botones compartidos, por lo que sustituirla alteraría el diseño.
 
 ```css
-.saga-rename {
+.saga-rename-panel {
   background: linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
   box-shadow:
     0 8px 26px rgba(10,0,40,.32),
@@ -2147,7 +2147,7 @@ Las clases `.saga-input` y `.saga-btn` se conservan. `.saga-input` define las di
 ---
 
 ```css
-.saga-form {
+.saga-rename-form {
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 12px;
@@ -2163,7 +2163,7 @@ Las clases `.saga-input` y `.saga-btn` se conservan. `.saga-input` define las di
 ---
 
 ```css
-.saga-input {
+.saga-name-input {
   display: block;
   width: 100%;
   height: 56px;
@@ -2206,7 +2206,7 @@ Las clases `.saga-input` y `.saga-btn` se conservan. `.saga-input` define las di
 ---
 
 ```css
-.saga-input::placeholder {
+.saga-name-input::placeholder {
   color: rgba(255,255,255,.55);
 }
 ```
@@ -2216,7 +2216,7 @@ Las clases `.saga-input` y `.saga-btn` se conservan. `.saga-input` define las di
 ---
 
 ```css
-.saga-input:focus {
+.saga-name-input:focus {
   outline: none;
   box-shadow: 0 0 0 2px rgba(155,92,251,.35);
 }
@@ -2229,7 +2229,7 @@ Las clases `.saga-input` y `.saga-btn` se conservan. `.saga-input` define las di
 ---
 
 ```css
-.saga-btn {
+.saga-save-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -2280,7 +2280,7 @@ Las clases `.saga-input` y `.saga-btn` se conservan. `.saga-input` define las di
 ---
 
 ```css
-.saga-btn:hover {
+.saga-save-button:hover {
   transform: translateY(-2px);
   filter: brightness(1.06);
 }
@@ -2294,10 +2294,10 @@ Las clases `.saga-input` y `.saga-btn` se conservan. `.saga-input` define las di
 
 ```css
 @media (max-width: 720px) {
-  .saga-form {
+  .saga-rename-form {
     grid-template-columns: 1fr;
   }
-  .saga-btn {
+  .saga-save-button {
     width: 100%;
   }
 }
@@ -2305,9 +2305,9 @@ Las clases `.saga-input` y `.saga-btn` se conservan. `.saga-input` define las di
 
 `@media (max-width: 720px)`: aplica las reglas internas únicamente cuando se cumple esta condición de ancho de pantalla.
 
-`.saga-form`: define las columnas de la cuadrícula con el valor `1fr`.
+`.saga-rename-form`: define las columnas de la cuadrícula con el valor `1fr`.
 
-`.saga-btn`: establece el ancho con el valor `100%`.
+`.saga-save-button`: establece el ancho con el valor `100%`.
 
 
 ```css

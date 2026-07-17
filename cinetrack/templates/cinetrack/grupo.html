@@ -17,15 +17,15 @@
     </a>
   </div>
 
-  <div class="tile saga-rename mb-4">
+  <div class="tile saga-rename-panel mb-4">
     <form method="post">
       {% csrf_token %}
       <!-- La key ya no es obligatoria, pero puedes dejarla -->
       <input type="hidden" name="key" value="{{ clave }}">
-      <div class="saga-form">
-        <input name="nombre" type="text" class="saga-input"
+      <div class="saga-rename-form">
+        <input name="nombre" type="text" class="saga-name-input"
                value="{{ saga }}" placeholder="Nombre de la saga">
-        <button class="saga-btn" type="submit">
+        <button class="saga-save-button" type="submit">
           <i class="bi bi-check2-circle me-1"></i> Guardar nombre
         </button>
       </div>

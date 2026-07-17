@@ -1,6 +1,6 @@
 /* Página: Formulario para renombrar una saga */
 /* Página: Superficie para renombrar una saga */
-.saga-rename {
+.saga-rename-panel {
   background: linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
   box-shadow:
     0 8px 26px rgba(10,0,40,.32),
@@ -8,14 +8,14 @@
 }
 
 /* Layout: Controles para renombrar una saga */
-.saga-form {
+.saga-rename-form {
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 12px;
 }
 
 /* Página: Campo para renombrar una saga */
-.saga-input {
+.saga-name-input {
   display: block;
   width: 100%;
   height: 56px;
@@ -29,16 +29,16 @@
   line-height: 1;
   box-shadow: inset 0 0 0 1px rgba(255,255,255,.05);
 }
-.saga-input::placeholder {
+.saga-name-input::placeholder {
   color: rgba(255,255,255,.55);
 }
-.saga-input:focus {
+.saga-name-input:focus {
   outline: none;
   box-shadow: 0 0 0 2px rgba(155,92,251,.35);
 }
 
 /* Página: Acción para renombrar una saga */
-.saga-btn {
+.saga-save-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -56,17 +56,17 @@
     inset 0 0 0 1px rgba(255,255,255,.08);
   transition: transform .15s ease,filter .2s ease;
 }
-.saga-btn:hover {
+.saga-save-button:hover {
   transform: translateY(-2px);
   filter: brightness(1.06);
 }
 
 /* Página: Formulario adaptable para renombrar una saga */
 @media (max-width: 720px) {
-  .saga-form {
+  .saga-rename-form {
     grid-template-columns: 1fr;
   }
-  .saga-btn {
+  .saga-save-button {
     width: 100%;
   }
 }
