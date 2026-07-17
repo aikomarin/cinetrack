@@ -2019,7 +2019,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ## css/pages/favorites.css
 
 ```css
-.fav-rail .section-title {
+.favorites-section .section-title {
   font-family: var(--font-family-interface);
   letter-spacing: .6px;
   color: var(--color-text-primary);
@@ -2060,7 +2060,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.fav-title {
+.favorites-section-title {
   display: flex;
   align-items: center;
   gap: .5rem;
@@ -2100,7 +2100,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.fav-title i {
+.favorites-section-title i {
   font-size: 1.4rem;
   color: #9b5cfb;
   filter: drop-shadow(0 0 6px rgba(155,92,251,.5));
@@ -2116,7 +2116,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.fav-section .btn-ghost-sm {
+.favorites-section-header .btn-ghost-sm {
   font-family: var(--font-family-interface);
   font-size: 1.2rem;
 }
@@ -3119,7 +3119,7 @@ Las clases `.saga-input` y `.saga-btn` se conservan. `.saga-input` define las di
 ---
 
 ```css
-.rew-grid-7x2 {
+.rewatch-grid {
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
   grid-auto-rows: 1fr;
@@ -3138,7 +3138,7 @@ Las clases `.saga-input` y `.saga-btn` se conservan. `.saga-input` define las di
 ---
 
 ```css
-.rew-grid-7x2 .rail-card {
+.rewatch-grid .rail-card {
   width: 100%;
   height: 100%;
 }
@@ -3151,7 +3151,7 @@ Las clases `.saga-input` y `.saga-btn` se conservan. `.saga-input` define las di
 ---
 
 ```css
-.rew-grid-7x2 .rail-poster {
+.rewatch-grid .rail-poster {
   width: 100%;
   height: 100%;
   display: block;
@@ -3170,7 +3170,7 @@ Las clases `.saga-input` y `.saga-btn` se conservan. `.saga-input` define las di
 ---
 
 ```css
-.rew-grid-7x2 .rail-poster img.rew-fit {
+.rewatch-grid .rail-poster img.rewatch-poster-image {
   width: 100%;
   height: 100%;
   object-fit: contain;

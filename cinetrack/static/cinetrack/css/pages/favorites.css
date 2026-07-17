@@ -1,5 +1,5 @@
 /* Página: Favoritos */
-.fav-rail .section-title {
+.favorites-section .section-title {
   font-family: var(--font-family-interface);
   letter-spacing: .6px;
   color: var(--color-text-primary);
@@ -14,7 +14,7 @@
 }
 
 /* Página: Paneles de favoritos */
-.fav-title {
+.favorites-section-title {
   display: flex;
   align-items: center;
   gap: .5rem;
@@ -28,13 +28,13 @@
   text-shadow: 0 2px 8px rgba(0,0,0,.45);
 }
 
-.fav-title i {
+.favorites-section-title i {
   font-size: 1.4rem;
   color: #9b5cfb;
   filter: drop-shadow(0 0 6px rgba(155,92,251,.5));
 }
 
-.fav-section .btn-ghost-sm {
+.favorites-section-header .btn-ghost-sm {
   font-family: var(--font-family-interface);
   font-size: 1.2rem;
 }

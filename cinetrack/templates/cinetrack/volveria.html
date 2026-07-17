@@ -22,19 +22,19 @@
   </div>
 
   <!-- Películas -->
-  <section class="fav-rail mb-5">
-    <div class="fav-section d-flex justify-content-between align-items-center mb-2">
-      <h3 class="fav-title"><i class="bi bi-film"></i> Películas</h3>
+  <section class="favorites-section mb-5">
+    <div class="favorites-section-header d-flex justify-content-between align-items-center mb-2">
+      <h3 class="favorites-section-title"><i class="bi bi-film"></i> Películas</h3>
       <a href="{% url 'cinetrack:catalogo' %}?volveria_a_ver=1&estado=vista&tipo=pelicula" class="btn-ghost-sm">Ver todas</a>
     </div>
 
     {% if peliculas %}
-      <div class="rew-grid-7x2">
+      <div class="rewatch-grid">
         {% for it in peliculas %}
           <article class="rail-card position-relative">
             <a href="{% url 'cinetrack:detalle' it.pk %}?origen=volveria_a_ver" class="rail-poster d-block" title="{{ it.titulo }}">
               {% if it.imagen %}
-                <img class="rew-fit" src="{{ it.imagen }}" alt="{{ it.titulo }}">
+                <img class="rewatch-poster-image" src="{{ it.imagen }}" alt="{{ it.titulo }}">
               {% else %}
                 <div class="poster-ph"><i class="bi bi-image"></i></div>
               {% endif %}
@@ -48,19 +48,19 @@
   </section>
 
   <!-- Series -->
-  <section class="fav-rail">
-    <div class="fav-section d-flex justify-content-between align-items-center mb-2">
-      <h3 class="fav-title"><i class="bi bi-tv"></i> Series</h3>
+  <section class="favorites-section">
+    <div class="favorites-section-header d-flex justify-content-between align-items-center mb-2">
+      <h3 class="favorites-section-title"><i class="bi bi-tv"></i> Series</h3>
       <a href="{% url 'cinetrack:catalogo' %}?volveria_a_ver=1&estado=vista&tipo=serie" class="btn-ghost-sm">Ver todas</a>
     </div>
 
     {% if series %}
-      <div class="rew-grid-7x2">
+      <div class="rewatch-grid">
         {% for it in series %}
           <article class="rail-card position-relative">
             <a href="{% url 'cinetrack:detalle' it.pk %}?origen=volveria_a_ver" class="rail-poster d-block" title="{{ it.titulo }}">
               {% if it.imagen %}
-                <img class="rew-fit" src="{{ it.imagen }}" alt="{{ it.titulo }}">
+                <img class="rewatch-poster-image" src="{{ it.imagen }}" alt="{{ it.titulo }}">
               {% else %}
                 <div class="poster-ph"><i class="bi bi-image"></i></div>
               {% endif %}

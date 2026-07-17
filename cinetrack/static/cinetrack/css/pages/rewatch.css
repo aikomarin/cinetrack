@@ -7,7 +7,7 @@
 }
 
 /* Layout: Cuadrícula fija para volver a ver */
-.rew-grid-7x2 {
+.rewatch-grid {
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
   grid-auto-rows: 1fr;
@@ -15,19 +15,19 @@
 }
 
 /* Layout: Ajusta las tarjetas del carril a las celdas */
-.rew-grid-7x2 .rail-card {
+.rewatch-grid .rail-card {
   width: 100%;
   height: 100%;
 }
 
 /* Componente: Póster sin recorte para volver a ver */
-.rew-grid-7x2 .rail-poster {
+.rewatch-grid .rail-poster {
   width: 100%;
   height: 100%;
   display: block;
   border-radius: inherit;
 }
-.rew-grid-7x2 .rail-poster img.rew-fit {
+.rewatch-grid .rail-poster img.rewatch-poster-image {
   width: 100%;
   height: 100%;
   object-fit: contain;
