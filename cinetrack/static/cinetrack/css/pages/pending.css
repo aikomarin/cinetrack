@@ -4,16 +4,16 @@
   gap: .5rem;
 }
 .nav-pills .nav-link {
-  color: var(--ink-dim);
+  color: var(--color-text-secondary);
   background: rgba(255,255,255,.04);
   border: 1px solid rgba(255,255,255,.10);
   border-radius: 12px;
   padding: .5rem .9rem;
-  font-family: var(--text-font);
+  font-family: var(--font-family-body);
   font-weight: 700;
 }
 .nav-pills .nav-link:hover {
-  color: var(--ink);
+  color: var(--color-text-primary);
   background: rgba(255,255,255,.06);
   border-color: rgba(255,255,255,.18);
 }
@@ -112,7 +112,7 @@
 .tile .tile-header {
   font-family: var(--brand-font);
   letter-spacing: .6px;
-  color: var(--ink);
+  color: var(--color-text-primary);
 }
 
 .kan-poster-small {

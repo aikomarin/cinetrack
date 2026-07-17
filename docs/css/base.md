@@ -26,15 +26,15 @@ body {
 
 ```css
 body {
-  color: var(--ink);
-  font-family: var(--text-font);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-body);
   background: linear-gradient(180deg, #0b0516 0%, #2a0f4f 100%) fixed;
 }
 ```
 
-`color: var(--ink)`: aplica el color general del texto de la aplicación. Actualmente `--ink` contiene `#f6f3ff`, un blanco muy claro con un matiz violeta que contrasta con los fondos oscuros.
+`color: var(--color-text-primary)`: aplica el color general del texto de la aplicación. Actualmente `--color-text-primary` contiene `#f6f3ff`, un blanco muy claro con un matiz violeta que contrasta con los fondos oscuros.
 
-`font-family: var(--text-font)`: aplica la tipografía general de lectura. Actualmente `--text-font` contiene `'DM Sans', system-ui, sans-serif`; utiliza DM Sans cuando está disponible y recurre a la fuente del sistema o a una fuente sans serif si no puede cargarla.
+`font-family: var(--font-family-body)`: aplica la tipografía general de lectura. Actualmente `--font-family-body` contiene `'DM Sans', system-ui, sans-serif`; utiliza DM Sans cuando está disponible y recurre a la fuente del sistema o a una fuente sans serif si no puede cargarla.
 
 `background: linear-gradient(180deg, #0b0516 0%, #2a0f4f 100%) fixed`: crea un degradado vertical que comienza con un violeta casi negro (`#0b0516`) en la parte superior y termina con un morado oscuro (`#2a0f4f`) en la parte inferior. `fixed` mantiene el fondo inmóvil mientras el contenido se desplaza.
 

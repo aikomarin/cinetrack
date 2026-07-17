@@ -13,7 +13,7 @@
 /* Componente: Botón neón principal */
 .btn-neon {
   --c1: var(--accent);
-  --c2: var(--accent-2);
+  --c2: var(--color-accent-dark);
   display: inline-flex;
   align-items: center;
   gap: .5rem;
@@ -51,7 +51,7 @@
   gap: .5rem;
   color: #e9d5ff;
   text-decoration: none;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border-subtle);
   border-radius: 12px;
   background: rgba(255,255,255,.04);
   padding: .8rem 1.1rem;
@@ -68,7 +68,7 @@
   text-decoration: none;
   padding: .45rem .6rem;
   border-radius: 10px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border-subtle);
   background: rgba(255,255,255,.04);
   display: inline-flex;
   align-items: center;
@@ -84,7 +84,7 @@
 /* Componente: Botón de guardado */
 .btn-save {
   --c1: var(--accent);
-  --c2: var(--accent-2);
+  --c2: var(--color-accent-dark);
   display: inline-flex;
   align-items: center;
   gap: .55rem;

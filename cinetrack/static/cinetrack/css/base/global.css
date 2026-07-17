@@ -1,6 +1,6 @@
 body {
-  color: var(--ink);
-  font-family: var(--text-font);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-body);
   background: linear-gradient(180deg, #0b0516 0%, #2a0f4f 100%) fixed;
 }
 

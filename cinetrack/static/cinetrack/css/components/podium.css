@@ -50,7 +50,7 @@
   font-size: 1rem;
   letter-spacing: .3px;
   margin-bottom: .3rem;
-  color: var(--ink);
+  color: var(--color-text-primary);
 }
 
 /* Estado: Contorno base del póster */

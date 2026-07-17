@@ -1,10 +1,10 @@
 /* Componente: Títulos de sección */
 .section-title {
   margin: 0;
-  font-family: var(--ui-font);
+  font-family: var(--font-family-interface);
   text-transform: uppercase;
   letter-spacing: .6px;
-  color: var(--ink-dim);
+  color: var(--color-text-secondary);
   display: flex;
   align-items: center;
   gap: .5rem;

@@ -359,13 +359,13 @@
 
 ```css
 .ring-caption {
-  font-family: var(--ui-font);
+  font-family: var(--font-family-interface);
   opacity: .8;
   margin-top: -2px;
 }
 ```
 
-`font-family: var(--ui-font)`: aplica la familia tipográfica `var(--ui-font)`.
+`font-family: var(--font-family-interface)`: aplica la familia tipográfica `var(--font-family-interface)`.
 
 `opacity: .8`: muestra el elemento con una opacidad de `.8`.
 
@@ -440,7 +440,7 @@
   height: 12px;
   border-radius: 999px;
   background: rgba(255,255,255,.08);
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border-subtle);
   overflow: hidden;
   --delay: 0s;
 }
@@ -454,7 +454,7 @@
 
 `background: rgba(255,255,255,.08)`: aplica el fondo `rgba(255,255,255,.08)`.
 
-`border: 1px solid var(--line)`: dibuja el borde `1px solid var(--line)`.
+`border: 1px solid var(--color-border-subtle)`: dibuja el borde `1px solid var(--color-border-subtle)`.
 
 `overflow: hidden`: controla el contenido desbordado mediante `hidden`.
 
@@ -509,7 +509,7 @@
   top: 0;
   bottom: 0;
   width: 0;
-  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  background: linear-gradient(90deg, var(--accent), var(--color-accent-dark));
   animation: growBar 1.1s ease forwards;
   animation-delay: var(--delay);
 }
@@ -525,7 +525,7 @@
 
 `width: 0`: establece el ancho en `0`.
 
-`background: linear-gradient(90deg, var(--accent), var(--accent-2))`: aplica el fondo `linear-gradient(90deg, var(--accent), var(--accent-2))`.
+`background: linear-gradient(90deg, var(--accent), var(--color-accent-dark))`: aplica el fondo `linear-gradient(90deg, var(--accent), var(--color-accent-dark))`.
 
 `animation: growBar 1.1s ease forwards`: ejecuta la animación `growBar 1.1s ease forwards`.
 
@@ -551,8 +551,8 @@
   display: flex;
   justify-content: space-between;
   gap: 12px;
-  font-family: var(--ui-font);
-  color: var(--ink-dim);
+  font-family: var(--font-family-interface);
+  color: var(--color-text-secondary);
   text-transform: uppercase;
   font-weight: 700;
   letter-spacing: .4px;
@@ -565,9 +565,9 @@
 
 `gap: 12px`: deja una separación de `12px` entre elementos.
 
-`font-family: var(--ui-font)`: aplica la familia tipográfica `var(--ui-font)`.
+`font-family: var(--font-family-interface)`: aplica la familia tipográfica `var(--font-family-interface)`.
 
-`color: var(--ink-dim)`: aplica el color `var(--ink-dim)` al contenido.
+`color: var(--color-text-secondary)`: aplica el color `var(--color-text-secondary)` al contenido.
 
 `text-transform: uppercase`: transforma visualmente el texto mediante `uppercase`.
 
@@ -583,7 +583,7 @@
   height: 16px;
   border-radius: 999px;
   background: rgba(255,255,255,.08);
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border-subtle);
   overflow: hidden;
   position: relative;
 }
@@ -597,7 +597,7 @@
 
 `background: rgba(255,255,255,.08)`: aplica el fondo `rgba(255,255,255,.08)`.
 
-`border: 1px solid var(--line)`: dibuja el borde `1px solid var(--line)`.
+`border: 1px solid var(--color-border-subtle)`: dibuja el borde `1px solid var(--color-border-subtle)`.
 
 `overflow: hidden`: controla el contenido desbordado mediante `hidden`.
 
@@ -610,7 +610,7 @@
   position: absolute;
   inset: 0;
   width: 0;
-  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  background: linear-gradient(90deg, var(--accent), var(--color-accent-dark));
   animation: fillProg 1.2s ease forwards;
 }
 ```
@@ -621,7 +621,7 @@
 
 `width: 0`: establece el ancho en `0`.
 
-`background: linear-gradient(90deg, var(--accent), var(--accent-2))`: aplica el fondo `linear-gradient(90deg, var(--accent), var(--accent-2))`.
+`background: linear-gradient(90deg, var(--accent), var(--color-accent-dark))`: aplica el fondo `linear-gradient(90deg, var(--accent), var(--color-accent-dark))`.
 
 `animation: fillProg 1.2s ease forwards`: ejecuta la animación `fillProg 1.2s ease forwards`.
 
@@ -630,13 +630,13 @@
 ```css
 .progress-caption {
   margin-top: 6px;
-  color: var(--ink-dim);
+  color: var(--color-text-secondary);
 }
 ```
 
 `margin-top: 6px`: deja un margen superior de `6px`.
 
-`color: var(--ink-dim)`: aplica el color `var(--ink-dim)` al contenido.
+`color: var(--color-text-secondary)`: aplica el color `var(--color-text-secondary)` al contenido.
 
 ---
 
@@ -674,7 +674,7 @@
   border-radius: 10px;
   margin-bottom: 2px;
   background: rgba(255,255,255,.08);
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border-subtle);
 }
 ```
 
@@ -692,23 +692,23 @@
 
 `background: rgba(255,255,255,.08)`: aplica el fondo `rgba(255,255,255,.08)`.
 
-`border: 1px solid var(--line)`: dibuja el borde `1px solid var(--line)`.
+`border: 1px solid var(--color-border-subtle)`: dibuja el borde `1px solid var(--color-border-subtle)`.
 
 ---
 
 ```css
 .metric-label {
-  font-family: var(--ui-font);
-  color: var(--ink-dim);
+  font-family: var(--font-family-interface);
+  color: var(--color-text-secondary);
   text-transform: uppercase;
   letter-spacing: .5px;
   font-weight: 700;
 }
 ```
 
-`font-family: var(--ui-font)`: aplica la familia tipográfica `var(--ui-font)`.
+`font-family: var(--font-family-interface)`: aplica la familia tipográfica `var(--font-family-interface)`.
 
-`color: var(--ink-dim)`: aplica el color `var(--ink-dim)` al contenido.
+`color: var(--color-text-secondary)`: aplica el color `var(--color-text-secondary)` al contenido.
 
 `text-transform: uppercase`: transforma visualmente el texto mediante `uppercase`.
 
@@ -867,7 +867,7 @@
   display: grid;
   grid-template-rows: auto 1fr;
   background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border-subtle);
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 12px 24px rgba(0,0,0,.35);
@@ -881,7 +881,7 @@
 
 `background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04))`: aplica el fondo `linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04))`.
 
-`border: 1px solid var(--line)`: dibuja el borde `1px solid var(--line)`.
+`border: 1px solid var(--color-border-subtle)`: dibuja el borde `1px solid var(--color-border-subtle)`.
 
 `border-radius: 16px`: redondea las esquinas con `16px`.
 
@@ -1028,20 +1028,20 @@
 
 ```css
 .recent-tags .tag {
-  font-family: var(--ui-font);
+  font-family: var(--font-family-interface);
   text-transform: uppercase;
   letter-spacing:.5px;
   font-weight:700;
   font-size:.8rem;
   padding:.12rem .5rem;
   border-radius:999px;
-  border:1px solid var(--line);
+  border:1px solid var(--color-border-subtle);
   background: rgba(255,255,255,.04);
-  color: var(--ink-dim);
+  color: var(--color-text-secondary);
 }
 ```
 
-`font-family: var(--ui-font)`: aplica la familia tipográfica `var(--ui-font)`.
+`font-family: var(--font-family-interface)`: aplica la familia tipográfica `var(--font-family-interface)`.
 
 `text-transform: uppercase`: transforma visualmente el texto mediante `uppercase`.
 
@@ -1055,11 +1055,11 @@
 
 `border-radius: 999px`: redondea las esquinas con `999px`.
 
-`border: 1px solid var(--line)`: dibuja el borde `1px solid var(--line)`.
+`border: 1px solid var(--color-border-subtle)`: dibuja el borde `1px solid var(--color-border-subtle)`.
 
 `background: rgba(255,255,255,.04)`: aplica el fondo `rgba(255,255,255,.04)`.
 
-`color: var(--ink-dim)`: aplica el color `var(--ink-dim)` al contenido.
+`color: var(--color-text-secondary)`: aplica el color `var(--color-text-secondary)` al contenido.
 
 ---
 
@@ -1087,12 +1087,12 @@
 
 ```css
 .recent-date {
-  color: var(--ink-dim);
+  color: var(--color-text-secondary);
   font-size:.9rem;
 }
 ```
 
-`color: var(--ink-dim)`: aplica el color `var(--ink-dim)` al contenido.
+`color: var(--color-text-secondary)`: aplica el color `var(--color-text-secondary)` al contenido.
 
 `font-size: .9rem`: establece el tamaño de fuente en `.9rem`.
 
@@ -1117,7 +1117,7 @@
 ```css
 .plat-tile {
   background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border-subtle);
   border-radius: 16px;
   padding: 14px 10px;
   box-shadow: 0 12px 24px rgba(0,0,0,.35);
@@ -1127,7 +1127,7 @@
 
 `background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04))`: aplica el fondo `linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04))`.
 
-`border: 1px solid var(--line)`: dibuja el borde `1px solid var(--line)`.
+`border: 1px solid var(--color-border-subtle)`: dibuja el borde `1px solid var(--color-border-subtle)`.
 
 `border-radius: 16px`: redondea las esquinas con `16px`.
 
@@ -1242,7 +1242,7 @@
   border-radius: 10px;
   overflow: hidden;
   background: #0b0b0f;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border-subtle);
   box-shadow: 0 8px 16px rgba(0,0,0,.35);
   color: inherit;
   text-decoration: none;
@@ -1259,7 +1259,7 @@
 
 `background: #0b0b0f`: aplica el fondo `#0b0b0f`.
 
-`border: 1px solid var(--line)`: dibuja el borde `1px solid var(--line)`.
+`border: 1px solid var(--color-border-subtle)`: dibuja el borde `1px solid var(--color-border-subtle)`.
 
 `box-shadow: 0 8px 16px rgba(0,0,0,.35)`: aplica la sombra `0 8px 16px rgba(0,0,0,.35)`.
 
@@ -1589,7 +1589,7 @@
 .detail-text {
   font-size: .975rem;
   line-height: 1.55;
-  color: var(--ink, #e9e9e9);
+  color: var(--color-text-primary, #e9e9e9);
   opacity: .92;
 }
 ```
@@ -1598,7 +1598,7 @@
 
 `line-height: 1.55`: establece la altura de línea en `1.55`.
 
-`color: var(--ink, #e9e9e9)`: aplica el color `var(--ink, #e9e9e9)` al contenido.
+`color: var(--color-text-primary, #e9e9e9)`: aplica el color `var(--color-text-primary, #e9e9e9)` al contenido.
 
 `opacity: .92`: muestra el elemento con una opacidad de `.92`.
 
@@ -1793,18 +1793,18 @@
 
 ```css
 .detail-title .detail-year {
-  font-family: var(--ui-font);
+  font-family: var(--font-family-interface);
   font-size: 1.2rem;
-  color: var(--ink-dim);
+  color: var(--color-text-secondary);
   margin-left: .5rem;
 }
 ```
 
-`font-family: var(--ui-font)`: aplica la familia tipográfica con el valor `var(--ui-font)`.
+`font-family: var(--font-family-interface)`: aplica la familia tipográfica con el valor `var(--font-family-interface)`.
 
 `font-size: 1.2rem`: establece el tamaño de fuente con el valor `1.2rem`.
 
-`color: var(--ink-dim)`: aplica el color del contenido con el valor `var(--ink-dim)`.
+`color: var(--color-text-secondary)`: aplica el color del contenido con el valor `var(--color-text-secondary)`.
 
 `margin-left: .5rem`: aplica el margen izquierdo con el valor `.5rem`.
 
@@ -1829,7 +1829,7 @@
 ```css
 .detail-card {
   background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border-subtle);
   border-radius: 20px;
   box-shadow: 0 18px 36px rgba(0,0,0,.45);
   backdrop-filter: blur(8px) saturate(140%);
@@ -1841,7 +1841,7 @@
 
 `background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04))`: aplica el fondo con el valor `linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04))`.
 
-`border: 1px solid var(--line)`: aplica el borde con el valor `1px solid var(--line)`.
+`border: 1px solid var(--color-border-subtle)`: aplica el borde con el valor `1px solid var(--color-border-subtle)`.
 
 `border-radius: 20px`: redondea las esquinas con el valor `20px`.
 
@@ -1886,7 +1886,7 @@
 .detail-poster {
   border-radius: 14px;
   overflow: hidden;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border-subtle);
   background: #0b0b0f;
   box-shadow: 0 12px 28px rgba(0,0,0,.5);
 }
@@ -1896,7 +1896,7 @@
 
 `overflow: hidden`: controla el contenido desbordado con el valor `hidden`.
 
-`border: 1px solid var(--line)`: aplica el borde con el valor `1px solid var(--line)`.
+`border: 1px solid var(--color-border-subtle)`: aplica el borde con el valor `1px solid var(--color-border-subtle)`.
 
 `background: #0b0b0f`: aplica el fondo con el valor `#0b0b0f`.
 
@@ -1949,7 +1949,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: var(--ink-dim);
+  color: var(--color-text-secondary);
   font-size: 1.4rem;
 }
 ```
@@ -1964,7 +1964,7 @@
 
 `align-items: center`: alinea los elementos en el eje transversal con el valor `center`.
 
-`color: var(--ink-dim)`: aplica el color del contenido con el valor `var(--ink-dim)`.
+`color: var(--color-text-secondary)`: aplica el color del contenido con el valor `var(--color-text-secondary)`.
 
 `font-size: 1.4rem`: establece el tamaño de fuente con el valor `1.4rem`.
 
@@ -1994,22 +1994,22 @@
 
 ```css
 .detail-section .detail-sub {
-  font-family: var(--ui-font);
+  font-family: var(--font-family-interface);
   text-transform: uppercase;
   letter-spacing: .5px;
-  color: var(--ink-dim);
+  color: var(--color-text-secondary);
   font-size: 1rem;
   margin-bottom: .35rem;
 }
 ```
 
-`font-family: var(--ui-font)`: aplica la familia tipográfica con el valor `var(--ui-font)`.
+`font-family: var(--font-family-interface)`: aplica la familia tipográfica con el valor `var(--font-family-interface)`.
 
 `text-transform: uppercase`: transforma visualmente el texto con el valor `uppercase`.
 
 `letter-spacing: .5px`: establece la separación entre letras con el valor `.5px`.
 
-`color: var(--ink-dim)`: aplica el color del contenido con el valor `var(--ink-dim)`.
+`color: var(--color-text-secondary)`: aplica el color del contenido con el valor `var(--color-text-secondary)`.
 
 `font-size: 1rem`: establece el tamaño de fuente con el valor `1rem`.
 
@@ -2021,7 +2021,7 @@
 .detail-text {
   font-size: 1.05rem;
   line-height: 1.6;
-  color: var(--ink);
+  color: var(--color-text-primary);
   opacity: .95;
 }
 ```
@@ -2030,7 +2030,7 @@
 
 `line-height: 1.6`: establece la altura de línea con el valor `1.6`.
 
-`color: var(--ink)`: aplica el color del contenido con el valor `var(--ink)`.
+`color: var(--color-text-primary)`: aplica el color del contenido con el valor `var(--color-text-primary)`.
 
 `opacity: .95`: establece la opacidad con el valor `.95`.
 
@@ -2055,7 +2055,7 @@
 ```css
 .detail-stat {
   background: rgba(255,255,255,.05);
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border-subtle);
   border-radius: 14px;
   padding: .8rem 1rem;
   display: flex;
@@ -2067,7 +2067,7 @@
 
 `background: rgba(255,255,255,.05)`: aplica el fondo con el valor `rgba(255,255,255,.05)`.
 
-`border: 1px solid var(--line)`: aplica el borde con el valor `1px solid var(--line)`.
+`border: 1px solid var(--color-border-subtle)`: aplica el borde con el valor `1px solid var(--color-border-subtle)`.
 
 `border-radius: 14px`: redondea las esquinas con el valor `14px`.
 
@@ -2098,20 +2098,20 @@
 
 ```css
 .detail-stat .label {
-  font-family: var(--ui-font);
+  font-family: var(--font-family-interface);
   font-size: .85rem;
-  color: var(--ink-dim);
+  color: var(--color-text-secondary);
   text-transform: uppercase;
   letter-spacing: .4px;
   font-weight: 700;
 }
 ```
 
-`font-family: var(--ui-font)`: aplica la familia tipográfica con el valor `var(--ui-font)`.
+`font-family: var(--font-family-interface)`: aplica la familia tipográfica con el valor `var(--font-family-interface)`.
 
 `font-size: .85rem`: establece el tamaño de fuente con el valor `.85rem`.
 
-`color: var(--ink-dim)`: aplica el color del contenido con el valor `var(--ink-dim)`.
+`color: var(--color-text-secondary)`: aplica el color del contenido con el valor `var(--color-text-secondary)`.
 
 `text-transform: uppercase`: transforma visualmente el texto con el valor `uppercase`.
 
@@ -2125,7 +2125,7 @@
 .detail-stat .value {
   font-size: 1.2rem;
   font-weight: 800;
-  color: var(--ink);
+  color: var(--color-text-primary);
 }
 ```
 
@@ -2133,7 +2133,7 @@
 
 `font-weight: 800`: establece el grosor tipográfico con el valor `800`.
 
-`color: var(--ink)`: aplica el color del contenido con el valor `var(--ink)`.
+`color: var(--color-text-primary)`: aplica el color del contenido con el valor `var(--color-text-primary)`.
 
 ---
 
@@ -2169,17 +2169,17 @@
 
 ```css
 .fav-rail .section-title {
-  font-family: var(--ui-font);
+  font-family: var(--font-family-interface);
   letter-spacing: .6px;
-  color: var(--ink);
+  color: var(--color-text-primary);
 }
 ```
 
-`font-family: var(--ui-font)`: aplica la familia tipográfica con el valor `var(--ui-font)`.
+`font-family: var(--font-family-interface)`: aplica la familia tipográfica con el valor `var(--font-family-interface)`.
 
 `letter-spacing: .6px`: establece la separación entre letras con el valor `.6px`.
 
-`color: var(--ink)`: aplica el color del contenido con el valor `var(--ink)`.
+`color: var(--color-text-primary)`: aplica el color del contenido con el valor `var(--color-text-primary)`.
 
 ---
 
@@ -2254,7 +2254,7 @@
   display: flex;
   align-items: center;
   gap: .5rem;
-  font-family: var(--ui-font);
+  font-family: var(--font-family-interface);
   font-size: 1.6rem;
   font-weight: 700;
   letter-spacing: .5px;
@@ -2271,7 +2271,7 @@
 
 `gap: .5rem`: establece la separación entre elementos con el valor `.5rem`.
 
-`font-family: var(--ui-font)`: aplica la familia tipográfica con el valor `var(--ui-font)`.
+`font-family: var(--font-family-interface)`: aplica la familia tipográfica con el valor `var(--font-family-interface)`.
 
 `font-size: 1.6rem`: establece el tamaño de fuente con el valor `1.6rem`.
 
@@ -2307,12 +2307,12 @@
 
 ```css
 .fav-section .btn-ghost-sm {
-  font-family: var(--ui-font);
+  font-family: var(--font-family-interface);
   font-size: 1.2rem;
 }
 ```
 
-`font-family: var(--ui-font)`: aplica la familia tipográfica con el valor `var(--ui-font)`.
+`font-family: var(--font-family-interface)`: aplica la familia tipográfica con el valor `var(--font-family-interface)`.
 
 `font-size: 1.2rem`: establece el tamaño de fuente con el valor `1.2rem`.
 
@@ -2356,11 +2356,11 @@
   width: 100%;
   height: 56px;
   border-radius: 14px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border-subtle);
   background: rgba(255,255,255,.05);
-  color: var(--ink);
+  color: var(--color-text-primary);
   padding: 0 16px;
-  font-family: var(--text-font);
+  font-family: var(--font-family-body);
   font-size: 1rem;
   line-height: 1;
   box-shadow: inset 0 0 0 1px rgba(255,255,255,.05);
@@ -2375,15 +2375,15 @@
 
 `border-radius: 14px`: redondea las esquinas con el valor `14px`.
 
-`border: 1px solid var(--line)`: aplica el borde con el valor `1px solid var(--line)`.
+`border: 1px solid var(--color-border-subtle)`: aplica el borde con el valor `1px solid var(--color-border-subtle)`.
 
 `background: rgba(255,255,255,.05)`: aplica el fondo con el valor `rgba(255,255,255,.05)`.
 
-`color: var(--ink)`: aplica el color del contenido con el valor `var(--ink)`.
+`color: var(--color-text-primary)`: aplica el color del contenido con el valor `var(--color-text-primary)`.
 
 `padding: 0 16px`: aplica el espacio interior con el valor `0 16px`.
 
-`font-family: var(--text-font)`: aplica la familia tipográfica con el valor `var(--text-font)`.
+`font-family: var(--font-family-body)`: aplica la familia tipográfica con el valor `var(--font-family-body)`.
 
 `font-size: 1rem`: establece el tamaño de fuente con el valor `1rem`.
 
@@ -2425,9 +2425,9 @@
   padding: 0 1.35rem;
   border-radius: 14px;
   border: none;
-  background: linear-gradient(135deg,var(--accent),var(--accent-2));
+  background: linear-gradient(135deg,var(--accent),var(--color-accent-dark));
   color: #fff;
-  font-family: var(--text-font);
+  font-family: var(--font-family-body);
   font-weight: 800;
   line-height: 1;
   box-shadow:
@@ -2451,11 +2451,11 @@
 
 `border: none`: aplica el borde con el valor `none`.
 
-`background: linear-gradient(135deg,var(--accent),var(--accent-2))`: aplica el fondo con el valor `linear-gradient(135deg,var(--accent),var(--accent-2))`.
+`background: linear-gradient(135deg,var(--accent),var(--color-accent-dark))`: aplica el fondo con el valor `linear-gradient(135deg,var(--accent),var(--color-accent-dark))`.
 
 `color: #fff`: aplica el color del contenido con el valor `#fff`.
 
-`font-family: var(--text-font)`: aplica la familia tipográfica con el valor `var(--text-font)`.
+`font-family: var(--font-family-body)`: aplica la familia tipográfica con el valor `var(--font-family-body)`.
 
 `font-weight: 800`: establece el grosor tipográfico con el valor `800`.
 
@@ -2751,13 +2751,13 @@
 
 ```css
 .mara-title {
-  font-family: var(--ui-font);
+  font-family: var(--font-family-interface);
   line-height: 1.1;
   letter-spacing: .3px;
 }
 ```
 
-`font-family: var(--ui-font)`: aplica la familia tipográfica con el valor `var(--ui-font)`.
+`font-family: var(--font-family-interface)`: aplica la familia tipográfica con el valor `var(--font-family-interface)`.
 
 `line-height: 1.1`: establece la altura de línea con el valor `1.1`.
 
@@ -2961,17 +2961,17 @@
 
 ```css
 .nav-pills .nav-link {
-  color: var(--ink-dim);
+  color: var(--color-text-secondary);
   background: rgba(255,255,255,.04);
   border: 1px solid rgba(255,255,255,.10);
   border-radius: 12px;
   padding: .5rem .9rem;
-  font-family: var(--text-font);
+  font-family: var(--font-family-body);
   font-weight: 700;
 }
 ```
 
-`color: var(--ink-dim)`: aplica el color del contenido con el valor `var(--ink-dim)`.
+`color: var(--color-text-secondary)`: aplica el color del contenido con el valor `var(--color-text-secondary)`.
 
 `background: rgba(255,255,255,.04)`: aplica el fondo con el valor `rgba(255,255,255,.04)`.
 
@@ -2981,7 +2981,7 @@
 
 `padding: .5rem .9rem`: aplica el espacio interior con el valor `.5rem .9rem`.
 
-`font-family: var(--text-font)`: aplica la familia tipográfica con el valor `var(--text-font)`.
+`font-family: var(--font-family-body)`: aplica la familia tipográfica con el valor `var(--font-family-body)`.
 
 `font-weight: 700`: establece el grosor tipográfico con el valor `700`.
 
@@ -2989,13 +2989,13 @@
 
 ```css
 .nav-pills .nav-link:hover {
-  color: var(--ink);
+  color: var(--color-text-primary);
   background: rgba(255,255,255,.06);
   border-color: rgba(255,255,255,.18);
 }
 ```
 
-`color: var(--ink)`: aplica el color del contenido con el valor `var(--ink)`.
+`color: var(--color-text-primary)`: aplica el color del contenido con el valor `var(--color-text-primary)`.
 
 `background: rgba(255,255,255,.06)`: aplica el fondo con el valor `rgba(255,255,255,.06)`.
 
@@ -3261,7 +3261,7 @@
 .tile .tile-header {
   font-family: var(--brand-font);
   letter-spacing: .6px;
-  color: var(--ink);
+  color: var(--color-text-primary);
 }
 ```
 
@@ -3269,7 +3269,7 @@
 
 `letter-spacing: .6px`: separa las letras con el valor `.6px`.
 
-`color: var(--ink)`: aplica el color del contenido con el valor `var(--ink)`.
+`color: var(--color-text-primary)`: aplica el color del contenido con el valor `var(--color-text-primary)`.
 
 ---
 

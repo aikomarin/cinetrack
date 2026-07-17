@@ -2,7 +2,7 @@
 /* Hook de JavaScript: .ct-select se genera durante la ejecución; actualiza JavaScript antes de renombrarla. */
 .ct-select {
   position: relative;
-  font-family: var(--ui-font);
+  font-family: var(--font-family-interface);
 }
 .ct-select select {
   opacity: 0;
@@ -20,11 +20,11 @@
   justify-content: space-between;
   gap: .6rem;
   width: 100%;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border-subtle);
   border-radius: 14px;
   padding: .85rem .95rem;
   background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-  color: var(--ink);
+  color: var(--color-text-primary);
   font-weight: 700;
   letter-spacing: .3px;
   box-shadow: 0 10px 22px rgba(0,0,0,.25), inset 0 0 0 1px rgba(255,255,255,.05);
@@ -61,7 +61,7 @@
 
 /* Hook de JavaScript: .ct-menu se genera y posiciona durante la ejecución. */
 #ct-portal .ct-menu {
-  background: linear-gradient(180deg, var(--bg-2, #1a1030), #120a1f);
+  background: linear-gradient(180deg, var(--color-surface-elevated, #1a1030), var(--color-surface-base, #120a1f));
   border: 1px solid rgba(155,92,251,.28);
   box-shadow: 0 14px 28px rgba(0,0,0,.55), inset 0 0 0 1px rgba(255,255,255,.05);
   border-radius: 12px;
@@ -72,7 +72,7 @@
 
 /* Hook de JavaScript: .ct-option se genera durante la ejecución. */
 #ct-portal .ct-option {
-  color: var(--ink, #f6f3ff);
+  color: var(--color-text-primary, #f6f3ff);
   padding: .4rem .65rem;
   border-radius: 8px;
   font-weight: 600;
@@ -88,7 +88,7 @@
 }
 /* Estado: Opción de marcador de posición */
 #ct-portal .ct-option.is-placeholder {
-  color: var(--ink-dim);
+  color: var(--color-text-secondary);
 }
 #ct-portal .ct-option[aria-disabled="true"] {
   opacity: .45;

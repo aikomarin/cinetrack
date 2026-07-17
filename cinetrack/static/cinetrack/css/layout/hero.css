@@ -11,8 +11,8 @@
 }
 /* Hook de JavaScript: .hero-sub se actualiza después de eliminar un grupo; actualiza JavaScript y templates antes de renombrarla. */
 .hero-sub {
-  color: var(--ink-dim);
-  font-family: var(--ui-font);
+  color: var(--color-text-secondary);
+  font-family: var(--font-family-interface);
   font-size: clamp(1.05rem, 1.6vw, 1.25rem);
   letter-spacing: .4px;
   text-transform: uppercase;

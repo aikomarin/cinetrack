@@ -1,32 +1,15 @@
 :root {
   /* Tipografía: Fuentes de la aplicación */
   --brand-font: 'Bebas Neue', system-ui, sans-serif;
-  --ui-font: 'Teko', system-ui, sans-serif;
-  --text-font: 'DM Sans', system-ui, sans-serif;
+  --font-family-interface: 'Teko', system-ui, sans-serif;
+  --font-family-body: 'DM Sans', system-ui, sans-serif;
 
   /* Base: Colores generales */
-  --bg-0: #0b0712;
-  --bg-1: #120a1f;
-  --bg-2: #1a1030;
-  --ink: #f6f3ff;
-  --ink-dim: #dcd3fb;
+  --color-surface-base: #120a1f;
+  --color-surface-elevated: #1a1030;
+  --color-text-primary: #f6f3ff;
+  --color-text-secondary: #dcd3fb;
   --accent: #9b5cfb;
-  --accent-2: #6f3fe6;
-  --accent-3: #14ffe9;
-  --line: rgba(255,255,255,.12);
-
-  /* Layout: Espaciado de los rollos laterales */
-  --rail-w: 140px;
-  --rails-pad: calc(var(--rail-w) + 18px);
-
-  /* Componente: Colores de la claqueta */
-  --clap-body: #7c3aed;
-  --clap-body-dark: #5b2bb5;
-  --clap-stripe: #ffffff;
-  --clap-edge: rgba(0,0,0,.28);
-
-  /* Layout: Animación de las perforaciones de película */
-  --sprocket-speed: 1s;
-  --sprocket-step: 66px;
-  --sprocket-hole: 30px;
+  --color-accent-dark: #6f3fe6;
+  --color-border-subtle: rgba(255,255,255,.12);
 }

@@ -51,8 +51,8 @@
   gap: .6rem;
 }
 .edit-title small {
-  font-family: var(--ui-font);
+  font-family: var(--font-family-interface);
   text-transform: uppercase;
   letter-spacing: .5px;
-  color: var(--ink-dim);
+  color: var(--color-text-secondary);
 }

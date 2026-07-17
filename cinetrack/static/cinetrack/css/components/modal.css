@@ -3,7 +3,7 @@
   background: linear-gradient(180deg,
               rgba(30, 20, 50, .88),
               rgba(20, 15, 30, .95));
-  color: var(--ink);
+  color: var(--color-text-primary);
   border: 1px solid rgba(255,255,255,.08);
   border-radius: 18px;
   box-shadow:
@@ -55,14 +55,14 @@
   color: #ffd15c;
 }
 .ctmodal-header .ctmodal-title {
-  font-family: var(--ui-font);
+  font-family: var(--font-family-interface);
   font-weight: 900;
   letter-spacing: .3px;
 }
 
 .ctmodal-body {
   padding: 6px 18px 4px 18px;
-  color: var(--ink);
+  color: var(--color-text-primary);
 }
 
 .ctmodal-actions {
@@ -95,7 +95,7 @@
 /* Sobrescritura de Bootstrap: Aplica las variantes de botones del modal de confirmación. */
 .btn-glow {
   --c1: var(--accent, #9b5cfb);
-  --c2: var(--accent-2, #6f3fe6);
+  --c2: var(--color-accent-dark, #6f3fe6);
   border: 1px solid transparent;
   background: linear-gradient(135deg, var(--c1), var(--c2));
   color: #fff;
@@ -108,7 +108,7 @@
 }
 
 .ctmodal .btn-outline-light {
-  color: var(--ink);
+  color: var(--color-text-primary);
   border-color: rgba(255,255,255,.22);
 }
 .ctmodal .btn-outline-light:hover {

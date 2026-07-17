@@ -1,12 +1,20 @@
+:root {
+  --film-rail-width: 140px;
+  --film-rail-content-offset: calc(var(--film-rail-width) + 18px);
+}
+
 /* Layout: Rieles verticales de película */
 .film-roll-vertical {
+  --film-sprocket-cycle-duration: 1s;
+  --film-sprocket-pattern-step: 66px;
+  --film-sprocket-hole-height: 30px;
   position: fixed;
   top: 0;
   bottom: 0;
-  width: var(--rail-w);
+  width: var(--film-rail-width);
   background: linear-gradient(#0b0b0f, #151021);
-  border-left: 2px solid var(--line);
-  border-right: 2px solid var(--line);
+  border-left: 2px solid var(--color-border-subtle);
+  border-right: 2px solid var(--color-border-subtle);
   overflow: hidden;
   z-index: 2;
 }
@@ -29,13 +37,13 @@
   pointer-events: none;
   background-image: linear-gradient(
     to bottom,
-    #e7e7ea 0 var(--sprocket-hole),
-    rgba(231,231,234,0) var(--sprocket-hole) var(--sprocket-step)
+    #e7e7ea 0 var(--film-sprocket-hole-height),
+    rgba(231,231,234,0) var(--film-sprocket-hole-height) var(--film-sprocket-pattern-step)
   );
   background-repeat: repeat-y;
-  background-size: 100% var(--sprocket-step);
+  background-size: 100% var(--film-sprocket-pattern-step);
   background-position: 0 0;
-  animation: sprocketMove var(--sprocket-speed) linear infinite;
+  animation: sprocketMove var(--film-sprocket-cycle-duration) linear infinite;
 }
 
 .film-roll-vertical::before {
@@ -88,4 +96,15 @@
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+/* Layout: Responsive film rails */
+@media (max-width: 1100px) {
+  :root { --film-rail-width: 120px; }
+}
+@media (max-width: 900px) {
+  :root { --film-rail-width: 96px; }
+}
+@media (max-width: 720px) {
+  :root { --film-rail-width: 0px; }
 }

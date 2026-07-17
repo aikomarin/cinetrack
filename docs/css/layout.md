@@ -5,7 +5,7 @@
   position: relative;
   top: auto;
   z-index: 50;
-  padding: 14px var(--rails-pad) 10px;
+  padding: 14px var(--film-rail-content-offset) 10px;
 }
 ```
 
@@ -15,7 +15,7 @@
 
 `z-index: 50`: coloca el contenedor por encima de elementos con niveles de apilamiento menores.
 
-`padding: 14px var(--rails-pad) 10px`: añade 14 píxeles arriba, 10 abajo y un espacio lateral calculado con `--rails-pad`. Actualmente `--rails-pad` vale `calc(var(--rail-w) + 18px)` y `--rail-w` vale `140px`, por lo que el espacio lateral base equivale a 158 píxeles.
+`padding: 14px var(--film-rail-content-offset) 10px`: añade 14 píxeles arriba, 10 abajo y un espacio lateral calculado con `--film-rail-content-offset`. Actualmente `--film-rail-content-offset` vale `calc(var(--film-rail-width) + 18px)` y `--film-rail-width` vale `140px`, por lo que el espacio lateral base equivale a 158 píxeles.
 
 ---
 
@@ -26,7 +26,7 @@
   justify-content: space-between;
   gap: 14px;
   background: linear-gradient(180deg, rgba(15,10,24,.85), rgba(15,10,24,.72));
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border-subtle);
   border-radius: 18px;
   padding: 10px 14px;
   backdrop-filter: blur(8px) saturate(140%);
@@ -44,7 +44,7 @@
 
 `background`: crea un degradado vertical oscuro y semitransparente, más opaco arriba que abajo.
 
-`border: 1px solid var(--line)`: dibuja un borde de un píxel con `--line`, cuyo valor actual es `rgba(255,255,255,.12)`, un blanco con 12 % de opacidad.
+`border: 1px solid var(--color-border-subtle)`: dibuja un borde de un píxel con `--color-border-subtle`, cuyo valor actual es `rgba(255,255,255,.12)`, un blanco con 12 % de opacidad.
 
 `border-radius: 18px`: redondea las esquinas del contenedor.
 
@@ -137,12 +137,12 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-family: var(--ui-font);
+  font-family: var(--font-family-interface);
   text-transform: uppercase;
   letter-spacing: .5px;
   padding: 8px 12px;
   border-radius: 12px;
-  color: var(--ink-dim);
+  color: var(--color-text-secondary);
   text-decoration: none;
   transition: color .15s ease, transform .15s ease, background .15s ease;
   position: relative;
@@ -155,7 +155,7 @@
 
 `gap: 8px`: separa el icono y el texto por 8 píxeles.
 
-`font-family: var(--ui-font)`: usa la tipografía de interfaz. Actualmente `--ui-font` contiene `'Teko', system-ui, sans-serif`.
+`font-family: var(--font-family-interface)`: usa la tipografía de interfaz. Actualmente `--font-family-interface` contiene `'Teko', system-ui, sans-serif`.
 
 `text-transform: uppercase`: muestra el texto en mayúsculas.
 
@@ -165,7 +165,7 @@
 
 `border-radius: 12px`: redondea el fondo de la pestaña.
 
-`color: var(--ink-dim)`: aplica el color secundario del texto. Actualmente `--ink-dim` contiene `#dcd3fb`, un lavanda claro.
+`color: var(--color-text-secondary)`: aplica el color secundario del texto. Actualmente `--color-text-secondary` contiene `#dcd3fb`, un lavanda claro.
 
 `text-decoration: none`: elimina el subrayado del enlace.
 
@@ -226,7 +226,7 @@
   width: 50%;
   height: 3px;
   border-radius: 6px;
-  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  background: linear-gradient(90deg, var(--accent), var(--color-accent-dark));
   box-shadow: 0 0 6px rgba(155,92,251,.55);
   transform: scaleX(0);
   transition: transform .25s ease;
@@ -247,7 +247,7 @@
 
 `border-radius: 6px`: redondea los extremos de la línea.
 
-`background`: crea un degradado horizontal desde `--accent`, actualmente `#9b5cfb`, hasta `--accent-2`, actualmente `#6f3fe6`; ambos son tonos morados de acento.
+`background`: crea un degradado horizontal desde `--accent`, actualmente `#9b5cfb`, hasta `--color-accent-dark`, actualmente `#6f3fe6`; ambos son tonos morados de acento.
 
 `box-shadow`: añade un resplandor morado con 55 % de opacidad.
 
@@ -291,7 +291,7 @@
   width: 40px;
   height: 40px;
   border-radius: 10px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border-subtle);
   background: rgba(255,255,255,.04);
   color: inherit;
   text-decoration: none;
@@ -311,7 +311,7 @@
 
 `border-radius: 10px`: redondea las esquinas.
 
-`border: 1px solid var(--line)`: aplica el borde blanco tenue definido por `--line`, cuyo valor es `rgba(255,255,255,.12)`.
+`border: 1px solid var(--color-border-subtle)`: aplica el borde blanco tenue definido por `--color-border-subtle`, cuyo valor es `rgba(255,255,255,.12)`.
 
 `background`: aplica un fondo blanco con 4 % de opacidad.
 
@@ -343,11 +343,11 @@
   gap: .5rem;
   padding: .55rem .85rem;
   border-radius: 10px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border-subtle);
   background: rgba(255,255,255,.04);
-  color: var(--ink-dim);
+  color: var(--color-text-secondary);
   text-decoration: none;
-  font-family: var(--ui-font);
+  font-family: var(--font-family-interface);
   text-transform: uppercase;
   letter-spacing: .5px;
   font-weight: 600;
@@ -365,15 +365,15 @@
 
 `border-radius: 10px`: redondea las esquinas.
 
-`border: 1px solid var(--line)`: usa el borde blanco tenue `rgba(255,255,255,.12)` definido por `--line`.
+`border: 1px solid var(--color-border-subtle)`: usa el borde blanco tenue `rgba(255,255,255,.12)` definido por `--color-border-subtle`.
 
 `background`: aplica un fondo blanco con 4 % de opacidad.
 
-`color: var(--ink-dim)`: aplica el lavanda claro `#dcd3fb` definido por `--ink-dim`.
+`color: var(--color-text-secondary)`: aplica el lavanda claro `#dcd3fb` definido por `--color-text-secondary`.
 
 `text-decoration: none`: elimina el subrayado del enlace.
 
-`font-family: var(--ui-font)`: aplica la tipografía de interfaz `'Teko', system-ui, sans-serif`.
+`font-family: var(--font-family-interface)`: aplica la tipografía de interfaz `'Teko', system-ui, sans-serif`.
 
 `text-transform: uppercase`: muestra el texto en mayúsculas.
 
@@ -417,8 +417,8 @@
   width: 34px;
   height: 26px;
   border-radius: 4px;
-  background: linear-gradient(180deg, var(--clap-body), var(--clap-body-dark));
-  box-shadow: inset 0 0 0 2px var(--clap-edge), 0 4px 10px rgba(0,0,0,.35);
+  background: linear-gradient(180deg, var(--clapboard-body-color-start), var(--clapboard-body-color-end));
+  box-shadow: inset 0 0 0 2px var(--clapboard-edge-color), 0 4px 10px rgba(0,0,0,.35);
   display: inline-block;
   margin-right: .5rem;
 }
@@ -432,9 +432,9 @@
 
 `border-radius: 4px`: redondea ligeramente las esquinas.
 
-`background`: aplica un degradado vertical desde `--clap-body`, actualmente `#7c3aed`, hasta `--clap-body-dark`, actualmente `#5b2bb5`; representan el morado principal y el morado oscuro del cuerpo de la claqueta.
+`background`: aplica un degradado vertical desde `--clapboard-body-color-start`, actualmente `#7c3aed`, hasta `--clapboard-body-color-end`, actualmente `#5b2bb5`; representan el morado principal y el morado oscuro del cuerpo de la claqueta.
 
-`box-shadow`: dibuja un borde interior con `--clap-edge`, actualmente `rgba(0,0,0,.28)`, y una sombra exterior oscura.
+`box-shadow`: dibuja un borde interior con `--clapboard-edge-color`, actualmente `rgba(0,0,0,.28)`, y una sombra exterior oscura.
 
 `display: inline-block`: permite que el logo permanezca en línea y respete sus dimensiones.
 
@@ -452,7 +452,7 @@
   height: 8px;
   border-radius: 50%;
   background: #ddd;
-  box-shadow: 0 0 0 2px var(--clap-edge);
+  box-shadow: 0 0 0 2px var(--clapboard-edge-color);
 }
 ```
 
@@ -472,7 +472,7 @@
 
 `background: #ddd`: aplica un gris claro a la superficie de la bisagra.
 
-`box-shadow`: dibuja un contorno de 2 píxeles con `--clap-edge`, cuyo valor es `rgba(0,0,0,.28)`.
+`box-shadow`: dibuja un contorno de 2 píxeles con `--clapboard-edge-color`, cuyo valor es `rgba(0,0,0,.28)`.
 
 ---
 
@@ -485,8 +485,8 @@
   width: 36px;
   height: 10px;
   border-radius: 3px;
-  background: repeating-linear-gradient(45deg, var(--clap-stripe) 0 7px, #6b21a8 7px 14px);
-  box-shadow: inset 0 0 0 1px var(--clap-edge), 0 2px 6px rgba(0,0,0,.35);
+  background: repeating-linear-gradient(45deg, var(--clapboard-stripe-color) 0 7px, #6b21a8 7px 14px);
+  box-shadow: inset 0 0 0 1px var(--clapboard-edge-color), 0 2px 6px rgba(0,0,0,.35);
   filter: drop-shadow(0 2px 4px rgba(0,0,0,.35));
   transform-origin: 6px 10px;
   animation: clapOpen 2.2s ease-in-out infinite;
@@ -507,9 +507,9 @@
 
 `border-radius: 3px`: redondea ligeramente sus esquinas.
 
-`background`: crea franjas diagonales alternas entre `--clap-stripe`, actualmente `#fff`, y el morado oscuro `#6b21a8`.
+`background`: crea franjas diagonales alternas entre `--clapboard-stripe-color`, actualmente `#fff`, y el morado oscuro `#6b21a8`.
 
-`box-shadow`: dibuja un borde interior con `--clap-edge`, cuyo valor es `rgba(0,0,0,.28)`, y una sombra exterior.
+`box-shadow`: dibuja un borde interior con `--clapboard-edge-color`, cuyo valor es `rgba(0,0,0,.28)`, y una sombra exterior.
 
 `filter`: añade otra sombra bajo la forma completa de la tapa.
 
@@ -559,7 +559,7 @@
   height: 34px;
   transform: translate(-50%, -2px);
   border-radius: 6px;
-  background: linear-gradient(180deg, var(--clap-body, #7c3aed), var(--clap-body-dark, #5b2bb5));
+  background: linear-gradient(180deg, var(--clapboard-body-color-start, #7c3aed), var(--clapboard-body-color-end, #5b2bb5));
   box-shadow: inset 0 0 0 2px rgba(0,0,0,.28), 0 6px 16px rgba(0,0,0,.35);
 }
 ```
@@ -580,7 +580,7 @@
 
 `border-radius: 6px`: redondea las esquinas del cuerpo.
 
-`background`: crea un degradado desde `--clap-body`, actualmente `#7c3aed`, hasta `--clap-body-dark`, actualmente `#5b2bb5`. Si las variables no estuvieran definidas, usaría esos mismos valores como respaldo.
+`background`: crea un degradado desde `--clapboard-body-color-start`, actualmente `#7c3aed`, hasta `--clapboard-body-color-end`, actualmente `#5b2bb5`. Si las variables no estuvieran definidas, usaría esos mismos valores como respaldo.
 
 `box-shadow`: dibuja un borde interior negro con 28 % de opacidad y una sombra exterior negra con 35 % de opacidad.
 
@@ -644,10 +644,10 @@
   position: fixed;
   top: 0;
   bottom: 0;
-  width: var(--rail-w);
+  width: var(--film-rail-width);
   background: linear-gradient(#0b0b0f, #151021);
-  border-left: 2px solid var(--line);
-  border-right: 2px solid var(--line);
+  border-left: 2px solid var(--color-border-subtle);
+  border-right: 2px solid var(--color-border-subtle);
   overflow: hidden;
   z-index: 2;
 }
@@ -659,11 +659,11 @@
 
 `bottom: 0`: extiende el riel hasta la parte inferior de la ventana.
 
-`width: var(--rail-w)`: establece el ancho mediante `--rail-w`, cuyo valor actual es `140px`.
+`width: var(--film-rail-width)`: establece el ancho mediante `--film-rail-width`, cuyo valor actual es `140px`.
 
 `background`: aplica un degradado vertical desde el negro azulado `#0b0b0f` hasta el morado oscuro `#151021`.
 
-`border-left`: dibuja un borde izquierdo de 2 píxeles con `--line`, cuyo valor actual es `rgba(255,255,255,.12)`.
+`border-left`: dibuja un borde izquierdo de 2 píxeles con `--color-border-subtle`, cuyo valor actual es `rgba(255,255,255,.12)`.
 
 `border-right`: dibuja el mismo borde tenue en el lado derecho.
 
@@ -705,13 +705,13 @@
   pointer-events: none;
   background-image: linear-gradient(
     to bottom,
-    #e7e7ea 0 var(--sprocket-hole),
-    rgba(231,231,234,0) var(--sprocket-hole) var(--sprocket-step)
+    #e7e7ea 0 var(--film-sprocket-hole-height),
+    rgba(231,231,234,0) var(--film-sprocket-hole-height) var(--film-sprocket-pattern-step)
   );
   background-repeat: repeat-y;
-  background-size: 100% var(--sprocket-step);
+  background-size: 100% var(--film-sprocket-pattern-step);
   background-position: 0 0;
-  animation: sprocketMove var(--sprocket-speed) linear infinite;
+  animation: sprocketMove var(--film-sprocket-cycle-duration) linear infinite;
 }
 ```
 
@@ -729,15 +729,15 @@
 
 `pointer-events: none`: evita que los pseudoelementos intercepten clics o movimientos del puntero.
 
-`background-image`: dibuja cada perforación con el gris claro `#e7e7ea` hasta la altura indicada por `--sprocket-hole`, actualmente `18px`, y deja transparente el resto hasta `--sprocket-step`, actualmente `34px`.
+`background-image`: dibuja cada perforación con el gris claro `#e7e7ea` hasta la altura indicada por `--film-sprocket-hole-height`, actualmente `30px`, y deja transparente el resto hasta `--film-sprocket-pattern-step`, actualmente `66px`.
 
 `background-repeat: repeat-y`: repite el patrón únicamente en dirección vertical.
 
-`background-size: 100% var(--sprocket-step)`: hace que cada repetición ocupe todo el ancho y 34 píxeles de alto, según el valor actual de `--sprocket-step`.
+`background-size: 100% var(--film-sprocket-pattern-step)`: hace que cada repetición ocupe todo el ancho y 66 píxeles de alto, según el valor actual de `--film-sprocket-pattern-step`.
 
 `background-position: 0 0`: inicia el patrón en la esquina superior izquierda.
 
-`animation`: desplaza continuamente las perforaciones mediante `sprocketMove`; `--sprocket-speed` contiene actualmente `9s`, por lo que cada ciclo dura nueve segundos y mantiene una velocidad constante.
+`animation`: desplaza continuamente las perforaciones mediante `sprocketMove`; `--film-sprocket-cycle-duration` contiene actualmente `1s`, por lo que cada ciclo dura un segundo y mantiene una velocidad constante.
 
 ---
 
@@ -915,17 +915,17 @@
 
 ```css
 .hero-sub {
-  color: var(--ink-dim);
-  font-family: var(--ui-font);
+  color: var(--color-text-secondary);
+  font-family: var(--font-family-interface);
   font-size: clamp(1.05rem, 1.6vw, 1.25rem);
   letter-spacing: .4px;
   text-transform: uppercase;
 }
 ```
 
-`color: var(--ink-dim)`: aplica el lavanda claro `#dcd3fb` definido actualmente por `--ink-dim`.
+`color: var(--color-text-secondary)`: aplica el lavanda claro `#dcd3fb` definido actualmente por `--color-text-secondary`.
 
-`font-family: var(--ui-font)`: usa la tipografía de interfaz, cuyo valor actual es `'Teko', system-ui, sans-serif`.
+`font-family: var(--font-family-interface)`: usa la tipografía de interfaz, cuyo valor actual es `'Teko', system-ui, sans-serif`.
 
 `font-size`: adapta el subtítulo entre `1.05rem` y `1.25rem`, usando `1.6vw` dentro de esos límites.
 
@@ -1066,17 +1066,24 @@
 
 ```css
 .edit-title small {
-  font-family: var(--ui-font);
+  font-family: var(--font-family-interface);
   text-transform: uppercase;
   letter-spacing: .5px;
-  color: var(--ink-dim);
+  color: var(--color-text-secondary);
 }
 ```
 
-`font-family: var(--ui-font)`: aplica la tipografía de interfaz, cuyo valor actual es `'Teko', system-ui, sans-serif`.
+`font-family: var(--font-family-interface)`: aplica la tipografía de interfaz, cuyo valor actual es `'Teko', system-ui, sans-serif`.
 
 `text-transform: uppercase`: muestra en mayúsculas el texto secundario del título.
 
 `letter-spacing: .5px`: separa sus letras por medio píxel.
 
-`color: var(--ink-dim)`: aplica el lavanda claro `#dcd3fb` definido actualmente por `--ink-dim`.
+`color: var(--color-text-secondary)`: aplica el lavanda claro `#dcd3fb` definido actualmente por `--color-text-secondary`.
+## Variables de arquitectura del layout
+
+`layout/film-rails.css` declara globalmente `--film-rail-width: 140px` y `--film-rail-content-offset: calc(var(--film-rail-width) + 18px)`. El alcance global permite que Film Rails, Cinedock y las reglas responsive compartan la misma geometría.
+
+`.film-roll-vertical` declara localmente `--film-sprocket-cycle-duration: 1s`, `--film-sprocket-pattern-step: 66px` y `--film-sprocket-hole-height: 30px`; sus pseudoelementos las reciben por herencia.
+
+`layout/clapboard.css` declara las cuatro variables `--clapboard-*` sobre el alcance compartido `.clap-sep, .logo-claqueta-anim`. El separador y el logotipo comparten una sola definición sin exponer esos valores en `:root`.

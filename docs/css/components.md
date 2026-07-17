@@ -32,7 +32,7 @@
 ```css
 .btn-neon {
   --c1: var(--accent);
-  --c2: var(--accent-2);
+  --c2: var(--color-accent-dark);
   display: inline-flex;
   align-items: center;
   gap: .5rem;
@@ -53,7 +53,7 @@
 
 `--c1: var(--accent)`: guarda localmente en `--c1` el morado claro `#9b5cfb` definido por `--accent`.
 
-`--c2: var(--accent-2)`: guarda localmente en `--c2` el morado oscuro `#6f3fe6` definido por `--accent-2`.
+`--c2: var(--color-accent-dark)`: guarda localmente en `--c2` el morado oscuro `#6f3fe6` definido por `--color-accent-dark`.
 
 `display: inline-flex`: mantiene el botón en línea y organiza su contenido con Flexbox.
 
@@ -123,7 +123,7 @@
   gap: .5rem;
   color: #e9d5ff;
   text-decoration: none;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border-subtle);
   border-radius: 12px;
   background: rgba(255,255,255,.04);
   padding: .8rem 1.1rem;
@@ -142,7 +142,7 @@
 
 `text-decoration: none`: elimina el subrayado si el botón es un enlace.
 
-`border: 1px solid var(--line)`: dibuja un borde tenue con `--line`, cuyo valor actual es `rgba(255,255,255,.12)`.
+`border: 1px solid var(--color-border-subtle)`: dibuja un borde tenue con `--color-border-subtle`, cuyo valor actual es `rgba(255,255,255,.12)`.
 
 `border-radius: 12px`: redondea las esquinas.
 
@@ -178,7 +178,7 @@
   text-decoration: none;
   padding: .45rem .6rem;
   border-radius: 10px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border-subtle);
   background: rgba(255,255,255,.04);
   display: inline-flex;
   align-items: center;
@@ -196,7 +196,7 @@
 
 `border-radius: 10px`: redondea las esquinas.
 
-`border: 1px solid var(--line)`: dibuja el borde tenue definido por `--line`, actualmente `rgba(255,255,255,.12)`.
+`border: 1px solid var(--color-border-subtle)`: dibuja el borde tenue definido por `--color-border-subtle`, actualmente `rgba(255,255,255,.12)`.
 
 `background`: aplica un fondo blanco con 4 % de opacidad.
 
@@ -228,7 +228,7 @@
 ```css
 .btn-save {
   --c1: var(--accent);
-  --c2: var(--accent-2);
+  --c2: var(--color-accent-dark);
   display: inline-flex;
   align-items: center;
   gap: .55rem;
@@ -248,7 +248,7 @@
 
 `--c1: var(--accent)`: asigna localmente a `--c1` el morado claro `#9b5cfb`.
 
-`--c2: var(--accent-2)`: asigna localmente a `--c2` el morado oscuro `#6f3fe6`.
+`--c2: var(--color-accent-dark)`: asigna localmente a `--c2` el morado oscuro `#6f3fe6`.
 
 `display: inline-flex`: mantiene el botón en línea y organiza su contenido con Flexbox.
 
@@ -459,10 +459,10 @@
 ```css
 .section-title {
   margin: 0;
-  font-family: var(--ui-font);
+  font-family: var(--font-family-interface);
   text-transform: uppercase;
   letter-spacing: .6px;
-  color: var(--ink-dim);
+  color: var(--color-text-secondary);
   display: flex;
   align-items: center;
   gap: .5rem;
@@ -471,13 +471,13 @@
 
 `margin: 0`: elimina el margen exterior predeterminado del título.
 
-`font-family: var(--ui-font)`: aplica la tipografía de interfaz, cuyo valor actual es `'Teko', system-ui, sans-serif`.
+`font-family: var(--font-family-interface)`: aplica la tipografía de interfaz, cuyo valor actual es `'Teko', system-ui, sans-serif`.
 
 `text-transform: uppercase`: muestra el texto en mayúsculas.
 
 `letter-spacing: .6px`: separa las letras por 0.6 píxeles.
 
-`color: var(--ink-dim)`: aplica el lavanda claro `#dcd3fb` definido actualmente por `--ink-dim`.
+`color: var(--color-text-secondary)`: aplica el lavanda claro `#dcd3fb` definido actualmente por `--color-text-secondary`.
 
 `display: flex`: organiza los elementos internos del título mediante Flexbox.
 
@@ -490,7 +490,7 @@
 ```css
 .edit-card {
   background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border-subtle);
   border-radius: 20px;
   box-shadow: 0 18px 36px rgba(0,0,0,.45);
   backdrop-filter: blur(8px) saturate(135%);
@@ -502,7 +502,7 @@
 
 `background`: crea un degradado vertical blanco semitransparente, del 8 % de opacidad arriba al 4 % abajo.
 
-`border: 1px solid var(--line)`: dibuja un borde tenue con `--line`, cuyo valor actual es `rgba(255,255,255,.12)`.
+`border: 1px solid var(--color-border-subtle)`: dibuja un borde tenue con `--color-border-subtle`, cuyo valor actual es `rgba(255,255,255,.12)`.
 
 `border-radius: 20px`: redondea las esquinas de la superficie.
 
@@ -548,7 +548,7 @@
   position: sticky;
   top: 18px;
   border-radius: 14px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border-subtle);
   background: #0b0b0f;
   overflow: hidden;
   box-shadow: 0 12px 28px rgba(0,0,0,.5);
@@ -561,7 +561,7 @@
 
 `border-radius: 14px`: redondea sus esquinas.
 
-`border`: dibuja un borde con `--line`, actualmente `rgba(255,255,255,.12)`.
+`border`: dibuja un borde con `--color-border-subtle`, actualmente `rgba(255,255,255,.12)`.
 
 `background: #0b0b0f`: aplica un fondo negro azulado.
 
@@ -610,23 +610,23 @@
 ```css
 .form-label {
   margin-bottom: .35rem;
-  font-family: var(--ui-font);
+  font-family: var(--font-family-interface);
   text-transform: uppercase;
   letter-spacing: .5px;
-  color: var(--ink-dim);
+  color: var(--color-text-secondary);
   font-weight: 700;
 }
 ```
 
 `margin-bottom: .35rem`: separa la etiqueta del control inferior.
 
-`font-family: var(--ui-font)`: usa la tipografía de interfaz `'Teko', system-ui, sans-serif`.
+`font-family: var(--font-family-interface)`: usa la tipografía de interfaz `'Teko', system-ui, sans-serif`.
 
 `text-transform: uppercase`: muestra el texto en mayúsculas.
 
 `letter-spacing: .5px`: separa las letras medio píxel.
 
-`color: var(--ink-dim)`: aplica el lavanda claro `#dcd3fb`.
+`color: var(--color-text-secondary)`: aplica el lavanda claro `#dcd3fb`.
 
 `font-weight: 700`: muestra la etiqueta en negrita.
 
@@ -639,9 +639,9 @@
 .edit-form select,
 .edit-form textarea {
   width: 100%;
-  color: var(--ink);
+  color: var(--color-text-primary);
   background: rgba(255,255,255,.05);
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border-subtle);
   border-radius: 12px;
   padding: .7rem .9rem;
   outline: none;
@@ -651,11 +651,11 @@
 
 `width: 100%`: extiende los controles al ancho disponible.
 
-`color: var(--ink)`: aplica el color principal `#f6f3ff`.
+`color: var(--color-text-primary)`: aplica el color principal `#f6f3ff`.
 
 `background`: usa un fondo blanco con 5 % de opacidad.
 
-`border`: aplica el borde tenue definido por `--line`.
+`border`: aplica el borde tenue definido por `--color-border-subtle`.
 
 `border-radius: 12px`: redondea las esquinas.
 
@@ -788,7 +788,7 @@
   height: 26px;
   cursor: pointer;
   background-color: rgba(255,255,255,.14);
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border-subtle);
   transition: box-shadow .18s ease, filter .18s ease;
 }
 ```
@@ -799,7 +799,7 @@
 
 `background-color`: aplica un fondo blanco con 14 % de opacidad.
 
-`border`: utiliza el borde tenue definido por `--line`.
+`border`: utiliza el borde tenue definido por `--color-border-subtle`.
 
 `transition`: suaviza los cambios de sombra y filtro durante 0.18 segundos.
 
@@ -818,14 +818,14 @@
 ```css
 .form-check-label {
   font-weight: 700;
-  color: var(--ink);
+  color: var(--color-text-primary);
   opacity: .92;
 }
 ```
 
 `font-weight: 700`: muestra la etiqueta en negrita.
 
-`color: var(--ink)`: aplica el blanco lavanda `#f6f3ff`.
+`color: var(--color-text-primary)`: aplica el blanco lavanda `#f6f3ff`.
 
 `opacity: .92`: muestra la etiqueta con 92 % de opacidad.
 
@@ -992,13 +992,13 @@
 ```css
 .ct-select {
   position: relative;
-  font-family: var(--ui-font);
+  font-family: var(--font-family-interface);
 }
 ```
 
 `position: relative`: establece la referencia de posicionamiento para el selector nativo interno.
 
-`font-family: var(--ui-font)`: aplica la tipografía de interfaz `'Teko', system-ui, sans-serif`.
+`font-family: var(--font-family-interface)`: aplica la tipografía de interfaz `'Teko', system-ui, sans-serif`.
 
 ---
 
@@ -1030,11 +1030,11 @@
   justify-content: space-between;
   gap: .6rem;
   width: 100%;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border-subtle);
   border-radius: 14px;
   padding: .85rem .95rem;
   background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-  color: var(--ink);
+  color: var(--color-text-primary);
   font-weight: 700;
   letter-spacing: .3px;
   box-shadow: 0 10px 22px rgba(0,0,0,.25), inset 0 0 0 1px rgba(255,255,255,.05);
@@ -1053,7 +1053,7 @@
 
 `width: 100%`: ocupa todo el ancho disponible.
 
-`border`: aplica el borde tenue definido por `--line`.
+`border`: aplica el borde tenue definido por `--color-border-subtle`.
 
 `border-radius: 14px`: redondea las esquinas.
 
@@ -1061,7 +1061,7 @@
 
 `background`: crea un degradado blanco semitransparente.
 
-`color: var(--ink)`: aplica el blanco lavanda `#f6f3ff`.
+`color: var(--color-text-primary)`: aplica el blanco lavanda `#f6f3ff`.
 
 `font-weight: 700`: muestra el texto en negrita.
 
@@ -1146,7 +1146,7 @@
 
 ```css
 #ct-portal .ct-menu {
-  background: linear-gradient(180deg, var(--bg-2, #1a1030), #120a1f);
+  background: linear-gradient(180deg, var(--color-surface-elevated, #1a1030), var(--color-surface-base, #120a1f));
   border: 1px solid rgba(155,92,251,.28);
   box-shadow: 0 14px 28px rgba(0,0,0,.55), inset 0 0 0 1px rgba(255,255,255,.05);
   border-radius: 12px;
@@ -1156,7 +1156,7 @@
 }
 ```
 
-`background`: crea un degradado desde `--bg-2`, actualmente `#1a1030`, hasta `#120a1f`.
+`background`: crea un degradado desde `--color-surface-elevated`, actualmente `#1a1030`, hasta `--color-surface-base`, actualmente `#120a1f`.
 
 `border`: aplica un borde morado con 28 % de opacidad.
 
@@ -1174,7 +1174,7 @@
 
 ```css
 #ct-portal .ct-option {
-  color: var(--ink, #f6f3ff);
+  color: var(--color-text-primary, #f6f3ff);
   padding: .4rem .65rem;
   border-radius: 8px;
   font-weight: 600;
@@ -1183,7 +1183,7 @@
 }
 ```
 
-`color`: aplica `--ink`, actualmente `#f6f3ff`, con ese mismo color como respaldo.
+`color`: aplica `--color-text-primary`, actualmente `#f6f3ff`, con ese mismo color como respaldo.
 
 `padding`: añade `0.4rem` vertical y `0.65rem` horizontal.
 
@@ -1222,11 +1222,11 @@
 
 ```css
 #ct-portal .ct-option.is-placeholder {
-  color: var(--ink-dim);
+  color: var(--color-text-secondary);
 }
 ```
 
-`color: var(--ink-dim)`: aplica el lavanda secundario `#dcd3fb` a la opción placeholder.
+`color: var(--color-text-secondary)`: aplica el lavanda secundario `#dcd3fb` a la opción placeholder.
 
 ---
 
@@ -1271,7 +1271,7 @@
   background: linear-gradient(180deg,
               rgba(30, 20, 50, .88),
               rgba(20, 15, 30, .95));
-  color: var(--ink);
+  color: var(--color-text-primary);
   border: 1px solid rgba(255,255,255,.08);
   border-radius: 18px;
   box-shadow:
@@ -1286,7 +1286,7 @@
 
 `background`: crea un degradado vertical morado oscuro y semitransparente.
 
-`color: var(--ink)`: aplica el blanco lavanda `#f6f3ff`.
+`color: var(--color-text-primary)`: aplica el blanco lavanda `#f6f3ff`.
 
 `border`: dibuja un borde blanco con 8 % de opacidad.
 
@@ -1402,13 +1402,13 @@
 
 ```css
 .ctmodal-header .ctmodal-title {
-  font-family: var(--ui-font);
+  font-family: var(--font-family-interface);
   font-weight: 900;
   letter-spacing: .3px;
 }
 ```
 
-`font-family: var(--ui-font)`: aplica la tipografía de interfaz.
+`font-family: var(--font-family-interface)`: aplica la tipografía de interfaz.
 
 `font-weight: 900`: muestra el título con el máximo grosor.
 
@@ -1419,13 +1419,13 @@
 ```css
 .ctmodal-body {
   padding: 6px 18px 4px 18px;
-  color: var(--ink);
+  color: var(--color-text-primary);
 }
 ```
 
 `padding`: añade 6 píxeles arriba, 18 a los lados y 4 abajo.
 
-`color: var(--ink)`: aplica el blanco lavanda `#f6f3ff`.
+`color: var(--color-text-primary)`: aplica el blanco lavanda `#f6f3ff`.
 
 ---
 
@@ -1504,7 +1504,7 @@
 ```css
 .btn-glow {
   --c1: var(--accent, #9b5cfb);
-  --c2: var(--accent-2, #6f3fe6);
+  --c2: var(--color-accent-dark, #6f3fe6);
   border: 1px solid transparent;
   background: linear-gradient(135deg, var(--c1), var(--c2));
   color: #fff;
@@ -1515,7 +1515,7 @@
 
 `--c1`: usa `--accent`, actualmente `#9b5cfb`, con ese mismo respaldo.
 
-`--c2`: usa `--accent-2`, actualmente `#6f3fe6`, con ese mismo respaldo.
+`--c2`: usa `--color-accent-dark`, actualmente `#6f3fe6`, con ese mismo respaldo.
 
 `border`: reserva un borde transparente de un píxel.
 
@@ -1544,12 +1544,12 @@
 
 ```css
 .ctmodal .btn-outline-light {
-  color: var(--ink);
+  color: var(--color-text-primary);
   border-color: rgba(255,255,255,.22);
 }
 ```
 
-`color: var(--ink)`: aplica el blanco lavanda `#f6f3ff`.
+`color: var(--color-text-primary)`: aplica el blanco lavanda `#f6f3ff`.
 
 `border-color`: aplica un borde blanco con 22 % de opacidad.
 
@@ -1571,7 +1571,7 @@
 ```css
 .tile {
   background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border-subtle);
   border-radius: 18px;
   padding: 16px;
   box-shadow: 0 14px 28px rgba(0,0,0,.35);
@@ -1583,7 +1583,7 @@
 
 `background`: crea un degradado vertical blanco semitransparente, del 8 % de opacidad arriba al 4 % abajo.
 
-`border: 1px solid var(--line)`: aplica el borde tenue `rgba(255,255,255,.12)` definido por `--line`.
+`border: 1px solid var(--color-border-subtle)`: aplica el borde tenue `rgba(255,255,255,.12)` definido por `--color-border-subtle`.
 
 `border-radius: 18px`: redondea las esquinas del panel.
 
@@ -1611,10 +1611,10 @@
 
 ```css
 .tile-header {
-  font-family: var(--ui-font);
+  font-family: var(--font-family-interface);
   text-transform: uppercase;
   letter-spacing: .6px;
-  color: var(--ink-dim);
+  color: var(--color-text-secondary);
   font-weight: 700;
   margin-bottom: 8px;
   display: flex;
@@ -1623,13 +1623,13 @@
 }
 ```
 
-`font-family: var(--ui-font)`: aplica la tipografía de interfaz `'Teko', system-ui, sans-serif`.
+`font-family: var(--font-family-interface)`: aplica la tipografía de interfaz `'Teko', system-ui, sans-serif`.
 
 `text-transform: uppercase`: muestra el encabezado en mayúsculas.
 
 `letter-spacing: .6px`: separa las letras 0.6 píxeles.
 
-`color: var(--ink-dim)`: aplica el lavanda claro `#dcd3fb`.
+`color: var(--color-text-secondary)`: aplica el lavanda claro `#dcd3fb`.
 
 `font-weight: 700`: muestra el encabezado en negrita.
 
@@ -1675,7 +1675,7 @@
   height: 100%;
   display: grid;
   place-items: center;
-  color: var(--ink-dim);
+  color: var(--color-text-secondary);
   background: rgba(255,255,255,.06);
 }
 ```
@@ -1686,7 +1686,7 @@
 
 `place-items: center`: centra el contenido en ambos ejes.
 
-`color: var(--ink-dim)`: aplica el lavanda claro `#dcd3fb`.
+`color: var(--color-text-secondary)`: aplica el lavanda claro `#dcd3fb`.
 
 `background`: aplica un fondo blanco con 6 % de opacidad.
 
@@ -2091,11 +2091,11 @@
 ```css
 .page-item .page-link {
   border-radius: 10px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border-subtle);
   background: rgba(255,255,255,.05);
-  color: var(--ink-dim);
+  color: var(--color-text-secondary);
   text-decoration: none;
-  font-family: var(--ui-font);
+  font-family: var(--font-family-interface);
   font-weight: 700;
   padding: .55rem .9rem;
   transition: all .15s ease;
@@ -2104,15 +2104,15 @@
 
 `border-radius: 10px`: redondea las esquinas del enlace.
 
-`border: 1px solid var(--line)`: aplica el borde tenue `rgba(255,255,255,.12)`.
+`border: 1px solid var(--color-border-subtle)`: aplica el borde tenue `rgba(255,255,255,.12)`.
 
 `background`: usa un fondo blanco con 5 % de opacidad.
 
-`color: var(--ink-dim)`: aplica el lavanda claro `#dcd3fb`.
+`color: var(--color-text-secondary)`: aplica el lavanda claro `#dcd3fb`.
 
 `text-decoration: none`: elimina el subrayado del enlace.
 
-`font-family: var(--ui-font)`: aplica la tipografía de interfaz `'Teko', system-ui, sans-serif`.
+`font-family: var(--font-family-interface)`: aplica la tipografía de interfaz `'Teko', system-ui, sans-serif`.
 
 `font-weight: 700`: muestra el texto en negrita.
 
@@ -2125,7 +2125,7 @@
 ```css
 .page-item .page-link:hover {
   color: #fff;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  background: linear-gradient(135deg, var(--accent), var(--color-accent-dark));
   box-shadow: 0 0 12px rgba(155,92,251,.5);
   border-color: transparent;
 }
@@ -2133,7 +2133,7 @@
 
 `color: #fff`: muestra el texto en blanco al pasar el cursor.
 
-`background`: aplica un degradado diagonal desde `--accent` (`#9b5cfb`) hasta `--accent-2` (`#6f3fe6`).
+`background`: aplica un degradado diagonal desde `--accent` (`#9b5cfb`) hasta `--color-accent-dark` (`#6f3fe6`).
 
 `box-shadow`: añade un resplandor morado con 50 % de opacidad.
 
@@ -2145,7 +2145,7 @@
 .page-item.active .page-link,
 .page-item .page-link:focus {
   color: #fff;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  background: linear-gradient(135deg, var(--accent), var(--color-accent-dark));
   border-color: transparent;
   box-shadow: 0 0 14px rgba(111,63,230,.6);
 }
@@ -2165,7 +2165,7 @@
 .page-item.disabled .page-link {
   color: #777;
   background: rgba(255,255,255,.04);
-  border-color: var(--line);
+  border-color: var(--color-border-subtle);
   opacity: .6;
 }
 ```
@@ -2174,7 +2174,7 @@
 
 `background`: aplica un fondo blanco con 4 % de opacidad.
 
-`border-color: var(--line)`: conserva el borde tenue definido por `--line`.
+`border-color: var(--color-border-subtle)`: conserva el borde tenue definido por `--color-border-subtle`.
 
 `opacity: .6`: atenúa el enlace deshabilitado al 60 %.
 
@@ -2318,7 +2318,7 @@
   font-size: 1rem;
   letter-spacing: .3px;
   margin-bottom: .3rem;
-  color: var(--ink);
+  color: var(--color-text-primary);
 }
 ```
 
@@ -2330,7 +2330,7 @@
 
 `margin-bottom: .3rem`: deja `0.3rem` debajo del título.
 
-`color: var(--ink)`: aplica el blanco lavanda `#f6f3ff`.
+`color: var(--color-text-primary)`: aplica el blanco lavanda `#f6f3ff`.
 
 ---
 
