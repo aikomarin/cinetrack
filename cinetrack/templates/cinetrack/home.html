@@ -59,8 +59,8 @@
   <section class="dash-grid">
 
     <!-- Donut de promedio -->
-    <div class="tile tile-ring">
-      <div class="tile-header"><i class="bi bi-star-half"></i> Promedio global</div>
+    <div class="surface-card tile-ring">
+      <div class="surface-card-header"><i class="bi bi-star-half"></i> Promedio global</div>
       <svg viewBox="0 0 120 120" class="rating-chart">
         <circle class="rating-chart-background" cx="60" cy="60" r="52"></circle>
         <circle class="rating-chart-value" cx="60" cy="60" r="52"
@@ -74,8 +74,8 @@
     </div>
 
     <!-- Barras por plataforma -->
-    <div class="tile tile-bars">
-      <div class="tile-header"><i class="bi bi-hdd-stack"></i> Plataformas más vistas</div>
+    <div class="surface-card tile-bars">
+      <div class="surface-card-header"><i class="bi bi-hdd-stack"></i> Plataformas más vistas</div>
       <div class="platform-bars">
         {% for p in barras_plataforma %}
           <div class="platform-bar">
@@ -92,8 +92,8 @@
     </div>
 
     <!-- Progreso vistos vs pendientes -->
-    <div class="tile tile-progress">
-      <div class="tile-header"><i class="bi bi-eye-fill"></i> Avance de visualización</div>
+    <div class="surface-card tile-progress">
+      <div class="surface-card-header"><i class="bi bi-eye-fill"></i> Avance de visualización</div>
       <div class="progress-meta">
         <span>Vistos: <strong>{{ estadisticas.vistos }}</strong></span>
         <span>Pendientes: <strong>{{ estadisticas.pendientes }}</strong></span>
@@ -106,25 +106,25 @@
     </div>
 
     <!-- Métricas -->
-    <div class="tile metric metric-total">
+    <div class="surface-card metric metric-total">
       <div class="metric-icon"><i class="bi bi-collection-play"></i></div>
       <div class="metric-label">Total títulos</div>
       <div class="metric-value">{{ estadisticas.total }}</div>
     </div>
 
-    <div class="tile metric metric-movies">
+    <div class="surface-card metric metric-movies">
       <div class="metric-icon"><i class="bi bi-film"></i></div>
       <div class="metric-label">Películas</div>
       <div class="metric-value">{{ estadisticas.peliculas }}</div>
     </div>
 
-    <div class="tile metric metric-series">
+    <div class="surface-card metric metric-series">
       <div class="metric-icon"><i class="bi bi-tv"></i></div>
       <div class="metric-label">Series</div>
       <div class="metric-value">{{ estadisticas.series }}</div>
     </div>
 
-    <div class="tile metric metric-favorites">
+    <div class="surface-card metric metric-favorites">
       <div class="metric-icon"><i class="bi bi-star-fill"></i></div>
       <div class="metric-label">Favoritas</div>
       <div class="metric-value">{{ estadisticas.favoritas }}</div>
@@ -213,8 +213,8 @@
         {% endfor %}
       </div>
     {% else %}
-      <div class="tile text-center p-4">
-        <div class="tile-header justify-content-center">
+      <div class="surface-card text-center p-4">
+        <div class="surface-card-header justify-content-center">
           No hay actividad reciente todavía.
         </div>
         <a href="{% url 'cinetrack:buscar' %}" class="btn-neon small">
@@ -262,8 +262,8 @@
         {% endfor %}
       </div>
     {% else %}
-      <div class="tile text-center p-4">
-        <div class="tile-header justify-content-center">
+      <div class="surface-card text-center p-4">
+        <div class="surface-card-header justify-content-center">
           No hay datos por plataforma todavía.
         </div>
       </div>

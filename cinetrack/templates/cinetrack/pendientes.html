@@ -22,7 +22,7 @@
   </div>
 
   <!-- Tabs -->
-  <div class="tile p-0 mb-3">
+  <div class="surface-card p-0 mb-3">
     <ul class="nav nav-pills p-2" role="tablist">
       <li class="nav-item" role="presentation">
         <button class="nav-link active" id="tab-kanban" data-bs-toggle="pill" data-bs-target="#pane-kanban" type="button" role="tab" aria-controls="pane-kanban" aria-selected="true">
@@ -41,12 +41,12 @@
 
     <!-- Tablero (Kanban) -->
     <section class="tab-pane fade show active" id="pane-kanban" role="tabpanel" aria-labelledby="tab-kanban">
-      <div class="edit-card p-3">
+      <div class="elevated-panel p-3">
         <div class="row g-3">
           {% for fase, label, icon, items in fases %}
           <div class="col-12 col-md-6 col-xl-3">
-            <div class="tile h-100 d-flex flex-column">
-              <div class="tile-header"><i class="bi {{ icon }}"></i> {{ label }}</div>
+            <div class="surface-card h-100 d-flex flex-column">
+              <div class="surface-card-header"><i class="bi {{ icon }}"></i> {{ label }}</div>
 
               <!-- Columna (solo posters) -->
               <div class="flex-grow-1 kanban-col posters-only"
@@ -82,15 +82,15 @@
 
     <!-- Focus (Lista compacta) -->
     <section class="tab-pane fade" id="pane-focus" role="tabpanel" aria-labelledby="tab-focus">
-      <div class="edit-card p-3">
+      <div class="elevated-panel p-3">
         <div class="d-flex align-items-center justify-content-between mb-2">
-          <div class="tile-header"><i class="bi bi-bullseye"></i> Enfoque de hoy</div>
+          <div class="surface-card-header"><i class="bi bi-bullseye"></i> Enfoque de hoy</div>
         </div>
 
         <div class="d-grid gap-2" data-focus-list>
           {% with fases.0.3 as primeros %}
             {% for it in primeros|slice:":3" %}
-            <article class="tile d-flex align-items-center p-2">
+            <article class="surface-card d-flex align-items-center p-2">
               <a class="kanban-poster kan-poster-small me-2" href="{% url 'cinetrack:detalle' it.pk %}?origen=pendientes" style="width:40px;">
                 {% if it.imagen %}
                   <img src="{{ it.imagen }}" alt="{{ it.titulo }}">

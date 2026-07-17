@@ -34,13 +34,13 @@
 
   <!-- Mensajes de error -->
   {% if formulario.non_field_errors %}
-    <div class="tile p-3 mb-3">
+    <div class="surface-card p-3 mb-3">
       {{ formulario.non_field_errors }}
     </div>
   {% endif %}
 
   <!-- Card del formulario -->
-  <form method="post" class="tile edit-card edit-form p-4 p-lg-5">
+  <form method="post" class="surface-card elevated-panel edit-form p-4 p-lg-5">
     {% csrf_token %}
 
     <div class="row g-4">

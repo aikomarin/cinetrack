@@ -23,7 +23,7 @@
   </p>
 
   <!-- Formulario de búsqueda -->
-  <div class="tile mb-3">
+  <div class="surface-card mb-3">
     <form method="post" class="row g-2 align-items-end">
       {% csrf_token %}
 
@@ -54,7 +54,7 @@
 
   <!-- Error de búsqueda -->
   {% if error %}
-    <div class="tile p-3 mb-3" role="alert">
+    <div class="surface-card p-3 mb-3" role="alert">
       <p class="m-0">{{ error }}</p>
     </div>
   {% endif %}
@@ -72,7 +72,7 @@
           <form
             method="post"
             action="{% url 'cinetrack:guardar_desde_busqueda' %}"
-            class="tile edit-card edit-form p-4 p-lg-5"
+            class="surface-card elevated-panel edit-form p-4 p-lg-5"
           >
             {% csrf_token %}
 
@@ -239,7 +239,7 @@
     </div>
 
   {% elif request.method == "POST" and not error %}
-    <div class="tile text-center py-5">
+    <div class="surface-card text-center py-5">
       <div class="display-6 mb-2">
         Sin resultados
       </div>

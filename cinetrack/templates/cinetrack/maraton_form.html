@@ -25,13 +25,13 @@
   </div>
 
   {% if form.non_field_errors %}
-    <div class="tile p-3 mb-3">
+    <div class="surface-card p-3 mb-3">
       {{ form.non_field_errors }}
     </div>
   {% endif %}
 
   <!-- Formulario (crea o edita según la URL) -->
-  <form method="post" class="edit-card edit-form p-4 p-lg-5" novalidate>
+  <form method="post" class="elevated-panel edit-form p-4 p-lg-5" novalidate>
     {% csrf_token %}
 
     <!-- Nombre -->

@@ -10,25 +10,25 @@
 }
 
 /* Layout: Áreas de métricas del panel */
-.dash-grid > .tile:nth-child(1) {
+.dash-grid > .surface-card:nth-child(1) {
   grid-area: ring;
 }
-.dash-grid > .tile:nth-child(2) {
+.dash-grid > .surface-card:nth-child(2) {
   grid-area: bars;
 }
-.dash-grid > .tile:nth-child(3) {
+.dash-grid > .surface-card:nth-child(3) {
   grid-area: prog;
 }
-.dash-grid > .tile:nth-child(4) {
+.dash-grid > .surface-card:nth-child(4) {
   grid-area: movies;
 }
-.dash-grid > .tile:nth-child(5) {
+.dash-grid > .surface-card:nth-child(5) {
   grid-area: series;
 }
-.dash-grid > .tile:nth-child(6) {
+.dash-grid > .surface-card:nth-child(6) {
   grid-area: favs;
 }
-.dash-grid > .tile:nth-child(7) {
+.dash-grid > .surface-card:nth-child(7) {
   grid-area: total;
 }
 
@@ -36,7 +36,7 @@
 .tile-ring {
   grid-area: ring;
 }
-.tile.tile-ring {
+.surface-card.tile-ring {
   display: grid;
   grid-template-areas:
     "head"
@@ -44,7 +44,7 @@
     "sub";
   justify-items: center;
 }
-.tile-ring .tile-header {
+.tile-ring .surface-card-header {
   grid-area: head;
   width: 100%;
 }

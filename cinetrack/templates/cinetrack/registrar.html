@@ -20,14 +20,14 @@
   </div>
 
   {% if formulario.non_field_errors %}
-    <div class="tile p-3 mb-3">{{ formulario.non_field_errors }}</div>
+    <div class="surface-card p-3 mb-3">{{ formulario.non_field_errors }}</div>
   {% endif %}
 
   <!-- Claqueta -->
   <div class="clapboard-separator"></div>
 
   <!-- Formulario -->
-  <form method="post" class="edit-card edit-form p-4 p-lg-5" novalidate>
+  <form method="post" class="elevated-panel edit-form p-4 p-lg-5" novalidate>
     {% csrf_token %}
 
     <!-- Título -->

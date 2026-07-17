@@ -13,7 +13,7 @@
   <p class="hero-sub mb-3">Explora tu colección por tipo, plataforma y estado</p>
 
   <!-- Filtros + Buscador -->
-  <div class="tile edit-card p-3 mb-3">
+  <div class="surface-card elevated-panel p-3 mb-3">
     <form method="get" class="row g-2 align-items-end">
 
       <!-- Fila 1: filtros + botón Filtrar -->
@@ -214,7 +214,7 @@
   </nav>
 
   {% else %}
-    <div class="tile text-center py-5">
+    <div class="surface-card text-center py-5">
       <div class="display-6 mb-2">Sin resultados</div>
       <p class="opacity-75">Prueba cambiando los filtros o agrega nuevos títulos.</p>
       <a href="{% url 'cinetrack:buscar' %}" class="btn-neon"><i class="bi bi-plus-circle"></i> Agregar contenido</a>

@@ -1,5 +1,5 @@
 /* Componente: Paneles */
-.tile {
+.surface-card {
   background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
   border: 1px solid var(--color-border-subtle);
   border-radius: 18px;
@@ -9,12 +9,12 @@
   animation: floatUp .5s ease both;
   transition: transform .15s ease;
 }
-.tile:hover {
+.surface-card:hover {
   transform: translateY(-2px);
 }
 
 /* Componente: Encabezado del panel */
-.tile-header {
+.surface-card-header {
   font-family: var(--font-family-interface);
   text-transform: uppercase;
   letter-spacing: .6px;

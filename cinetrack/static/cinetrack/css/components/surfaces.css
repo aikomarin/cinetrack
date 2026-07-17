@@ -1,5 +1,5 @@
 /* Componente: Superficies principales */
-.edit-card,
+.elevated-panel,
 .detail-card {
   background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
   border: 1px solid var(--color-border-subtle);
@@ -8,7 +8,7 @@
   position: relative;
   overflow: hidden;
 }
-.edit-card {
+.elevated-panel {
   backdrop-filter: blur(8px) saturate(135%);
   animation: floatUp .45s ease both;
 }
@@ -16,7 +16,7 @@
   backdrop-filter: blur(8px) saturate(140%);
   animation: floatUp .5s ease both;
 }
-.edit-card::after,
+.elevated-panel::after,
 .detail-card::after {
   content: "";
   position: absolute;

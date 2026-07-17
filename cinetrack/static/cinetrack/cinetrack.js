@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const portal = document.getElementById('ct-portal');
   if (!portal) return;
 
-  document.querySelectorAll('.tile.edit-card select').forEach(sel => {
+  document.querySelectorAll('.surface-card.elevated-panel select').forEach(sel => {
     const wrap = document.createElement('div');
     wrap.className = 'custom-select';
     sel.parentNode.insertBefore(wrap, sel);
@@ -385,7 +385,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!portal) return;
 
   // Mejora los selects del formulario de Registrar
-  document.querySelectorAll('.edit-card select').forEach(sel => {
+  document.querySelectorAll('.elevated-panel select').forEach(sel => {
     const wrap = document.createElement('div');
     wrap.className = 'custom-select';
     sel.parentNode.insertBefore(wrap, sel);

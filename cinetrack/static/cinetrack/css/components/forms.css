@@ -144,7 +144,7 @@
 }
 
 /* Componente: Controles compartidos dentro de paneles */
-.tile form .form-control {
+.surface-card form .form-control {
   background-color: rgba(255,255,255,.03);
   border: 1px solid rgba(255,255,255,.14);
   border-radius: 12px;
@@ -153,18 +153,18 @@
   font-size: 1rem;
   -webkit-text-fill-color: #fff; /* Componente: Color del texto del campo de búsqueda en Safari */
 }
-.tile form .form-control:focus {
+.surface-card form .form-control:focus {
   border-color: rgba(168,85,247,.6);
   box-shadow: 0 0 0 .2rem rgba(168,85,247,.15);
   outline: 0;
 }
 
 /* Componente: Marcador de posición de controles dentro de paneles */
-.tile form .form-control::placeholder {
+.surface-card form .form-control::placeholder {
   color: rgba(255,255,255,.62);
   opacity: 1;
 }
-.tile form .form-control::-webkit-input-placeholder {
+.surface-card form .form-control::-webkit-input-placeholder {
   color: rgba(255,255,255,.62);
 }
 
@@ -178,15 +178,15 @@
 }
 
 /* Estado: Colores de los interruptores según el nombre del campo */
-.edit-card input[name="favorita"].form-check-input:checked {
+.elevated-panel input[name="favorita"].form-check-input:checked {
   background-color: #ffd700;
   border-color: rgba(0,0,0,.15);
 }
-.edit-card input[name="volveria_a_ver"].form-check-input:checked {
+.elevated-panel input[name="volveria_a_ver"].form-check-input:checked {
   background-color: #1e90ff;
   border-color: rgba(0,0,0,.15);
 }
-.edit-card input[name="tendra_continuacion"].form-check-input:checked {
+.elevated-panel input[name="tendra_continuacion"].form-check-input:checked {
   background-color: #2ecc71;
   border-color: rgba(0,0,0,.15);
 }

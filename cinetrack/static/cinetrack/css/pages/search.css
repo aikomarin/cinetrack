@@ -1,12 +1,12 @@
 /* Página: Búsqueda */
-.tile form .form-label {
+.surface-card form .form-label {
   font-size: .9rem;
   margin-bottom: .45rem;
   letter-spacing: .2px;
 }
 
 /* Componente: Etiqueta del título de búsqueda */
-.tile form .col-12.col-md-9:has(input[name="query"]) > .form-label {
+.surface-card form .col-12.col-md-9:has(input[name="query"]) > .form-label {
   font-size: 1.3rem;
   line-height: 1.15;
   margin-bottom: .55rem;
@@ -28,18 +28,18 @@
 }
 
 /* Componente: Mensajes de Django */
-.tile p.success, .tile p.info, .tile p.warning, .tile p.error {
+.surface-card p.success, .surface-card p.info, .surface-card p.warning, .surface-card p.error {
   margin: 0 0 .25rem 0;
 }
-.tile p.success {
+.surface-card p.success {
   color: #79ffa8;
 }
-.tile p.info {
+.surface-card p.info {
   color: #9ad1ff;
 }
-.tile p.warning {
+.surface-card p.warning {
   color: #ffd27a;
 }
-.tile p.error {
+.surface-card p.error {
   color: #ff9a9a;
 }

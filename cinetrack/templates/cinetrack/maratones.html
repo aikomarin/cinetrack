@@ -18,7 +18,7 @@
     {% for m in maratones %}
     {% with portada=m.contenidos_ordenados.0 %}
     <div class="col-12 col-md-6">
-      <div class="tile p-0 marathon-card" style="--m-bg: url('{{ portada.imagen|default:'' }}');">
+      <div class="surface-card p-0 marathon-card" style="--m-bg: url('{{ portada.imagen|default:'' }}');">
 
         <!-- Cover difuminado + mini portadas -->
         <div class="marathon-cover">
@@ -83,7 +83,7 @@
     {% endfor %}
   </div>
   {% else %}
-    <div class="tile text-center py-5">
+    <div class="surface-card text-center py-5">
       <div class="display-6 mb-2">Aún no hay maratones</div>
       <p class="opacity-75">Crea tu primer maratón para empezar a agrupar películas y series.</p>
       <a href="{% url 'cinetrack:crear_maraton' %}" class="btn-neon">

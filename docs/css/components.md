@@ -517,7 +517,7 @@ La utilidad local `.btn-center` fue eliminada. Sus consumidores combinan ahora `
 ## css/components/surfaces.css
 
 ```css
-.edit-card,
+.elevated-panel,
 .detail-card {
   background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
   border: 1px solid var(--color-border-subtle);
@@ -543,7 +543,7 @@ La utilidad local `.btn-center` fue eliminada. Sus consumidores combinan ahora `
 ---
 
 ```css
-.edit-card {
+.elevated-panel {
   backdrop-filter: blur(8px) saturate(135%);
   animation: floatUp .45s ease both;
 }
@@ -553,14 +553,14 @@ La utilidad local `.btn-center` fue eliminada. Sus consumidores combinan ahora `
 }
 ```
 
-`.edit-card` conserva saturación del 135 % y `floatUp` durante 0.45 segundos.
+`.elevated-panel` conserva saturación del 135 % y `floatUp` durante 0.45 segundos.
 
 `.detail-card` conserva saturación del 140 % y `floatUp` durante 0.5 segundos.
 
 ---
 
 ```css
-.edit-card::after,
+.elevated-panel::after,
 .detail-card::after {
   content: "";
   position: absolute;
@@ -943,7 +943,7 @@ Las capas de `.edit-form textarea` y `.edit-form textarea.form-control` se conse
 ---
 
 ```css
-.tile form .form-control {
+.surface-card form .form-control {
   background-color: rgba(255,255,255,.03);
   border: 1px solid rgba(255,255,255,.14);
   border-radius: 12px;
@@ -954,12 +954,12 @@ Las capas de `.edit-form textarea` y `.edit-form textarea.form-control` se conse
 }
 ```
 
-Este bloque define la apariencia compartida de los controles de formulario contenidos en paneles `.tile`. El selector y sus valores se conservan sin limitar su alcance a una página.
+Este bloque define la apariencia compartida de los controles de formulario contenidos en paneles `.surface-card`. El selector y sus valores se conservan sin limitar su alcance a una página.
 
 ---
 
 ```css
-.tile form .form-control:focus {
+.surface-card form .form-control:focus {
   border-color: rgba(168,85,247,.6);
   box-shadow: 0 0 0 .2rem rgba(168,85,247,.15);
   outline: 0;
@@ -971,11 +971,11 @@ El estado enfocado conserva el borde morado translúcido, el anillo exterior y l
 ---
 
 ```css
-.tile form .form-control::placeholder {
+.surface-card form .form-control::placeholder {
   color: rgba(255,255,255,.62);
   opacity: 1;
 }
-.tile form .form-control::-webkit-input-placeholder {
+.surface-card form .form-control::-webkit-input-placeholder {
   color: rgba(255,255,255,.62);
 }
 ```
@@ -1001,15 +1001,15 @@ La regla compartida de `.form-check-input` ya declara `cursor: pointer`, por lo 
 ---
 
 ```css
-.edit-card input[name="favorita"].form-check-input:checked {
+.elevated-panel input[name="favorita"].form-check-input:checked {
   background-color: #ffd700;
   border-color: rgba(0,0,0,.15);
 }
-.edit-card input[name="volveria_a_ver"].form-check-input:checked {
+.elevated-panel input[name="volveria_a_ver"].form-check-input:checked {
   background-color: #1e90ff;
   border-color: rgba(0,0,0,.15);
 }
-.edit-card input[name="tendra_continuacion"].form-check-input:checked {
+.elevated-panel input[name="tendra_continuacion"].form-check-input:checked {
   background-color: #2ecc71;
   border-color: rgba(0,0,0,.15);
 }
@@ -1578,7 +1578,7 @@ Los filtros de Maratones conservan sus IDs, el color de placeholder con 80 % de 
 ## css/components/tiles.css
 
 ```css
-.tile {
+.surface-card {
   background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
   border: 1px solid var(--color-border-subtle);
   border-radius: 18px;
@@ -1609,7 +1609,7 @@ Los filtros de Maratones conservan sus IDs, el color de placeholder con 80 % de 
 ---
 
 ```css
-.tile:hover {
+.surface-card:hover {
   transform: translateY(-2px);
 }
 ```
@@ -1619,7 +1619,7 @@ Los filtros de Maratones conservan sus IDs, el color de placeholder con 80 % de 
 ---
 
 ```css
-.tile-header {
+.surface-card-header {
   font-family: var(--font-family-interface);
   text-transform: uppercase;
   letter-spacing: .6px;

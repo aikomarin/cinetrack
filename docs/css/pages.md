@@ -1,6 +1,6 @@
 ## css/pages/home.css
 
-La variante local `.tile-header-centered` fue sustituida en los estados vacíos por la utilidad de Bootstrap `.justify-content-center`. La clase base `.tile-header` continúa aportando el contenedor flex, la alineación vertical y el gap; la utilidad conserva el mismo `justify-content: center`.
+La variante local `.tile-header-centered` fue sustituida en los estados vacíos por la utilidad de Bootstrap `.justify-content-center`. La clase base `.surface-card-header` continúa aportando el contenedor flex, la alineación vertical y el gap; la utilidad conserva el mismo `justify-content: center`.
 
 
 .dash-grid {
@@ -27,7 +27,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.dash-grid > .tile:nth-child(1) {
+.dash-grid > .surface-card:nth-child(1) {
   grid-area: ring;
 }
 ```
@@ -37,7 +37,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.dash-grid > .tile:nth-child(2) {
+.dash-grid > .surface-card:nth-child(2) {
   grid-area: bars;
 }
 ```
@@ -47,7 +47,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.dash-grid > .tile:nth-child(3) {
+.dash-grid > .surface-card:nth-child(3) {
   grid-area: prog;
 }
 ```
@@ -57,7 +57,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.dash-grid > .tile:nth-child(4) {
+.dash-grid > .surface-card:nth-child(4) {
   grid-area: movies;
 }
 ```
@@ -67,7 +67,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.dash-grid > .tile:nth-child(5) {
+.dash-grid > .surface-card:nth-child(5) {
   grid-area: series;
 }
 ```
@@ -77,7 +77,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.dash-grid > .tile:nth-child(6) {
+.dash-grid > .surface-card:nth-child(6) {
   grid-area: favs;
 }
 ```
@@ -87,7 +87,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.dash-grid > .tile:nth-child(7) {
+.dash-grid > .surface-card:nth-child(7) {
   grid-area: total;
 }
 ```
@@ -107,7 +107,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.tile.tile-ring {
+.surface-card.tile-ring {
   display: grid;
   grid-template-areas:
     "head"
@@ -126,7 +126,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.tile-ring .tile-header {
+.tile-ring .surface-card-header {
   grid-area: head;
   width: 100%;
 }
@@ -1384,7 +1384,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ## css/pages/search.css
 
 ```css
-.tile form .form-label {
+.surface-card form .form-label {
   font-size: .9rem;
   margin-bottom: .45rem;
   letter-spacing: .2px;
@@ -1400,7 +1400,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.tile form .form-control {
+.surface-card form .form-control {
   background-color: rgba(255,255,255,.03);
   border: 1px solid rgba(255,255,255,.14);
   border-radius: 12px;
@@ -1428,7 +1428,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.tile form .form-control:focus {
+.surface-card form .form-control:focus {
   border-color: rgba(168,85,247,.6);
   box-shadow: 0 0 0 .2rem rgba(168,85,247,.15);
   outline: 0;
@@ -1444,7 +1444,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.tile form .form-control::placeholder {
+.surface-card form .form-control::placeholder {
   color: rgba(255,255,255,.62);
   opacity: 1;
 }
@@ -1457,7 +1457,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.tile form .form-control::-webkit-input-placeholder {
+.surface-card form .form-control::-webkit-input-placeholder {
   color: rgba(255,255,255,.62);
 }
 ```
@@ -1467,7 +1467,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.tile form .col-12.col-md-9:has(input[name="query"]) > .form-label {
+.surface-card form .col-12.col-md-9:has(input[name="query"]) > .form-label {
   font-size: 1.3rem;
   line-height: 1.15;
   margin-bottom: .55rem;
@@ -1564,7 +1564,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.tile p.success, .tile p.info, .tile p.warning, .tile p.error {
+.surface-card p.success, .surface-card p.info, .surface-card p.warning, .surface-card p.error {
   margin: 0 0 .25rem 0;
 }
 ```
@@ -1574,7 +1574,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.tile p.success {
+.surface-card p.success {
   color: #79ffa8;
 }
 ```
@@ -1584,7 +1584,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.tile p.info {
+.surface-card p.info {
   color: #9ad1ff;
 }
 ```
@@ -1594,7 +1594,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.tile p.warning {
+.surface-card p.warning {
   color: #ffd27a;
 }
 ```
@@ -1604,7 +1604,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.tile p.error {
+.surface-card p.error {
   color: #ff9a9a;
 }
 ```
@@ -1614,7 +1614,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.edit-card input[name="favorita"].form-check-input:checked {
+.elevated-panel input[name="favorita"].form-check-input:checked {
   background-color: #ffd700;
   border-color: rgba(0,0,0,.15);
 }
@@ -2315,7 +2315,7 @@ Las clases `.saga-name-input` y `.saga-save-button` se conservan. `.saga-name-in
 ---
 
 ```css
-.edit-card input[name="volveria_a_ver"].form-check-input:checked {
+.elevated-panel input[name="volveria_a_ver"].form-check-input:checked {
   background-color: #1e90ff;
   border-color: rgba(0,0,0,.15);
 }
@@ -2328,7 +2328,7 @@ Las clases `.saga-name-input` y `.saga-save-button` se conservan. `.saga-name-in
 ---
 
 ```css
-.edit-card input[name="tendra_continuacion"].form-check-input:checked {
+.elevated-panel input[name="tendra_continuacion"].form-check-input:checked {
   background-color: #2ecc71;
   border-color: rgba(0,0,0,.15);
 }
@@ -3051,7 +3051,7 @@ Las clases `.saga-name-input` y `.saga-save-button` se conservan. `.saga-name-in
 ---
 
 ```css
-.tile {
+.surface-card {
   background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
   border: 1px solid rgba(255,255,255,.12);
   border-radius: 18px;
@@ -3070,7 +3070,7 @@ Las clases `.saga-name-input` y `.saga-save-button` se conservan. `.saga-name-in
 ---
 
 ```css
-.tile .tile-header {
+.surface-card .surface-card-header {
   font-family: var(--brand-font);
   letter-spacing: .6px;
   color: var(--color-text-primary);
