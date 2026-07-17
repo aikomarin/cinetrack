@@ -61,24 +61,24 @@
     <!-- Donut de promedio -->
     <div class="tile tile-ring">
       <div class="tile-header"><i class="bi bi-star-half"></i> Promedio global</div>
-      <svg viewBox="0 0 120 120" class="ring">
-        <circle class="ring-bg" cx="60" cy="60" r="52"></circle>
-        <circle class="ring-val" cx="60" cy="60" r="52"
+      <svg viewBox="0 0 120 120" class="rating-chart">
+        <circle class="rating-chart-background" cx="60" cy="60" r="52"></circle>
+        <circle class="rating-chart-value" cx="60" cy="60" r="52"
                 style="stroke-dashoffset: {{ desplazamiento_donut }};"></circle>
       </svg>
-      <div class="ring-center">
-        <div class="ring-number">{{ estadisticas.promedio }}</div>
-        <div class="ring-caption">/ 5</div>
+      <div class="rating-chart-center">
+        <div class="rating-chart-score">{{ estadisticas.promedio }}</div>
+        <div class="rating-chart-caption">/ 5</div>
       </div>
-      <div class="ring-sub">Basado en {{ estadisticas.calificados }} calificados</div>
+      <div class="rating-chart-summary">Basado en {{ estadisticas.calificados }} calificados</div>
     </div>
 
     <!-- Barras por plataforma -->
     <div class="tile tile-bars">
       <div class="tile-header"><i class="bi bi-hdd-stack"></i> Plataformas más vistas</div>
-      <div class="bars">
+      <div class="platform-bars">
         {% for p in barras_plataforma %}
-          <div class="bar">
+          <div class="platform-bar">
             <span class="label">{{ p.nombre }}</span>
             <div class="track" style="--pct: {{ p.porcentaje }}%">
               <div class="fill"></div>
@@ -124,7 +124,7 @@
       <div class="metric-value">{{ estadisticas.series }}</div>
     </div>
 
-    <div class="tile metric metric-favs">
+    <div class="tile metric metric-favorites">
       <div class="metric-icon"><i class="bi bi-star-fill"></i></div>
       <div class="metric-label">Favoritas</div>
       <div class="metric-value">{{ estadisticas.favoritas }}</div>
@@ -147,7 +147,7 @@
             {% if it.imagen %}
               <img src="{{ it.imagen }}" alt="{{ it.titulo }}">
             {% else %}
-              <div class="recent-thumb-ph"><i class="bi bi-image"></i></div>
+              <div class="recent-activity-poster-placeholder"><i class="bi bi-image"></i></div>
             {% endif %}
           </a>
           <div class="topcard-meta text-center">
@@ -163,8 +163,8 @@
   <div class="clap-sep"></div>
 
   <!-- Actividad reciente -->
-  <section class="recent-section">
-    <div class="recent-head">
+  <section class="recent-activity-section">
+    <div class="recent-activity-header">
       <h2 class="section-title"><i class="bi bi-clock-history"></i> Actividad reciente</h2>
       <a href="{% url 'cinetrack:catalogo' %}?orden=recientes" class="btn-neon small">
         <i class="bi bi-lightning"></i> Ver todo
@@ -172,30 +172,30 @@
     </div>
 
     {% if actividad_reciente %}
-      <div class="recent-grid">
+      <div class="recent-activity-grid">
         {% for it in actividad_reciente %}
-          <article class="recent-card">
-            <div class="recent-thumb">
+          <article class="recent-activity-card">
+            <div class="recent-activity-poster">
               {% if it.imagen %}
                 <img src="{{ it.imagen }}" alt="{{ it.titulo }}">
               {% else %}
-                <div class="recent-thumb-ph">
+                <div class="recent-activity-poster-placeholder">
                   <i class="bi bi-image"></i>
                 </div>
               {% endif %}
             </div>
 
-            <div class="recent-meta">
-              <h3 class="recent-name" title="{{ it.titulo }}">{{ it.titulo }}</h3>
+            <div class="recent-activity-content">
+              <h3 class="recent-activity-title" title="{{ it.titulo }}">{{ it.titulo }}</h3>
 
-              <div class="recent-tags">
+              <div class="recent-activity-tags">
                 {% if it.tipo %}<span class="tag">{{ it.tipo }}</span>{% endif %}
                 {% if it.plataforma %}<span class="tag">{{ it.plataforma }}</span>{% endif %}
                 {% if it.estado %}<span class="tag">{{ it.estado }}</span>{% endif %}
               </div>
 
-              <div class="recent-foot">
-                <span class="recent-date">
+              <div class="recent-activity-footer">
+                <span class="recent-activity-date">
                   {% if it.created_at %}
                     {{ it.created_at|date:"d M Y" }}
                   {% else %}
@@ -233,25 +233,25 @@
     </div>
 
     {% if tops_plataformas %}
-      <div class="plat-grid">
+      <div class="platform-grid">
         {% for plat in tops_plataformas %}
-          <article class="plat-tile">
-            <header class="plat-tile-head">
-              <span class="plat-name">{{ plat.nombre }}</span>
+          <article class="platform-card">
+            <header class="platform-card-header">
+              <span class="platform-name">{{ plat.nombre }}</span>
             </header>
 
             {% if plat.items %}
-              <ol class="plat-mini-rail">
+              <ol class="platform-preview-grid">
                 {% for it in plat.items|slice:":5" %}
-                  <li class="plat-mini-item">
-                    <a href="{% url 'cinetrack:detalle' it.pk %}" class="plat-mini-card" title="{{ it.titulo }}">
+                  <li class="platform-preview-item">
+                    <a href="{% url 'cinetrack:detalle' it.pk %}" class="platform-preview-card" title="{{ it.titulo }}">
                       {% if it.imagen %}
                         <img src="{{ it.imagen }}" alt="{{ it.titulo }}">
                       {% else %}
                         <span class="plat-ph"><i class="bi bi-image"></i></span>
                       {% endif %}
                     </a>
-                    <span class="plat-mini-title">{{ it.titulo }}</span>
+                    <span class="platform-preview-title">{{ it.titulo }}</span>
                   </li>
                 {% endfor %}
               </ol>

@@ -139,7 +139,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.tile-ring .ring {
+.tile-ring .rating-chart {
   grid-area: donut;
 }
 ```
@@ -149,7 +149,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.tile-ring .ring-center {
+.tile-ring .rating-chart-center {
   grid-area: donut;
   position: static;
   display: flex;
@@ -177,7 +177,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.tile-ring .ring-sub {
+.tile-ring .rating-chart-summary {
   grid-area: sub;
 }
 ```
@@ -237,7 +237,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.metric-favs {
+.metric-favorites {
   grid-area: favs;
 }
 ```
@@ -247,7 +247,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.ring {
+.rating-chart {
   grid-area: donut;
   width: 220px;
   height: 220px;
@@ -269,7 +269,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.ring-bg {
+.rating-chart-background {
   fill: none;
   stroke: rgba(255,255,255,.12);
   stroke-width: 12;
@@ -285,7 +285,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.ring-val {
+.rating-chart-value {
   fill: none;
   stroke: var(--accent);
   stroke-width: 12;
@@ -313,7 +313,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.ring-center {
+.rating-chart-center {
   grid-area: donut;
   position: static;
   display: flex;
@@ -344,7 +344,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.ring-number {
+.rating-chart-score {
   font-size: 3rem;
   font-weight: 900;
   line-height: 1;
@@ -360,7 +360,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.ring-caption {
+.rating-chart-caption {
   font-family: var(--font-family-interface);
   opacity: .8;
   margin-top: -2px;
@@ -376,7 +376,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.ring-sub {
+.rating-chart-summary {
   grid-area: sub;
   margin-top: 8px;
 }
@@ -389,7 +389,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.bars {
+.platform-bars {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -408,7 +408,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.bar {
+.platform-bar {
   display: grid;
   grid-template-columns: 1fr auto 42px;
   gap: 10px;
@@ -427,7 +427,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.bar .label {
+.platform-bar .label {
   font-weight: 700;
 }
 ```
@@ -437,7 +437,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.bar .track {
+.platform-bar .track {
   position: relative;
   height: 12px;
   border-radius: 999px;
@@ -465,7 +465,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.bar:nth-child(2) .track {
+.platform-bar:nth-child(2) .track {
   --delay: .08s;
 }
 ```
@@ -475,7 +475,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.bar:nth-child(3) .track {
+.platform-bar:nth-child(3) .track {
   --delay: .16s;
 }
 ```
@@ -485,7 +485,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.bar:nth-child(4) .track {
+.platform-bar:nth-child(4) .track {
   --delay: .24s;
 }
 ```
@@ -495,7 +495,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.bar:nth-child(5) .track {
+.platform-bar:nth-child(5) .track {
   --delay: .32s;
 }
 ```
@@ -505,7 +505,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.bar .fill {
+.platform-bar .fill {
   position: absolute;
   left: 0;
   top: 0;
@@ -536,7 +536,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.bar .value {
+.platform-bar .value {
   font-weight: 800;
   text-align: right;
 }
@@ -820,7 +820,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.recent-section {
+.recent-activity-section {
   margin-top: 10px;
 }
 ```
@@ -830,7 +830,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.recent-head {
+.recent-activity-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -849,7 +849,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.recent-grid {
+.recent-activity-grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 14px;
@@ -865,7 +865,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.recent-card {
+.recent-activity-card {
   display: grid;
   grid-template-rows: auto 1fr;
   background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
@@ -896,7 +896,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.recent-card:hover {
+.recent-activity-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 16px 28px rgba(0,0,0,.45);
 }
@@ -909,7 +909,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.recent-thumb {
+.recent-activity-poster {
   position: relative;
   aspect-ratio: 2/3;
   background: #0b0b0f;
@@ -925,7 +925,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.recent-thumb img {
+.recent-activity-poster img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -944,7 +944,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.recent-thumb-ph {
+.recent-activity-poster-placeholder {
   width: 100%;
   height: 100%;
   display: grid;
@@ -969,7 +969,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.recent-meta {
+.recent-activity-content {
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -988,7 +988,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.recent-name {
+.recent-activity-title {
   margin: 0;
   font-size: 1.05rem;
   font-weight: 800;
@@ -1013,7 +1013,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.recent-tags {
+.recent-activity-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
@@ -1029,7 +1029,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.recent-tags .tag {
+.recent-activity-tags .tag {
   font-family: var(--font-family-interface);
   text-transform: uppercase;
   letter-spacing:.5px;
@@ -1066,7 +1066,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.recent-foot {
+.recent-activity-footer {
   margin-top: auto;
   display: flex;
   align-items: center;
@@ -1088,7 +1088,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.recent-date {
+.recent-activity-date {
   color: var(--color-text-secondary);
   font-size:.9rem;
 }
@@ -1101,7 +1101,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.plat-grid {
+.platform-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px 26px;
@@ -1117,7 +1117,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.plat-tile {
+.platform-card {
   background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
   border: 1px solid var(--color-border-subtle);
   border-radius: 16px;
@@ -1142,7 +1142,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.plat-tile-head {
+.platform-card-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1161,7 +1161,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.plat-name {
+.platform-name {
   font-weight: 900;
   letter-spacing: .4px;
 }
@@ -1184,7 +1184,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.plat-mini-rail {
+.platform-preview-grid {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 12px;
@@ -1212,7 +1212,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.plat-mini-rail > .plat-mini-item:nth-child(n+6) {
+.platform-preview-grid > .platform-preview-item:nth-child(n+6) {
   display: none;
 }
 ```
@@ -1222,7 +1222,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.plat-mini-item {
+.platform-preview-item {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -1238,7 +1238,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.plat-mini-card {
+.platform-preview-card {
   width: 100%;
   aspect-ratio: 2 / 3;
   border-radius: 10px;
@@ -1272,7 +1272,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.plat-mini-card:hover {
+.platform-preview-card:hover {
   color: #fff;
   transform: translateY(-2px);
   box-shadow: 0 12px 20px rgba(0,0,0,.45);
@@ -1288,7 +1288,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.plat-mini-card img {
+.platform-preview-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -1307,7 +1307,7 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.plat-mini-title {
+.platform-preview-title {
   display: none !important;
 }
 ```
