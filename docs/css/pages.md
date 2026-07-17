@@ -2370,7 +2370,7 @@ Las clases `.saga-name-input` y `.saga-save-button` se conservan. `.saga-name-in
 ---
 
 ```css
-.mara-card {
+.marathon-card {
   overflow: hidden
 }
 ```
@@ -2380,7 +2380,7 @@ Las clases `.saga-name-input` y `.saga-save-button` se conservan. `.saga-name-in
 ---
 
 ```css
-.mara-card > .mara-cover {
+.marathon-card > .marathon-cover {
   position: relative;
   height: 160px;
   overflow: visible;
@@ -2396,7 +2396,7 @@ Las clases `.saga-name-input` y `.saga-save-button` se conservan. `.saga-name-in
 ---
 
 ```css
-.mara-card > .mara-cover::before {
+.marathon-card > .marathon-cover::before {
   content: "";
   position: absolute;
   inset: -24px;
@@ -2433,7 +2433,7 @@ Las clases `.saga-name-input` y `.saga-save-button` se conservan. `.saga-name-in
 ---
 
 ```css
-.mara-card .mara-preview {
+.marathon-card .marathon-preview {
   position: absolute;
   left: 14px;
   right: 14px;
@@ -2464,7 +2464,7 @@ Las clases `.saga-name-input` y `.saga-save-button` se conservan. `.saga-name-in
 ---
 
 ```css
-.mara-card .mara-thumb {
+.marathon-card .marathon-thumbnail {
   width: 70px;
   aspect-ratio: 2/3;
   border-radius: 12px;
@@ -2489,7 +2489,7 @@ Las clases `.saga-name-input` y `.saga-save-button` se conservan. `.saga-name-in
 ---
 
 ```css
-.mara-card .mara-thumb img {
+.marathon-card .marathon-thumbnail img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -2508,7 +2508,7 @@ Las clases `.saga-name-input` y `.saga-save-button` se conservan. `.saga-name-in
 ---
 
 ```css
-.mara-body {
+.marathon-card-body {
   margin-top: 28px;
   display: grid;
   grid-template-columns: 1fr auto;
@@ -2530,7 +2530,7 @@ Las clases `.saga-name-input` y `.saga-save-button` se conservan. `.saga-name-in
 ---
 
 ```css
-.mara-side {
+.marathon-card-sidebar {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -2549,7 +2549,7 @@ Las clases `.saga-name-input` y `.saga-save-button` se conservan. `.saga-name-in
 ---
 
 ```css
-.mara-side .actions {
+.marathon-card-sidebar .actions {
   display: flex;
   gap: .5rem
 }
@@ -2562,7 +2562,7 @@ Las clases `.saga-name-input` y `.saga-save-button` se conservan. `.saga-name-in
 ---
 
 ```css
-.mara-title {
+.marathon-title {
   font-family: var(--font-family-interface);
   line-height: 1.1;
   letter-spacing: .3px;
@@ -2578,7 +2578,7 @@ Las clases `.saga-name-input` y `.saga-save-button` se conservan. `.saga-name-in
 ---
 
 ```css
-.mara-title a {
+.marathon-title a {
   color: inherit;
   text-decoration: none;
 }
@@ -2591,7 +2591,7 @@ Las clases `.saga-name-input` y `.saga-save-button` se conservan. `.saga-name-in
 ---
 
 ```css
-.mara-title a:hover {
+.marathon-title a:hover {
   color: #fff;
 }
 ```
@@ -2601,7 +2601,7 @@ Las clases `.saga-name-input` y `.saga-save-button` se conservan. `.saga-name-in
 ---
 
 ```css
-.mara-chip {
+.marathon-count-badge {
   background: rgba(180,70,255,.18);
   border: 1px solid rgba(180,70,255,.35)
 }
@@ -2615,11 +2615,11 @@ Las clases `.saga-name-input` y `.saga-save-button` se conservan. `.saga-name-in
 
 ```css
 @media (max-width: 768px) {
-  .mara-body {
+  .marathon-card-body {
     grid-template-columns: 1fr;
     row-gap: .75rem
   }
-  .mara-side {
+  .marathon-card-sidebar {
     align-items: flex-end
   }
 }
@@ -2627,18 +2627,18 @@ Las clases `.saga-name-input` y `.saga-save-button` se conservan. `.saga-name-in
 
 `@media (max-width: 768px)`: aplica las reglas internas únicamente cuando se cumple esta condición de ancho de pantalla.
 
-`.mara-body`: define las columnas de la cuadrícula con el valor `1fr`. separa las filas con el valor `.75rem`.
+`.marathon-card-body`: define las columnas de la cuadrícula con el valor `1fr`. separa las filas con el valor `.75rem`.
 
-`.mara-side`: alinea los elementos transversalmente con el valor `flex-end`.
+`.marathon-card-sidebar`: alinea los elementos transversalmente con el valor `flex-end`.
 
 ---
 
 ```css
 @media (max-width: 576px) {
-  .mara-card > .mara-cover {
+  .marathon-card > .marathon-cover {
     height: 120px
   }
-  .mara-card .mara-thumb {
+  .marathon-card .marathon-thumbnail {
     width: 56px
   }
 }
@@ -2646,14 +2646,14 @@ Las clases `.saga-name-input` y `.saga-save-button` se conservan. `.saga-name-in
 
 `@media (max-width: 576px)`: aplica las reglas internas únicamente cuando se cumple esta condición de ancho de pantalla.
 
-`.mara-card > .mara-cover`: establece la altura con el valor `120px`.
+`.marathon-card > .marathon-cover`: establece la altura con el valor `120px`.
 
-`.mara-card .mara-thumb`: establece el ancho con el valor `56px`.
+`.marathon-card .marathon-thumbnail`: establece el ancho con el valor `56px`.
 
 ---
 
 ```css
-.maraton-form-actions-sticky {
+.marathon-form-sticky-actions {
   position: sticky;
   top: 110px;
   z-index: 20;
@@ -2715,7 +2715,7 @@ Las clases `.saga-name-input` y `.saga-save-button` se conservan. `.saga-name-in
 ---
 
 ```css
-.maraton-selection-count {
+.marathon-selection-count {
   color: rgba(245, 241, 255, 0.82);
   font-weight: 600;
 }

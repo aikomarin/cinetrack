@@ -13,17 +13,17 @@
 }
 
 /* Página: Tarjeta de maratón */
-.mara-card {
+.marathon-card {
   overflow: hidden
 }
 
 /* Componente: Portada desenfocada de maratón */
-.mara-card > .mara-cover {
+.marathon-card > .marathon-cover {
   position: relative;
   height: 160px;
   overflow: visible;
 }
-.mara-card > .mara-cover::before {
+.marathon-card > .marathon-cover::before {
   content: "";
   position: absolute;
   inset: -24px;
@@ -36,7 +36,7 @@
   pointer-events: none;
 }
 /* Componente: Miniaturas superpuestas de maratón */
-.mara-card .mara-preview {
+.marathon-card .marathon-preview {
   position: absolute;
   left: 14px;
   right: 14px;
@@ -46,7 +46,7 @@
   overflow: visible;
   z-index: 2;
 }
-.mara-card .mara-thumb {
+.marathon-card .marathon-thumbnail {
   width: 70px;
   aspect-ratio: 2/3;
   border-radius: 12px;
@@ -54,7 +54,7 @@
   box-shadow: 0 6px 18px rgba(0,0,0,.35);
   flex: 0 0 auto;
 }
-.mara-card .mara-thumb img {
+.marathon-card .marathon-thumbnail img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -62,64 +62,64 @@
 }
 
 /* Layout: Cuerpo de la tarjeta de maratón */
-.mara-body {
+.marathon-card-body {
   margin-top: 28px;
   display: grid;
   grid-template-columns: 1fr auto;
   column-gap: 1.25rem;
   align-items: start;
 }
-.mara-side {
+.marathon-card-sidebar {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   gap: .65rem
 }
-.mara-side .actions {
+.marathon-card-sidebar .actions {
   display: flex;
   gap: .5rem
 }
 
 /* Página: Tipografía de maratón */
-.mara-title {
+.marathon-title {
   font-family: var(--font-family-interface);
   line-height: 1.1;
   letter-spacing: .3px;
 }
-.mara-title a {
+.marathon-title a {
   color: inherit;
   text-decoration: none;
 }
-.mara-title a:hover {
+.marathon-title a:hover {
   color: #fff;
 }
 
 /* Componente: Insignia de cantidad del maratón */
-.mara-chip {
+.marathon-count-badge {
   background: rgba(180,70,255,.18);
   border: 1px solid rgba(180,70,255,.35)
 }
 
 /* Página: Tarjeta de maratón adaptable */
 @media (max-width: 768px) {
-  .mara-body {
+  .marathon-card-body {
     grid-template-columns: 1fr;
     row-gap: .75rem
   }
-  .mara-side {
+  .marathon-card-sidebar {
     align-items: flex-end
   }
 }
 @media (max-width: 576px) {
-  .mara-card > .mara-cover {
+  .marathon-card > .marathon-cover {
     height: 120px
   }
-  .mara-card .mara-thumb {
+  .marathon-card .marathon-thumbnail {
     width: 56px
   }
 }
 
-.maraton-form-actions-sticky {
+.marathon-form-sticky-actions {
   position: sticky;
   top: 110px;
   z-index: 20;
@@ -149,7 +149,7 @@
   backdrop-filter: blur(12px);
 }
 
-.maraton-selection-count {
+.marathon-selection-count {
   color: rgba(245, 241, 255, 0.82);
   font-weight: 600;
 }

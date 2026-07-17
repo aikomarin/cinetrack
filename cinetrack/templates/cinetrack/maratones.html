@@ -18,13 +18,13 @@
     {% for m in maratones %}
     {% with portada=m.contenidos_ordenados.0 %}
     <div class="col-12 col-md-6">
-      <div class="tile p-0 mara-card" style="--m-bg: url('{{ portada.imagen|default:'' }}');">
+      <div class="tile p-0 marathon-card" style="--m-bg: url('{{ portada.imagen|default:'' }}');">
 
         <!-- Cover difuminado + mini portadas -->
-        <div class="mara-cover">
-          <div class="mara-preview">
+        <div class="marathon-cover">
+          <div class="marathon-preview">
             {% for c in m.contenidos_ordenados|slice:":6" %}
-              <div class="mara-thumb">
+              <div class="marathon-thumbnail">
                 {% if c.imagen %}
                   <img src="{{ c.imagen }}" alt="{{ c.titulo }}">
                 {% else %}
@@ -36,22 +36,22 @@
         </div>
 
         <!-- Body en dos columnas -->
-        <div class="p-3 p-lg-4 mara-body">
+        <div class="p-3 p-lg-4 marathon-card-body">
           <!-- Columna izquierda: título, descripción, cantidad -->
           <div class="mara-info">
-            <h3 class="mt-1 mara-title">
+            <h3 class="mt-1 marathon-title">
               <a href="{% url 'cinetrack:detalle_maraton' m.pk %}">{{ m.nombre }}</a>
             </h3>
             <p class="small text-light opacity-75 mara-desc mb-3">
               {{ m.descripcion|default:"(Sin descripción)" }}
             </p>
-            <span class="badge rounded-pill mara-chip">
+            <span class="badge rounded-pill marathon-count-badge">
               <i class="bi bi-collection-play me-1"></i> {{ m.total_contenidos }} títulos
             </span>
           </div>
 
           <!-- Columna derecha: editar/eliminar arriba, ver detalle abajo -->
-          <div class="mara-side">
+          <div class="marathon-card-sidebar">
             <div class="actions mt-1">
               <a href="{% url 'cinetrack:editar_maraton' m.pk %}" class="btn-ghost-sm" title="Editar maratón">
                 <i class="bi bi-pencil"></i>
