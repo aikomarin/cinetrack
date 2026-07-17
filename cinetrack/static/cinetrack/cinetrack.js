@@ -53,14 +53,14 @@ const placeMenu = (trigger, menu, dir) => {
 
 const buildMenuFromSelect = (select, onPick) => {
   const menu = document.createElement('div');
-  menu.className = 'ct-menu';
+  menu.className = 'custom-select-menu';
   menu.style.position = 'fixed';
   menu.style.display = 'none';
   menu.style.zIndex = '10000';
 
   Array.from(select.options).forEach((option) => {
     const item = document.createElement('div');
-    item.className = 'ct-option';
+    item.className = 'custom-select-option';
     item.textContent = option.text;
 
     if (option.disabled) {
@@ -88,11 +88,11 @@ const buildMenuFromSelect = (select, onPick) => {
 
 const closeAllSelectMenus = (portal) => {
   document
-    .querySelectorAll('.ct-select.ct-open')
-    .forEach((wrapper) => wrapper.classList.remove('ct-open'));
+    .querySelectorAll('.custom-select.custom-select-open')
+    .forEach((wrapper) => wrapper.classList.remove('custom-select-open'));
 
   portal
-    .querySelectorAll('.ct-menu')
+    .querySelectorAll('.custom-select-menu')
     .forEach((menu) => menu.remove());
 };
 
@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelectorAll('.tile.edit-card select').forEach(sel => {
     const wrap = document.createElement('div');
-    wrap.className = 'ct-select';
+    wrap.className = 'custom-select';
     sel.parentNode.insertBefore(wrap, sel);
     wrap.appendChild(sel);
 
@@ -142,42 +142,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const trg = document.createElement('button');
     trg.type = 'button';
-    trg.className = 'ct-trigger';
+    trg.className = 'custom-select-trigger';
     trg.innerHTML = `<span class="ct-label">${sel.options[sel.selectedIndex]?.text || '—'}</span><span class="ct-caret"></span>`;
     wrap.appendChild(trg);
 
     trg.addEventListener('click', (ev) => {
       ev.stopPropagation();
-      const wasOpen = wrap.classList.contains('ct-open');
+      const wasOpen = wrap.classList.contains('custom-select-open');
       closeAllSelectMenus(portal);
       if (wasOpen) return;
 
       const menu = buildMenuFromSelect(sel, (opt, optionDiv, menuEl) => {
         sel.value = opt.value;
         sel.dispatchEvent(new Event('change', { bubbles: true }));
-        menuEl.querySelectorAll('.ct-option').forEach(n => n.removeAttribute('aria-selected'));
+        menuEl.querySelectorAll('.custom-select-option').forEach(n => n.removeAttribute('aria-selected'));
         optionDiv.setAttribute('aria-selected', 'true');
         trg.querySelector('.ct-label').textContent = opt.text;
         closeAllSelectMenus(portal);
       });
 
       portal.appendChild(menu);
-      wrap.classList.add('ct-open');
+      wrap.classList.add('custom-select-open');
       placeMenu(trg, menu);
     });
   });
 
   const repro = () => {
-    const open = document.querySelector('.ct-select.ct-open');
-    const menu = portal.querySelector('.ct-menu');
+    const open = document.querySelector('.custom-select.custom-select-open');
+    const menu = portal.querySelector('.custom-select-menu');
     if (!open || !menu) return;
-    placeMenu(open.querySelector('.ct-trigger'), menu, menu.dataset.dir);
+    placeMenu(open.querySelector('.custom-select-trigger'), menu, menu.dataset.dir);
   };
 
   window.addEventListener('scroll', repro, { passive: true });
   window.addEventListener('resize', repro, { passive: true });
   document.addEventListener('click', (e) => {
-    if (e.target.closest('.ct-select')) return;
+    if (e.target.closest('.custom-select')) return;
     if (portal.contains(e.target)) return;
     closeAllSelectMenus(portal);
   });
@@ -207,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const refreshEmpty = (col) => {
     if (!col) return;
     const items = col.querySelectorAll('[data-dnd-item]').length;
-    const ph = col.querySelector('.kan-empty');
+    const ph = col.querySelector('.kanban-empty-state');
     if (ph) ph.style.display = items ? 'none' : '';
   };
 
@@ -223,16 +223,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const onDragEnd = () => {
     document.querySelectorAll('[data-dnd-item]').forEach(c => c.style.opacity = 1);
-    document.querySelectorAll('[data-dnd-col]').forEach(k => k.classList.remove('col-dragover'));
+    document.querySelectorAll('[data-dnd-col]').forEach(k => k.classList.remove('kanban-column-dragover'));
   };
 
   const onDragOver = (ev) => {
     ev.preventDefault();
-    ev.currentTarget.classList.add('col-dragover');
+    ev.currentTarget.classList.add('kanban-column-dragover');
   };
 
   const onDragLeave = (ev) => {
-    ev.currentTarget.classList.remove('col-dragover');
+    ev.currentTarget.classList.remove('kanban-column-dragover');
   };
 
   // Persistencia
@@ -253,7 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const onDrop = async (ev) => {
     ev.preventDefault();
     const col = ev.currentTarget;
-    col.classList.remove('col-dragover');
+    col.classList.remove('kanban-column-dragover');
 
     const fase = col.dataset.fase;
     const id = ev.dataTransfer.getData('text/plain') || draggedId;
@@ -387,7 +387,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Mejora los selects del formulario de Registrar
   document.querySelectorAll('.edit-card select').forEach(sel => {
     const wrap = document.createElement('div');
-    wrap.className = 'ct-select';
+    wrap.className = 'custom-select';
     sel.parentNode.insertBefore(wrap, sel);
     wrap.appendChild(sel);
 
@@ -397,41 +397,41 @@ document.addEventListener('DOMContentLoaded', () => {
     // Trigger
     const trg = document.createElement('button');
     trg.type = 'button';
-    trg.className = 'ct-trigger';
+    trg.className = 'custom-select-trigger';
     trg.innerHTML = `<span class="ct-label">${sel.options[sel.selectedIndex]?.text || '—'}</span><span class="ct-caret"></span>`;
     wrap.appendChild(trg);
 
     trg.addEventListener('click', (ev) => {
       ev.stopPropagation();
-      const wasOpen = wrap.classList.contains('ct-open');
+      const wasOpen = wrap.classList.contains('custom-select-open');
       closeAllSelectMenus(portal);
       if (wasOpen) return;
 
       const menu = buildMenuFromSelect(sel, (opt, optionDiv, menuEl) => {
         sel.value = opt.value;
         sel.dispatchEvent(new Event('change', { bubbles:true }));
-        menuEl.querySelectorAll('.ct-option').forEach(n => n.removeAttribute('aria-selected'));
+        menuEl.querySelectorAll('.custom-select-option').forEach(n => n.removeAttribute('aria-selected'));
         optionDiv.setAttribute('aria-selected', 'true');
         trg.querySelector('.ct-label').textContent = opt.text;
         closeAllSelectMenus(portal);
       });
 
       portal.appendChild(menu);
-      wrap.classList.add('ct-open');
+      wrap.classList.add('custom-select-open');
       placeMenu(trg, menu);
     });
   });
 
   const repro = () => {
-    const open = document.querySelector('.ct-select.ct-open');
-    const menu = portal.querySelector('.ct-menu');
+    const open = document.querySelector('.custom-select.custom-select-open');
+    const menu = portal.querySelector('.custom-select-menu');
     if (!open || !menu) return;
-    placeMenu(open.querySelector('.ct-trigger'), menu, menu.dataset.dir);
+    placeMenu(open.querySelector('.custom-select-trigger'), menu, menu.dataset.dir);
   };
   window.addEventListener('scroll', repro, { passive:true });
   window.addEventListener('resize', repro, { passive:true });
   document.addEventListener('click', (e) => {
-    if (!e.target.closest('.ct-select') && !portal.contains(e.target)) closeAllSelectMenus(portal);
+    if (!e.target.closest('.custom-select') && !portal.contains(e.target)) closeAllSelectMenus(portal);
   });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeAllSelectMenus(portal); });
 });
@@ -492,7 +492,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const card = grid.querySelector(`label[for="${cb.id}"]`);
       const sync = () => {
         if (card) {
-          card.classList.toggle('selected', cb.checked);
+          card.classList.toggle('marathon-selection-selected', cb.checked);
         }
         actualizarConteo();
       };

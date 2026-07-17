@@ -1040,7 +1040,7 @@ Los filtros de Maratones conservan sus IDs, el color de placeholder con 80 % de 
 ## css/components/custom-select.css
 
 ```css
-.ct-select {
+.custom-select {
   position: relative;
   font-family: var(--font-family-interface);
 }
@@ -1053,7 +1053,7 @@ Los filtros de Maratones conservan sus IDs, el color de placeholder con 80 % de 
 ---
 
 ```css
-.ct-select select {
+.custom-select select {
   opacity: 0;
   position: absolute;
   inset: 0;
@@ -1074,7 +1074,7 @@ Los filtros de Maratones conservan sus IDs, el color de placeholder con 80 % de 
 ---
 
 ```css
-.ct-trigger {
+.custom-select-trigger {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1126,7 +1126,7 @@ Los filtros de Maratones conservan sus IDs, el color de placeholder con 80 % de 
 ---
 
 ```css
-.ct-trigger:hover {
+.custom-select-trigger:hover {
   transform: translateY(-1px);
 }
 ```
@@ -1136,7 +1136,7 @@ Los filtros de Maratones conservan sus IDs, el color de placeholder con 80 % de 
 ---
 
 ```css
-.ct-trigger:focus-visible {
+.custom-select-trigger:focus-visible {
   outline: none;
   border-color: rgba(155,92,251,.65);
   box-shadow: 0 0 0 3px rgba(155,92,251,.15), 0 12px 28px rgba(0,0,0,.35);
@@ -1175,7 +1175,7 @@ Los filtros de Maratones conservan sus IDs, el color de placeholder con 80 % de 
 ---
 
 ```css
-.ct-open .ct-caret {
+.custom-select-open .ct-caret {
   transform: rotate(180deg);
 }
 ```
@@ -1195,7 +1195,7 @@ Los filtros de Maratones conservan sus IDs, el color de placeholder con 80 % de 
 ---
 
 ```css
-#ct-portal .ct-menu {
+#ct-portal .custom-select-menu {
   background: linear-gradient(180deg, var(--color-surface-elevated, #1a1030), var(--color-surface-base, #120a1f));
   border: 1px solid rgba(155,92,251,.28);
   box-shadow: 0 14px 28px rgba(0,0,0,.55), inset 0 0 0 1px rgba(255,255,255,.05);
@@ -1223,7 +1223,7 @@ Los filtros de Maratones conservan sus IDs, el color de placeholder con 80 % de 
 ---
 
 ```css
-#ct-portal .ct-option {
+#ct-portal .custom-select-option {
   color: var(--color-text-primary, #f6f3ff);
   padding: .4rem .65rem;
   border-radius: 8px;
@@ -1248,7 +1248,7 @@ Los filtros de Maratones conservan sus IDs, el color de placeholder con 80 % de 
 ---
 
 ```css
-#ct-portal .ct-option:hover {
+#ct-portal .custom-select-option:hover {
   background: rgba(155,92,251,.18);
 }
 ```
@@ -1258,7 +1258,7 @@ Los filtros de Maratones conservan sus IDs, el color de placeholder con 80 % de 
 ---
 
 ```css
-#ct-portal .ct-option[aria-selected="true"] {
+#ct-portal .custom-select-option[aria-selected="true"] {
   background: rgba(155,92,251,.28);
   box-shadow: inset 0 0 0 1px rgba(155,92,251,.4);
 }
@@ -1271,7 +1271,7 @@ Los filtros de Maratones conservan sus IDs, el color de placeholder con 80 % de 
 ---
 
 ```css
-#ct-portal .ct-option.is-placeholder {
+#ct-portal .custom-select-option.is-placeholder {
   color: var(--color-text-secondary);
 }
 ```
@@ -1281,7 +1281,7 @@ Los filtros de Maratones conservan sus IDs, el color de placeholder con 80 % de 
 ---
 
 ```css
-#ct-portal .ct-option[aria-disabled="true"] {
+#ct-portal .custom-select-option[aria-disabled="true"] {
   opacity: .45;
   cursor: not-allowed;
 }
@@ -1294,7 +1294,7 @@ Los filtros de Maratones conservan sus IDs, el color de placeholder con 80 % de 
 ---
 
 ```css
-#ct-portal .ct-menu::-webkit-scrollbar {
+#ct-portal .custom-select-menu::-webkit-scrollbar {
   width: 10px;
 }
 ```
@@ -1304,7 +1304,7 @@ Los filtros de Maratones conservan sus IDs, el color de placeholder con 80 % de 
 ---
 
 ```css
-#ct-portal .ct-menu::-webkit-scrollbar-thumb {
+#ct-portal .custom-select-menu::-webkit-scrollbar-thumb {
   background: rgba(255,255,255,.18);
   border-radius: 999px;
 }

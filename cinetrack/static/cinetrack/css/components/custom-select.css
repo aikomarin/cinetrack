@@ -1,10 +1,10 @@
 /* Componente: Selector personalizado */
-/* Hook de JavaScript: .ct-select se genera durante la ejecución; actualiza JavaScript antes de renombrarla. */
-.ct-select {
+/* Hook de JavaScript: .custom-select se genera durante la ejecución; actualiza JavaScript antes de renombrarla. */
+.custom-select {
   position: relative;
   font-family: var(--font-family-interface);
 }
-.ct-select select {
+.custom-select select {
   opacity: 0;
   position: absolute;
   inset: 0;
@@ -14,7 +14,7 @@
 }
 
 /* Componente: Activador del selector personalizado */
-.ct-trigger {
+.custom-select-trigger {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -31,10 +31,10 @@
   transition: border-color .15s ease, box-shadow .2s ease, transform .06s ease;
   cursor: pointer;
 }
-.ct-trigger:hover {
+.custom-select-trigger:hover {
   transform: translateY(-1px);
 }
-.ct-trigger:focus-visible {
+.custom-select-trigger:focus-visible {
   outline: none;
   border-color: rgba(155,92,251,.65);
   box-shadow: 0 0 0 3px rgba(155,92,251,.15), 0 12px 28px rgba(0,0,0,.35);
@@ -49,8 +49,8 @@
   opacity: .9;
   transition: transform .15s ease;
 }
-/* Hook de JavaScript: .ct-open refleja el estado abierto durante la ejecución. */
-.ct-open .ct-caret {
+/* Hook de JavaScript: .custom-select-open refleja el estado abierto durante la ejecución. */
+.custom-select-open .ct-caret {
   transform: rotate(180deg);
 }
 
@@ -59,8 +59,8 @@
   z-index: 9999;
 }
 
-/* Hook de JavaScript: .ct-menu se genera y posiciona durante la ejecución. */
-#ct-portal .ct-menu {
+/* Hook de JavaScript: .custom-select-menu se genera y posiciona durante la ejecución. */
+#ct-portal .custom-select-menu {
   background: linear-gradient(180deg, var(--color-surface-elevated, #1a1030), var(--color-surface-base, #120a1f));
   border: 1px solid rgba(155,92,251,.28);
   box-shadow: 0 14px 28px rgba(0,0,0,.55), inset 0 0 0 1px rgba(255,255,255,.05);
@@ -70,8 +70,8 @@
   max-width: 260px;
 }
 
-/* Hook de JavaScript: .ct-option se genera durante la ejecución. */
-#ct-portal .ct-option {
+/* Hook de JavaScript: .custom-select-option se genera durante la ejecución. */
+#ct-portal .custom-select-option {
   color: var(--color-text-primary, #f6f3ff);
   padding: .4rem .65rem;
   border-radius: 8px;
@@ -79,27 +79,27 @@
   font-size: .95rem;
   user-select: none;
 }
-#ct-portal .ct-option:hover {
+#ct-portal .custom-select-option:hover {
   background: rgba(155,92,251,.18);
 }
-#ct-portal .ct-option[aria-selected="true"] {
+#ct-portal .custom-select-option[aria-selected="true"] {
   background: rgba(155,92,251,.28);
   box-shadow: inset 0 0 0 1px rgba(155,92,251,.4);
 }
 /* Estado: Opción de marcador de posición */
-#ct-portal .ct-option.is-placeholder {
+#ct-portal .custom-select-option.is-placeholder {
   color: var(--color-text-secondary);
 }
-#ct-portal .ct-option[aria-disabled="true"] {
+#ct-portal .custom-select-option[aria-disabled="true"] {
   opacity: .45;
   cursor: not-allowed;
 }
 
 /* Componente: Barra de desplazamiento del menú en WebKit */
-#ct-portal .ct-menu::-webkit-scrollbar {
+#ct-portal .custom-select-menu::-webkit-scrollbar {
   width: 10px;
 }
-#ct-portal .ct-menu::-webkit-scrollbar-thumb {
+#ct-portal .custom-select-menu::-webkit-scrollbar-thumb {
   background: rgba(255,255,255,.18);
   border-radius: 999px;
 }

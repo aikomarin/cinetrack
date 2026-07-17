@@ -54,7 +54,7 @@
                    data-dnd-col>
 
                 <!-- Placeholder sin items -->
-                <div class="kan-empty"{% if items %} style="display:none"{% endif %}>Sin items aquí.</div>
+                <div class="kanban-empty-state"{% if items %} style="display:none"{% endif %}>Sin items aquí.</div>
 
                 {% for it in items %}
                 <article class="kanban-item" draggable="true" data-id="{{ it.id }}" data-dnd-item>

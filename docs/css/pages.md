@@ -2357,7 +2357,7 @@ Las clases `.saga-name-input` y `.saga-save-button` se conservan. `.saga-name-in
 ---
 
 ```css
-.selectable-card.selected {
+.selectable-card.marathon-selection-selected {
   box-shadow: 0 0 12px 3px rgba(180, 70, 255, 0.7);
   transform: scale(1.02);
 }
@@ -2863,7 +2863,7 @@ Las clases `.saga-name-input` y `.saga-save-button` se conservan. `.saga-name-in
 ---
 
 ```css
-.kan-empty {
+.kanban-empty-state {
   color: rgba(255,255,255,.65);
   font-size: .92rem;
   padding: .35rem .5rem;
@@ -2879,7 +2879,7 @@ Las clases `.saga-name-input` y `.saga-save-button` se conservan. `.saga-name-in
 ---
 
 ```css
-.kanban-col.col-dragover {
+.kanban-col.kanban-column-dragover {
   outline: 2px dashed rgba(190,150,255,.45);
   outline-offset: 6px;
   border-radius: 16px;

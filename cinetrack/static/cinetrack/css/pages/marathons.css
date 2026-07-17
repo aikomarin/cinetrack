@@ -6,8 +6,8 @@
   transition: all 0.2s ease;
 }
 
-/* Hook de JavaScript: .selected refleja el estado de selección del checkbox. */
-.selectable-card.selected {
+/* Hook de JavaScript: .marathon-selection-selected refleja el estado de selección del checkbox. */
+.selectable-card.marathon-selection-selected {
   box-shadow: 0 0 12px 3px rgba(180, 70, 255, 0.7);
   transform: scale(1.02);
 }
