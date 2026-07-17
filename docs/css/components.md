@@ -2019,43 +2019,7 @@ La imagen conserva ajuste `cover`, escala inicial del 101 %, transición de 0.35
 
 ## css/components/rails.css
 
-```css
-.rail-track {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: minmax(140px, 170px);
-  gap: 1rem;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding-bottom: .25rem;
-}
-```
-
-`display: grid`: organiza el carril como una cuadrícula.
-
-`grid-auto-flow: column`: crea nuevas celdas horizontalmente.
-
-`grid-auto-columns: minmax(140px, 170px)`: limita cada columna automática a un ancho de entre 140 y 170 píxeles.
-
-`gap: 1rem`: separa las tarjetas del carril.
-
-`overflow-x: auto`: permite desplazamiento horizontal cuando el contenido excede el ancho disponible.
-
-`scroll-snap-type: x mandatory`: activa el ajuste obligatorio de desplazamiento sobre el eje horizontal.
-
-`padding-bottom: .25rem`: reserva espacio inferior dentro del carril.
-
----
-
-```css
-.rail-track::-webkit-scrollbar {
-  height: 0;
-}
-```
-
-`height: 0`: oculta visualmente el scrollbar horizontal en motores WebKit sin desactivar el desplazamiento.
-
----
+La clase `.rail-track` fue eliminada porque nunca tuvo consumidores reales.
 
 ```css
 .rail-card {

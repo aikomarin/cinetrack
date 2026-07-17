@@ -2035,47 +2035,6 @@ La variante local `.tile-header-centered` fue sustituida en los estados vacíos 
 ---
 
 ```css
-.rail-track {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: minmax(140px, 170px);
-  gap: 1rem;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding-bottom: .25rem;
-}
-```
-
-`display: grid`: establece el modelo de presentación con el valor `grid`.
-
-`grid-auto-flow: column`: define la dirección automática de Grid con el valor `column`.
-
-`grid-auto-columns: minmax(140px, 170px)`: define el tamaño de las columnas automáticas con el valor `minmax(140px, 170px)`.
-
-`gap: 1rem`: establece la separación entre elementos con el valor `1rem`.
-
-`overflow-x: auto`: controla el desbordamiento horizontal con el valor `auto`.
-
-`scroll-snap-type: x mandatory`: configura el ajuste del desplazamiento con el valor `x mandatory`.
-
-`padding-bottom: .25rem`: establece `padding-bottom` con el valor `.25rem`.
-
----
-
-```css
-.rail-card {
-  position: relative;
-  scroll-snap-align: start;
-}
-```
-
-`position: relative`: establece el tipo de posicionamiento con el valor `relative`.
-
-`scroll-snap-align: start`: define el punto de ajuste del elemento con el valor `start`.
-
----
-
-```css
 .rail-badges {
   position: absolute;
   left: .5rem;
@@ -3156,42 +3115,6 @@ Las clases `.saga-input` y `.saga-btn` se conservan. `.saga-input` define las di
 `font-weight: 700`: establece el grosor tipográfico con el valor `700`.
 
 `box-shadow: 0 6px 16px rgba(30,144,255,.35)`: aplica la sombra con el valor `0 6px 16px rgba(30,144,255,.35)`.
-
----
-
-```css
-.rail-track {
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding-bottom: .25rem;
-}
-```
-
-`overflow-x: auto`: controla el desbordamiento horizontal con el valor `auto`.
-
-`scroll-snap-type: x mandatory`: configura el ajuste del desplazamiento con el valor `x mandatory`.
-
-`padding-bottom: .25rem`: aplica el espacio interior inferior con el valor `.25rem`.
-
----
-
-```css
-.rail-card {
-  scroll-snap-align: start;
-}
-```
-
-`scroll-snap-align: start`: define el punto de ajuste con el valor `start`.
-
----
-
-```css
-.rail-track::-webkit-scrollbar {
-  height: 0;
-}
-```
-
-`height: 0`: establece la altura con el valor `0`.
 
 ---
 
