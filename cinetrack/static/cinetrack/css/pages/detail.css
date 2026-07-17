@@ -1,11 +1,11 @@
-/* Page: Detail */
+/* Página: Detalle */
 
-/* Page: Poster-derived background */
-.detail-page{
+/* Página: Fondo derivado del póster */
+.detail-page {
   position: relative;
   padding-top: 12px;
 }
-.detail-bg{
+.detail-bg {
   position: fixed;
   inset: 0;
   z-index: -2;
@@ -19,7 +19,7 @@
   filter: blur(22px) saturate(125%);
   opacity: .35;
 }
-.detail-glow{
+.detail-glow {
   position: fixed;
   inset: 0;
   z-index: -1;
@@ -31,35 +31,35 @@
   animation: glowDrift 8s ease-in-out infinite alternate;
 }
 
-/* Page: Detail header */
-.detail-head{
-  display:flex;
-  align-items:flex-start;
-  justify-content:space-between;
-  gap:1rem;
+/* Página: Encabezado de detalle */
+.detail-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
   margin-bottom: 20px;
 }
-.detail-title{
+.detail-title {
   font-family: var(--brand-font);
   font-size: clamp(2rem, 5vw, 3.4rem);
   letter-spacing: .8px;
   text-shadow: 0 12px 28px rgba(0,0,0,.55);
   font-weight: 900;
 }
-.detail-title .detail-year{
+.detail-title .detail-year {
   font-family: var(--ui-font);
   font-size: 1.2rem;
   color: var(--ink-dim);
   margin-left: .5rem;
 }
-.detail-actions{
-  display:flex;
-  align-items:center;
-  gap:.6rem;
+.detail-actions {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
 }
 
-/* Page: Detail surface */
-.detail-card{
+/* Página: Superficie de detalle */
+.detail-card {
   background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
   border: 1px solid var(--line);
   border-radius: 20px;
@@ -69,102 +69,109 @@
   position: relative;
   overflow: hidden;
 }
-.detail-card::after{
-  content:"";
-  position:absolute;
-  inset:-1px;
-  border-radius:20px;
+.detail-card::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 20px;
   box-shadow: inset 0 0 0 1px rgba(255,255,255,.08), 0 0 32px rgba(155,92,251,.18);
-  pointer-events:none;
+  pointer-events: none;
 }
 
-/* Page: Detail poster */
-.detail-poster{
+/* Página: Póster de detalle */
+.detail-poster {
   border-radius: 14px;
   overflow: hidden;
   border: 1px solid var(--line);
   background: #0b0b0f;
   box-shadow: 0 12px 28px rgba(0,0,0,.5);
 }
-.detail-poster img{
-  width: 100%; height: 100%;
-  display:block; object-fit:cover;
+.detail-poster img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
   aspect-ratio: 2/3;
   transform: scale(1.01);
   transition: transform .35s ease;
 }
-.detail-poster:hover img{ transform: scale(1.03); }
-.detail-poster-ph{
-  aspect-ratio:2/3;
-  display:flex; flex-direction:column;
-  justify-content:center; align-items:center;
+.detail-poster:hover img {
+  transform: scale(1.03);
+}
+.detail-poster-ph {
+  aspect-ratio: 2/3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   color: var(--ink-dim);
-  font-size:1.4rem;
+  font-size: 1.4rem;
 }
 
-/* Page: Detail badges */
-.detail-badges .badge{
-  font-weight:700;
-  letter-spacing:.3px;
-  padding:.45rem .9rem;
-  margin-right:.35rem;
+/* Página: Insignias de detalle */
+.detail-badges .badge {
+  font-weight: 700;
+  letter-spacing: .3px;
+  padding: .45rem .9rem;
+  margin-right: .35rem;
   box-shadow: 0 4px 10px rgba(0,0,0,.35);
 }
 
-/* Page: Detail summary */
-.detail-section .detail-sub{
+/* Página: Resumen de detalle */
+.detail-section .detail-sub {
   font-family: var(--ui-font);
   text-transform: uppercase;
-  letter-spacing:.5px;
+  letter-spacing: .5px;
   color: var(--ink-dim);
   font-size: 1rem;
-  margin-bottom:.35rem;
+  margin-bottom: .35rem;
 }
-.detail-text{
+.detail-text {
   font-size: 1.05rem;
-  line-height:1.6;
+  line-height: 1.6;
   color: var(--ink);
-  opacity:.95;
+  opacity: .95;
 }
 
-/* Page: Detail statistics */
-.detail-grid{
-  display:grid;
+/* Página: Estadísticas de detalle */
+.detail-grid {
+  display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 14px 20px;
 }
-.detail-stat{
+.detail-stat {
   background: rgba(255,255,255,.05);
-  border:1px solid var(--line);
+  border: 1px solid var(--line);
   border-radius: 14px;
   padding: .8rem 1rem;
-  display:flex; flex-direction:column;
-  gap:2px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
   transition: transform .15s ease, box-shadow .2s ease;
 }
-.detail-stat:hover{
+.detail-stat:hover {
   transform: translateY(-2px);
   box-shadow: 0 12px 22px rgba(0,0,0,.35);
 }
-.detail-stat .label{
+.detail-stat .label {
   font-family: var(--ui-font);
-  font-size:.85rem;
+  font-size: .85rem;
   color: var(--ink-dim);
-  text-transform:uppercase;
-  letter-spacing:.4px;
-  font-weight:700;
+  text-transform: uppercase;
+  letter-spacing: .4px;
+  font-weight: 700;
 }
-.detail-stat .value{
-  font-size:1.2rem;
-  font-weight:800;
+.detail-stat .value {
+  font-size: 1.2rem;
+  font-weight: 800;
   color: var(--ink);
 }
 
-/* Page: Detail actions */
-.detail-foot{
-  display:flex;
-  align-items:center;
-  gap:.6rem;
+/* Página: Acciones de detalle */
+.detail-foot {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
   margin-top: 20px;
 }
 

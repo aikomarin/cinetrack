@@ -1,4 +1,4 @@
-/* Page: Favorites */
+/* Página: Favoritos */
 .fav-rail .section-title {
   font-family: var(--ui-font);
   letter-spacing: .6px;
@@ -13,13 +13,20 @@
   scroll-snap-type: x mandatory;
   padding-bottom: .25rem;
 }
-.rail-card { position: relative; scroll-snap-align: start; }
+.rail-card {
+  position: relative;
+  scroll-snap-align: start;
+}
 .rail-badges {
-  position: absolute; left: .5rem; bottom: .5rem;
-  display: flex; gap: .35rem; flex-wrap: wrap;
+  position: absolute;
+  left: .5rem;
+  bottom: .5rem;
+  display: flex;
+  gap: .35rem;
+  flex-wrap: wrap;
 }
 
-/* Page: Favorite tiles */
+/* Página: Paneles de favoritos */
 .fav-title {
   display: flex;
   align-items: center;

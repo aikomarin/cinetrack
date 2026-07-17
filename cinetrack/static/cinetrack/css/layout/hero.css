@@ -1,19 +1,19 @@
-/* Layout: Hero */
-.hero{
-  padding:54px 0 24px;
+/* Layout: Portada principal */
+.hero {
+  padding: 54px 0 24px;
 }
-.hero-title{
-  font-family:var(--brand-font);
+.hero-title {
+  font-family: var(--brand-font);
   font-size: clamp(2.4rem, 6vw, 4.6rem);
-  letter-spacing:1px;
-  line-height:1;
+  letter-spacing: 1px;
+  line-height: 1;
   text-shadow: 0 12px 32px rgba(0,0,0,.6), 0 0 24px rgba(255,255,255,.16);
 }
-/* JavaScript hook: .hero-sub is updated after group deletion; update JavaScript and templates before renaming. */
-.hero-sub{
-  color:var(--ink-dim);
-  font-family:var(--ui-font);
+/* Hook de JavaScript: .hero-sub se actualiza después de eliminar un grupo; actualiza JavaScript y templates antes de renombrarla. */
+.hero-sub {
+  color: var(--ink-dim);
+  font-family: var(--ui-font);
   font-size: clamp(1.05rem, 1.6vw, 1.25rem);
-  letter-spacing:.4px;
-  text-transform:uppercase;
+  letter-spacing: .4px;
+  text-transform: uppercase;
 }

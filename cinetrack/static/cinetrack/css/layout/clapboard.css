@@ -1,4 +1,4 @@
-/* Layout: Clapboard section separator */
+/* Layout: Separador de secciones con claqueta */
 .clap-sep {
   position: relative;
   height: 68px;
@@ -7,22 +7,28 @@
   place-items: center;
 }
 
-/* Component: Clapboard body */
+/* Componente: Cuerpo de la claqueta */
 .clap-sep::after {
-  content:"";
-  position:absolute; left:50%; top:50%;
-  width: 76px; height: 34px;
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 76px;
+  height: 34px;
   transform: translate(-50%, -2px);
   border-radius: 6px;
   background: linear-gradient(180deg, var(--clap-body, #7c3aed), var(--clap-body-dark, #5b2bb5));
   box-shadow: inset 0 0 0 2px rgba(0,0,0,.28), 0 6px 16px rgba(0,0,0,.35);
 }
 
-/* Component: Animated clapboard top */
+/* Componente: Tapa animada de la claqueta */
 .clap-sep::before {
-  content:"";
-  position:absolute; left:50%; top:50%;
-  width: 90px; height: 16px;
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 90px;
+  height: 16px;
   transform-origin: calc(-38px) 16px;
   transform: translate(-50%, -26px) rotate(0deg);
   border-radius: 4px;
@@ -30,8 +36,6 @@
   box-shadow: inset 0 0 0 1px rgba(0,0,0,.28), 0 4px 10px rgba(0,0,0,.35);
   animation: clapOpenSep 2.3s ease-in-out infinite;
 }
-
-
 .tile-header-centered {
   justify-content: center;
 }

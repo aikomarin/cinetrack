@@ -1,94 +1,108 @@
-/* Component: Buttons */
-/* Utility: Center button content */
-.btn-center{
+/* Componente: Botones */
+/* Utilidad: Contenido centrado del botón */
+.btn-center {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: .5rem;
 }
-.btn-center i{ flex: 0 0 auto; }
+.btn-center i {
+  flex: 0 0 auto;
+}
 
-/* Component: Primary neon button */
-.btn-neon{
+/* Componente: Botón neón principal */
+.btn-neon {
   --c1: var(--accent);
   --c2: var(--accent-2);
-  display:inline-flex;
-  align-items:center;
-  gap:.5rem;
-  color:#fff;
-  text-decoration:none;
-  border:none;
-  border-radius:12px;
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  border-radius: 12px;
   background: linear-gradient(135deg, var(--c1), var(--c2));
-  padding:.8rem 1.1rem;
-  font-weight:700;
-  box-shadow:0 10px 24px rgba(111,63,230,.35),
-             inset 0 0 0 1px rgba(255,255,255,.08);
+  padding: .8rem 1.1rem;
+  font-weight: 700;
+  box-shadow: 0 10px 24px rgba(111,63,230,.35),
+              inset 0 0 0 1px rgba(255,255,255,.08);
   transition: transform .15s ease,
               box-shadow .2s ease,
               filter .2s ease;
 }
-.btn-neon:hover{
-  color:#fff;
-  transform:translateY(-1px);
-  filter:brightness(1.06);
-  box-shadow:0 14px 30px rgba(111,63,230,.45);
+.btn-neon:hover {
+  color: #fff;
+  transform: translateY(-1px);
+  filter: brightness(1.06);
+  box-shadow: 0 14px 30px rgba(111,63,230,.45);
 }
 
-/* Component: Compact neon button variant */
-.btn-neon.small{
-  padding:.55rem .8rem;
-  border-radius:10px;
-  font-size:.95rem;
+/* Variante: Botón neón compacto */
+.btn-neon.small {
+  padding: .55rem .8rem;
+  border-radius: 10px;
+  font-size: .95rem;
 }
 
-/* Component: Ghost buttons */
-.btn-ghost{
-  display:inline-flex;
-  align-items:center;
-  gap:.5rem;
-  color:#e9d5ff;
-  text-decoration:none;
-  border:1px solid var(--line);
-  border-radius:12px;
-  background:rgba(255,255,255,.04);
-  padding:.8rem 1.1rem;
-  backdrop-filter:blur(4px);
-  transition:all .18s ease;
+/* Componente: Botones transparentes */
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  color: #e9d5ff;
+  text-decoration: none;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(255,255,255,.04);
+  padding: .8rem 1.1rem;
+  backdrop-filter: blur(4px);
+  transition: all .18s ease;
 }
-.btn-ghost:hover{
-  color:#fff;
-  background:rgba(255,255,255,.08);
-  border-color:rgba(255,255,255,.22);
+.btn-ghost:hover {
+  color: #fff;
+  background: rgba(255,255,255,.08);
+  border-color: rgba(255,255,255,.22);
 }
-.btn-ghost-sm{
-  color:inherit;
-  text-decoration:none;
-  padding:.45rem .6rem;
-  border-radius:10px;
-  border:1px solid var(--line);
-  background:rgba(255,255,255,.04);
-  display:inline-flex; align-items:center; gap:.4rem;
-  font-weight:500;
-  transition:all .15s ease;
+.btn-ghost-sm {
+  color: inherit;
+  text-decoration: none;
+  padding: .45rem .6rem;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.04);
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  font-weight: 500;
+  transition: all .15s ease;
 }
-.btn-ghost-sm:hover{ color:#fff; background:rgba(255,255,255,.08); }
+.btn-ghost-sm:hover {
+  color: #fff;
+  background: rgba(255,255,255,.08);
+}
 
-/* Component: Save button */
-.btn-save{
-  --c1: var(--accent); --c2: var(--accent-2);
-  display:inline-flex; align-items:center; gap:.55rem;
-  padding:.8rem 1.2rem; font-weight:900; letter-spacing:.2px;
-  border-radius:12px; border:1px solid transparent; color:#fff;
-  text-decoration:none;
-  background:linear-gradient(135deg, var(--c1), var(--c2));
-  box-shadow:0 0 14px rgba(111,63,230,.55), inset 0 0 0 1px rgba(255,255,255,.08);
-  transition:transform .12s ease, box-shadow .18s ease, filter .12s ease;
-  animation:pulseGlow 2.2s ease-in-out infinite;
+/* Componente: Botón de guardado */
+.btn-save {
+  --c1: var(--accent);
+  --c2: var(--accent-2);
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  padding: .8rem 1.2rem;
+  font-weight: 900;
+  letter-spacing: .2px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  color: #fff;
+  text-decoration: none;
+  background: linear-gradient(135deg, var(--c1), var(--c2));
+  box-shadow: 0 0 14px rgba(111,63,230,.55), inset 0 0 0 1px rgba(255,255,255,.08);
+  transition: transform .12s ease, box-shadow .18s ease, filter .12s ease;
+  animation: pulseGlow 2.2s ease-in-out infinite;
 }
-.btn-save:hover{
-  color:#fff;
-  transform:translateY(-1px);
-  box-shadow:0 0 18px rgba(155,92,251,.7);
-  filter:brightness(1.06);
+.btn-save:hover {
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 0 18px rgba(155,92,251,.7);
+  filter: brightness(1.06);
 }

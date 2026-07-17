@@ -1,5 +1,7 @@
-/* Page: Catalog filter chips */
- .filter-chips{ padding-top: 14px; }
+/* Página: Filtros del catálogo */
+.filter-chips {
+  padding-top: 14px;
+}
 
 .filter-chips .badge {
   display: inline-flex;
@@ -10,7 +12,7 @@
   font-weight: 600;
 }
 
-/* Page: Catalog group badge */
+/* Página: Insignia de grupo del catálogo */
 .group-count {
   background: var(--brand-purple, #7c3aed);
   color: #fff;

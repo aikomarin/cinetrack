@@ -1,6 +1,8 @@
-/* Page: Pending */
-/* Component: Kanban and Focus tabs */
-.nav.nav-pills { gap: .5rem; }
+/* Página: Pendientes */
+/* Componente: Pestañas Kanban y Focus */
+.nav.nav-pills {
+  gap: .5rem;
+}
 .nav-pills .nav-link {
   color: var(--ink-dim);
   background: rgba(255,255,255,.04);
@@ -25,7 +27,7 @@
   box-shadow: 0 10px 24px rgba(120,70,255,.3), inset 0 1px 0 rgba(255,255,255,.14);
 }
 
-/* Page: Kanban poster cards */
+/* Página: Tarjetas de pósteres Kanban */
 .kanban-col {
   display: flex;
   flex-direction: column;
@@ -34,46 +36,73 @@
   overflow-y: auto;
   padding: .25rem 0 .25rem;
 }
-/* JavaScript hook: .kan-empty visibility is synchronized after drag-and-drop. */
+/* Hook de JavaScript: la visibilidad de .kan-empty se sincroniza después de arrastrar y soltar. */
 .kan-empty {
   color: rgba(255,255,255,.65);
   font-size: .92rem;
   padding: .35rem .5rem;
 }
-/* JavaScript hook: .col-dragover reflects the active drop target. */
+/* Hook de JavaScript: .col-dragover refleja el destino activo al soltar. */
 .kanban-col.col-dragover {
   outline: 2px dashed rgba(190,150,255,.45);
   outline-offset: 6px;
   border-radius: 16px;
   background: linear-gradient(180deg, rgba(150,110,255,.10), rgba(150,110,255,.04));
 }
-.kan-item { position: relative; width: 100%; }
-.kan-poster { display:block; border-radius: 16px; overflow: hidden; }
-.kan-poster:hover img { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(10,0,40,.36); }
-
-/* Page: Kanban overlay badges */
-.kan-badges {
-  position: absolute; left: .6rem; bottom: .6rem;
-  display: flex; gap: .35rem; flex-wrap: wrap;
+.kan-item {
+  position: relative;
+  width: 100%;
+}
+.kan-poster {
+  display: block;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.kan-poster:hover img {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(10,0,40,.36);
 }
 
-/* Page: Focus list */
+/* Página: Insignias superpuestas de Kanban */
+.kan-badges {
+  position: absolute;
+  left: .6rem;
+  bottom: .6rem;
+  display: flex;
+  gap: .35rem;
+  flex-wrap: wrap;
+}
+
+/* Página: Lista Focus */
 .focus-list .focus-row {
-  display: flex; align-items: center; gap: .75rem;
+  display: flex;
+  align-items: center;
+  gap: .75rem;
   padding: .45rem .6rem;
   border-radius: 12px;
   background: rgba(255,255,255,.03);
   border: 1px solid rgba(255,255,255,.08);
 }
-.focus-list .focus-row + .focus-row { margin-top: .5rem; }
+.focus-list .focus-row + .focus-row {
+  margin-top: .5rem;
+}
 .focus-list .poster {
-  width: 48px; border-radius: 10px; overflow: hidden; flex-shrink: 0;
+  width: 48px;
+  border-radius: 10px;
+  overflow: hidden;
+  flex-shrink: 0;
   box-shadow: 0 6px 16px rgba(10,0,40,.28);
 }
-.focus-list .title { font-weight: 700; line-height: 1.2; }
-.focus-list .meta { opacity: .75; font-size: .85rem; }
+.focus-list .title {
+  font-weight: 700;
+  line-height: 1.2;
+}
+.focus-list .meta {
+  opacity: .75;
+  font-size: .85rem;
+}
 
-/* Page: Kanban column surfaces */
+/* Página: Superficies de columnas Kanban */
 .tile {
   background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
   border: 1px solid rgba(255,255,255,.12);

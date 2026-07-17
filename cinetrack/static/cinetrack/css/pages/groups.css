@@ -1,68 +1,72 @@
-/* Page: Saga rename form */
-/* Page: Saga rename surface */
-.saga-rename{
-  background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
+/* Página: Formulario para renombrar una saga */
+/* Página: Superficie para renombrar una saga */
+.saga-rename {
+  background: linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
   box-shadow:
     0 8px 26px rgba(10,0,40,.32),
     inset 0 1px 0 rgba(255,255,255,.05);
 }
 
-/* Layout: Saga rename controls */
-.saga-form{
-  display:grid;
-  grid-template-columns:1fr auto;
-  gap:12px;
+/* Layout: Controles para renombrar una saga */
+.saga-form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
 }
 
-/* Page: Saga rename input */
-.saga-input{
-  display:block;
-  width:100%;
-  height:56px;
-  border-radius:14px;
-  border:1px solid var(--line);
-  background:rgba(255,255,255,.05);
-  color:var(--ink);
-  padding:0 16px;
-  font-family:var(--text-font);
-  font-size:1rem;
-  line-height:1;
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.05);
+/* Página: Campo para renombrar una saga */
+.saga-input {
+  display: block;
+  width: 100%;
+  height: 56px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.05);
+  color: var(--ink);
+  padding: 0 16px;
+  font-family: var(--text-font);
+  font-size: 1rem;
+  line-height: 1;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.05);
 }
-.saga-input::placeholder{color:rgba(255,255,255,.55);}
-.saga-input:focus{
-  outline:none;
-  box-shadow:0 0 0 2px rgba(155,92,251,.35);
+.saga-input::placeholder {
+  color: rgba(255,255,255,.55);
+}
+.saga-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(155,92,251,.35);
 }
 
-/* Page: Saga rename action */
-.saga-btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  height:56px;
-  padding:0 1.35rem;
-  border-radius:14px;
-  border:none;
-  background:linear-gradient(135deg,var(--accent),var(--accent-2));
-  color:#fff;
-  font-family:var(--text-font);
-  font-weight:800;
-  line-height:1;
+/* Página: Acción para renombrar una saga */
+.saga-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 56px;
+  padding: 0 1.35rem;
+  border-radius: 14px;
+  border: none;
+  background: linear-gradient(135deg,var(--accent),var(--accent-2));
+  color: #fff;
+  font-family: var(--text-font);
+  font-weight: 800;
+  line-height: 1;
   box-shadow:
     0 14px 34px rgba(111,63,230,.45),
     inset 0 0 0 1px rgba(255,255,255,.08);
-  transition:transform .15s ease,filter .2s ease;
+  transition: transform .15s ease,filter .2s ease;
 }
-.saga-btn:hover{
-  transform:translateY(-2px);
-  filter:brightness(1.06);
+.saga-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.06);
 }
 
-/* Page: Responsive saga rename form */
-@media(max-width:720px){
-  .saga-form{
-    grid-template-columns:1fr;
+/* Página: Formulario adaptable para renombrar una saga */
+@media (max-width: 720px) {
+  .saga-form {
+    grid-template-columns: 1fr;
   }
-  .saga-btn{width:100%;}
+  .saga-btn {
+    width: 100%;
+  }
 }

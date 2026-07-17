@@ -1,40 +1,44 @@
-/* Layout: Cinedock navigation */
-.cinedock-wrapper{
+/* Layout: Navegación de Cinedock */
+.cinedock-wrapper {
   position: relative;
   top: auto;
   z-index: 50;
   padding: 14px var(--rails-pad) 10px;
 }
-.cinedock{
-  display:flex; align-items:center; justify-content:space-between; gap:14px;
+.cinedock {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
   background: linear-gradient(180deg, rgba(15,10,24,.85), rgba(15,10,24,.72));
-  border:1px solid var(--line); border-radius:18px;
-  padding:10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 10px 14px;
   backdrop-filter: blur(8px) saturate(140%);
   box-shadow: 0 10px 26px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.06);
 }
 
-/* Component: Cinedock brand */
-.dock-brand{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  padding:6px 10px;
-  border-radius:12px;
-  color:inherit;
-  text-decoration:none;
+/* Componente: Marca de Cinedock */
+.dock-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 10px;
+  border-radius: 12px;
+  color: inherit;
+  text-decoration: none;
 }
-.dock-brand:hover{
-  background:rgba(255,255,255,.06);
-  color:#fff;
+.dock-brand:hover {
+  background: rgba(255,255,255,.06);
+  color: #fff;
 }
-.brand-text{
+.brand-text {
   font-family: var(--brand-font);
   letter-spacing: .8px;
   font-size: clamp(1.6rem, 2.2vw, 2.2rem);
 }
 
-/* Component: Cinedock tabs */
+/* Componente: Pestañas de Cinedock */
 .dock-tabs {
   position: relative;
   display: flex;
@@ -42,7 +46,7 @@
   gap: 6px;
 }
 
-/* Component: Cinedock tab */
+/* Componente: Pestaña de Cinedock */
 .dock-tab {
   display: flex;
   align-items: center;
@@ -74,7 +78,7 @@
   opacity: .95;
 }
 
-/* State: Tab hover indicator */
+/* Estado: Indicador al pasar sobre una pestaña */
 .dock-tab::after {
   content: "";
   position: absolute;
@@ -93,56 +97,59 @@
   transform: scaleX(1);
 }
 
-/* Component: Cinedock actions */
-.dock-actions{
-  display:flex;
-  align-items:center;
-  gap:8px;
+/* Componente: Acciones de Cinedock */
+.dock-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
-/* Component: Cinedock search action */
-.dock-search{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  width:40px; height:40px;
-  border-radius:10px;
-  border:1px solid var(--line);
+/* Componente: Acción de búsqueda de Cinedock */
+.dock-search {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
   background: rgba(255,255,255,.04);
-  color:inherit;
-  text-decoration:none;
+  color: inherit;
+  text-decoration: none;
   transition: all .15s ease;
 }
-/* State: Cinedock search hover */
-.dock-search:hover{
+/* Estado: Búsqueda de Cinedock al pasar el cursor */
+.dock-search:hover {
   background: rgba(255,255,255,.08);
-  color:#fff;
+  color: #fff;
 }
-/* Component: AppCentral navigation action */
-.btn-appcentral-ghost{
-  display:inline-flex;
-  align-items:center;
-  gap:.5rem;
-  padding:.55rem .85rem;
-  border-radius:10px;
-  border:1px solid var(--line);
+/* Componente: Acción de navegación de AppCentral */
+.btn-appcentral-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .55rem .85rem;
+  border-radius: 10px;
+  border: 1px solid var(--line);
   background: rgba(255,255,255,.04);
   color: var(--ink-dim);
-  text-decoration:none;
+  text-decoration: none;
   font-family: var(--ui-font);
   text-transform: uppercase;
-  letter-spacing:.5px;
-  font-weight:600;
+  letter-spacing: .5px;
+  font-weight: 600;
   transition: all .15s ease;
 }
-.btn-appcentral-ghost i{ opacity:.95; }
-.btn-appcentral-ghost:hover{
+.btn-appcentral-ghost i {
+  opacity: .95;
+}
+.btn-appcentral-ghost:hover {
   background: rgba(255,255,255,.08);
-  color:#fff;
+  color: #fff;
   box-shadow: inset 0 0 0 1px rgba(255,255,255,.08);
 }
 
-/* Component: Animated clapboard logo */
-.logo-claqueta-anim{
+/* Componente: Logo animado de claqueta */
+.logo-claqueta-anim {
   position: relative;
   width: 34px;
   height: 26px;
@@ -152,26 +159,34 @@
   display: inline-block;
   margin-right: .5rem;
 }
-/* Component: Clapboard hinge */
-.logo-claqueta-anim::after{
-  content:"";
-  position:absolute; left:-3px; top:-4px;
-  width:8px; height:8px; border-radius:50%;
+/* Componente: Bisagra de la claqueta */
+.logo-claqueta-anim::after {
+  content: "";
+  position: absolute;
+  left: -3px;
+  top: -4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
   background: #ddd;
   box-shadow: 0 0 0 2px var(--clap-edge);
 }
-/* Component: Clapboard animated top */
-.logo-claqueta-anim::before{
-  content:"";
-  position:absolute; left:-1px; top:-9px;
-  width: 36px; height: 10px; border-radius: 3px;
+/* Componente: Tapa animada de la claqueta */
+.logo-claqueta-anim::before {
+  content: "";
+  position: absolute;
+  left: -1px;
+  top: -9px;
+  width: 36px;
+  height: 10px;
+  border-radius: 3px;
   background: repeating-linear-gradient(45deg, var(--clap-stripe) 0 7px, #6b21a8 7px 14px);
   box-shadow: inset 0 0 0 1px var(--clap-edge), 0 2px 6px rgba(0,0,0,.35);
   filter: drop-shadow(0 2px 4px rgba(0,0,0,.35));
   transform-origin: 6px 10px;
   animation: clapOpen 2.2s ease-in-out infinite;
 }
-/* State: Clapboard hover */
-.logo-claqueta-anim:hover::before{
+/* Estado: Claqueta al pasar el cursor */
+.logo-claqueta-anim:hover::before {
   animation-play-state: paused;
 }

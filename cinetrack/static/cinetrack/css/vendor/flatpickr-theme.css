@@ -1,5 +1,5 @@
-/* Component: CineTrack Flatpickr theme */
-/* JavaScript hook: .ct-date-input and .ct-date-input-visible are initialized by Flatpickr; update JavaScript and form widgets before renaming. */
+/* Componente: Tema de Flatpickr para CineTrack */
+/* Hook de JavaScript: Flatpickr inicializa .ct-date-input y .ct-date-input-visible; actualiza JavaScript y widgets antes de renombrarlas. */
 
 .ct-date-input,
 .ct-date-input-visible {
@@ -70,7 +70,7 @@
 }
 
 
-/* Component: Flatpickr calendar */
+/* Componente: Calendario de Flatpickr */
 
 .flatpickr-calendar {
   width: 330px;
@@ -104,7 +104,7 @@
 }
 
 
-/* Component: Flatpickr header */
+/* Componente: Encabezado de Flatpickr */
 
 .flatpickr-months {
   min-height: 52px;
@@ -155,7 +155,7 @@
 }
 
 
-/* Component: Flatpickr navigation */
+/* Componente: Navegación de Flatpickr */
 
 .flatpickr-prev-month,
 .flatpickr-next-month {
@@ -188,7 +188,7 @@
 }
 
 
-/* Component: Flatpickr weekdays */
+/* Componente: Días de la semana de Flatpickr */
 
 .flatpickr-weekdays {
   margin-top: 8px;
@@ -208,7 +208,7 @@ span.flatpickr-weekday {
 }
 
 
-/* Component: Flatpickr days */
+/* Componente: Días de Flatpickr */
 
 .flatpickr-days,
 .dayContainer {
@@ -310,7 +310,7 @@ span.flatpickr-weekday {
   transform: none;
 }
 
-/* Component: Flatpickr popup arrow */
+/* Componente: Flecha emergente de Flatpickr */
 
 .flatpickr-calendar.arrowTop::before {
   border-bottom-color: rgba(183, 125, 255, 0.42);

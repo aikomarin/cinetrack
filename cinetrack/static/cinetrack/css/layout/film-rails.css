@@ -1,7 +1,8 @@
-/* Layout: Vertical film rails */
-.film-roll-vertical{
+/* Layout: Rieles verticales de película */
+.film-roll-vertical {
   position: fixed;
-  top: 0; bottom: 0;
+  top: 0;
+  bottom: 0;
   width: var(--rail-w);
   background: linear-gradient(#0b0b0f, #151021);
   border-left: 2px solid var(--line);
@@ -9,15 +10,22 @@
   overflow: hidden;
   z-index: 2;
 }
-.film-roll-vertical.left{ left: 0; }
-.film-roll-vertical.right{ right: 0; }
+.film-roll-vertical.left {
+  left: 0;
+}
+.film-roll-vertical.right {
+  right: 0;
+}
 
-/* Layout: Animated sprocket holes */
+/* Layout: Perforaciones animadas de la película */
 .film-roll-vertical::before,
-.film-roll-vertical::after{
-  content:"";
-  position:absolute; top:0; bottom:0; width:14px;
-    z-index: 3;
+.film-roll-vertical::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 14px;
+  z-index: 3;
   pointer-events: none;
   background-image: linear-gradient(
     to bottom,
@@ -30,41 +38,54 @@
   animation: sprocketMove var(--sprocket-speed) linear infinite;
 }
 
-.film-roll-vertical::before{ left: 6px; }
-.film-roll-vertical::after { right: 6px; }
+.film-roll-vertical::before {
+  left: 6px;
+}
+.film-roll-vertical::after {
+  right: 6px;
+}
 
-/* State: Left rail direction */
+/* Estado: Dirección del riel izquierdo */
 .film-roll-vertical.left::before,
-.film-roll-vertical.left::after{
+.film-roll-vertical.left::after {
   animation-direction: normal;
 }
-.film-roll-vertical.left .film-track-vertical{
+.film-roll-vertical.left .film-track-vertical {
   animation-direction: normal;
 }
 
-/* State: Right rail direction */
+/* Estado: Dirección del riel derecho */
 .film-roll-vertical.right::before,
-.film-roll-vertical.right::after{
+.film-roll-vertical.right::after {
   animation-direction: reverse;
 }
-.film-roll-vertical.right .film-track-vertical{
+.film-roll-vertical.right .film-track-vertical {
   animation-direction: reverse;
 }
 
-/* Layout: Film poster track */
-.film-track-vertical{
-  position:absolute; left:0; right:0;
-  display:flex; flex-direction:column; gap:20px;
+/* Layout: Carril vertical de pósteres */
+.film-track-vertical {
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   animation: verticalScroll 40s linear infinite;
 }
-.frame-vertical{
-  flex:0 0 auto; margin:0 auto;
-  width:100px; height:150px; background:#0b0b0f; border-radius:8px; overflow:hidden;
+.frame-vertical {
+  flex: 0 0 auto;
+  margin: 0 auto;
+  width: 100px;
+  height: 150px;
+  background: #0b0b0f;
+  border-radius: 8px;
+  overflow: hidden;
   box-shadow: inset 0 0 0 1px rgba(255,255,255,.08), 0 6px 16px rgba(0,0,0,.45);
 }
-.frame-vertical img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
+.frame-vertical img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }

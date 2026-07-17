@@ -1,19 +1,19 @@
-/* Component: Badges */
-/* Component: Content type badge */
+/* Componente: Insignias */
+/* Componente: Insignia de tipo de contenido */
 .badge.tipo {
   background: linear-gradient(135deg, #9b5cfb, #6f3fe6);
   color: #fff;
   font-weight: 700;
 }
 
-/* Component: Platform badge */
+/* Componente: Insignia de plataforma */
 .badge.plataforma {
   background-color: #00b4d8;
   color: #fff;
   font-weight: 700;
 }
 
-/* Component: Viewing status badges */
+/* Componente: Insignias de estado de visualización */
 .badge.estado-vista {
   background-color: #ff9914;
   color: #fff;
@@ -25,13 +25,13 @@
   font-weight: 700;
 }
 
-/* Component: Search badge */
+/* Componente: Insignia de búsqueda */
 .badge.busqueda {
   background: #5f0f40;
   color: #fff;
 }
 
-/* Component: Rating badges */
+/* Componente: Insignias de calificación */
 .badge.cal-excelente {
   background-color: #2b9348;
   color: #fff;

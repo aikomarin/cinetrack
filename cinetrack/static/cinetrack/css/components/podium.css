@@ -1,5 +1,4 @@
-/* Component: Favorites podium */
-
+/* Componente: Podio de favoritos */
 .podium-stage {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -8,7 +7,7 @@
   min-height: 360px;
 }
 
-/* Component: Podium slots */
+/* Componente: Posiciones del podio */
 .podium-slot {
   text-align: center;
   position: relative;
@@ -42,7 +41,7 @@
   filter: saturate(1.02);
 }
 
-/* Component: Podium labels */
+/* Componente: Etiquetas del podio */
 .podium-label {
   margin-top: .6rem;
 }
@@ -54,23 +53,27 @@
   color: var(--ink);
 }
 
-/* State: Base poster outline */
-.podium-slot .podium-poster img{
+/* Estado: Contorno base del póster */
+.podium-slot .podium-poster img {
   outline: 4px solid transparent;
   outline-offset: -4px;
   transition: outline-color .25s ease;
 }
 
-/* State: Highlight the first-place poster from the complete slot. */
-.podium-slot[data-rank="1"]:hover .podium-poster img{
+/* Estado: Resalta el póster del primer lugar desde la posición completa. */
+.podium-slot[data-rank="1"]:hover .podium-poster img {
   outline-color: #ffd700;
 }
 
-/* State: Highlight silver and bronze posters from their pedestals. */
-.podium-slot:has(.pedestal-2:hover) .podium-poster img{ outline-color: #c0c0c0; }
-.podium-slot:has(.pedestal-3:hover) .podium-poster img{ outline-color: #cd7f32; }
+/* Estado: Resalta los pósteres de plata y bronce desde sus pedestales. */
+.podium-slot:has(.pedestal-2:hover) .podium-poster img {
+  outline-color: #c0c0c0;
+}
+.podium-slot:has(.pedestal-3:hover) .podium-poster img {
+  outline-color: #cd7f32;
+}
 
-/* Component: Podium pedestals */
+/* Componente: Pedestales del podio */
 .pedestal {
   position: absolute;
   bottom: 0;
@@ -95,7 +98,7 @@
   color: #fff;
   text-shadow: 0 2px 6px rgba(0,0,0,.5);
 }
-/* Component: Pedestal rank variants */
+/* Variante: Posiciones de los pedestales */
 .pedestal-1 {
   z-index: 2;
 }

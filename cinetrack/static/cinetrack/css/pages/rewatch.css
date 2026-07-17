@@ -1,31 +1,48 @@
-/* Page: Rewatch */
-.rewatch-badge{
-  background:#1e90ff;
-  color:#fff;
-  font-weight:700;
-  box-shadow:0 6px 16px rgba(30,144,255,.35);
+/* Página: Volver a ver */
+.rewatch-badge {
+  background: #1e90ff;
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 6px 16px rgba(30,144,255,.35);
 }
 
-/* Layout: Scrollable rewatch rail */
-.rail-track{ overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:.25rem; }
-.rail-card{ scroll-snap-align:start; }
-.rail-track::-webkit-scrollbar{ height:0; }
+/* Layout: Carril desplazable para volver a ver */
+.rail-track {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: .25rem;
+}
+.rail-card {
+  scroll-snap-align: start;
+}
+.rail-track::-webkit-scrollbar {
+  height: 0;
+}
 
-/* Layout: Fixed rewatch grid */
-.rew-grid-7x2{
-  display:grid;
+/* Layout: Cuadrícula fija para volver a ver */
+.rew-grid-7x2 {
+  display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
   grid-auto-rows: 1fr;
   gap: 16px;
 }
 
-/* Layout: Fit rail cards to grid cells */
-.rew-grid-7x2 .rail-card{ width:100%; height:100%; }
+/* Layout: Ajusta las tarjetas del carril a las celdas */
+.rew-grid-7x2 .rail-card {
+  width: 100%;
+  height: 100%;
+}
 
-/* Component: Uncropped rewatch poster */
-.rew-grid-7x2 .rail-poster{ width:100%; height:100%; display:block; border-radius: inherit; }
-.rew-grid-7x2 .rail-poster img.rew-fit{
-  width:100%; height:100%;
+/* Componente: Póster sin recorte para volver a ver */
+.rew-grid-7x2 .rail-poster {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: inherit;
+}
+.rew-grid-7x2 .rail-poster img.rew-fit {
+  width: 100%;
+  height: 100%;
   object-fit: contain;
   border-radius: inherit;
   background: rgba(0,0,0,.22);

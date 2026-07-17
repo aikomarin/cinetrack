@@ -1,4 +1,4 @@
-/* Component: Audiovisual cards */
+/* Componente: Tarjetas audiovisuales */
 .topcard {
   display: flex;
   flex-direction: column;
@@ -36,7 +36,7 @@
   display: block;
 }
 
-/* Layout: Keep card actions aligned at the bottom */
+/* Layout: Mantiene las acciones de la tarjeta alineadas en la parte inferior */
 .topcard-meta {
   flex: 1 1 auto;
   display: flex;
@@ -47,7 +47,7 @@
   margin-top: auto;
 }
 
-/* JavaScript hook: .topcard-name is queried by marathon filtering; update JavaScript and templates before renaming. */
+/* Hook de JavaScript: el filtro de maratones consulta .topcard-name; actualiza JavaScript y templates antes de renombrarla. */
 .topcard-name {
   font-size: 0.95rem;
   font-weight: 600;

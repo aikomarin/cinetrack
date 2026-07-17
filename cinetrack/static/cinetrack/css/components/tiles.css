@@ -1,4 +1,4 @@
-/* Component: Tiles */
+/* Componente: Paneles */
 .tile {
   background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
   border: 1px solid var(--line);
@@ -13,7 +13,7 @@
   transform: translateY(-2px);
 }
 
-/* Component: Tile header */
+/* Componente: Encabezado del panel */
 .tile-header {
   font-family: var(--ui-font);
   text-transform: uppercase;
