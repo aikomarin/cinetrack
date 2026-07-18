@@ -1988,26 +1988,14 @@ La estructura de relleno y centrado procede de `.poster-placeholder-fill`, docum
 
 ```css
 .rail-badges {
-  position: absolute;
   left: .5rem;
   bottom: .5rem;
-  display: flex;
-  gap: .35rem;
-  flex-wrap: wrap;
 }
 ```
-
-`position: absolute`: establece el tipo de posicionamiento con el valor `absolute`.
 
 `left: .5rem`: establece `left` con el valor `.5rem`.
 
 `bottom: .5rem`: establece `bottom` con el valor `.5rem`.
-
-`display: flex`: establece el modelo de presentación con el valor `flex`.
-
-`gap: .35rem`: establece la separación entre elementos con el valor `.35rem`.
-
-`flex-wrap: wrap`: controla el salto de los elementos flexibles con el valor `wrap`.
 
 ---
 
@@ -2878,26 +2866,14 @@ Las clases `.saga-name-input` y `.saga-save-button` se conservan. `.saga-name-in
 
 ```css
 .kanban-badges {
-  position: absolute;
   left: .6rem;
   bottom: .6rem;
-  display: flex;
-  gap: .35rem;
-  flex-wrap: wrap;
 }
 ```
-
-`position: absolute`: establece el tipo de posicionamiento con el valor `absolute`.
 
 `left: .6rem`: sitúa el borde izquierdo con el valor `.6rem`.
 
 `bottom: .6rem`: sitúa el borde inferior con el valor `.6rem`.
-
-`display: flex`: establece el modelo de presentación con el valor `flex`.
-
-`gap: .35rem`: establece la separación entre elementos con el valor `.35rem`.
-
-`flex-wrap: wrap`: controla el salto de elementos con el valor `wrap`.
 
 ---
 

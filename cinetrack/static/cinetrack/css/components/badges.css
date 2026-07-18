@@ -1,4 +1,13 @@
 /* Componente: Insignias */
+/* Componente: Contenedores superpuestos de insignias */
+.rail-badges,
+.kanban-badges {
+  position: absolute;
+  display: flex;
+  gap: .35rem;
+  flex-wrap: wrap;
+}
+
 /* Componente: Insignia de tipo de contenido */
 .badge.tipo {
   background: linear-gradient(135deg, #9b5cfb, #6f3fe6);

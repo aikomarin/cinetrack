@@ -5,12 +5,8 @@
   color: var(--color-text-primary);
 }
 .rail-badges {
-  position: absolute;
   left: .5rem;
   bottom: .5rem;
-  display: flex;
-  gap: .35rem;
-  flex-wrap: wrap;
 }
 
 /* Página: Paneles de favoritos */

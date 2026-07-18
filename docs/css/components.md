@@ -92,36 +92,36 @@ La utilidad local `.btn-center` fue eliminada. Sus consumidores combinan ahora `
 ---
 
 ```css
-.btn-ghost {
+.btn-ghost,
+.btn-ghost-sm {
   display: inline-flex;
   align-items: center;
-  gap: .5rem;
-  color: #e9d5ff;
   text-decoration: none;
   border: 1px solid var(--color-border-subtle);
-  border-radius: 12px;
   background: rgba(255,255,255,.04);
+}
+```
+
+Ambas variantes transparentes comparten presentación en línea, alineación vertical, eliminación del subrayado, borde tenue y fondo blanco con 4 % de opacidad.
+
+---
+
+```css
+.btn-ghost {
+  gap: .5rem;
+  color: #e9d5ff;
+  border-radius: 12px;
   padding: .8rem 1.1rem;
   backdrop-filter: blur(4px);
   transition: all .18s ease;
 }
 ```
 
-`display: inline-flex`: mantiene el botón en línea y distribuye su contenido con Flexbox.
-
-`align-items: center`: centra verticalmente sus elementos internos.
-
 `gap: .5rem`: deja medio `rem` entre el icono y el texto.
 
 `color: #e9d5ff`: aplica un lavanda muy claro al contenido.
 
-`text-decoration: none`: elimina el subrayado si el botón es un enlace.
-
-`border: 1px solid var(--color-border-subtle)`: dibuja un borde tenue con `--color-border-subtle`, cuyo valor actual es `rgba(255,255,255,.12)`.
-
 `border-radius: 12px`: redondea las esquinas.
-
-`background`: aplica un fondo blanco con 4 % de opacidad.
 
 `padding: .8rem 1.1rem`: añade `0.8rem` de espacio vertical y `1.1rem` horizontal.
 
@@ -132,16 +132,22 @@ La utilidad local `.btn-center` fue eliminada. Sus consumidores combinan ahora `
 ---
 
 ```css
-.btn-ghost:hover {
+.btn-ghost:hover,
+.btn-ghost-sm:hover {
   color: #fff;
   background: rgba(255,255,255,.08);
-  border-color: rgba(255,255,255,.22);
 }
 ```
 
-`color: #fff`: cambia el contenido a blanco al pasar el cursor.
+Ambas variantes muestran contenido blanco y aumentan el fondo blanco al 8 % al pasar el cursor.
 
-`background`: aumenta la opacidad del fondo blanco al 8 %.
+---
+
+```css
+.btn-ghost:hover {
+  border-color: rgba(255,255,255,.22);
+}
+```
 
 `border-color`: aumenta la opacidad del borde blanco al 22 %.
 
@@ -150,13 +156,8 @@ La utilidad local `.btn-center` fue eliminada. Sus consumidores combinan ahora `
 ```css
 .btn-ghost-sm {
   color: inherit;
-  text-decoration: none;
   padding: .45rem .6rem;
   border-radius: 10px;
-  border: 1px solid var(--color-border-subtle);
-  background: rgba(255,255,255,.04);
-  display: inline-flex;
-  align-items: center;
   gap: .4rem;
   font-weight: 500;
   transition: all .15s ease;
@@ -165,38 +166,15 @@ La utilidad local `.btn-center` fue eliminada. Sus consumidores combinan ahora `
 
 `color: inherit`: usa el color de texto heredado del elemento contenedor.
 
-`text-decoration: none`: elimina el subrayado cuando se utiliza como enlace.
-
 `padding: .45rem .6rem`: añade `0.45rem` de espacio vertical y `0.6rem` horizontal.
 
 `border-radius: 10px`: redondea las esquinas.
-
-`border: 1px solid var(--color-border-subtle)`: dibuja el borde tenue definido por `--color-border-subtle`, actualmente `rgba(255,255,255,.12)`.
-
-`background`: aplica un fondo blanco con 4 % de opacidad.
-
-`display: inline-flex`: mantiene el componente en línea y organiza su contenido con Flexbox.
-
-`align-items: center`: centra verticalmente sus elementos.
 
 `gap: .4rem`: deja `0.4rem` entre los elementos internos.
 
 `font-weight: 500`: aplica un grosor medio al texto.
 
 `transition: all .15s ease`: suaviza durante 0.15 segundos cualquier propiedad que cambie.
-
----
-
-```css
-.btn-ghost-sm:hover {
-  color: #fff;
-  background: rgba(255,255,255,.08);
-}
-```
-
-`color: #fff`: muestra el contenido en blanco al pasar el cursor.
-
-`background`: aumenta la opacidad del fondo blanco al 8 %.
 
 ---
 
@@ -314,6 +292,20 @@ La utilidad local `.btn-center` fue eliminada. Sus consumidores combinan ahora `
 `box-shadow`: amplía el resplandor morado y aumenta su opacidad al 70 %.
 
 ## css/components/badges.css
+
+```css
+.rail-badges,
+.kanban-badges {
+  position: absolute;
+  display: flex;
+  gap: .35rem;
+  flex-wrap: wrap;
+}
+```
+
+Los contenedores superpuestos de Favorites y Pending comparten posicionamiento absoluto, distribución flexible, separación y salto de línea. Sus coordenadas permanecen en las hojas de página.
+
+---
 
 ```css
 .badge.tipo {

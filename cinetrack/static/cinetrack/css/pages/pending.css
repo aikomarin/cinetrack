@@ -65,12 +65,8 @@
 
 /* Página: Insignias superpuestas de Kanban */
 .kanban-badges {
-  position: absolute;
   left: .6rem;
   bottom: .6rem;
-  display: flex;
-  gap: .35rem;
-  flex-wrap: wrap;
 }
 
 /* Página: Lista Focus */
