@@ -158,7 +158,7 @@
                 </a>
               {% else %}
                 <div class="d-flex gap-2">
-                  <a href="{% url 'cinetrack:editar' c.pk %}?page={{ page_obj.number }}" class="btn-ghost-sm" title="Editar">
+                  <a href="{% url 'cinetrack:editar' c.pk %}?origen=catalogo&amp;page={{ page_obj.number }}&amp;return_to={{ request.get_full_path|urlencode }}" class="btn-ghost-sm" title="Editar">
                     <i class="bi bi-pencil"></i>
                   </a>
                   <button class="btn-ghost-sm"

@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const portal = document.getElementById('ct-portal');
   if (!portal) return;
 
-  document.querySelectorAll('.surface-card.elevated-panel select').forEach(sel => {
+  document.querySelectorAll('.surface-card.elevated-panel select, body[data-urlname="registrar"] .elevated-panel select').forEach(sel => {
     const wrap = document.createElement('div');
     wrap.className = 'custom-select';
     sel.parentNode.insertBefore(wrap, sel);
@@ -144,6 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
     trg.type = 'button';
     trg.className = 'custom-select-trigger';
     trg.innerHTML = `<span class="ct-label">${sel.options[sel.selectedIndex]?.text || '—'}</span><span class="ct-caret"></span>`;
+    trg.classList.toggle('is-placeholder', sel.value === '');
     wrap.appendChild(trg);
 
     trg.addEventListener('click', (ev) => {
@@ -158,6 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
         menuEl.querySelectorAll('.custom-select-option').forEach(n => n.removeAttribute('aria-selected'));
         optionDiv.setAttribute('aria-selected', 'true');
         trg.querySelector('.ct-label').textContent = opt.text;
+        trg.classList.toggle('is-placeholder', opt.value === '');
         closeAllSelectMenus(portal);
       });
 
@@ -375,68 +377,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// ----- REGISTRAR -----
-document.addEventListener('DOMContentLoaded', () => {
-  const urlname = document.body.dataset.urlname || '';
-  if (urlname !== 'registrar') return;
-
-  // Portal único para menús
-  const portal = document.getElementById('ct-portal');
-  if (!portal) return;
-
-  // Mejora los selects del formulario de Registrar
-  document.querySelectorAll('.elevated-panel select').forEach(sel => {
-    const wrap = document.createElement('div');
-    wrap.className = 'custom-select';
-    sel.parentNode.insertBefore(wrap, sel);
-    wrap.appendChild(sel);
-
-    // Oculta el select real
-    Object.assign(sel.style, { opacity:'0', position:'absolute', inset:'0', width:'100%', height:'100%', pointerEvents:'none' });
-
-    // Trigger
-    const trg = document.createElement('button');
-    trg.type = 'button';
-    trg.className = 'custom-select-trigger';
-    trg.innerHTML = `<span class="ct-label">${sel.options[sel.selectedIndex]?.text || '—'}</span><span class="ct-caret"></span>`;
-    wrap.appendChild(trg);
-
-    trg.addEventListener('click', (ev) => {
-      ev.stopPropagation();
-      const wasOpen = wrap.classList.contains('custom-select-open');
-      closeAllSelectMenus(portal);
-      if (wasOpen) return;
-
-      const menu = buildMenuFromSelect(sel, (opt, optionDiv, menuEl) => {
-        sel.value = opt.value;
-        sel.dispatchEvent(new Event('change', { bubbles:true }));
-        menuEl.querySelectorAll('.custom-select-option').forEach(n => n.removeAttribute('aria-selected'));
-        optionDiv.setAttribute('aria-selected', 'true');
-        trg.querySelector('.ct-label').textContent = opt.text;
-        closeAllSelectMenus(portal);
-      });
-
-      portal.appendChild(menu);
-      wrap.classList.add('custom-select-open');
-      placeMenu(trg, menu);
-    });
-  });
-
-  const repro = () => {
-    const open = document.querySelector('.custom-select.custom-select-open');
-    const menu = portal.querySelector('.custom-select-menu');
-    if (!open || !menu) return;
-    placeMenu(open.querySelector('.custom-select-trigger'), menu, menu.dataset.dir);
-  };
-  window.addEventListener('scroll', repro, { passive:true });
-  window.addEventListener('resize', repro, { passive:true });
-  document.addEventListener('click', (e) => {
-    if (!e.target.closest('.custom-select') && !portal.contains(e.target)) closeAllSelectMenus(portal);
-  });
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeAllSelectMenus(portal); });
-});
-
-
 // ----- MARATONES (listado) -----
 (function () {
   function setupMaratonesDeleteModal() {
@@ -469,7 +409,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (document.readyState !== 'loading') setupMaratonesDeleteModal();
   else document.addEventListener('DOMContentLoaded', setupMaratonesDeleteModal);
 })();
-
 
 // ----- MARATONES (form) -----
 (function () {
@@ -599,21 +538,3 @@ document.addEventListener('DOMContentLoaded', () => {
   // por si reinyectas contenido dinámicamente
   window._ctInitMaratonDetalle = init;
 })();
-
-// ----- FLATPICKR -----
-
-document.addEventListener('DOMContentLoaded', () => {
-  if (!window.flatpickr) return;
-
-  document.querySelectorAll('.ct-date-input').forEach(input => {
-    flatpickr(input, {
-      locale: 'es',
-      dateFormat: 'Y-m-d',
-      altInput: true,
-      altFormat: 'd/m/Y',
-      allowInput: false,
-      disableMobile: true,
-      altInputClass: 'form-control ct-date-input ct-date-input-visible'
-    });
-  });
-});

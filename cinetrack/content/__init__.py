@@ -1,0 +1,1 @@
+"""Registrar y editar contenido."""

@@ -1,5 +1,10 @@
 {% extends 'cinetrack/base.html' %}
+{% load static %}
 {% block title %}Editar | CineTrack{% endblock %}
+
+{% block extra_styles %}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+{% endblock %}
 
 {% block content %}
 <div class="page-shell {% if contenido.estado == 'vista' %}is-vista{% elif contenido.estado == 'pendiente' %}is-pendiente{% endif %}">
@@ -9,38 +14,44 @@
   <div class="page-shell-glow"></div>
 
   <!-- Header superior -->
-  <div class="d-flex justify-content-between align-items-center mb-3">
+  <div class="content-form-header mb-3">
     <h2 class="page-shell-title m-0">
-      <i class="bi bi-pencil-square"></i> Editar
-      <span class="mx-2 text-muted">|</span>
-      <small class="fs-5 text-light fw-semibold">{{ contenido.get_tipo_display }}</small>
+      <i class="bi bi-pencil-square"></i>
+      <span class="content-form-title-text">Editar</span>
+      <span class="content-form-title-separator" aria-hidden="true"></span>
+      <small class="content-form-title-type">{{ contenido.get_tipo_display }}</small>
     </h2>
-    {% if en_grupo %}
+    {% if origen == 'grupo' and en_grupo %}
       <a
-        href="{% url 'cinetrack:grupo_saga' clave_saga|urlencode %}{% if page %}?page={{ page }}{% endif %}"
-        class="btn-ghost"
+        href="{{ url_retorno }}"
+        class="btn-ghost content-form-back"
       >
         <i class="bi bi-arrow-left-circle"></i> Volver al grupo
       </a>
-    {% else %}
+    {% elif origen == 'catalogo' %}
       <a
-        href="{% url 'cinetrack:catalogo' %}{% if page %}?page={{ page }}{% endif %}"
-        class="btn-ghost"
+        href="{{ url_retorno }}"
+        class="btn-ghost content-form-back"
       >
         <i class="bi bi-arrow-left-circle"></i> Volver al catálogo
+      </a>
+    {% else %}
+      <a href="{{ url_retorno }}" class="btn-ghost content-form-back">
+        <i class="bi bi-arrow-left-circle"></i> Volver al detalle
       </a>
     {% endif %}
   </div>
 
   <!-- Mensajes de error -->
   {% if formulario.non_field_errors %}
-    <div class="surface-card p-3 mb-3">
+    <div class="content-form-errors-general mb-3">
+      <i class="bi bi-exclamation-triangle-fill" aria-hidden="true"></i>
       {{ formulario.non_field_errors }}
     </div>
   {% endif %}
 
   <!-- Card del formulario -->
-  <form method="post" class="surface-card elevated-panel edit-form p-4 p-lg-5">
+  <form method="post" class="surface-card elevated-panel edit-form content-form-edit p-4 p-lg-5" novalidate>
     {% csrf_token %}
 
     <div class="row g-4">
@@ -60,123 +71,16 @@
       <!-- Columna: Campos -->
       <div class="col-lg-8">
 
-        <!-- Título -->
-        <div class="mb-3">
-          <label class="form-label" for="id_titulo">Título</label>
-          {{ formulario.titulo }}
-          {% if formulario.titulo.errors %}<div class="text-danger small mt-1">{{ formulario.titulo.errors }}</div>{% endif %}
-        </div>
+        {% include 'cinetrack/includes/contenido_form_fields.html' %}
 
-        <!-- Fecha / Tipo / Plataforma -->
-        <div class="row mb-4">
-          <div class="col-md-4 mb-3">
-            <label class="form-label" for="id_fecha">Fecha</label>
-            {{ formulario.fecha }}
-
-            {% if formulario.fecha.errors %}
-              <div class="text-danger small mt-1">
-                {{ formulario.fecha.errors }}
-              </div>
-            {% endif %}
-          </div>
-
-          <div class="col-md-4 mb-3">
-            <label class="form-label" for="id_tipo">Tipo</label>
-            {{ formulario.tipo }}
-
-            {% if formulario.tipo.errors %}
-              <div class="text-danger small mt-1">
-                {{ formulario.tipo.errors }}
-              </div>
-            {% endif %}
-          </div>
-
-          <div class="col-md-4 mb-3">
-            <label class="form-label" for="id_plataforma">Plataforma</label>
-            {{ formulario.plataforma }}
-
-            {% if formulario.plataforma.errors %}
-              <div class="text-danger small mt-1">
-                {{ formulario.plataforma.errors }}
-              </div>
-            {% endif %}
-          </div>
-        </div>
-
-        <!-- Resumen -->
-        <div class="mb-4">
-          <label class="form-label" for="id_resumen">Resumen</label>
-          {{ formulario.resumen }}
-          {% if formulario.resumen.errors %}
-            <div class="text-danger small mt-1">
-              {{ formulario.resumen.errors }}
-            </div>
-          {% endif %}
-        </div>
-
-        <!-- Estado / Calificación / Veces vista -->
-        <div class="row mb-4">
-          <div class="col-md-4 mb-3">
-            <label class="form-label" for="id_estado">Estado</label>
-            {{ formulario.estado }}
-
-            {% if formulario.estado.errors %}
-              <div class="text-danger small mt-1">
-                {{ formulario.estado.errors }}
-              </div>
-            {% endif %}
-          </div>
-
-          <div class="col-md-4 mb-3">
-            <label class="form-label" for="id_calificacion">Calificación</label>
-            {{ formulario.calificacion }}
-
-            {% if formulario.calificacion.errors %}
-              <div class="text-danger small mt-1">
-                {{ formulario.calificacion.errors }}
-              </div>
-            {% endif %}
-          </div>
-
-          <div class="col-md-4 mb-3">
-            <label class="form-label" for="id_veces_vista">Veces vista</label>
-            {{ formulario.veces_vista }}
-
-            {% if formulario.veces_vista.errors %}
-              <div class="text-danger small mt-1">
-                {{ formulario.veces_vista.errors }}
-              </div>
-            {% endif %}
-          </div>
-        </div>
-
-        <!-- Switches -->
-        <div class="row g-3 mb-4">
-          <div class="col-md-4">
-            <div class="form-check form-switch mt-2">
-              {{ formulario.favorita }}
-              <label class="form-check-label ms-2" for="id_favorita">¿Favorita?</label>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="form-check form-switch mt-2">
-              {{ formulario.volveria_a_ver }}
-              <label class="form-check-label ms-2" for="id_volveria_a_ver">¿Volvería a ver?</label>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="form-check form-switch mt-2">
-              {{ formulario.tendra_continuacion }}
-              <label class="form-check-label ms-2" for="id_tendra_continuacion">¿Tendrá continuación?</label>
-            </div>
-          </div>
-        </div>
-
-        <!-- Guardar -->
-        <div class="d-flex justify-content-center pt-2">
+        <!-- Acciones -->
+        <div class="content-form-actions pt-2">
           <button type="submit" class="btn-save">
             <i class="bi bi-check-circle me-1"></i> Guardar cambios
           </button>
+          <a href="{{ url_retorno }}" class="btn-ghost">
+            <i class="bi bi-x-circle"></i> Cancelar
+          </a>
         </div>
 
       </div>
@@ -184,4 +88,10 @@
   </form>
 
 </div>
+{% endblock %}
+
+{% block scripts %}
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js" defer></script>
+  <script src="{% static 'cinetrack/js/content-form.js' %}" defer></script>
 {% endblock %}

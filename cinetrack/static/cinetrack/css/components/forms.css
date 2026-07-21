@@ -9,6 +9,9 @@
 }
 
 /* Componente: Controles de formulario */
+.edit-form {
+  --form-control-height: 52px;
+}
 .edit-form input[type="text"],
 .edit-form input[type="number"],
 .edit-form input[type="date"],
@@ -23,10 +26,16 @@
   outline: none;
   transition: box-shadow .18s ease, border-color .18s ease, background .18s ease, transform .12s ease;
 }
+.edit-form input[type="text"],
+.edit-form input[type="number"],
+.edit-form input[type="date"],
+.edit-form select {
+  height: var(--form-control-height);
+}
 .edit-form input:hover,
 .edit-form select:hover,
 .edit-form textarea:hover {
-  background: rgba(255,255,255,.06);
+  background-color: rgba(255,255,255,.06);
 }
 .edit-form input:focus,
 .edit-form select:focus,
@@ -73,38 +82,119 @@
   outline: none;
 }
 
+/* Componente: Barra de desplazamiento del resumen */
+.edit-form textarea {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-accent-dark) rgba(255,255,255,.06);
+}
+.edit-form textarea::-webkit-scrollbar {
+  width: 10px;
+}
+.edit-form textarea::-webkit-scrollbar-track {
+  background: rgba(255,255,255,.06);
+  border-radius: 999px;
+}
+.edit-form textarea::-webkit-scrollbar-thumb {
+  background: var(--color-accent-dark);
+  border: 2px solid rgba(18,10,31,.72);
+  border-radius: 999px;
+}
+.edit-form textarea::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
 /* Componente: Interruptores de formulario */
 .form-check.form-switch .form-check-input {
+  --bs-form-switch-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23dcd3fb'/%3e%3c/svg%3e");
   width: 46px;
   height: 26px;
   cursor: pointer;
-  background-color: rgba(255,255,255,.14);
-  border: 1px solid var(--color-border-subtle);
+  background-color: rgba(220,211,251,.16);
+  border: 1px solid rgba(220,211,251,.42);
   transition: box-shadow .18s ease, filter .18s ease;
 }
-.form-check.form-switch .form-check-input:focus {
+.edit-form .form-check.form-switch .form-check-input:focus {
+  --bs-form-switch-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%239b5cfb'/%3e%3c/svg%3e");
+  outline: 2px solid transparent;
+  border-color: var(--accent);
   box-shadow: 0 0 0 3px rgba(155,92,251,.35);
+}
+.edit-form .form-check.form-switch .form-check-input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-color: var(--color-text-secondary);
+  box-shadow: 0 0 0 4px rgba(155,92,251,.28);
+}
+.edit-form .form-check.form-switch .form-check-input:active {
+  filter: none;
+  border-color: var(--accent);
+}
+.edit-form .form-check.form-switch .form-check-input:checked,
+.edit-form .form-check.form-switch .form-check-input:checked:focus,
+.edit-form .form-check.form-switch .form-check-input:checked:active {
+  --bs-form-switch-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23f6f3ff'/%3e%3c/svg%3e");
 }
 .form-check-label {
   font-weight: 700;
   color: var(--color-text-primary);
   opacity: .92;
 }
-/* Estado: Colores del interruptor activado según el campo */
+/* Estado: Interruptores activos con la paleta de CineTrack */
 #id_favorita.form-check-input:checked,
-.elevated-panel input[name="favorita"].form-check-input:checked {
-  background-color: #ffd700;
-  border-color: rgba(0,0,0,.15);
-}
+.elevated-panel input[name="favorita"].form-check-input:checked,
 #id_volveria_a_ver.form-check-input:checked,
-.elevated-panel input[name="volveria_a_ver"].form-check-input:checked {
-  background-color: #1e90ff;
-  border-color: rgba(0,0,0,.15);
-}
+.elevated-panel input[name="volveria_a_ver"].form-check-input:checked,
 #id_tendra_continuacion.form-check-input:checked,
 .elevated-panel input[name="tendra_continuacion"].form-check-input:checked {
-  background-color: #2ecc71;
-  border-color: rgba(0,0,0,.15);
+  background-color: var(--accent);
+  border-color: var(--color-text-secondary);
+}
+
+/* Componente: Errores asociados a formularios de contenido */
+.content-form-error,
+.content-form-errors-general {
+  color: var(--color-error);
+  font-family: var(--font-family-body);
+  font-size: .8rem;
+  font-weight: 500;
+  line-height: 1.35;
+}
+.content-form-error {
+  display: flex;
+  align-items: flex-start;
+  gap: .4rem;
+  margin-top: .45rem;
+}
+.content-form-errors-general {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  margin-top: 0;
+  padding: .65rem .85rem;
+  background: rgba(255,143,163,.09);
+  border: 1px solid rgba(255,143,163,.4);
+  border-radius: 10px;
+}
+.content-form-error > .bi,
+.content-form-errors-general > .bi {
+  flex: 0 0 auto;
+  color: var(--color-error);
+  font-size: .9rem;
+  line-height: 1.2;
+}
+.content-form-error .errorlist,
+.content-form-errors-general .errorlist {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.content-form-error .errorlist li,
+.content-form-errors-general .errorlist li {
+  margin: 0;
+  padding: 0;
+  color: var(--color-error);
+  font-family: var(--font-family-body);
+  font: inherit;
 }
 /* Sobrescritura de Bootstrap: Alinea los interruptores y contrarresta el espaciado del formulario. */
 .edit-form .row.g-3.mb-4 .form-check.form-switch {
@@ -119,6 +209,40 @@
 .edit-form .row.g-3.mb-4 label.form-check-label[for="id_tendra_continuacion"] {
   white-space: nowrap;
   margin-left: .25rem !important;
+}
+
+/* Componente: Controles compactos de seguimiento */
+.content-form-compact-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.content-form-compact-field > .form-label {
+  width: min(100%, 210px);
+  text-align: center;
+}
+.content-form-compact-field > select,
+.content-form-compact-field > .custom-select {
+  width: min(100%, 210px);
+}
+.content-form-number-field > .form-label,
+.content-form-number-field > input[type="number"] {
+  width: min(100%, 150px);
+}
+
+/* Componente: Alineación horizontal de interruptores por formulario */
+.content-form-register .content-form-switch-group,
+.content-form-edit .content-form-switch-group:not(.content-form-switch-continuation) {
+  justify-content: center;
+}
+
+/* Componente: Centrado del grupo de acciones del formulario */
+.content-form-actions {
+  width: 100%;
+  margin-inline: auto;
+}
+.content-form-actions .btn-save {
+  margin-left: 0;
 }
 
 /* Componente: Campo de búsqueda con icono */

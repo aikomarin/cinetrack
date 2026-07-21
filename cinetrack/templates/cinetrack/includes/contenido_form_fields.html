@@ -1,0 +1,73 @@
+<!-- Título -->
+<div class="mb-3">
+  <label class="form-label" for="{{ formulario.titulo.id_for_label }}">Título</label>
+  {{ formulario.titulo }}
+  {% if formulario.titulo.errors %}<div class="content-form-error"><i class="bi bi-exclamation-circle-fill" aria-hidden="true"></i>{{ formulario.titulo.errors }}</div>{% endif %}
+</div>
+
+<!-- Fecha / Tipo / Plataforma -->
+<div class="row mb-4">
+  <div class="col-md-4 mb-3">
+    <label class="form-label" for="{{ formulario.fecha.id_for_label }}">Fecha</label>
+    {{ formulario.fecha }}
+    {% if formulario.fecha.errors %}<div class="content-form-error"><i class="bi bi-exclamation-circle-fill" aria-hidden="true"></i>{{ formulario.fecha.errors }}</div>{% endif %}
+  </div>
+  <div class="col-md-4 mb-3">
+    <label class="form-label" for="{{ formulario.tipo.id_for_label }}">Tipo</label>
+    {{ formulario.tipo }}
+    {% if formulario.tipo.errors %}<div class="content-form-error"><i class="bi bi-exclamation-circle-fill" aria-hidden="true"></i>{{ formulario.tipo.errors }}</div>{% endif %}
+  </div>
+  <div class="col-md-4 mb-3">
+    <label class="form-label" for="{{ formulario.plataforma.id_for_label }}">Plataforma</label>
+    {{ formulario.plataforma }}
+    {% if formulario.plataforma.errors %}<div class="content-form-error"><i class="bi bi-exclamation-circle-fill" aria-hidden="true"></i>{{ formulario.plataforma.errors }}</div>{% endif %}
+  </div>
+</div>
+
+<!-- Resumen -->
+<div class="mb-4">
+  <label class="form-label" for="{{ formulario.resumen.id_for_label }}">Resumen</label>
+  {{ formulario.resumen }}
+  {% if formulario.resumen.errors %}<div class="content-form-error"><i class="bi bi-exclamation-circle-fill" aria-hidden="true"></i>{{ formulario.resumen.errors }}</div>{% endif %}
+</div>
+
+<!-- Estado / Calificación / Veces vista -->
+<div class="row mb-4 content-form-tracking-row">
+  <div class="col-md-4 mb-3 content-form-compact-field">
+    <label class="form-label" for="{{ formulario.estado.id_for_label }}">Estado</label>
+    {{ formulario.estado }}
+    {% if formulario.estado.errors %}<div class="content-form-error"><i class="bi bi-exclamation-circle-fill" aria-hidden="true"></i>{{ formulario.estado.errors }}</div>{% endif %}
+  </div>
+  <div class="col-md-4 mb-3 content-form-compact-field">
+    <label class="form-label" for="{{ formulario.calificacion.id_for_label }}">Calificación</label>
+    {{ formulario.calificacion }}
+    {% if formulario.calificacion.errors %}<div class="content-form-error"><i class="bi bi-exclamation-circle-fill" aria-hidden="true"></i>{{ formulario.calificacion.errors }}</div>{% endif %}
+  </div>
+  <div class="col-md-4 mb-3 content-form-compact-field content-form-number-field">
+    <label class="form-label" for="{{ formulario.veces_vista.id_for_label }}">Veces vista</label>
+    {{ formulario.veces_vista }}
+    {% if formulario.veces_vista.errors %}<div class="content-form-error"><i class="bi bi-exclamation-circle-fill" aria-hidden="true"></i>{{ formulario.veces_vista.errors }}</div>{% endif %}
+  </div>
+</div>
+
+<!-- Switches -->
+<div class="row g-3 mb-4">
+  <div class="col-md-4">
+    <div class="form-check form-switch mt-2 content-form-switch-group">
+      {{ formulario.favorita }}
+      <label class="form-check-label ms-2" for="{{ formulario.favorita.id_for_label }}">¿Favorita?</label>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="form-check form-switch mt-2 content-form-switch-group">
+      {{ formulario.volveria_a_ver }}
+      <label class="form-check-label ms-2" for="{{ formulario.volveria_a_ver.id_for_label }}">¿Volvería a ver?</label>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="form-check form-switch mt-2 content-form-switch-group content-form-switch-continuation">
+      {{ formulario.tendra_continuacion }}
+      <label class="form-check-label ms-2" for="{{ formulario.tendra_continuacion.id_for_label }}">¿Tendrá continuación?</label>
+    </div>
+  </div>
+</div>

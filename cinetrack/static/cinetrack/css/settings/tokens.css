@@ -11,5 +11,7 @@
   --color-text-secondary: #dcd3fb;
   --accent: #9b5cfb;
   --color-accent-dark: #6f3fe6;
+  /* Estado: Error legible sobre superficies oscuras */
+  --color-error: #ff8fa3;
   --color-border-subtle: rgba(255,255,255,.12);
 }

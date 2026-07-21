@@ -90,7 +90,7 @@
             <!-- Acciones -->
             <div class="d-flex gap-2">
               <a
-                href="{% url 'cinetrack:editar' it.pk %}{% if page %}?page={{ page }}{% endif %}"
+                href="{% url 'cinetrack:editar' it.pk %}?origen=grupo{% if page %}&amp;page={{ page }}{% endif %}"
                 class="btn-ghost-sm"
                 title="Editar"
               >

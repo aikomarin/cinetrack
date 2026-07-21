@@ -6,13 +6,14 @@ from django.core.paginator import Paginator
 from django.db.models import Case, Count, IntegerField, Prefetch, Q, When
 from django.http import Http404, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
-from django.urls import reverse
 from django.utils.html import escape
 from django.views.decorators.http import require_POST
 
 from rest_framework import viewsets
 
-from .forms import ContenidoForm, SagaAliasForm, MaratonForm
+from .content.context import obtener_contexto_grupo_contenido
+from .content.views import editar, registrar
+from .forms import SagaAliasForm, MaratonForm
 from .models import Contenido, SagaAlias, Maraton
 from .serializers import ContenidoSerializer
 from .utils import buscar_contenido_tmdb, clave_saga_desde_titulo, nombre_saga_visible, ordenar_contenidos_saga
@@ -320,27 +321,6 @@ def catalogo(request):
 
 
 # CRUD de contenidos
-def obtener_contexto_grupo_contenido(contenido):
-    clave_saga = clave_saga_desde_titulo(contenido.titulo)
-
-    titulos = (
-        Contenido.objects
-        .exclude(titulo__isnull=True)
-        .values_list("titulo", flat=True)
-    )
-
-    en_grupo = sum(
-        1
-        for titulo in titulos
-        if clave_saga_desde_titulo(titulo) == clave_saga
-    ) > 1
-
-    return {
-        "en_grupo": en_grupo,
-        "clave_saga": clave_saga if en_grupo else None,
-    }
-
-
 def detalle(request, pk):
     contenido = get_object_or_404(Contenido, pk=pk)
     grupo_ctx = obtener_contexto_grupo_contenido(contenido)
@@ -354,62 +334,6 @@ def detalle(request, pk):
         "origen": origen,
         "page": pagina,
         "maraton_id": maraton_id,
-        **grupo_ctx,
-    })
-
-
-def registrar(request):
-    error = None
-
-    if request.method == "POST":
-        formulario = ContenidoForm(request.POST)
-
-        if formulario.is_valid():
-            titulo = formulario.cleaned_data["titulo"]
-            plataforma = formulario.cleaned_data["plataforma"]
-
-            contenido_duplicado = Contenido.objects.filter(
-                titulo=titulo,
-                plataforma=plataforma,
-            ).exists()
-
-            if contenido_duplicado:
-                error = "Este contenido ya fue registrado previamente."
-            else:
-                formulario.save()
-                return redirect("cinetrack:catalogo")
-    else:
-        formulario = ContenidoForm()
-
-    return render(request, "cinetrack/registrar.html", {
-        "formulario": formulario,
-        "error": error,
-    })
-
-
-def editar(request, pk):
-    contenido = get_object_or_404(Contenido, pk=pk)
-    grupo_ctx = obtener_contexto_grupo_contenido(contenido)
-
-    pagina = request.GET.get("page")
-
-    if request.method == "POST":
-        formulario = ContenidoForm(request.POST, instance=contenido)
-
-        if formulario.is_valid():
-            formulario.save()
-
-            if pagina:
-                return redirect(f"{reverse('cinetrack:catalogo')}?page={pagina}")
-
-            return redirect("cinetrack:detalle", pk=contenido.pk)
-    else:
-        formulario = ContenidoForm(instance=contenido)
-
-    return render(request, "cinetrack/editar.html", {
-        "contenido": contenido,
-        "formulario": formulario,
-        "page": pagina,
         **grupo_ctx,
     })
 
