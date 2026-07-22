@@ -3,29 +3,31 @@
 
 {% block content %}
 <div class="detail-page">
-  <div class="detail-bg" style="--detail-bg:url('{{ contenido.imagen|default:'' }}');"></div>
-  <div class="detail-glow"></div>
+  <div class="detail-bg" aria-hidden="true">
+    {% if contenido.imagen %}<img src="{{ contenido.imagen }}" alt="">{% endif %}
+  </div>
+  <div class="detail-glow" aria-hidden="true"></div>
 
   <div class="detail-content">
     <!-- Header -->
     <header class="detail-head">
-      <h1 class="detail-title m-0">
+      <h1 class="detail-title m-0" id="detail-title">
         {{ contenido.titulo }}
-        <small class="detail-year">{{ contenido.fecha|date:"Y"|default:"—" }}</small>
+        <small class="detail-year">{{ contenido.fecha|date:"Y"|default:"" }}</small>
       </h1>
     </header>
 
     <!-- Card principal -->
-    <section class="detail-card p-3 p-md-4 p-lg-5">
-      <div class="row g-4 align-items-start">
+    <section class="detail-card p-3 p-md-4 p-lg-5" aria-labelledby="detail-title">
+      <div class="row g-4 detail-layout">
         <!-- Póster -->
         <div class="col-lg-4">
           <div class="detail-poster">
             {% if contenido.imagen %}
-              <img src="{{ contenido.imagen }}" alt="Póster de {{ contenido.titulo }}">
+              <img src="{{ contenido.imagen }}" alt="Póster de {{ contenido.titulo }}" decoding="async">
             {% else %}
               <div class="detail-poster-ph">
-                <i class="bi bi-image"></i>
+                <i class="bi bi-image" aria-hidden="true"></i>
                 <span>Sin imagen</span>
               </div>
             {% endif %}
@@ -33,136 +35,78 @@
         </div>
 
         <!-- Meta / Info -->
-        <div class="col-lg-8">
+        <div class="col-lg-8 detail-info">
           <!-- Badges -->
           <div class="detail-badges mb-3">
             <span class="badge tipo">{{ contenido.get_tipo_display }}</span>
             <span class="badge plataforma">{{ contenido.get_plataforma_display|default:"—" }}</span>
-            <span class="badge estado-{% if contenido.estado == 'vista' %}vista{% else %}pendiente{% endif %}">
+            <span class="badge estado">
               {{ contenido.get_estado_display }}
             </span>
             {% if contenido.calificacion %}
-              <span class="badge cal-{{ contenido.get_calificacion_display|lower }}">
+              <span class="badge calificacion">
                 {{ contenido.get_calificacion_display }}
               </span>
             {% endif %}
             {% if contenido.favorita %}
-              <span class="badge rounded-pill bg-warning text-dark" title="Favorita">⭐ Favorita</span>
+              <i class="bi bi-star-fill favorite-star detail-favorite" title="Favorita" aria-label="Favorita"></i>
             {% endif %}
           </div>
 
           <!-- Resumen -->
-          {% if contenido.resumen %}
           <div class="detail-section mb-3">
             <h3 class="detail-sub">Resumen</h3>
             <p class="detail-text detail-text-justified">{{ contenido.resumen|linebreaksbr }}</p>
           </div>
-          {% endif %}
 
           <!-- Datos clave -->
-          <div class="detail-grid">
+          <dl class="detail-grid">
             <div class="detail-stat">
-              <span class="label">Fecha</span>
-              <span class="value">{{ contenido.fecha|date:"d/m/Y"|default:"—" }}</span>
+              <dt class="label">Fecha</dt>
+              <dd class="value">{{ contenido.fecha|date:"d/m/Y"|default:"" }}</dd>
             </div>
 
             <div class="detail-stat">
-              <span class="label">Veces vista</span>
-              <span class="value">{{ contenido.veces_vista }}</span>
+              <dt class="label">Veces vista</dt>
+              <dd class="value">{{ contenido.veces_vista }}</dd>
             </div>
 
             <div class="detail-stat">
-              <span class="label">¿Volverías a verla?</span>
+              <dt class="label">¿Volverías a ver?</dt>
               {% if contenido.estado != 'vista' %}
-                <span class="value">—</span>
+                <dd class="value">—</dd>
               {% else %}
-                <span class="value">{{ contenido.volveria_a_ver|yesno:"Sí,No" }}</span>
+                <dd class="value">{{ contenido.volveria_a_ver|yesno:"Sí,No" }}</dd>
               {% endif %}
             </div>
 
             <div class="detail-stat">
-              <span class="label">¿Tendrá continuación?</span>
+              <dt class="label">¿Tendrá continuación?</dt>
               {% if contenido.estado != 'vista' %}
-                <span class="value">—</span>
+                <dd class="value">—</dd>
               {% else %}
-                <span class="value">{{ contenido.tendra_continuacion|yesno:"Sí,No" }}</span>
+                <dd class="value">{{ contenido.tendra_continuacion|yesno:"Sí,No" }}</dd>
               {% endif %}
             </div>
 
             <div class="detail-stat">
-              <span class="label">Favorita</span>
-              {% if contenido.estado != 'vista' %}
-                <span class="value">—</span>
-              {% else %}
-                <span class="value">{{ contenido.favorita|yesno:"Sí,No" }}</span>
-              {% endif %}
+              <dt class="label">Favorita</dt>
+              <dd class="value">{{ contenido.favorita|yesno:"Sí,No" }}</dd>
             </div>
-          </div>
+          </dl>
 
           <!-- CTA inferior -->
-          <div class="detail-actions-spacer d-none d-md-block"></div>
-
-          <div class="detail-foot mt-3 d-flex gap-2">
-            {% if origen == "maraton" and maraton_id %}
-              <a
-                href="{% url 'cinetrack:detalle_maraton' maraton_id %}"
-                class="btn-ghost"
-              >
-                <i class="bi bi-arrow-left"></i>
-                Volver al maratón
-              </a>
-
-            {% elif origen == "grupo" and clave_saga %}
-              <a
-                href="{% url 'cinetrack:grupo_saga' clave_saga %}{% if page %}?page={{ page }}{% endif %}"
-                class="btn-ghost"
-              >
-                <i class="bi bi-arrow-left"></i>
-                Volver al grupo
-              </a>
-
-            {% elif origen == "favoritos" %}
-              <a href="{% url 'cinetrack:favoritos' %}" class="btn-ghost">
-                <i class="bi bi-arrow-left"></i>
-                Volver a favoritos
-              </a>
-
-            {% elif origen == "pendientes" %}
-              <a href="{% url 'cinetrack:pendientes' %}" class="btn-ghost">
-                <i class="bi bi-arrow-left"></i>
-                Volver a pendientes
-              </a>
-
-            {% elif origen == "volveria_a_ver" %}
-              <a href="{% url 'cinetrack:volverias' %}" class="btn-ghost">
-                <i class="bi bi-arrow-left"></i>
-                Regresar a Volverías a Ver
-              </a>
-
-            {% elif en_grupo and clave_saga %}
-              <a
-                href="{% url 'cinetrack:grupo_saga' clave_saga %}{% if page %}?page={{ page }}{% endif %}"
-                class="btn-ghost"
-              >
-                <i class="bi bi-arrow-left"></i>
-                Volver al grupo
-              </a>
-
-            {% else %}
-              <a
-                href="{% url 'cinetrack:catalogo' %}{% if page %}?page={{ page }}{% endif %}"
-                class="btn-ghost"
-              >
-                <i class="bi bi-arrow-left"></i>
-                Volver al catálogo
-              </a>
-            {% endif %}
+          <div class="detail-foot mt-3">
+            <a href="{{ url_retorno }}" class="btn-ghost detail-back-action">
+              <i class="bi bi-arrow-left" aria-hidden="true"></i>
+              {{ texto_retorno }}
+            </a>
 
             <a
               href="{% url 'cinetrack:editar' contenido.pk %}?origen=detalle"
-              class="btn-neon small"
+              class="btn-neon small detail-edit-action"
             >
-              <i class="bi bi-pencil-square"></i>
+              <i class="bi bi-pencil-square" aria-hidden="true"></i>
               Editar
             </a>
           </div>

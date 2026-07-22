@@ -107,7 +107,7 @@
               {% if grp.grouped %}
                 <a href="{% url 'cinetrack:grupo_saga' grp.key %}?page={{ page_obj.number }}" class="d-block">
               {% else %}
-                <a href="{% url 'cinetrack:detalle' c.pk %}?page={{ page_obj.number }}" class="d-block">
+                <a href="{% url 'cinetrack:detalle' c.pk %}?origen=catalogo&amp;page={{ page_obj.number }}&amp;return_to={{ request.get_full_path|urlencode }}" class="d-block">
               {% endif %}
               {% if c.imagen %}
                 <img src="{{ c.imagen }}" alt="{{ grp.saga }}">

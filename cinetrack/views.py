@@ -11,7 +11,7 @@ from django.views.decorators.http import require_POST
 
 from rest_framework import viewsets
 
-from .content.context import obtener_contexto_grupo_contenido
+from .content.detail import detalle
 from .content.views import editar, registrar
 from .forms import SagaAliasForm, MaratonForm
 from .models import Contenido, SagaAlias, Maraton
@@ -321,23 +321,6 @@ def catalogo(request):
 
 
 # CRUD de contenidos
-def detalle(request, pk):
-    contenido = get_object_or_404(Contenido, pk=pk)
-    grupo_ctx = obtener_contexto_grupo_contenido(contenido)
-
-    origen = request.GET.get("origen") or "catalogo"
-    pagina = request.GET.get("page")
-    maraton_id = request.GET.get("maraton_id")
-
-    return render(request, "cinetrack/detalle.html", {
-        "contenido": contenido,
-        "origen": origen,
-        "page": pagina,
-        "maraton_id": maraton_id,
-        **grupo_ctx,
-    })
-
-
 @require_POST
 def eliminar(request, pk):
     contenido = get_object_or_404(Contenido, pk=pk)

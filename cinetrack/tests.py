@@ -4,7 +4,7 @@ from django.test import TestCase, override_settings
 from django.urls import reverse
 from django.utils.html import escape
 
-from .models import Contenido
+from .models import Contenido, Maraton
 
 
 @override_settings(
@@ -242,4 +242,119 @@ class ContenidoFormViewsTests(TestCase):
         self.assertContains(
             response,
             f'href="{reverse("cinetrack:catalogo")}" class="btn-ghost"',
+        )
+
+
+@override_settings(
+    STORAGES={
+        "default": {
+            "BACKEND": "django.core.files.storage.FileSystemStorage",
+        },
+        "staticfiles": {
+            "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+        },
+    }
+)
+class DetalleContenidoTests(TestCase):
+    def setUp(self):
+        self.contenido = Contenido.objects.create(
+            titulo="Arrival",
+            resumen="Primer contacto.",
+            imagen="https://example.com/arrival.jpg",
+            tipo=Contenido.Tipo.PELICULA,
+            plataforma=Contenido.Plataforma.PRIME,
+            estado=Contenido.Estado.PENDIENTE,
+            favorita=True,
+        )
+        self.url = reverse(
+            "cinetrack:detalle",
+            args=[self.contenido.pk],
+        )
+
+    def test_detalle_carga_informacion_y_fondo_sin_estilo_inline(self):
+        response = self.client.get(self.url)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, self.contenido.titulo)
+        self.assertContains(response, self.contenido.imagen, count=2)
+        self.assertNotContains(response, 'class="detail-bg" style=')
+        self.assertContains(response, "Primer contacto.")
+
+    def test_favorita_pendiente_muestra_un_valor_coherente(self):
+        response = self.client.get(self.url)
+
+        self.assertContains(
+            response,
+            '<dt class="label">Favorita</dt><dd class="value">Sí</dd>',
+            html=True,
+        )
+
+    def test_retorno_al_catalogo_conserva_toda_la_query(self):
+        retorno = (
+            reverse("cinetrack:catalogo")
+            + "?q=arrival&estado=pendiente&page=2&futuro=valor"
+        )
+        response = self.client.get(
+            self.url
+            + "?origen=catalogo&page=2&return_to="
+            + quote(retorno, safe="")
+        )
+
+        self.assertEqual(response.context["url_retorno"], retorno)
+        self.assertContains(response, "Volver al catálogo")
+
+    def test_retorno_externo_usa_fallback_del_catalogo(self):
+        response = self.client.get(
+            self.url
+            + "?origen=catalogo&page=2&return_to="
+            + quote("https://example.com/robo", safe="")
+        )
+
+        self.assertEqual(
+            response.context["url_retorno"],
+            reverse("cinetrack:catalogo") + "?page=2",
+        )
+
+    def test_destinos_de_retorno_de_origenes_fijos(self):
+        destinos = {
+            "favoritos": reverse("cinetrack:favoritos"),
+            "pendientes": reverse("cinetrack:pendientes"),
+            "volveria_a_ver": reverse("cinetrack:volverias"),
+        }
+
+        for origen, destino in destinos.items():
+            with self.subTest(origen=origen):
+                response = self.client.get(
+                    self.url + f"?origen={origen}"
+                )
+                self.assertEqual(response.context["url_retorno"], destino)
+
+    def test_retorno_a_maraton(self):
+        maraton = Maraton.objects.create(nombre="Ciencia ficción")
+        maraton.contenidos.add(self.contenido)
+
+        response = self.client.get(
+            self.url + f"?origen=maraton&maraton_id={maraton.pk}"
+        )
+
+        self.assertEqual(
+            response.context["url_retorno"],
+            reverse("cinetrack:detalle_maraton", args=[maraton.pk]),
+        )
+
+    def test_retorno_a_grupo_conserva_pagina(self):
+        Contenido.objects.create(
+            titulo="Arrival 2",
+            tipo=Contenido.Tipo.PELICULA,
+            plataforma=Contenido.Plataforma.DISNEY,
+        )
+
+        response = self.client.get(
+            self.url + "?origen=grupo&page=3"
+        )
+
+        self.assertEqual(
+            response.context["url_retorno"],
+            reverse("cinetrack:grupo_saga", args=["arrival"])
+            + "?page=3",
         )
