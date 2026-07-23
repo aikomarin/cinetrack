@@ -11,7 +11,7 @@ def url_con_pagina(nombre_url, pagina, *, args=None):
     return url
 
 
-def obtener_retorno_catalogo(request):
+def obtener_retorno_interno(request, nombre_vista):
     for retorno in (
         request.GET.get("return_to"),
         request.POST.get("return_to"),
@@ -28,6 +28,14 @@ def obtener_retorno_catalogo(request):
         except Resolver404:
             continue
 
-        if coincidencia.view_name == "cinetrack:catalogo":
+        if coincidencia.view_name == nombre_vista:
             return retorno
     return None
+
+
+def obtener_retorno_catalogo(request):
+    return obtener_retorno_interno(request, "cinetrack:catalogo")
+
+
+def obtener_retorno_favoritos(request):
+    return obtener_retorno_interno(request, "cinetrack:favoritos")

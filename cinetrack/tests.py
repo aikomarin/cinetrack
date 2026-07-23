@@ -9,6 +9,7 @@ from django.urls import reverse
 from django.utils.html import escape
 
 from .catalog.pagination import obtener_rango_paginas
+from .content.images import resolver_url_portada
 from .models import Contenido, Maraton
 
 
@@ -753,7 +754,34 @@ class CatalogoBusquedaTests(TestCase):
             Contenido.objects.filter(
                 titulo="Dune",
                 plataforma=Contenido.Plataforma.HBO,
+                imagen="https://example.com/dune.jpg",
             ).exists()
+        )
+
+    def test_guardar_desde_busqueda_normaliza_path_relativo_tmdb(self):
+        response = self.client.post(
+            reverse("cinetrack:guardar_desde_busqueda"),
+            {
+                "query": "Dune",
+                "titulo": "Dune",
+                "resumen": "Arrakis.",
+                "fecha": "2021-10-22",
+                "imagen": "/poster/dune.jpg",
+                "tipo": Contenido.Tipo.PELICULA,
+                "plataforma": Contenido.Plataforma.HBO,
+                "estado": Contenido.Estado.PENDIENTE,
+                "calificacion": "",
+                "veces_vista": "0",
+            },
+        )
+
+        self.assertRedirects(
+            response,
+            reverse("cinetrack:buscar") + "?query=Dune",
+        )
+        self.assertEqual(
+            Contenido.objects.get(titulo="Dune").imagen,
+            "https://image.tmdb.org/t/p/w500/poster/dune.jpg",
         )
 
     def test_guardar_desde_busqueda_rechaza_datos_invalidos(self):
@@ -796,3 +824,343 @@ class CatalogoBusquedaTests(TestCase):
             Contenido.objects.filter(titulo=self.alien.titulo).count(),
             1,
         )
+
+
+@override_settings(
+    STORAGES={
+        "default": {
+            "BACKEND": "django.core.files.storage.FileSystemStorage",
+        },
+        "staticfiles": {
+            "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+        },
+    }
+)
+class FavoritosTests(TestCase):
+    def setUp(self):
+        self.favorita = Contenido.objects.create(
+            titulo="Arrival",
+            resumen="Primer contacto.",
+            tipo=Contenido.Tipo.PELICULA,
+            plataforma=Contenido.Plataforma.PRIME,
+            estado=Contenido.Estado.VISTA,
+            favorita=True,
+        )
+        self.otra_favorita = Contenido.objects.create(
+            titulo="Dark",
+            tipo=Contenido.Tipo.SERIE,
+            plataforma=Contenido.Plataforma.NETFLIX,
+            estado=Contenido.Estado.VISTA,
+            favorita=True,
+        )
+        self.no_favorita = Contenido.objects.create(
+            titulo="Dune",
+            tipo=Contenido.Tipo.PELICULA,
+            plataforma=Contenido.Plataforma.HBO,
+            estado=Contenido.Estado.PENDIENTE,
+            favorita=False,
+        )
+
+    def datos_edicion(self, contenido, **cambios):
+        datos = {
+            "titulo": contenido.titulo,
+            "resumen": contenido.resumen,
+            "fecha": "",
+            "tipo": contenido.tipo,
+            "plataforma": contenido.plataforma,
+            "calificacion": contenido.calificacion or "",
+            "veces_vista": contenido.veces_vista,
+            "estado": contenido.estado,
+            "volveria_a_ver": "on" if contenido.volveria_a_ver else "",
+            "tendra_continuacion": (
+                "on" if contenido.tendra_continuacion else ""
+            ),
+            "favorita": "on" if contenido.favorita else "",
+        }
+        datos.update(cambios)
+        return datos
+
+    def test_lista_exclusivamente_contenidos_favoritos(self):
+        response = self.client.get(reverse("cinetrack:favoritos"))
+        listados = [
+            *response.context["peliculas"],
+            *response.context["series"],
+        ]
+
+        self.assertEqual(
+            {contenido.pk for contenido in listados},
+            {self.favorita.pk, self.otra_favorita.pk},
+        )
+        self.assertNotIn(self.no_favorita, listados)
+        self.assertContains(response, "2 títulos")
+
+    def test_muestra_todos_los_favoritos_sin_paginar(self):
+        Contenido.objects.bulk_create([
+            Contenido(
+                titulo=f"Película favorita {indice}",
+                tipo=Contenido.Tipo.PELICULA,
+                favorita=True,
+            )
+            for indice in range(30)
+        ])
+        Contenido.objects.bulk_create([
+            Contenido(
+                titulo=f"Serie favorita {indice}",
+                tipo=Contenido.Tipo.SERIE,
+                favorita=True,
+            )
+            for indice in range(30)
+        ])
+
+        response = self.client.get(reverse("cinetrack:favoritos"))
+
+        self.assertEqual(len(response.context["peliculas"]), 31)
+        self.assertEqual(len(response.context["series"]), 31)
+        self.assertNotContains(response, "Paginación de favoritos")
+
+    def test_estado_vacio(self):
+        Contenido.objects.update(favorita=False)
+
+        response = self.client.get(reverse("cinetrack:favoritos"))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Sin favoritos")
+        self.assertEqual(response.context["total_favoritos"], 0)
+
+    def test_tarjetas_enlazan_detalle_con_retorno_completo(self):
+        retorno = reverse("cinetrack:favoritos") + "?futuro=valor"
+        response = self.client.get(retorno)
+        retorno_codificado = quote(retorno, safe="/")
+
+        self.assertContains(
+            response,
+            reverse("cinetrack:detalle", args=[self.favorita.pk])
+            + "?origen=favoritos&amp;return_to="
+            + retorno_codificado,
+        )
+
+    def test_detalle_regresa_a_favoritos_con_parametros(self):
+        retorno = reverse("cinetrack:favoritos") + "?futuro=valor"
+        response = self.client.get(
+            reverse("cinetrack:detalle", args=[self.favorita.pk])
+            + "?origen=favoritos&return_to="
+            + quote(retorno, safe=""),
+        )
+
+        self.assertEqual(response.context["url_retorno"], retorno)
+        self.assertContains(response, "Volver a favoritos")
+
+    def test_tarjetas_enlazan_editar_con_retorno_completo(self):
+        retorno = reverse("cinetrack:favoritos") + "?futuro=valor"
+        response = self.client.get(retorno)
+
+        self.assertContains(
+            response,
+            reverse("cinetrack:editar", args=[self.favorita.pk])
+            + "?origen=favoritos&amp;return_to="
+            + quote(retorno, safe="/"),
+        )
+
+    def test_guardar_desde_editar_regresa_a_favoritos(self):
+        retorno = reverse("cinetrack:favoritos") + "?futuro=valor"
+        response = self.client.post(
+            reverse("cinetrack:editar", args=[self.favorita.pk])
+            + "?origen=favoritos&return_to="
+            + quote(retorno, safe=""),
+            self.datos_edicion(self.favorita, resumen="Actualizado."),
+        )
+
+        self.assertRedirects(response, retorno)
+        self.favorita.refresh_from_db()
+        self.assertEqual(self.favorita.resumen, "Actualizado.")
+
+    def test_cancelar_y_volver_desde_editar_conservan_favoritos(self):
+        retorno = reverse("cinetrack:favoritos") + "?futuro=valor"
+        response = self.client.get(
+            reverse("cinetrack:editar", args=[self.favorita.pk])
+            + "?origen=favoritos&return_to="
+            + quote(retorno, safe=""),
+        )
+
+        self.assertEqual(response.context["url_retorno"], retorno)
+        self.assertContains(response, f'href="{escape(retorno)}"', count=2)
+        self.assertContains(response, "Volver a favoritos")
+
+    def test_quitar_favorito_no_elimina_contenido(self):
+        retorno = reverse("cinetrack:favoritos") + "?futuro=valor"
+        response = self.client.post(
+            reverse("cinetrack:toggle_favorita", args=[self.favorita.pk]),
+            {"return_to": retorno},
+        )
+
+        self.assertRedirects(response, retorno)
+        self.favorita.refresh_from_db()
+        self.assertFalse(self.favorita.favorita)
+        self.assertTrue(
+            Contenido.objects.filter(pk=self.favorita.pk).exists()
+        )
+
+    def test_toggle_requiere_post(self):
+        response = self.client.get(
+            reverse("cinetrack:toggle_favorita", args=[self.favorita.pk])
+        )
+
+        self.assertEqual(response.status_code, 405)
+        self.favorita.refresh_from_db()
+        self.assertTrue(self.favorita.favorita)
+
+    def test_toggle_puede_marcar_un_contenido_como_favorito(self):
+        response = self.client.post(
+            reverse(
+                "cinetrack:toggle_favorita",
+                args=[self.no_favorita.pk],
+            )
+        )
+
+        self.assertRedirects(response, reverse("cinetrack:favoritos"))
+        self.no_favorita.refresh_from_db()
+        self.assertTrue(self.no_favorita.favorita)
+
+    def test_retorno_externo_no_se_utiliza(self):
+        response = self.client.post(
+            reverse("cinetrack:toggle_favorita", args=[self.favorita.pk])
+            + "?return_to="
+            + quote("https://example.com/externo", safe=""),
+        )
+
+        self.assertRedirects(response, reverse("cinetrack:favoritos"))
+
+    def test_detalle_y_editar_rechazan_retorno_externo(self):
+        externo = "https://example.com/externo"
+        fallback = reverse("cinetrack:favoritos")
+
+        detalle = self.client.get(
+            reverse("cinetrack:detalle", args=[self.favorita.pk])
+            + "?origen=favoritos&return_to="
+            + quote(externo, safe=""),
+        )
+        editar = self.client.get(
+            reverse("cinetrack:editar", args=[self.favorita.pk])
+            + "?origen=favoritos&return_to="
+            + quote(externo, safe=""),
+        )
+
+        self.assertEqual(detalle.context["url_retorno"], fallback)
+        self.assertEqual(editar.context["url_retorno"], fallback)
+
+
+@override_settings(
+    STORAGES={
+        "default": {
+            "BACKEND": "django.core.files.storage.FileSystemStorage",
+        },
+        "staticfiles": {
+            "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+        },
+    }
+)
+class PortadasTests(TestCase):
+    def setUp(self):
+        self.contenido = Contenido.objects.create(
+            titulo="Blade Runner",
+            imagen="/poster/blade-runner.jpg",
+            tipo=Contenido.Tipo.PELICULA,
+            plataforma=Contenido.Plataforma.HBO,
+            estado=Contenido.Estado.VISTA,
+            favorita=True,
+        )
+        self.secuela = Contenido.objects.create(
+            titulo="Blade Runner 2049",
+            tipo=Contenido.Tipo.PELICULA,
+            plataforma=Contenido.Plataforma.HBO,
+            estado=Contenido.Estado.VISTA,
+        )
+        self.url_esperada = (
+            "https://image.tmdb.org/t/p/w500/poster/blade-runner.jpg"
+        )
+
+    def datos_edicion(self):
+        return {
+            "titulo": self.contenido.titulo,
+            "resumen": self.contenido.resumen,
+            "fecha": "",
+            "tipo": self.contenido.tipo,
+            "plataforma": self.contenido.plataforma,
+            "calificacion": "",
+            "veces_vista": "0",
+            "estado": self.contenido.estado,
+            "volveria_a_ver": "",
+            "tendra_continuacion": "",
+            "favorita": "on",
+        }
+
+    def test_resolucion_admite_url_absoluta_path_tmdb_y_vacio(self):
+        absoluta = "https://example.com/poster.jpg"
+
+        self.assertEqual(resolver_url_portada(absoluta), absoluta)
+        self.assertEqual(
+            resolver_url_portada("/poster.jpg"),
+            "https://image.tmdb.org/t/p/w500/poster.jpg",
+        )
+        self.assertEqual(resolver_url_portada(""), "")
+        self.assertEqual(resolver_url_portada(None), "")
+
+    def test_editar_sin_imagen_conserva_portada_existente(self):
+        imagen_original = self.contenido.imagen
+
+        response = self.client.post(
+            reverse("cinetrack:editar", args=[self.contenido.pk]),
+            self.datos_edicion(),
+        )
+
+        self.assertRedirects(
+            response,
+            reverse("cinetrack:detalle", args=[self.contenido.pk]),
+        )
+        self.contenido.refresh_from_db()
+        self.assertEqual(self.contenido.imagen, imagen_original)
+
+    def test_catalogo_favoritos_y_grupo_resuelven_la_misma_url(self):
+        respuestas = (
+            self.client.get(reverse("cinetrack:catalogo")),
+            self.client.get(reverse("cinetrack:favoritos")),
+            self.client.get(
+                reverse("cinetrack:grupo_saga", args=["blade runner"])
+            ),
+        )
+
+        for response in respuestas:
+            with self.subTest(path=response.request["PATH_INFO"]):
+                self.assertEqual(response.status_code, 200)
+                self.assertContains(response, self.url_esperada)
+
+    def test_imagen_vacia_renderiza_placeholder(self):
+        contenido = Contenido.objects.create(
+            titulo="Sin portada",
+            imagen="",
+            tipo=Contenido.Tipo.PELICULA,
+            plataforma=Contenido.Plataforma.PRIME,
+        )
+
+        response = self.client.get(
+            reverse("cinetrack:detalle", args=[contenido.pk])
+        )
+
+        self.assertContains(response, "Sin imagen")
+        self.assertNotContains(response, 'src=""')
+
+    def test_navegacion_y_toggle_no_modifican_imagen(self):
+        imagen_original = self.contenido.imagen
+
+        self.client.get(
+            reverse("cinetrack:detalle", args=[self.contenido.pk])
+        )
+        self.client.post(
+            reverse(
+                "cinetrack:toggle_favorita",
+                args=[self.contenido.pk],
+            )
+        )
+
+        self.contenido.refresh_from_db()
+        self.assertEqual(self.contenido.imagen, imagen_original)

@@ -19,6 +19,7 @@ from .catalog.views import (
 from .content.detail import detalle
 from .content.navigation import obtener_retorno_catalogo
 from .content.views import editar, registrar
+from .favorites.views import favoritos, toggle_favorita
 from .forms import SagaAliasForm, MaratonForm
 from .models import Contenido, SagaAlias, Maraton
 from .serializers import ContenidoSerializer
@@ -269,36 +270,7 @@ def marcar_vista(request, pk):
     return redirect("cinetrack:pendientes")
 
 
-# Favoritos / Rewatch
-def favoritos(request):
-    favoritos_qs = Contenido.objects.filter(favorita=True)
-
-    top3 = list(favoritos_qs.order_by("?")[:3])
-
-    peliculas = favoritos_qs.filter(
-        tipo=Contenido.Tipo.PELICULA,
-    ).order_by("-id")[:20]
-
-    series = favoritos_qs.filter(
-        tipo=Contenido.Tipo.SERIE,
-    ).order_by("-id")[:20]
-
-    return render(request, "cinetrack/favoritos.html", {
-        "top3": top3,
-        "peliculas": peliculas,
-        "series": series,
-    })
-
-
-@require_POST
-def toggle_favorita(request, pk):
-    contenido = get_object_or_404(Contenido, pk=pk)
-    contenido.favorita = not contenido.favorita
-    contenido.save(update_fields=["favorita", "updated_at"])
-
-    return redirect("cinetrack:favoritos")
-
-
+# Rewatch
 def volverias(request):
     peliculas = Contenido.objects.filter(
         volveria_a_ver=True,

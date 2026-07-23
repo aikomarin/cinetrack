@@ -1,0 +1,33 @@
+<nav aria-label="{{ pagination_label }}" class="mt-4">
+  <ul class="pagination justify-content-center">
+    {% if paginacion.primera %}
+      <li class="page-item">
+        <a class="page-link" href="{{ paginacion.primera }}">&laquo; Primero</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="{{ paginacion.anterior }}">Anterior</a>
+      </li>
+    {% endif %}
+
+    {% for pagina in paginacion.paginas %}
+      {% if pagina.actual %}
+        <li class="page-item active" aria-current="page">
+          <span class="page-link">{{ pagina.numero }}</span>
+        </li>
+      {% else %}
+        <li class="page-item">
+          <a class="page-link" href="{{ pagina.url }}">{{ pagina.numero }}</a>
+        </li>
+      {% endif %}
+    {% endfor %}
+
+    {% if paginacion.siguiente %}
+      <li class="page-item">
+        <a class="page-link" href="{{ paginacion.siguiente }}">Siguiente</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="{{ paginacion.ultima }}">Último &raquo;</a>
+      </li>
+    {% endif %}
+  </ul>
+</nav>

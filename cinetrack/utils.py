@@ -1,5 +1,6 @@
 from datetime import datetime
 from django.conf import settings
+from .content.images import TMDB_IMAGE_BASE_URL
 from .models import SagaAlias
 
 import requests
@@ -7,8 +8,6 @@ import re, unicodedata
 
 
 TMDB_SEARCH_URL = "https://api.themoviedb.org/3/search/{content_type}"
-TMDB_IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500"
-
 TMDB_CONTENT_TYPES = (
     ("movie", "pelicula"),
     ("tv", "serie"),

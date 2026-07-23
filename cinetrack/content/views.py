@@ -4,11 +4,16 @@ from django.urls import reverse
 from ..models import Contenido
 from .context import obtener_contexto_grupo_contenido
 from .forms import ContenidoForm
-from .navigation import obtener_retorno_catalogo, url_con_pagina
+from .navigation import (
+    obtener_retorno_catalogo,
+    obtener_retorno_favoritos,
+    url_con_pagina,
+)
 
 
 ORIGEN_CATALOGO = "catalogo"
 ORIGEN_GRUPO = "grupo"
+ORIGEN_FAVORITOS = "favoritos"
 
 
 def _obtener_url_retorno_editar(
@@ -16,6 +21,7 @@ def _obtener_url_retorno_editar(
     origen,
     pagina,
     retorno_catalogo,
+    retorno_favoritos,
     grupo_ctx,
 ):
     if origen == ORIGEN_CATALOGO:
@@ -28,6 +34,11 @@ def _obtener_url_retorno_editar(
             "cinetrack:grupo_saga",
             pagina,
             args=[grupo_ctx["clave_saga"]],
+        )
+    if origen == ORIGEN_FAVORITOS:
+        return (
+            retorno_favoritos
+            or reverse("cinetrack:favoritos")
         )
     return reverse("cinetrack:detalle", args=[contenido.pk])
 
@@ -52,11 +63,13 @@ def editar(request, pk):
     origen = request.GET.get("origen")
     pagina = request.GET.get("page")
     retorno_catalogo = obtener_retorno_catalogo(request)
+    retorno_favoritos = obtener_retorno_favoritos(request)
     url_retorno = _obtener_url_retorno_editar(
         contenido,
         origen,
         pagina,
         retorno_catalogo,
+        retorno_favoritos,
         grupo_ctx,
     )
 
@@ -74,6 +87,7 @@ def editar(request, pk):
         "origen": origen,
         "page": pagina,
         "retorno_catalogo": retorno_catalogo,
+        "retorno_favoritos": retorno_favoritos,
         "url_retorno": url_retorno,
         **grupo_ctx,
     })

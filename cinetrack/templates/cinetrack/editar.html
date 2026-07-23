@@ -35,6 +35,13 @@
       >
         <i class="bi bi-arrow-left-circle"></i> Volver al catálogo
       </a>
+    {% elif origen == 'favoritos' %}
+      <a
+        href="{{ url_retorno }}"
+        class="btn-ghost content-form-back"
+      >
+        <i class="bi bi-arrow-left-circle"></i> Volver a favoritos
+      </a>
     {% else %}
       <a href="{{ url_retorno }}" class="btn-ghost content-form-back">
         <i class="bi bi-arrow-left-circle"></i> Volver al detalle

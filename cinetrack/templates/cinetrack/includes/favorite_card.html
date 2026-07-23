@@ -1,0 +1,47 @@
+{% load cinetrack_images %}
+<article class="h-100">
+  <a
+    href="{% url 'cinetrack:detalle' item.pk %}?origen=favoritos&amp;return_to={{ request.get_full_path|urlencode }}"
+    class="rail-poster d-block"
+    title="{{ item.titulo }}"
+  >
+    {% if item.imagen %}
+      <img src="{{ item.imagen|portada_url }}" alt="{{ item.titulo }}">
+    {% else %}
+      <div class="poster-placeholder"></div>
+    {% endif %}
+  </a>
+
+  <div class="pt-2">
+    <h4 class="h6 mb-1 text-truncate">{{ item.titulo }}</h4>
+    <small class="d-block opacity-75 mb-2">
+      {{ item.get_tipo_display }}
+      {% if item.plataforma %} · {{ item.get_plataforma_display }}{% endif %}
+    </small>
+    <div class="d-flex gap-2">
+      <a
+        href="{% url 'cinetrack:editar' item.pk %}?origen=favoritos&amp;return_to={{ request.get_full_path|urlencode }}"
+        class="btn-ghost-sm"
+        title="Editar {{ item.titulo }}"
+      >
+        <i class="bi bi-pencil" aria-hidden="true"></i>
+        <span class="visually-hidden">Editar {{ item.titulo }}</span>
+      </a>
+      <form
+        method="post"
+        action="{% url 'cinetrack:toggle_favorita' item.pk %}?return_to={{ request.get_full_path|urlencode }}"
+      >
+        {% csrf_token %}
+        <input type="hidden" name="return_to" value="{{ request.get_full_path }}">
+        <button
+          type="submit"
+          class="btn-ghost-sm"
+          title="Quitar {{ item.titulo }} de favoritos"
+        >
+          <i class="bi bi-star-fill favorite-star" aria-hidden="true"></i>
+          <span class="visually-hidden">Quitar {{ item.titulo }} de favoritos</span>
+        </button>
+      </form>
+    </div>
+  </div>
+</article>

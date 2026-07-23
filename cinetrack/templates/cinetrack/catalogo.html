@@ -1,4 +1,5 @@
 {% extends 'cinetrack/base.html' %}
+{% load cinetrack_images %}
 {% load static %}
 
 {% block title %}Catálogo · CineTrack{% endblock %}
@@ -116,7 +117,7 @@
                 <a href="{% url 'cinetrack:detalle' c.pk %}?origen=catalogo&amp;page={{ page_obj.number }}&amp;return_to={{ request.get_full_path|urlencode }}" class="d-block">
               {% endif %}
               {% if c.imagen %}
-                <img src="{{ c.imagen }}" alt="{{ grp.saga }}">
+                <img src="{{ c.imagen|portada_url }}" alt="{{ grp.saga }}">
               {% else %}
                 <div class="catalog-placeholder-card">
                   <i class="bi bi-image"></i>
@@ -197,39 +198,7 @@
   </div>
 
   <!-- Paginación -->
-  <nav aria-label="Paginación del catálogo" class="mt-4">
-    <ul class="pagination justify-content-center">
-      {% if paginacion.primera %}
-        <li class="page-item">
-          <a class="page-link" href="{{ paginacion.primera }}">&laquo; Primero</a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="{{ paginacion.anterior }}">Anterior</a>
-        </li>
-      {% endif %}
-
-      {% for pagina in paginacion.paginas %}
-        {% if pagina.actual %}
-          <li class="page-item active" aria-current="page">
-            <span class="page-link">{{ pagina.numero }}</span>
-          </li>
-        {% else %}
-          <li class="page-item">
-            <a class="page-link" href="{{ pagina.url }}">{{ pagina.numero }}</a>
-          </li>
-        {% endif %}
-      {% endfor %}
-
-      {% if paginacion.siguiente %}
-        <li class="page-item">
-          <a class="page-link" href="{{ paginacion.siguiente }}">Siguiente</a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="{{ paginacion.ultima }}">Último &raquo;</a>
-        </li>
-      {% endif %}
-    </ul>
-  </nav>
+  {% include 'cinetrack/includes/pagination.html' with pagination_label='Paginación del catálogo' %}
 
   {% else %}
     <div class="surface-card catalog-empty-state text-center py-5">
