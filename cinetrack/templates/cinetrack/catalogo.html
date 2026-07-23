@@ -13,7 +13,7 @@
   <p class="hero-sub mb-3">Explora tu colección por tipo, plataforma y estado</p>
 
   <!-- Filtros + Buscador -->
-  <div class="surface-card elevated-panel p-3 mb-3">
+  <div class="surface-card elevated-panel catalog-filter-panel p-3 mb-3">
     <form method="get" class="row g-2 align-items-end">
 
       <!-- Fila 1: filtros + botón Filtrar -->
@@ -78,12 +78,18 @@
         {% if filtros.buscar %}
           <span class="badge busqueda rounded-pill">“{{ filtros.buscar }}”</span>
         {% endif %}
+        {% if filtros.favorita %}
+          <span class="badge busqueda rounded-pill">Favoritas</span>
+        {% endif %}
+        {% if filtros.volveria_a_ver %}
+          <span class="badge busqueda rounded-pill">Volvería a ver</span>
+        {% endif %}
 
-        {% if filtros.tipo or filtros.plataforma or filtros.estado or filtros.buscar %}
+        {% if filtros.tipo or filtros.plataforma or filtros.estado or filtros.buscar or filtros.favorita or filtros.volveria_a_ver %}
           <a href="{% url 'cinetrack:catalogo' %}" class="btn-ghost-sm"><i class="bi bi-x-circle"></i> Limpiar</a>
         {% endif %}
         <span class="ms-auto small text-light opacity-75 align-self-center">
-          {% if page_obj %}{{ page_obj.paginator.count }} resultados{% else %}0 resultados{% endif %}
+          {{ total_contenidos }} título{{ total_contenidos|pluralize:"s" }}
         </span>
       </div>
     </form>
@@ -161,7 +167,8 @@
                   <a href="{% url 'cinetrack:editar' c.pk %}?origen=catalogo&amp;page={{ page_obj.number }}&amp;return_to={{ request.get_full_path|urlencode }}" class="btn-ghost-sm" title="Editar">
                     <i class="bi bi-pencil"></i>
                   </a>
-                  <button class="btn-ghost-sm"
+                  <button type="button"
+                          class="btn-ghost-sm"
                           title="Eliminar"
                           data-bs-toggle="modal"
                           data-bs-target="#confirmarEliminarModal"
@@ -177,8 +184,9 @@
 
           {% if not grp.grouped %}
           <!-- Form oculto para eliminar -->
-          <form id="del-{{ c.id }}" method="post" action="{% url 'cinetrack:eliminar' c.id %}" class="d-none">
+          <form id="del-{{ c.id }}" method="post" action="{% url 'cinetrack:eliminar' c.id %}?return_to={{ request.get_full_path|urlencode }}" class="d-none">
             {% csrf_token %}
+            <input type="hidden" name="return_to" value="{{ request.get_full_path }}">
           </form>
           {% endif %}
 
@@ -189,32 +197,42 @@
   </div>
 
   <!-- Paginación -->
-  <nav aria-label="Page navigation" class="mt-4">
+  <nav aria-label="Paginación del catálogo" class="mt-4">
     <ul class="pagination justify-content-center">
-      {% if page_obj.has_previous %}
+      {% if paginacion.primera %}
         <li class="page-item">
-          <a class="page-link" href="?page=1{% if filtros.tipo %}&tipo={{ filtros.tipo }}{% endif %}{% if filtros.plataforma %}&plataforma={{ filtros.plataforma }}{% endif %}{% if filtros.estado %}&estado={{ filtros.estado }}{% endif %}{% if filtros.buscar %}&buscar={{ filtros.buscar|urlencode }}{% endif %}">&laquo; Primero</a>
+          <a class="page-link" href="{{ paginacion.primera }}">&laquo; Primero</a>
         </li>
         <li class="page-item">
-          <a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if filtros.tipo %}&tipo={{ filtros.tipo }}{% endif %}{% if filtros.plataforma %}&plataforma={{ filtros.plataforma }}{% endif %}{% if filtros.estado %}&estado={{ filtros.estado }}{% endif %}{% if filtros.buscar %}&buscar={{ filtros.buscar|urlencode }}{% endif %}">Anterior</a>
+          <a class="page-link" href="{{ paginacion.anterior }}">Anterior</a>
         </li>
       {% endif %}
 
-      <li class="page-item disabled"><span class="page-link">Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</span></li>
+      {% for pagina in paginacion.paginas %}
+        {% if pagina.actual %}
+          <li class="page-item active" aria-current="page">
+            <span class="page-link">{{ pagina.numero }}</span>
+          </li>
+        {% else %}
+          <li class="page-item">
+            <a class="page-link" href="{{ pagina.url }}">{{ pagina.numero }}</a>
+          </li>
+        {% endif %}
+      {% endfor %}
 
-      {% if page_obj.has_next %}
+      {% if paginacion.siguiente %}
         <li class="page-item">
-          <a class="page-link" href="?page={{ page_obj.next_page_number }}{% if filtros.tipo %}&tipo={{ filtros.tipo }}{% endif %}{% if filtros.plataforma %}&plataforma={{ filtros.plataforma }}{% endif %}{% if filtros.estado %}&estado={{ filtros.estado }}{% endif %}{% if filtros.buscar %}&buscar={{ filtros.buscar|urlencode }}{% endif %}">Siguiente</a>
+          <a class="page-link" href="{{ paginacion.siguiente }}">Siguiente</a>
         </li>
         <li class="page-item">
-          <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}{% if filtros.tipo %}&tipo={{ filtros.tipo }}{% endif %}{% if filtros.plataforma %}&plataforma={{ filtros.plataforma }}{% endif %}{% if filtros.estado %}&estado={{ filtros.estado }}{% endif %}{% if filtros.buscar %}&buscar={{ filtros.buscar|urlencode }}{% endif %}">Último &raquo;</a>
+          <a class="page-link" href="{{ paginacion.ultima }}">Último &raquo;</a>
         </li>
       {% endif %}
     </ul>
   </nav>
 
   {% else %}
-    <div class="surface-card text-center py-5">
+    <div class="surface-card catalog-empty-state text-center py-5">
       <div class="display-6 mb-2">Sin resultados</div>
       <p class="opacity-75">Prueba cambiando los filtros o agrega nuevos títulos.</p>
       <a href="{% url 'cinetrack:buscar' %}" class="btn-neon"><i class="bi bi-plus-circle"></i> Agregar contenido</a>
