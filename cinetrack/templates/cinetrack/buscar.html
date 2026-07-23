@@ -23,9 +23,8 @@
   </p>
 
   <!-- Formulario de búsqueda -->
-  <div class="surface-card mb-3">
-    <form method="post" class="row g-2 align-items-end">
-      {% csrf_token %}
+  <div class="surface-card search-query-panel mb-3">
+    <form method="get" class="row g-2 align-items-end">
 
       <div class="col-12 col-md-9">
         <label class="form-label mb-3" for="search-query">
@@ -37,11 +36,17 @@
           type="text"
           name="query"
           required
-          value="{{ request.POST.query|default:'' }}"
+          value="{{ query }}"
           class="form-control"
           placeholder="Ej. El conjuro"
         >
       </div>
+
+      {% if formulario_busqueda.query.errors %}
+        <div class="col-12 search-field-errors" role="alert">
+          {{ formulario_busqueda.query.errors }}
+        </div>
+      {% endif %}
 
       <div class="col-12 col-md-3 d-flex justify-content-md-end">
         <button type="submit" class="btn-neon w-100 justify-content-center">
@@ -51,13 +56,6 @@
       </div>
     </form>
   </div>
-
-  <!-- Error de búsqueda -->
-  {% if error %}
-    <div class="surface-card p-3 mb-3" role="alert">
-      <p class="m-0">{{ error }}</p>
-    </div>
-  {% endif %}
 
   <!-- Resultados -->
   {% if resultados %}
@@ -72,7 +70,7 @@
           <form
             method="post"
             action="{% url 'cinetrack:guardar_desde_busqueda' %}"
-            class="surface-card elevated-panel edit-form p-4 p-lg-5"
+            class="surface-card elevated-panel edit-form search-result-card p-4 p-lg-5"
           >
             {% csrf_token %}
 
@@ -110,6 +108,7 @@
                 <input type="hidden" name="fecha" value="{{ r.fecha|date:'Y-m-d' }}">
                 <input type="hidden" name="imagen" value="{{ r.imagen }}">
                 <input type="hidden" name="tipo" value="{{ r.tipo }}">
+                <input type="hidden" name="query" value="{{ query }}">
 
                 <!-- Opciones -->
                 <div class="row mb-4">
@@ -238,8 +237,8 @@
       {% endfor %}
     </div>
 
-  {% elif request.method == "POST" and not error %}
-    <div class="surface-card text-center py-5">
+  {% elif busqueda_realizada and not formulario_busqueda.errors %}
+    <div class="surface-card search-empty-state text-center py-5">
       <div class="display-6 mb-2">
         Sin resultados
       </div>

@@ -380,6 +380,8 @@ document.addEventListener('DOMContentLoaded', () => {
 // ----- MARATONES (listado) -----
 (function () {
   function setupMaratonesDeleteModal() {
+    if (document.body.dataset.urlname !== 'maratones') return;
+
     const modal = document.getElementById('confirmarEliminarModal');
     if (!modal || modal.dataset.bound === '1') return; // evitar doble binding
 

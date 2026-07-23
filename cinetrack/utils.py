@@ -86,8 +86,14 @@ def _buscar_por_tipo_tmdb(
         return []
 
     return [
-        _normalizar_resultado_tmdb(resultado, tipo_valor)
+        normalizado
         for resultado in response.json().get("results", [])
+        if (
+            normalizado := _normalizar_resultado_tmdb(
+                resultado,
+                tipo_valor,
+            )
+        )["titulo"]
     ]
 
 

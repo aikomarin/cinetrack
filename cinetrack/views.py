@@ -1,22 +1,28 @@
-from collections import defaultdict
 from urllib.parse import unquote
 
 from django.contrib import messages
-from django.core.paginator import Paginator
-from django.db.models import Case, Count, IntegerField, Prefetch, Q, When
+from django.db.models import Case, Count, IntegerField, Prefetch, When
 from django.http import Http404, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse
 from django.utils.html import escape
 from django.views.decorators.http import require_POST
 
 from rest_framework import viewsets
 
+from .catalog.views import (
+    buscar,
+    catalogo,
+    guardar_desde_busqueda,
+    normalizar_pagina_retorno_catalogo,
+)
 from .content.detail import detalle
+from .content.navigation import obtener_retorno_catalogo
 from .content.views import editar, registrar
 from .forms import SagaAliasForm, MaratonForm
 from .models import Contenido, SagaAlias, Maraton
 from .serializers import ContenidoSerializer
-from .utils import buscar_contenido_tmdb, clave_saga_desde_titulo, nombre_saga_visible, ordenar_contenidos_saga
+from .utils import clave_saga_desde_titulo, nombre_saga_visible, ordenar_contenidos_saga
 
 
 DONUT_CIRCUNFERENCIA = 326
@@ -29,33 +35,6 @@ CALIFICACION_NUMERICA = {
     Contenido.Calificacion.MALA: 2,
     Contenido.Calificacion.HORRIBLE: 1,
 }
-
-
-def obtener_plataformas(otro_al_final=False):
-    plataformas = list(Contenido.Plataforma.choices)
-
-    if not otro_al_final:
-        return sorted(
-            plataformas,
-            key=lambda p: p[1].lower(),
-        )
-
-    otras = [
-        p
-        for p in plataformas
-        if p[0] == Contenido.Plataforma.OTRO
-    ]
-
-    normales = sorted(
-        (
-            p
-            for p in plataformas
-            if p[0] != Contenido.Plataforma.OTRO
-        ),
-        key=lambda p: p[1].lower(),
-    )
-
-    return normales + otras
 
 
 def con_imagen(queryset):
@@ -217,109 +196,6 @@ def home(request):
     })
 
 
-# Catálogo
-def obtener_filtros_catalogo(request):
-    return {
-        "tipo": request.GET.get("tipo") or "",
-        "plataforma": request.GET.get("plataforma") or "",
-        "estado": request.GET.get("estado") or "",
-        "favorita": request.GET.get("favorita"),
-        "volveria_a_ver": request.GET.get("volveria_a_ver"),
-        "buscar": (request.GET.get("buscar") or "").strip(),
-    }
-
-
-def aplicar_filtros_catalogo(queryset, filtros):
-    if filtros["volveria_a_ver"] in ("1", "true", "True", "on"):
-        queryset = queryset.filter(
-            volveria_a_ver=True,
-            estado=Contenido.Estado.VISTA,
-        )
-
-    if filtros["tipo"]:
-        queryset = queryset.filter(tipo=filtros["tipo"])
-
-    if filtros["plataforma"]:
-        queryset = queryset.filter(plataforma=filtros["plataforma"])
-
-    if filtros["estado"]:
-        queryset = queryset.filter(estado=filtros["estado"])
-
-    if filtros["favorita"] == "1":
-        queryset = queryset.filter(favorita=True)
-
-    if filtros["buscar"]:
-        queryset = queryset.filter(Q(titulo__icontains=filtros["buscar"]))
-
-    return queryset.order_by("titulo")
-
-
-def construir_grupos_catalogo(contenidos):
-    cubetas = defaultdict(list)
-
-    for item in contenidos:
-        cubetas[clave_saga_desde_titulo(item.titulo)].append(item)
-
-    grupos = []
-
-    for clave in sorted(cubetas.keys()):
-        items = cubetas[clave]
-
-        if len(items) >= 2:
-            items_ordenados = ordenar_contenidos_saga(items)
-            representativo = items_ordenados[0]
-            base = representativo.titulo.split(":")[0].split("-")[0].strip()
-            nombre_visible = nombre_saga_visible(clave, base)
-
-            grupos.append({
-                "saga": nombre_visible,
-                "items": items_ordenados,
-                "count": len(items_ordenados),
-                "grouped": True,
-                "key": clave,
-            })
-        else:
-            item = items[0]
-            grupos.append({
-                "saga": item.titulo,
-                "items": [item],
-                "count": 1,
-                "grouped": False,
-            })
-
-    return sorted(grupos, key=lambda grupo: grupo["saga"].lower())
-
-
-def catalogo(request):
-    filtros = obtener_filtros_catalogo(request)
-
-    contenidos = aplicar_filtros_catalogo(
-        Contenido.objects.all(),
-        filtros,
-    )
-
-    grupos = construir_grupos_catalogo(contenidos)
-
-    paginador = Paginator(grupos, 24)
-    page_obj = paginador.get_page(request.GET.get("page"))
-
-    plataformas_disponibles = obtener_plataformas()
-    plataforma_nombre = dict(plataformas_disponibles).get(
-        filtros["plataforma"]
-    )
-
-    return render(request, "cinetrack/catalogo.html", {
-        "buscar": filtros["buscar"],
-        "pagina": page_obj.number,
-        "page_obj": page_obj,
-        "page_groups": page_obj,
-        "plataformas": plataformas_disponibles,
-        "plataforma_nombre": plataforma_nombre,
-        "filtros": filtros,
-        "saga_form": SagaAliasForm(),
-    })
-
-
 # CRUD de contenidos
 @require_POST
 def eliminar(request, pk):
@@ -339,77 +215,12 @@ def eliminar(request, pk):
         request,
         f"🗑️ {mensaje_contenido(titulo)} fue eliminado correctamente."
     )
-    return redirect("cinetrack:catalogo")
-
-
-# Búsqueda TMDB
-def buscar(request):
-    resultados = []
-    error = None
-
-    if request.method == "POST":
-        query = (request.POST.get("query") or "").strip()
-
-        if query:
-            resultados = buscar_contenido_tmdb(query)
-
-            if not resultados:
-                error = "No se encontraron resultados o TMDB no respondió correctamente."
-        else:
-            error = "Escribe un título para buscar."
-
-    plataformas_ordenadas = obtener_plataformas(
-        otro_al_final=True,
-    )
-
-    return render(request, "cinetrack/buscar.html", {
-        "resultados": resultados,
-        "plataformas": plataformas_ordenadas,
-        "error": error,
-    })
-
-
-@require_POST
-def guardar_desde_busqueda(request):
-    titulo = request.POST.get("titulo")
-    plataforma = request.POST.get("plataforma")
-
-    if not titulo or not plataforma:
-        messages.error(request, "Faltan datos para guardar el contenido.")
-        return redirect("cinetrack:buscar")
-
-    contenido_duplicado = Contenido.objects.filter(
-        titulo=titulo,
-        plataforma=plataforma,
-    ).exists()
-
-    if contenido_duplicado:
-        messages.warning(
-            request,
-            f"⚠️ {mensaje_contenido(titulo)} ya existe en tu lista."
+    retorno_catalogo = obtener_retorno_catalogo(request)
+    if retorno_catalogo:
+        return redirect(
+            normalizar_pagina_retorno_catalogo(retorno_catalogo)
         )
-        return redirect("cinetrack:buscar")
-
-    Contenido.objects.create(
-        titulo=titulo,
-        resumen=request.POST.get("resumen"),
-        fecha=request.POST.get("fecha") or None,
-        imagen=request.POST.get("imagen"),
-        tipo=request.POST.get("tipo"),
-        plataforma=plataforma,
-        calificacion=request.POST.get("calificacion") or None,
-        veces_vista=request.POST.get("veces_vista") or 0,
-        volveria_a_ver=bool(request.POST.get("volveria_a_ver")),
-        estado=request.POST.get("estado") or Contenido.Estado.PENDIENTE,
-        tendra_continuacion=request.POST.get("tendra_continuacion") == "on",
-        favorita=request.POST.get("favorita") == "on",
-    )
-
-    messages.success(
-        request,
-        f"✅ {mensaje_contenido(titulo)} fue registrada exitosamente."
-    )
-    return redirect("cinetrack:buscar")
+    return redirect(reverse("cinetrack:catalogo"))
 
 
 # Kanban / Pendientes

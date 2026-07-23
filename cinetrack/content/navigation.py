@@ -12,19 +12,22 @@ def url_con_pagina(nombre_url, pagina, *, args=None):
 
 
 def obtener_retorno_catalogo(request):
-    retorno = request.GET.get("return_to")
-    if not retorno or not url_has_allowed_host_and_scheme(
-        retorno,
-        allowed_hosts={request.get_host()},
-        require_https=request.is_secure(),
+    for retorno in (
+        request.GET.get("return_to"),
+        request.POST.get("return_to"),
     ):
-        return None
+        if not retorno or not url_has_allowed_host_and_scheme(
+            retorno,
+            allowed_hosts={request.get_host()},
+            require_https=request.is_secure(),
+        ):
+            continue
 
-    try:
-        coincidencia = resolve(retorno.split("?", 1)[0])
-    except Resolver404:
-        return None
+        try:
+            coincidencia = resolve(retorno.split("?", 1)[0])
+        except Resolver404:
+            continue
 
-    if coincidencia.view_name != "cinetrack:catalogo":
-        return None
-    return retorno
+        if coincidencia.view_name == "cinetrack:catalogo":
+            return retorno
+    return None

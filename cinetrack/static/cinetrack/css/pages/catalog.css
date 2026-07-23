@@ -1,6 +1,17 @@
 /* Página: Filtros del catálogo */
+.catalog-filter-panel {
+  border-color: rgba(155,92,251,.22);
+  background:
+    linear-gradient(135deg, rgba(155,92,251,.08), transparent 55%),
+    rgba(255,255,255,.035);
+}
+
 .filter-chips {
   padding-top: 14px;
+}
+
+.catalog-empty-state {
+  border: 1px dashed rgba(220,211,251,.24);
 }
 
 .filter-chips .badge {
