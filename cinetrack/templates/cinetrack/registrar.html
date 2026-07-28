@@ -20,20 +20,17 @@
       <span class="content-form-title-separator" aria-hidden="true"></span>
       <small class="content-form-title-type">Película o Serie</small>
     </h2>
-    <a href="{% url 'cinetrack:catalogo' %}" class="btn-ghost content-form-back">
+    <a href="{% url 'cinetrack:catalogo' %}" class="ct-btn btn-ghost content-form-back">
       <i class="bi bi-arrow-left-circle"></i> Volver al catálogo
     </a>
   </div>
 
   {% if formulario.non_field_errors %}
-    <div class="content-form-errors-general mb-3">
-      <i class="bi bi-exclamation-triangle-fill" aria-hidden="true"></i>
+    <div class="form-validation-summary" role="alert">
+      <i class="bi bi-exclamation-triangle-fill form-validation__icon" aria-hidden="true"></i>
       {{ formulario.non_field_errors }}
     </div>
   {% endif %}
-
-  <!-- Claqueta -->
-  <div class="clapboard-separator"></div>
 
   <!-- Formulario -->
   <form method="post" class="elevated-panel edit-form content-form-register p-4 p-lg-5" novalidate>
@@ -43,10 +40,10 @@
 
     <!-- Acciones -->
     <div class="content-form-actions pt-2">
-      <button type="submit" class="btn-save">
-        <i class="bi bi-check-circle me-1"></i> Guardar
+      <button type="submit" class="ct-btn btn-save">
+        <i class="bi bi-check-circle"></i> Guardar
       </button>
-      <a href="{% url 'cinetrack:catalogo' %}" class="btn-ghost">
+      <a href="{% url 'cinetrack:catalogo' %}" class="ct-btn btn-ghost">
         <i class="bi bi-x-circle"></i> Cancelar
       </a>
     </div>

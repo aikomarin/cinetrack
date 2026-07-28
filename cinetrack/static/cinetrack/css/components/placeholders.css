@@ -1,0 +1,35 @@
+/* Sistema global de placeholders */
+input::placeholder,
+textarea::placeholder,
+.form-control::placeholder,
+input.ct-date-input-visible::placeholder,
+.form-select:has(option[value=""]:checked),
+.form-select option[value=""],
+.custom-select-trigger.is-placeholder .ct-label,
+#ct-portal .custom-select-option.is-placeholder {
+  font-family: var(--font-family-body);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  opacity: .72;
+  line-height: 1.5;
+}
+
+input.ct-date-input-visible::-webkit-input-placeholder {
+  font-family: var(--font-family-body);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  opacity: .72;
+  line-height: 1.5;
+}
+
+/* En el select nativo el color atenúa únicamente el texto, no el control completo. */
+.form-select:has(option[value=""]:checked) {
+  color: color-mix(in srgb, var(--color-text-secondary) 72%, transparent);
+  opacity: 1;
+}
+
+#ct-portal .custom-select-option.is-placeholder[aria-disabled="true"] {
+  opacity: .45;
+}

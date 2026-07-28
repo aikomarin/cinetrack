@@ -5,68 +5,58 @@
 .ct-date-input-visible {
   height: var(--form-control-height, 52px);
   width: 100%;
-  padding: 0 18px;
-
-  color: #f7f3ff;
-  font-family: "DM Sans", sans-serif;
+  padding: .7rem .9rem;
+  box-sizing: border-box;
+  font-family: var(--font-family-body);
   font-size: 1rem;
-  font-weight: 600;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(94, 45, 137, 0.46),
-      rgba(40, 52, 112, 0.46)
-    );
-
-  border: 1px solid rgba(182, 132, 255, 0.38);
-  border-radius: 16px;
-
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.06),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.18),
-    0 0 0 1px rgba(121, 72, 191, 0.08);
-
-  transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease,
-    background 0.2s ease;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--color-text-primary);
+  background: rgba(255,255,255,.05);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 12px;
+  outline: none;
+  box-shadow: none;
+  transition: box-shadow .18s ease, border-color .18s ease,
+              background .18s ease, transform .12s ease;
 }
 
 .ct-date-input-visible:hover {
-  border-color: rgba(194, 150, 255, 0.56);
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(104, 51, 151, 0.52),
-      rgba(43, 58, 124, 0.52)
-    );
+  background: rgba(255,255,255,.06);
 }
 
 .ct-date-input-visible:focus {
-  color: #ffffff;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(112, 55, 166, 0.58),
-      rgba(47, 64, 137, 0.58)
-    );
-
-  border-color: rgba(166, 101, 255, 0.95);
-
-  box-shadow:
-    0 0 0 3px rgba(143, 76, 255, 0.16),
-    0 0 22px rgba(129, 66, 230, 0.28),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
-
+  color: var(--color-text-primary);
+  background: rgba(255,255,255,.05);
+  border-color: transparent;
+  box-shadow: 0 0 0 3px rgba(155,92,251,.45),
+              0 0 16px rgba(111,63,230,.4);
   outline: none;
+  transform: translateY(-1px);
 }
 
-.ct-date-input-visible::placeholder {
-  color: rgba(239, 230, 255, 0.6);
-  font-weight: 500;
+.ct-date-input-visible[readonly] {
+  opacity: 1;
+  color: var(--color-text-primary);
+  background: rgba(255,255,255,.05);
+  cursor: pointer;
+}
+
+.ct-date-input-visible[readonly]:hover {
+  background: rgba(255,255,255,.06);
+}
+
+.ct-date-input-visible[readonly]:focus {
+  background: rgba(255,255,255,.05);
+}
+
+.ct-date-input-visible:disabled {
+  opacity: .65;
+  color: var(--color-text-secondary);
+  background: rgba(255,255,255,.03);
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
 }
 
 
@@ -102,6 +92,7 @@
 
   overflow: visible;
   z-index: 10001;
+  font-family: var(--font-family-body);
 }
 
 
@@ -128,7 +119,6 @@
   padding-top: 11px;
 
   color: #ffffff;
-  font-family: "Teko", sans-serif;
   font-size: 1.25rem;
   font-weight: 600;
   letter-spacing: 0.035em;
@@ -137,7 +127,6 @@
 .flatpickr-current-month .flatpickr-monthDropdown-months,
 .flatpickr-current-month input.cur-year {
   color: #ffffff !important;
-  font-family: "Teko", sans-serif;
   font-size: 1.18rem;
   font-weight: 600;
 
@@ -210,7 +199,6 @@
 span.flatpickr-weekday {
   color: rgba(230, 216, 249, 0.74);
 
-  font-family: "DM Sans", sans-serif;
   font-size: 0.76rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -237,7 +225,6 @@ span.flatpickr-weekday {
 
   color: #e9def8;
 
-  font-family: "DM Sans", sans-serif;
   font-size: 0.92rem;
   font-weight: 600;
 

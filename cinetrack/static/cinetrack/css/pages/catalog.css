@@ -6,28 +6,127 @@
     rgba(255,255,255,.035);
 }
 
-.filter-chips {
-  padding-top: 14px;
+.catalog-subtitle {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.catalog-filter-panel form > .col-12 > .row {
+  --bs-gutter-x: var(--form-panel-column-gap);
+}
+
+.catalog-search-row {
+  margin-top: 1.25rem;
+}
+
+.catalog-filter-panel .ct-btn.btn-neon {
+  width: 9rem;
+  min-height: var(--form-control-height);
+}
+
+.catalog-filter-footer {
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+  padding: .65rem .35rem .2rem;
+}
+
+.catalog-active-filters {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+
+.catalog-result-count {
+  color: var(--color-text-primary);
+  flex: 0 0 auto;
+  padding-right: .25rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.2;
+  opacity: .94;
 }
 
 .catalog-empty-state {
   border: 1px dashed rgba(220,211,251,.24);
 }
 
-.filter-chips .badge {
+.catalog-active-filters .badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  min-height: 2.15rem;
   line-height: 1.2;
-  padding: .4rem .9rem;
+  padding: .5rem .85rem;
   font-weight: 600;
+  border-radius: 8px !important; /* Sobrescribe la utilidad Bootstrap .rounded-pill del markup existente. */
 }
 
-/* Página: Insignia de grupo del catálogo */
-.group-count {
-  background: var(--brand-purple, #7c3aed);
-  color: #fff;
-  font-weight: 600;
-  font-size: 0.75rem;
-  padding: 0.35rem 0.6rem;
+.catalog-card-badges {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .4rem;
+  min-height: 2.1rem;
+  margin-bottom: -.3rem;
+  overflow: visible;
+}
+
+.catalog-card-badges .badge {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.85rem;
+  padding: .4rem .7rem;
+  font-size: .78rem;
+}
+
+.catalog-card-favorite {
+  flex: 0 0 auto;
+  padding-inline: .15rem;
+  font-size: 1.05rem;
+}
+
+.top-card-thumb.is-favorite {
+  border: 4px solid rgba(255,215,0,.72);
+  box-shadow: 0 0 0 1px rgba(255,215,0,.12);
+}
+
+.catalog-card-grid {
+  --bs-gutter-y: 3.5rem;
+}
+
+.catalog-card-badges + .top-card-thumb {
+  z-index: 2;
+}
+
+.catalog-card-grid .top-card-name {
+  min-height: 0;
+}
+
+.catalog-card-details {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.35;
+}
+
+.catalog-card-platform-prime {
+  font-size: .8em;
+  white-space: nowrap;
+}
+
+.catalog-card-footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: auto;
+}
+
+.catalog-card-footer > :last-child {
+  flex: 0 0 auto;
 }

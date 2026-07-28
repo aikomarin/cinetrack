@@ -1,0 +1,51 @@
+/* Sistema global de validaciones */
+.form-validation,
+.form-validation-summary {
+  color: var(--color-error);
+  font-family: var(--font-family-body);
+  font-size: .8rem;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.form-validation {
+  display: flex;
+  align-items: flex-start;
+  gap: .4rem;
+  margin-top: .45rem;
+}
+
+.form-validation-summary {
+  display: flex;
+  align-items: flex-start;
+  gap: .55rem;
+  margin: 0 0 1rem;
+  padding: .65rem .85rem;
+  background: rgba(255, 143, 163, .09);
+  border: 1px solid rgba(255, 143, 163, .4);
+  border-radius: 10px;
+}
+
+.form-validation__icon {
+  flex: 0 0 auto;
+  color: var(--color-error);
+  font-size: .9rem;
+  line-height: 1.2;
+}
+
+.form-validation .errorlist,
+.form-validation-summary .errorlist {
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  list-style: none;
+}
+
+.form-validation .errorlist li,
+.form-validation-summary .errorlist li {
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+}

@@ -74,29 +74,3 @@
   background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.02));
   border-top: 1px solid rgba(255,255,255,.06);
 }
-
-/* Componente: Activador destructivo del modal */
-.btn-ghost-sm[data-bs-target="#confirmarEliminarModal"] {
-  color: #ff4d4f;
-  border: 1px solid rgba(255,77,79,.6);
-  border-radius: 8px;
-  padding: 4px 6px;
-  line-height: 1;
-  transition: all .2s ease;
-}
-
-.btn-ghost-sm[data-bs-target="#confirmarEliminarModal"]:hover {
-  color: #fff;
-  background: rgba(255,77,79,.85);
-  border-color: #ff4d4f;
-  box-shadow: 0 0 12px rgba(255,77,79,.55);
-}
-
-.ctmodal .btn-outline-light {
-  color: var(--color-text-primary);
-  border-color: rgba(255,255,255,.22);
-}
-.ctmodal .btn-outline-light:hover {
-  background: rgba(255,255,255,.08);
-  border-color: rgba(255,255,255,.3);
-}

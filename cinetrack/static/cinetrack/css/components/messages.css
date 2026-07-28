@@ -1,0 +1,106 @@
+/* Sistema global de mensajes de Django */
+.ct-messages {
+  display: grid;
+  gap: .75rem;
+  margin-top: 1rem;
+}
+
+.ct-message {
+  --message-color: #b9d8ff;
+  --message-border: rgba(103, 174, 255, .48);
+  --message-background: rgba(50, 116, 190, .14);
+
+  display: flex;
+  align-items: flex-start;
+  gap: .75rem;
+  margin: 0;
+  padding: .85rem 1rem;
+  color: var(--color-text-primary);
+  font-family: var(--font-family-body);
+  font-size: .95rem;
+  font-weight: 500;
+  line-height: 1.45;
+  background: var(--message-background);
+  border: 1px solid var(--message-border);
+  border-radius: 12px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, .18);
+  backdrop-filter: blur(10px);
+  transition: opacity .15s linear, transform .18s ease;
+}
+
+.ct-message--success {
+  --message-color: #80e0b1;
+  --message-border: rgba(67, 201, 132, .46);
+  --message-background: rgba(40, 139, 91, .14);
+}
+
+.ct-message--error {
+  --message-color: var(--color-error);
+  --message-border: rgba(255, 143, 163, .48);
+  --message-background: rgba(174, 61, 88, .14);
+}
+
+.ct-message--warning {
+  --message-color: #ffd27a;
+  --message-border: rgba(255, 193, 77, .48);
+  --message-background: rgba(176, 116, 24, .14);
+}
+
+.ct-message--info {
+  --message-color: #8edcf4;
+  --message-border: rgba(77, 190, 224, .48);
+  --message-background: rgba(36, 133, 163, .14);
+}
+
+.ct-message__icon {
+  flex: 0 0 auto;
+  color: var(--message-color);
+  font-size: 1.1rem;
+  line-height: 1.35;
+}
+
+.ct-message__text {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.ct-message__close {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  margin: -.2rem -.25rem -.2rem 0;
+  padding: 0;
+  color: var(--color-text-secondary);
+  font: inherit;
+  font-size: 1rem;
+  line-height: 1;
+  background: transparent;
+  border: 0;
+  border-radius: 50%;
+  opacity: .78;
+  cursor: pointer;
+  transition: color .15s ease, background .15s ease, opacity .15s ease;
+}
+
+.ct-message__close:hover {
+  color: var(--color-text-primary);
+  background: rgba(255, 255, 255, .08);
+  opacity: 1;
+}
+
+.ct-message__close:focus-visible {
+  color: var(--color-text-primary);
+  outline: 2px solid var(--message-color);
+  outline-offset: 2px;
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ct-message,
+  .ct-message__close {
+    transition: none;
+  }
+}

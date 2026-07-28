@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 
@@ -48,6 +49,7 @@ def registrar(request):
         formulario = ContenidoForm(request.POST)
         if formulario.is_valid():
             formulario.save()
+            messages.success(request, "El contenido se registró correctamente.")
             return redirect("cinetrack:catalogo")
     else:
         formulario = ContenidoForm()
@@ -77,6 +79,7 @@ def editar(request, pk):
         formulario = ContenidoForm(request.POST, instance=contenido)
         if formulario.is_valid():
             formulario.save()
+            messages.success(request, "El contenido se actualizó correctamente.")
             return redirect(url_retorno)
     else:
         formulario = ContenidoForm(instance=contenido)

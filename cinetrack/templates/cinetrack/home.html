@@ -42,10 +42,10 @@
   <h1 class="hero-title">🎬 Bienvenido a CineTrack</h1>
   <p class="hero-sub">Tu catálogo personal de películas y series</p>
   <div class="d-flex justify-content-center gap-3 mt-3">
-    <a href="{% url 'cinetrack:catalogo' %}" class="btn-neon">
+    <a href="{% url 'cinetrack:catalogo' %}" class="ct-btn btn-neon">
       <i class="bi bi-collection"></i> Ver catálogo
     </a>
-    <a href="{% url 'cinetrack:buscar' %}" class="btn-ghost">
+    <a href="{% url 'cinetrack:buscar' %}" class="ct-btn btn-ghost">
       <i class="bi bi-plus-circle"></i> Agregar nuevo
     </a>
   </div>
@@ -166,7 +166,7 @@
   <section class="recent-activity-section">
     <div class="recent-activity-header">
       <h2 class="section-title"><i class="bi bi-clock-history"></i> Actividad reciente</h2>
-      <a href="{% url 'cinetrack:catalogo' %}?orden=recientes" class="btn-neon small">
+      <a href="{% url 'cinetrack:catalogo' %}?orden=recientes" class="ct-btn ct-btn--compact btn-neon">
         <i class="bi bi-lightning"></i> Ver todo
       </a>
     </div>
@@ -203,7 +203,7 @@
                   {% endif %}
                 </span>
                 <div class="recent-actions">
-                  <a href="{% url 'cinetrack:detalle' it.pk %}" class="btn-ghost btn-ghost-sm">
+                  <a href="{% url 'cinetrack:detalle' it.pk %}" class="ct-btn ct-btn--compact btn-ghost-sm">
                     <i class="bi bi-search"></i> Ver
                   </a>
                 </div>
@@ -217,7 +217,7 @@
         <div class="surface-card-header justify-content-center">
           No hay actividad reciente todavía.
         </div>
-        <a href="{% url 'cinetrack:buscar' %}" class="btn-neon small">
+        <a href="{% url 'cinetrack:buscar' %}" class="ct-btn ct-btn--compact btn-neon">
           <i class="bi bi-plus-circle"></i> Agrega tu primer título
         </a>
       </div>

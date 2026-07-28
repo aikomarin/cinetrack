@@ -46,7 +46,7 @@
   margin-top: .6rem;
 }
 .ranking-podium-title {
-  font-family: var(--brand-font);
+  font-family: var(--font-family-body);
   font-size: 1rem;
   letter-spacing: .3px;
   margin-bottom: .3rem;
@@ -88,7 +88,7 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  font-family: var(--brand-font);
+  font-family: var(--font-family-body);
   font-size: 1.2rem;
 }
 .pedestal .medal {

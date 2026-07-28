@@ -132,7 +132,7 @@ def guardar_desde_busqueda(request):
             titulo = escape(request.POST.get("titulo") or "")
             messages.warning(
                 request,
-                f"⚠️ “{titulo}” ya existe en tu lista.",
+                f"“{titulo}” ya existe en tu lista.",
             )
             return redirect(_url_busqueda(query))
 
@@ -143,6 +143,6 @@ def guardar_desde_busqueda(request):
     contenido = formulario.save()
     messages.success(
         request,
-        f"✅ “{escape(contenido.titulo)}” fue registrada exitosamente.",
+        f"“{escape(contenido.titulo)}” fue registrada exitosamente.",
     )
     return redirect(_url_busqueda(query))

@@ -82,7 +82,7 @@
 
 /* Página: Tipografía de maratón */
 .marathon-title {
-  font-family: var(--font-family-interface);
+  font-family: var(--font-family-body);
   line-height: 1.1;
   letter-spacing: .3px;
 }

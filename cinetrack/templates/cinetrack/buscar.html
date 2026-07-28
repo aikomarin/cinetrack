@@ -1,4 +1,5 @@
 {% extends "cinetrack/base.html" %}
+{% load static %}
 
 {% block title %}Buscar contenido · CineTrack{% endblock %}
 
@@ -12,48 +13,52 @@
       Buscar película o serie
     </h1>
 
-    <a href="{% url 'cinetrack:registrar' %}" class="btn-ghost">
+    <a href="{% url 'cinetrack:registrar' %}" class="ct-btn btn-neon-soft">
       <i class="bi bi-pencil-square"></i>
       Registrar manualmente
     </a>
   </div>
 
-  <p class="hero-sub mb-3">
+  <p class="hero-sub catalog-subtitle mb-3">
     Escribe el título y agrega el resultado con tu configuración
   </p>
 
   <!-- Formulario de búsqueda -->
   <div class="surface-card search-query-panel mb-3">
-    <form method="get" class="row g-2 align-items-end">
+    <form method="get" id="search-query-form" novalidate>
+      <label class="form-label" for="search-query">Título</label>
+      <div class="row g-3 align-items-start">
+        <div class="col-12 col-md">
+          <input
+            id="search-query"
+            type="text"
+            name="query"
+            required
+            value="{{ query }}"
+            class="form-control"
+            placeholder="Ej. El Conjuro"
+            aria-describedby="search-query-error"
+          >
+          <div id="search-query-error" class="form-validation" role="alert" hidden>
+            <i class="bi bi-exclamation-circle-fill form-validation__icon" aria-hidden="true"></i>
+            <span>Ingresa un título para buscar.</span>
+          </div>
+        </div>
 
-      <div class="col-12 col-md-9">
-        <label class="form-label mb-3" for="search-query">
-          Título
-        </label>
-
-        <input
-          id="search-query"
-          type="text"
-          name="query"
-          required
-          value="{{ query }}"
-          class="form-control"
-          placeholder="Ej. El conjuro"
-        >
+        <div class="col-12 col-md-auto d-flex justify-content-md-end">
+          <button type="submit" class="ct-btn btn-neon">
+            <i class="bi bi-search flex-shrink-0"></i>
+            Buscar
+          </button>
+        </div>
       </div>
 
       {% if formulario_busqueda.query.errors %}
-        <div class="col-12 search-field-errors" role="alert">
+        <div class="col-12 form-validation" role="alert">
+          <i class="bi bi-exclamation-circle-fill form-validation__icon" aria-hidden="true"></i>
           {{ formulario_busqueda.query.errors }}
         </div>
       {% endif %}
-
-      <div class="col-12 col-md-3 d-flex justify-content-md-end">
-        <button type="submit" class="btn-neon w-100 justify-content-center">
-          <i class="bi bi-search flex-shrink-0"></i>
-          Buscar
-        </button>
-      </div>
     </form>
   </div>
 
@@ -70,7 +75,7 @@
           <form
             method="post"
             action="{% url 'cinetrack:guardar_desde_busqueda' %}"
-            class="surface-card elevated-panel edit-form search-result-card p-4 p-lg-5"
+            class="surface-card elevated-panel edit-form search-result-card p-4"
           >
             {% csrf_token %}
 
@@ -91,16 +96,16 @@
 
               <!-- Meta y opciones -->
               <div class="col-md-9 d-flex flex-column">
-                <h4 class="mb-2">{{ r.titulo }}</h4>
+                <h4 class="search-result-title">{{ r.titulo }}</h4>
 
-                <p class="detail-text detail-text-justified mb-2">
+                <p class="detail-text detail-text-justified search-result-summary">
                   {{ r.resumen }}
                 </p>
 
-                <p class="small opacity-75 mb-3">
-                  <strong>Fecha:</strong>
-                  {{ r.fecha|date:"d/m/Y"|default:"—" }}
-                </p>
+                <div class="search-result-date">
+                  <span class="form-label">Fecha de estreno</span>
+                  <span class="search-result-date-value">{{ r.fecha|date:"d/m/Y"|default:"—" }}</span>
+                </div>
 
                 <!-- Campos ocultos -->
                 <input type="hidden" name="titulo" value="{{ r.titulo }}">
@@ -111,7 +116,7 @@
                 <input type="hidden" name="query" value="{{ query }}">
 
                 <!-- Opciones -->
-                <div class="row mb-4">
+                <div class="row g-3 mb-3 align-items-end">
                   <div class="col-md-3 mb-3">
                     <label class="form-label">Estado</label>
 
@@ -140,7 +145,7 @@
                   <div class="col-md-3 mb-3">
                     <label class="form-label">Calificación</label>
 
-                    <select name="calificacion" class="form-select">
+                    <select name="calificacion" class="form-select" disabled>
                       <option value="" selected>
                         Sin calificación
                       </option>
@@ -161,12 +166,13 @@
                       min="0"
                       value="0"
                       class="form-control"
+                      disabled
                     >
                   </div>
                 </div>
 
                 <!-- Switches -->
-                <div class="row g-3 mb-4">
+                <div class="row g-3 mb-3 search-result-switches">
                   <div class="col-md-4">
                     <div class="form-check form-switch mt-2">
                       <input
@@ -174,6 +180,7 @@
                         name="favorita"
                         class="form-check-input"
                         id="fav{{ forloop.counter }}"
+                        disabled
                       >
 
                       <label
@@ -192,6 +199,7 @@
                         name="volveria_a_ver"
                         class="form-check-input"
                         id="volveria{{ forloop.counter }}"
+                        disabled
                       >
 
                       <label
@@ -224,8 +232,8 @@
 
                 <!-- Guardar -->
                 <div class="d-flex justify-content-center pt-2">
-                  <button type="submit" class="btn-save">
-                    <i class="bi bi-check-circle me-1"></i>
+                  <button type="submit" class="ct-btn btn-save">
+                    <i class="bi bi-check-circle"></i>
                     Guardar
                   </button>
                 </div>
@@ -247,7 +255,7 @@
         Prueba con otro título o registra el contenido manualmente.
       </p>
 
-      <a href="{% url 'cinetrack:registrar' %}" class="btn-neon">
+      <a href="{% url 'cinetrack:registrar' %}" class="ct-btn btn-neon">
         <i class="bi bi-plus-circle"></i>
         Registrar manualmente
       </a>
@@ -255,4 +263,9 @@
   {% endif %}
 
 </div>
+{% endblock %}
+
+{% block scripts %}
+  <script src="{% static 'cinetrack/js/content-form.js' %}" defer></script>
+  <script src="{% static 'cinetrack/js/search-validation.js' %}" defer></script>
 {% endblock %}

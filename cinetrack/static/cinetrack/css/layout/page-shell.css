@@ -63,6 +63,9 @@
   letter-spacing: .5px;
   color: var(--color-text-secondary);
 }
+.page-shell-title .page-title-content {
+  font-family: var(--font-family-body);
+}
 .content-form-title-type {
   font-size: clamp(1.2rem, 2vw, 1.45rem);
   font-weight: 600;

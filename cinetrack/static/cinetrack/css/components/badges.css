@@ -1,4 +1,9 @@
 /* Componente: Insignias */
+.badge,
+.tag {
+  font-family: var(--font-family-body);
+}
+
 /* Componente: Contenedores superpuestos de insignias */
 .rail-badges,
 .kanban-badges {
@@ -10,14 +15,14 @@
 
 /* Componente: Insignia de tipo de contenido */
 .badge.tipo {
-  background: linear-gradient(135deg, #9b5cfb, #6f3fe6);
+  background: linear-gradient(135deg, #633399, #45206f);
   color: #fff;
   font-weight: 700;
 }
 
 /* Componente: Insignia de plataforma */
 .badge.plataforma {
-  background-color: #00b4d8;
+  background-color: #075985;
   color: #fff;
   font-weight: 700;
 }
@@ -36,44 +41,46 @@
 
 /* Componente: Insignia de búsqueda */
 .badge.busqueda {
-  background: #5f0f40;
   color: #fff;
-}
-
-/* Componente: Insignias de calificación */
-.badge.cal-excelente {
-  background-color: #2b9348;
+  background: linear-gradient(135deg, #633399, #45206f);
   color: #fff;
-  font-weight: 700;
-}
-.badge.cal-buena {
-  background-color: #80b918;
-  color: #fff;
-  font-weight: 700;
-}
-.badge.cal-regular {
-  background-color: #bfd200;
-  color: #000;
-  font-weight: 700;
-}
-.badge.cal-mala {
-  background-color: #d4d700;
-  color: #000;
-  font-weight: 700;
-}
-.badge.cal-horrible {
-  background-color: #ffff3f;
-  color: #000;
-  font-weight: 700;
 }
 
 /* Variantes neutras para metadatos del detalle */
 .badge.estado,
 .badge.calificacion {
-  color: var(--color-text-primary);
+  color: #fff;
   font-weight: 700;
-  border: 1px solid rgba(220,211,251,.25);
-  background: rgba(255,255,255,.08);
+}
+.badge.estado {
+  background: #714615;
+  border: 1px solid rgba(255,184,92,.2);
+}
+.badge.calificacion {
+  background: #465622;
+  border: 1px solid rgba(191,210,90,.2);
+}
+
+/* Componente: Insignias semánticas de calificación */
+.badge.cal-excelente {
+  background-color: #2f6f4e;
+  border-color: rgba(111, 203, 153, .28);
+}
+.badge.cal-buena {
+  background-color: #66733a;
+  border-color: rgba(180, 194, 99, .28);
+}
+.badge.cal-regular {
+  background-color: #9a7b28;
+  border-color: rgba(226, 194, 87, .3);
+}
+.badge.cal-mala {
+  background-color: #a55d2d;
+  border-color: rgba(232, 139, 74, .3);
+}
+.badge.cal-horrible {
+  background-color: #913d48;
+  border-color: rgba(222, 102, 116, .3);
 }
 .favorite-star {
   color: #ffd700;

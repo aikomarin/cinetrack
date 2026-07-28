@@ -44,7 +44,7 @@
               {{ contenido.get_estado_display }}
             </span>
             {% if contenido.calificacion %}
-              <span class="badge calificacion">
+              <span class="badge calificacion cal-{{ contenido.calificacion }}">
                 {{ contenido.get_calificacion_display }}
               </span>
             {% endif %}
@@ -55,24 +55,24 @@
 
           <!-- Resumen -->
           <div class="detail-section mb-3">
-            <h3 class="detail-sub">Resumen</h3>
+            <h3 class="form-label detail-sub">Resumen</h3>
             <p class="detail-text detail-text-justified">{{ contenido.resumen|linebreaksbr }}</p>
           </div>
 
           <!-- Datos clave -->
           <dl class="detail-grid">
             <div class="detail-stat">
-              <dt class="label">Fecha</dt>
+              <dt class="form-label">Fecha</dt>
               <dd class="value">{{ contenido.fecha|date:"d/m/Y"|default:"" }}</dd>
             </div>
 
             <div class="detail-stat">
-              <dt class="label">Veces vista</dt>
+              <dt class="form-label">Veces vista</dt>
               <dd class="value">{{ contenido.veces_vista }}</dd>
             </div>
 
             <div class="detail-stat">
-              <dt class="label">¿Volverías a ver?</dt>
+              <dt class="form-label">¿Volverías a ver?</dt>
               {% if contenido.estado != 'vista' %}
                 <dd class="value">—</dd>
               {% else %}
@@ -81,7 +81,7 @@
             </div>
 
             <div class="detail-stat">
-              <dt class="label">¿Tendrá continuación?</dt>
+              <dt class="form-label">¿Tendrá continuación?</dt>
               {% if contenido.estado != 'vista' %}
                 <dd class="value">—</dd>
               {% else %}
@@ -89,22 +89,18 @@
               {% endif %}
             </div>
 
-            <div class="detail-stat">
-              <dt class="label">Favorita</dt>
-              <dd class="value">{{ contenido.favorita|yesno:"Sí,No" }}</dd>
-            </div>
           </dl>
 
           <!-- CTA inferior -->
-          <div class="detail-foot mt-3">
-            <a href="{{ url_retorno }}" class="btn-ghost detail-back-action">
+          <div class="detail-foot">
+            <a href="{{ url_retorno }}" class="ct-btn btn-ghost detail-back-action">
               <i class="bi bi-arrow-left" aria-hidden="true"></i>
               {{ texto_retorno }}
             </a>
 
             <a
               href="{{ url_editar }}"
-              class="btn-neon small detail-edit-action"
+              class="ct-btn btn-neon detail-edit-action"
             >
               <i class="bi bi-pencil-square" aria-hidden="true"></i>
               Editar

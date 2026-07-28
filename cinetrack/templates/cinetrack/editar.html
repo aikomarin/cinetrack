@@ -24,26 +24,26 @@
     {% if origen == 'grupo' and en_grupo %}
       <a
         href="{{ url_retorno }}"
-        class="btn-ghost content-form-back"
+        class="ct-btn btn-ghost content-form-back"
       >
         <i class="bi bi-arrow-left-circle"></i> Volver al grupo
       </a>
     {% elif origen == 'catalogo' %}
       <a
         href="{{ url_retorno }}"
-        class="btn-ghost content-form-back"
+        class="ct-btn btn-ghost content-form-back"
       >
         <i class="bi bi-arrow-left-circle"></i> Volver al catálogo
       </a>
     {% elif origen == 'favoritos' %}
       <a
         href="{{ url_retorno }}"
-        class="btn-ghost content-form-back"
+        class="ct-btn btn-ghost content-form-back"
       >
         <i class="bi bi-arrow-left-circle"></i> Volver a favoritos
       </a>
     {% else %}
-      <a href="{{ url_retorno }}" class="btn-ghost content-form-back">
+      <a href="{{ url_retorno }}" class="ct-btn btn-ghost content-form-back">
         <i class="bi bi-arrow-left-circle"></i> Volver al detalle
       </a>
     {% endif %}
@@ -51,8 +51,8 @@
 
   <!-- Mensajes de error -->
   {% if formulario.non_field_errors %}
-    <div class="content-form-errors-general mb-3">
-      <i class="bi bi-exclamation-triangle-fill" aria-hidden="true"></i>
+    <div class="form-validation-summary" role="alert">
+      <i class="bi bi-exclamation-triangle-fill form-validation__icon" aria-hidden="true"></i>
       {{ formulario.non_field_errors }}
     </div>
   {% endif %}
@@ -61,37 +61,47 @@
   <form method="post" class="surface-card elevated-panel edit-form content-form-edit p-4 p-lg-5" novalidate>
     {% csrf_token %}
 
-    <div class="row g-4">
-      <!-- Columna: Póster -->
-      <div class="col-lg-4">
-        <div class="edit-poster">
-          {% if contenido.imagen %}
-            <img src="{{ contenido.imagen }}" alt="{{ contenido.titulo }}">
-          {% else %}
-            <div class="edit-poster-placeholder">
-              <i class="bi bi-image"></i>
-            </div>
-          {% endif %}
-        </div>
-      </div>
+    <section class="content-form-section" aria-labelledby="content-information-heading">
+      <h3 class="content-form-section-title" id="content-information-heading">Información del contenido</h3>
 
-      <!-- Columna: Campos -->
-      <div class="col-lg-8">
+      {% include 'cinetrack/includes/contenido_form_basic_fields.html' %}
 
-        {% include 'cinetrack/includes/contenido_form_fields.html' %}
-
-        <!-- Acciones -->
-        <div class="content-form-actions pt-2">
-          <button type="submit" class="btn-save">
-            <i class="bi bi-check-circle me-1"></i> Guardar cambios
-          </button>
-          <a href="{{ url_retorno }}" class="btn-ghost">
-            <i class="bi bi-x-circle"></i> Cancelar
-          </a>
+      <div class="row g-4 edit-form-summary-layout">
+        <!-- Columna: Póster -->
+        <div class="col-lg-4">
+          <div class="edit-poster">
+            {% if contenido.imagen %}
+              <img src="{{ contenido.imagen }}" alt="{{ contenido.titulo }}">
+            {% else %}
+              <div class="edit-poster-placeholder">
+                <i class="bi bi-image"></i>
+              </div>
+            {% endif %}
+          </div>
         </div>
 
+        <!-- Columna: Resumen y seguimiento -->
+        <div class="col-lg-8">
+          {% include 'cinetrack/includes/contenido_form_summary_field.html' %}
+
+          <section class="content-form-section content-form-section-vision" aria-labelledby="viewing-information-heading">
+            <h3 class="content-form-section-title" id="viewing-information-heading">Información de visionado</h3>
+
+            {% include 'cinetrack/includes/contenido_form_viewing_fields.html' %}
+          </section>
+
+          <!-- Acciones -->
+          <div class="content-form-actions pt-2">
+            <button type="submit" class="ct-btn btn-save">
+              <i class="bi bi-check-circle"></i> Guardar cambios
+            </button>
+            <a href="{{ url_retorno }}" class="ct-btn btn-ghost">
+              <i class="bi bi-x-circle"></i> Cancelar
+            </a>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   </form>
 
 </div>

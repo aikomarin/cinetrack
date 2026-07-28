@@ -7,7 +7,7 @@
   <!-- Encabezado -->
   <div class="d-flex justify-content-between align-items-center mb-3">
     <h1 class="hero-title m-0"><i class="bi bi-film"></i> Maratones</h1>
-    <a href="{% url 'cinetrack:crear_maraton' %}" class="btn-neon">
+    <a href="{% url 'cinetrack:crear_maraton' %}" class="ct-btn btn-neon">
       <i class="bi bi-plus-circle"></i> Nuevo maratón
     </a>
   </div>
@@ -53,11 +53,11 @@
           <!-- Columna derecha: editar/eliminar arriba, ver detalle abajo -->
           <div class="marathon-card-sidebar">
             <div class="actions mt-1">
-              <a href="{% url 'cinetrack:editar_maraton' m.pk %}" class="btn-ghost-sm" title="Editar maratón">
+              <a href="{% url 'cinetrack:editar_maraton' m.pk %}" class="ct-btn ct-btn--compact ct-btn--icon btn-ghost-sm" title="Editar maratón">
                 <i class="bi bi-pencil"></i>
               </a>
               <button type="button"
-                      class="btn-ghost-sm text-danger"
+                      class="ct-btn ct-btn--compact ct-btn--icon btn-danger-action"
                       title="Eliminar maratón"
                       data-bs-toggle="modal"
                       data-bs-target="#confirmarEliminarModal"
@@ -67,7 +67,7 @@
                 <i class="bi bi-trash-fill text-danger"></i>
               </button>
             </div>
-            <a href="{% url 'cinetrack:detalle_maraton' m.pk %}" class="btn-ghost-sm view mt-4">
+            <a href="{% url 'cinetrack:detalle_maraton' m.pk %}" class="ct-btn ct-btn--compact btn-ghost-sm view mt-4">
               <i class="bi bi-eye"></i> Ver detalle
             </a>
           </div>
@@ -86,7 +86,7 @@
     <div class="surface-card text-center py-5">
       <div class="display-6 mb-2">Aún no hay maratones</div>
       <p class="opacity-75">Crea tu primer maratón para empezar a agrupar películas y series.</p>
-      <a href="{% url 'cinetrack:crear_maraton' %}" class="btn-neon">
+      <a href="{% url 'cinetrack:crear_maraton' %}" class="ct-btn btn-neon">
         <i class="bi bi-plus-circle"></i> Crear maratón
       </a>
     </div>
@@ -111,10 +111,10 @@
       </div>
 
       <div class="confirmation-modal-actions">
-        <button id="confirmDeleteBtn" type="button" class="btn btn-danger btn-glow">
-          <i class="bi bi-trash3 me-1"></i> Sí, eliminar
+        <button id="confirmDeleteBtn" type="button" class="ct-btn btn-danger-confirm">
+          <i class="bi bi-trash3"></i> Sí, eliminar
         </button>
-        <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="ct-btn btn-outline-light" data-bs-dismiss="modal">Cancelar</button>
       </div>
     </div>
   </div>

@@ -1,0 +1,6 @@
+<!-- Resumen -->
+<div class="mb-4">
+  <label class="form-label" for="{{ formulario.resumen.id_for_label }}">Resumen</label>
+  {{ formulario.resumen }}
+  {% if formulario.resumen.errors %}<div class="form-validation" role="alert"><i class="bi bi-exclamation-circle-fill form-validation__icon" aria-hidden="true"></i>{{ formulario.resumen.errors }}</div>{% endif %}
+</div>

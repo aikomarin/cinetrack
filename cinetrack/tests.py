@@ -55,6 +55,166 @@ class ContenidoFormViewsTests(TestCase):
             ).exists()
         )
 
+    def test_registrar_pendiente_normaliza_datos_de_visionado_manipulados(self):
+        response = self.client.post(
+            reverse("cinetrack:registrar"),
+            {
+                **self.datos_validos,
+                "calificacion": Contenido.Calificacion.EXCELENTE,
+                "veces_vista": 8,
+                "favorita": "on",
+                "volveria_a_ver": "on",
+                "tendra_continuacion": "on",
+            },
+        )
+
+        self.assertRedirects(response, reverse("cinetrack:catalogo"))
+        contenido = Contenido.objects.get(titulo="Blade Runner")
+        self.assertIsNone(contenido.calificacion)
+        self.assertEqual(contenido.veces_vista, 0)
+        self.assertFalse(contenido.favorita)
+        self.assertFalse(contenido.volveria_a_ver)
+        self.assertTrue(contenido.tendra_continuacion)
+
+    def test_registrar_pendiente_acepta_controles_deshabilitados_ausentes(self):
+        datos = {
+            clave: valor
+            for clave, valor in self.datos_validos.items()
+            if clave not in (
+                "calificacion",
+                "veces_vista",
+                "favorita",
+                "volveria_a_ver",
+            )
+        }
+
+        response = self.client.post(reverse("cinetrack:registrar"), datos)
+
+        self.assertRedirects(response, reverse("cinetrack:catalogo"))
+        contenido = Contenido.objects.get(titulo="Blade Runner")
+        self.assertIsNone(contenido.calificacion)
+        self.assertEqual(contenido.veces_vista, 0)
+        self.assertFalse(contenido.favorita)
+        self.assertFalse(contenido.volveria_a_ver)
+
+    def test_registrar_vista_con_cero_muestra_error_inline_y_no_guarda(self):
+        response = self.client.post(
+            reverse("cinetrack:registrar"),
+            {
+                **self.datos_validos,
+                "estado": Contenido.Estado.VISTA,
+                "veces_vista": 0,
+            },
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(
+            response,
+            "Un contenido visto debe tener al menos una visualización.",
+        )
+        self.assertIn("veces_vista", response.context["formulario"].errors)
+        self.assertFalse(
+            Contenido.objects.filter(titulo="Blade Runner").exists()
+        )
+
+    def test_registrar_vista_con_una_visualizacion_guarda(self):
+        response = self.client.post(
+            reverse("cinetrack:registrar"),
+            {
+                **self.datos_validos,
+                "estado": Contenido.Estado.VISTA,
+                "veces_vista": 1,
+                "tendra_continuacion": "on",
+            },
+        )
+
+        self.assertRedirects(response, reverse("cinetrack:catalogo"))
+        contenido = Contenido.objects.get(titulo="Blade Runner")
+        self.assertEqual(contenido.veces_vista, 1)
+        self.assertTrue(contenido.tendra_continuacion)
+
+    def test_editar_de_vista_a_pendiente_limpia_datos_de_visionado(self):
+        self.contenido.estado = Contenido.Estado.VISTA
+        self.contenido.calificacion = Contenido.Calificacion.BUENA
+        self.contenido.veces_vista = 4
+        self.contenido.favorita = True
+        self.contenido.volveria_a_ver = True
+        self.contenido.tendra_continuacion = True
+        self.contenido.save()
+
+        response = self.client.post(
+            reverse("cinetrack:editar", args=[self.contenido.pk]),
+            {
+                **self.datos_validos,
+                "titulo": self.contenido.titulo,
+                "plataforma": self.contenido.plataforma,
+                "calificacion": Contenido.Calificacion.EXCELENTE,
+                "veces_vista": 9,
+                "favorita": "on",
+                "volveria_a_ver": "on",
+                "tendra_continuacion": "on",
+            },
+        )
+
+        self.assertRedirects(
+            response,
+            reverse("cinetrack:detalle", args=[self.contenido.pk]),
+        )
+        self.contenido.refresh_from_db()
+        self.assertIsNone(self.contenido.calificacion)
+        self.assertEqual(self.contenido.veces_vista, 0)
+        self.assertFalse(self.contenido.favorita)
+        self.assertFalse(self.contenido.volveria_a_ver)
+        self.assertTrue(self.contenido.tendra_continuacion)
+
+    def test_editar_vista_conserva_datos_validos_de_visionado(self):
+        self.contenido.estado = Contenido.Estado.VISTA
+        self.contenido.calificacion = Contenido.Calificacion.BUENA
+        self.contenido.veces_vista = 4
+        self.contenido.favorita = True
+        self.contenido.volveria_a_ver = True
+        self.contenido.tendra_continuacion = True
+        self.contenido.save()
+
+        response = self.client.post(
+            reverse("cinetrack:editar", args=[self.contenido.pk]),
+            {
+                **self.datos_validos,
+                "titulo": self.contenido.titulo,
+                "plataforma": self.contenido.plataforma,
+                "estado": Contenido.Estado.VISTA,
+                "calificacion": Contenido.Calificacion.BUENA,
+                "veces_vista": 4,
+                "favorita": "on",
+                "volveria_a_ver": "on",
+                "tendra_continuacion": "on",
+            },
+        )
+
+        self.assertRedirects(
+            response,
+            reverse("cinetrack:detalle", args=[self.contenido.pk]),
+        )
+        self.contenido.refresh_from_db()
+        self.assertEqual(
+            self.contenido.calificacion,
+            Contenido.Calificacion.BUENA,
+        )
+        self.assertEqual(self.contenido.veces_vista, 4)
+        self.assertTrue(self.contenido.favorita)
+        self.assertTrue(self.contenido.volveria_a_ver)
+        self.assertTrue(self.contenido.tendra_continuacion)
+
+    def test_registrar_muestra_mensaje_global_de_exito(self):
+        response = self.client.post(
+            reverse("cinetrack:registrar"),
+            self.datos_validos,
+            follow=True,
+        )
+
+        self.assertContains(response, "El contenido se registró correctamente.")
+        self.assertContains(response, "ct-message--success")
+
     def test_registrar_muestra_error_para_titulo_y_plataforma_duplicados(self):
         datos = {
             **self.datos_validos,
@@ -87,6 +247,20 @@ class ContenidoFormViewsTests(TestCase):
         )
         self.contenido.refresh_from_db()
         self.assertEqual(self.contenido.resumen, "Actualizado")
+
+    def test_editar_muestra_mensaje_global_de_exito(self):
+        response = self.client.post(
+            reverse("cinetrack:editar", args=[self.contenido.pk]),
+            {
+                **self.datos_validos,
+                "titulo": self.contenido.titulo,
+                "plataforma": self.contenido.plataforma,
+            },
+            follow=True,
+        )
+
+        self.assertContains(response, "El contenido se actualizó correctamente.")
+        self.assertContains(response, "ct-message--success")
 
     def test_editar_rechaza_duplicado_de_otro_contenido(self):
         otro = Contenido.objects.create(
@@ -195,6 +369,39 @@ class ContenidoFormViewsTests(TestCase):
         self.assertContains(response, "Sin plataforma")
         self.assertContains(response, "Sin calificación")
 
+    def test_estado_pendiente_inicial_renderiza_visionado_normalizado(self):
+        self.contenido.calificacion = Contenido.Calificacion.EXCELENTE
+        self.contenido.veces_vista = 6
+        self.contenido.favorita = True
+        self.contenido.volveria_a_ver = True
+        self.contenido.tendra_continuacion = True
+        self.contenido.save()
+
+        response = self.client.get(
+            reverse("cinetrack:editar", args=[self.contenido.pk])
+        )
+        formulario = response.context["formulario"]
+
+        for field_name in (
+            "calificacion",
+            "veces_vista",
+            "favorita",
+            "volveria_a_ver",
+        ):
+            with self.subTest(field=field_name):
+                self.assertTrue(
+                    formulario.fields[field_name].widget.attrs["disabled"]
+                )
+        self.assertIsNone(formulario.initial["calificacion"])
+        self.assertEqual(formulario.initial["veces_vista"], 0)
+        self.assertFalse(formulario.initial["favorita"])
+        self.assertFalse(formulario.initial["volveria_a_ver"])
+        self.assertTrue(formulario.initial["tendra_continuacion"])
+        self.assertNotIn(
+            "disabled",
+            formulario.fields["tendra_continuacion"].widget.attrs,
+        )
+
     def assert_editar_muestra_retorno_en_volver_y_cancelar(
         self,
         url_editar,
@@ -247,7 +454,7 @@ class ContenidoFormViewsTests(TestCase):
         self.assertContains(response, "Cancelar")
         self.assertContains(
             response,
-            f'href="{reverse("cinetrack:catalogo")}" class="btn-ghost"',
+            f'href="{reverse("cinetrack:catalogo")}" class="ct-btn btn-ghost"',
         )
 
 
@@ -286,14 +493,11 @@ class DetalleContenidoTests(TestCase):
         self.assertNotContains(response, 'class="detail-bg" style=')
         self.assertContains(response, "Primer contacto.")
 
-    def test_favorita_pendiente_muestra_un_valor_coherente(self):
+    def test_favorita_se_comunica_solo_mediante_la_estrella(self):
         response = self.client.get(self.url)
 
-        self.assertContains(
-            response,
-            '<dt class="label">Favorita</dt><dd class="value">Sí</dd>',
-            html=True,
-        )
+        self.assertContains(response, "detail-favorite")
+        self.assertNotContains(response, '<dt class="form-label">Favorita</dt>')
 
     def test_retorno_al_catalogo_conserva_toda_la_query(self):
         retorno = (
@@ -704,7 +908,17 @@ class CatalogoBusquedaTests(TestCase):
         buscar_mock.assert_called_once_with("Dune")
         self.assertContains(response, "Resultados")
         self.assertContains(response, "Arrakis.")
+        self.assertContains(response, 'class="search-result-title"')
+        self.assertContains(
+            response,
+            "detail-text detail-text-justified search-result-summary",
+        )
         self.assertContains(response, 'name="query" value="Dune"')
+
+    def test_busqueda_renderiza_placeholder_global(self):
+        response = self.client.get(reverse("cinetrack:buscar"))
+
+        self.assertContains(response, 'placeholder="Ej. El Conjuro"')
 
     @patch("cinetrack.catalog.views.buscar_contenido_tmdb", return_value=[])
     def test_busqueda_sin_coincidencias_muestra_estado_vacio(self, buscar_mock):
@@ -757,6 +971,94 @@ class CatalogoBusquedaTests(TestCase):
                 imagen="https://example.com/dune.jpg",
             ).exists()
         )
+
+    def test_guardar_desde_busqueda_pendiente_normaliza_visionado(self):
+        response = self.client.post(
+            reverse("cinetrack:guardar_desde_busqueda"),
+            {
+                "query": "Dune",
+                "titulo": "Dune",
+                "resumen": "Arrakis.",
+                "fecha": "2021-10-22",
+                "imagen": "https://example.com/dune.jpg",
+                "tipo": Contenido.Tipo.PELICULA,
+                "plataforma": Contenido.Plataforma.HBO,
+                "estado": Contenido.Estado.PENDIENTE,
+                "calificacion": Contenido.Calificacion.EXCELENTE,
+                "veces_vista": "8",
+                "favorita": "on",
+                "volveria_a_ver": "on",
+                "tendra_continuacion": "on",
+            },
+        )
+
+        self.assertRedirects(
+            response,
+            reverse("cinetrack:buscar") + "?query=Dune",
+        )
+        contenido = Contenido.objects.get(titulo="Dune")
+        self.assertIsNone(contenido.calificacion)
+        self.assertEqual(contenido.veces_vista, 0)
+        self.assertFalse(contenido.favorita)
+        self.assertFalse(contenido.volveria_a_ver)
+        self.assertTrue(contenido.tendra_continuacion)
+
+    def test_guardar_desde_busqueda_vista_con_cero_no_guarda(self):
+        response = self.client.post(
+            reverse("cinetrack:guardar_desde_busqueda"),
+            {
+                "query": "Dune",
+                "titulo": "Dune",
+                "resumen": "Arrakis.",
+                "fecha": "2021-10-22",
+                "imagen": "https://example.com/dune.jpg",
+                "tipo": Contenido.Tipo.PELICULA,
+                "plataforma": Contenido.Plataforma.HBO,
+                "estado": Contenido.Estado.VISTA,
+                "calificacion": "",
+                "veces_vista": "0",
+                "tendra_continuacion": "on",
+            },
+            follow=True,
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(
+            response,
+            "Un contenido visto debe tener al menos una visualización.",
+        )
+        self.assertFalse(Contenido.objects.filter(titulo="Dune").exists())
+
+    def test_guardar_desde_busqueda_vista_con_una_guarda(self):
+        response = self.client.post(
+            reverse("cinetrack:guardar_desde_busqueda"),
+            {
+                "query": "Dune",
+                "titulo": "Dune",
+                "resumen": "Arrakis.",
+                "fecha": "2021-10-22",
+                "imagen": "https://example.com/dune.jpg",
+                "tipo": Contenido.Tipo.PELICULA,
+                "plataforma": Contenido.Plataforma.HBO,
+                "estado": Contenido.Estado.VISTA,
+                "calificacion": Contenido.Calificacion.BUENA,
+                "veces_vista": "1",
+                "tendra_continuacion": "on",
+            },
+        )
+
+        self.assertRedirects(
+            response,
+            reverse("cinetrack:buscar") + "?query=Dune",
+        )
+        contenido = Contenido.objects.get(titulo="Dune")
+        self.assertEqual(contenido.estado, Contenido.Estado.VISTA)
+        self.assertEqual(contenido.veces_vista, 1)
+        self.assertEqual(
+            contenido.calificacion,
+            Contenido.Calificacion.BUENA,
+        )
+        self.assertTrue(contenido.tendra_continuacion)
 
     def test_guardar_desde_busqueda_normaliza_path_relativo_tmdb(self):
         response = self.client.post(
@@ -844,6 +1146,7 @@ class FavoritosTests(TestCase):
             tipo=Contenido.Tipo.PELICULA,
             plataforma=Contenido.Plataforma.PRIME,
             estado=Contenido.Estado.VISTA,
+            veces_vista=1,
             favorita=True,
         )
         self.otra_favorita = Contenido.objects.create(
@@ -851,6 +1154,7 @@ class FavoritosTests(TestCase):
             tipo=Contenido.Tipo.SERIE,
             plataforma=Contenido.Plataforma.NETFLIX,
             estado=Contenido.Estado.VISTA,
+            veces_vista=1,
             favorita=True,
         )
         self.no_favorita = Contenido.objects.create(
@@ -1067,6 +1371,7 @@ class PortadasTests(TestCase):
             tipo=Contenido.Tipo.PELICULA,
             plataforma=Contenido.Plataforma.HBO,
             estado=Contenido.Estado.VISTA,
+            veces_vista=1,
             favorita=True,
         )
         self.secuela = Contenido.objects.create(
@@ -1087,7 +1392,7 @@ class PortadasTests(TestCase):
             "tipo": self.contenido.tipo,
             "plataforma": self.contenido.plataforma,
             "calificacion": "",
-            "veces_vista": "0",
+            "veces_vista": "1",
             "estado": self.contenido.estado,
             "volveria_a_ver": "",
             "tendra_continuacion": "",

@@ -1,110 +1,250 @@
-/* Componente: Botones */
-/* Componente: Botón neón principal */
+/* Sistema global de botones */
+:root {
+  --button-height: 48px;
+  --button-height-compact: 36px;
+  --button-radius: 12px;
+  --button-padding-inline: 1rem;
+  --button-padding-inline-compact: .7rem;
+  --button-gap: .5rem;
+  --button-font-size: 1rem;
+  --button-font-size-compact: .9rem;
+  --button-icon-size: 1rem;
+}
+
+.ct-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--button-gap);
+  min-height: var(--button-height);
+  padding: 0 var(--button-padding-inline);
+  border: 1px solid transparent;
+  border-radius: var(--button-radius);
+  appearance: none;
+  font-family: var(--font-family-body);
+  font-size: var(--button-font-size);
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  transition: transform .15s ease, background-color .15s ease,
+              border-color .15s ease, color .15s ease,
+              box-shadow .2s ease, filter .15s ease, opacity .15s ease;
+}
+.ct-btn > i {
+  flex: 0 0 auto;
+  font-size: var(--button-icon-size);
+  line-height: 1;
+}
+.ct-btn:focus { outline: none; }
+.ct-btn:focus-visible {
+  outline: 3px solid rgba(196,159,255,.95);
+  outline-offset: 3px;
+}
+.ct-btn:active:not(:disabled):not([aria-disabled="true"]) {
+  transform: translateY(0);
+  filter: brightness(.94);
+}
+.ct-btn:disabled,
+.ct-btn[aria-disabled="true"],
+.ct-btn.disabled {
+  opacity: .5;
+  cursor: not-allowed;
+  pointer-events: none;
+  transform: none;
+  box-shadow: none;
+  filter: saturate(.55);
+}
+a.ct-btn,
+a.ct-btn:visited { text-decoration: none; }
+
+/* Único tamaño alternativo: acciones rápidas en tarjetas, tablas y listas */
+.ct-btn--compact {
+  min-height: var(--button-height-compact);
+  padding-inline: var(--button-padding-inline-compact);
+  font-size: var(--button-font-size-compact);
+}
+.ct-btn--icon {
+  width: var(--button-height-compact);
+  padding-inline: 0;
+}
+
+/* Acción principal */
 .btn-neon {
   --c1: var(--accent);
   --c2: var(--color-accent-dark);
-  display: inline-flex;
-  align-items: center;
-  gap: .5rem;
   color: #fff;
-  text-decoration: none;
-  border: none;
-  border-radius: 12px;
   background: linear-gradient(135deg, var(--c1), var(--c2));
-  padding: .8rem 1.1rem;
-  font-weight: 700;
   box-shadow: 0 10px 24px rgba(111,63,230,.35),
               inset 0 0 0 1px rgba(255,255,255,.08);
-  transition: transform .15s ease,
-              box-shadow .2s ease,
-              filter .2s ease;
 }
+.btn-neon:visited { color: #fff; }
 .btn-neon:hover {
   color: #fff;
   transform: translateY(-1px);
   filter: brightness(1.06);
   box-shadow: 0 14px 30px rgba(111,63,230,.45);
 }
-
-/* Variante: Botón neón compacto */
-.btn-neon.small {
-  padding: .55rem .8rem;
-  border-radius: 10px;
-  font-size: .95rem;
+.btn-neon:focus-visible {
+  color: #fff;
+  box-shadow: 0 10px 24px rgba(111,63,230,.35),
+              0 0 0 4px rgba(155,92,251,.3);
+}
+.btn-neon:active:not(:disabled):not([aria-disabled="true"]) {
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(111,63,230,.3),
+              inset 0 0 0 1px rgba(255,255,255,.08);
 }
 
-/* Componente: Botones transparentes */
+/* Acción principal sin resplandor */
+.ct-btn.btn-neon-soft {
+  color: #fff;
+  border-color: rgba(155,92,251,.72);
+  background: linear-gradient(135deg, var(--accent), var(--color-accent-dark));
+  box-shadow: none;
+}
+a.ct-btn.btn-neon-soft:visited {
+  color: #fff;
+}
+.ct-btn.btn-neon-soft:hover {
+  color: #fff;
+  border-color: rgba(196,159,255,.88);
+  background: linear-gradient(135deg, #a76cff, #7549eb);
+  transform: translateY(-1px);
+  filter: brightness(1.03);
+  box-shadow: none;
+}
+.ct-btn.btn-neon-soft:focus-visible {
+  color: #fff;
+  border-color: rgba(196,159,255,.92);
+  box-shadow: 0 0 0 4px rgba(155,92,251,.26);
+}
+.ct-btn.btn-neon-soft:active:not(:disabled):not([aria-disabled="true"]) {
+  color: #fff;
+  background: linear-gradient(135deg, #8750df, #5f34c9);
+  box-shadow: none;
+}
+
+/* Acción secundaria y navegación */
 .btn-ghost,
-.btn-ghost-sm {
-  display: inline-flex;
-  align-items: center;
-  text-decoration: none;
-  border: 1px solid var(--color-border-subtle);
-  background: rgba(255,255,255,.04);
-}
-
-.btn-ghost {
-  gap: .5rem;
+.btn-ghost-sm,
+.btn-appcentral-ghost,
+.ctmodal .btn-outline-light {
   color: #e9d5ff;
-  border-radius: 12px;
-  padding: .8rem 1.1rem;
+  border-color: var(--color-border-subtle);
+  background: rgba(255,255,255,.04);
+  box-shadow: none;
   backdrop-filter: blur(4px);
-  transition: all .18s ease;
+}
+a.btn-ghost:visited,
+a.btn-ghost-sm:visited,
+a.btn-appcentral-ghost:visited {
+  color: #e9d5ff;
 }
 .btn-ghost:hover,
-.btn-ghost-sm:hover {
+.btn-ghost-sm:hover,
+.btn-appcentral-ghost:hover,
+.ctmodal .btn-outline-light:hover {
   color: #fff;
-  background: rgba(255,255,255,.08);
-}
-.btn-ghost:hover {
   border-color: rgba(255,255,255,.22);
+  background: rgba(255,255,255,.08);
+  transform: translateY(-1px);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.05);
 }
-.btn-ghost-sm {
-  color: inherit;
-  padding: .45rem .6rem;
-  border-radius: 10px;
-  gap: .4rem;
-  font-weight: 500;
-  transition: all .15s ease;
+.btn-ghost:focus-visible,
+.btn-ghost-sm:focus-visible,
+.btn-appcentral-ghost:focus-visible,
+.ctmodal .btn-outline-light:focus-visible {
+  color: #fff;
+  border-color: rgba(196,159,255,.7);
+  background: rgba(255,255,255,.06);
+  box-shadow: 0 0 0 4px rgba(155,92,251,.22);
+}
+.btn-ghost:active:not(:disabled):not([aria-disabled="true"]),
+.btn-ghost-sm:active:not(:disabled):not([aria-disabled="true"]),
+.btn-appcentral-ghost:active:not(:disabled):not([aria-disabled="true"]),
+.ctmodal .btn-outline-light:active:not(:disabled):not([aria-disabled="true"]) {
+  color: #fff;
+  border-color: rgba(255,255,255,.18);
+  background: rgba(255,255,255,.12);
 }
 
-/* Componente: Botón de guardado */
-.btn-save {
+/* Acción de guardado */
+.btn-save,
+.saga-save-button {
   --c1: var(--accent);
   --c2: var(--color-accent-dark);
-  display: inline-flex;
-  align-items: center;
-  gap: .55rem;
-  padding: .8rem 1.2rem;
-  font-weight: 900;
-  letter-spacing: .2px;
-  border-radius: 12px;
-  border: 1px solid transparent;
   color: #fff;
-  text-decoration: none;
   background: linear-gradient(135deg, var(--c1), var(--c2));
-  box-shadow: 0 0 14px rgba(111,63,230,.55), inset 0 0 0 1px rgba(255,255,255,.08);
-  transition: transform .12s ease, box-shadow .18s ease, filter .12s ease;
+  box-shadow: 0 0 10px rgba(111,63,230,.48),
+              inset 0 0 0 1px rgba(255,255,255,.08);
   animation: pulseGlow 2.2s ease-in-out infinite;
 }
-.btn-save:hover {
+a.btn-save:visited,
+a.saga-save-button:visited {
+  color: #fff;
+}
+.btn-save:hover,
+.saga-save-button:hover {
   color: #fff;
   transform: translateY(-1px);
-  box-shadow: 0 0 18px rgba(155,92,251,.7);
   filter: brightness(1.06);
+  box-shadow: 0 0 14px rgba(155,92,251,.6);
+}
+.btn-save:focus-visible,
+.saga-save-button:focus-visible {
+  color: #fff;
+  box-shadow: 0 0 12px rgba(155,92,251,.58),
+              0 0 0 4px rgba(155,92,251,.3);
+}
+.btn-save:active:not(:disabled):not([aria-disabled="true"]),
+.saga-save-button:active:not(:disabled):not([aria-disabled="true"]) {
+  color: #fff;
+  box-shadow: 0 0 8px rgba(111,63,230,.4),
+              inset 0 0 0 1px rgba(255,255,255,.08);
 }
 
-/* Sobrescritura de Bootstrap: Aplica las variantes de botones del modal de confirmación. */
-.btn-glow {
-  --c1: var(--accent, #9b5cfb);
-  --c2: var(--color-accent-dark, #6f3fe6);
-  border: 1px solid transparent;
-  background: linear-gradient(135deg, var(--c1), var(--c2));
+/* Acción destructiva */
+.btn-danger-action,
+.btn-danger-confirm {
   color: #fff;
-  font-weight: 800;
-  box-shadow: 0 0 14px rgba(155,92,251,.55), inset 0 0 0 1px rgba(255,255,255,.08);
+  border-color: rgba(255,77,79,.7);
+  background: linear-gradient(135deg, #c83d58, #8f263f);
+  box-shadow: 0 8px 20px rgba(143,38,63,.32),
+              inset 0 0 0 1px rgba(255,255,255,.08);
 }
-.btn-glow:hover {
-  filter: brightness(1.06);
-  box-shadow: 0 0 18px rgba(155,92,251,.7);
+a.btn-danger-action:visited,
+a.btn-danger-confirm:visited {
+  color: #fff;
+}
+.btn-danger-action:hover,
+.btn-danger-confirm:hover {
+  color: #fff;
+  border-color: rgba(255,116,128,.9);
+  background: linear-gradient(135deg, #d74761, #9f2b46);
+  transform: translateY(-1px);
+  filter: brightness(1.04);
+  box-shadow: 0 12px 24px rgba(143,38,63,.42);
+}
+.btn-danger-action:focus-visible,
+.btn-danger-confirm:focus-visible {
+  color: #fff;
+  border-color: #ff7480;
+  box-shadow: 0 0 0 4px rgba(255,77,79,.25);
+}
+.btn-danger-action:active:not(:disabled):not([aria-disabled="true"]),
+.btn-danger-confirm:active:not(:disabled):not([aria-disabled="true"]) {
+  color: #fff;
+  background: linear-gradient(135deg, #b7354d, #7d2137);
+  box-shadow: 0 5px 14px rgba(143,38,63,.3);
+}
+
+.btn-save:disabled,
+.btn-save[aria-disabled="true"],
+.saga-save-button:disabled,
+.saga-save-button[aria-disabled="true"] {
+  animation: none;
 }

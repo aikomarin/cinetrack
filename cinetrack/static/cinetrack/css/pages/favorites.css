@@ -29,8 +29,3 @@
   color: #9b5cfb;
   filter: drop-shadow(0 0 6px rgba(155,92,251,.5));
 }
-
-.favorites-section-header .btn-ghost-sm {
-  font-family: var(--font-family-interface);
-  font-size: 1.2rem;
-}

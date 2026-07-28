@@ -1,0 +1,40 @@
+<!-- Estado / Calificación / Veces vista -->
+<div class="row mb-4 content-form-tracking-row">
+  <div class="col-md-4 mb-3 content-form-compact-field">
+    <label class="form-label" for="{{ formulario.estado.id_for_label }}">Estado</label>
+    {{ formulario.estado }}
+    {% if formulario.estado.errors %}<div class="form-validation" role="alert"><i class="bi bi-exclamation-circle-fill form-validation__icon" aria-hidden="true"></i>{{ formulario.estado.errors }}</div>{% endif %}
+  </div>
+  <div class="col-md-4 mb-3 content-form-compact-field">
+    <label class="form-label" for="{{ formulario.calificacion.id_for_label }}">Calificación</label>
+    {{ formulario.calificacion }}
+    {% if formulario.calificacion.errors %}<div class="form-validation" role="alert"><i class="bi bi-exclamation-circle-fill form-validation__icon" aria-hidden="true"></i>{{ formulario.calificacion.errors }}</div>{% endif %}
+  </div>
+  <div class="col-md-4 mb-3 content-form-compact-field content-form-number-field">
+    <label class="form-label" for="{{ formulario.veces_vista.id_for_label }}">Veces vista</label>
+    {{ formulario.veces_vista }}
+    {% if formulario.veces_vista.errors %}<div class="form-validation" role="alert"><i class="bi bi-exclamation-circle-fill form-validation__icon" aria-hidden="true"></i>{{ formulario.veces_vista.errors }}</div>{% endif %}
+  </div>
+</div>
+
+<!-- Switches -->
+<div class="row g-3 mb-4">
+  <div class="col-md-4">
+    <div class="form-check form-switch mt-2 content-form-switch-group">
+      {{ formulario.favorita }}
+      <label class="form-check-label" for="{{ formulario.favorita.id_for_label }}">¿Favorita?</label>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="form-check form-switch mt-2 content-form-switch-group">
+      {{ formulario.volveria_a_ver }}
+      <label class="form-check-label" for="{{ formulario.volveria_a_ver.id_for_label }}">¿Volvería a ver?</label>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="form-check form-switch mt-2 content-form-switch-group content-form-switch-continuation">
+      {{ formulario.tendra_continuacion }}
+      <label class="form-check-label" for="{{ formulario.tendra_continuacion.id_for_label }}">¿Tendrá continuación?</label>
+    </div>
+  </div>
+</div>

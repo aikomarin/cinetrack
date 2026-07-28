@@ -5,6 +5,12 @@ from ..models import Contenido
 
 FORM_CONTROL = {"class": "form-control"}
 FORM_CHECK = {"class": "form-check-input"}
+VIEWING_FIELDS = (
+    "calificacion",
+    "veces_vista",
+    "favorita",
+    "volveria_a_ver",
+)
 
 
 class ContenidoForm(forms.ModelForm):
@@ -50,6 +56,7 @@ class ContenidoForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.fields["veces_vista"].required = False
         self.fields["fecha"].input_formats = ["%Y-%m-%d"]
         self.fields["tipo"].choices = self._con_etiqueta_vacia(
             self.fields["tipo"].choices,
@@ -63,6 +70,28 @@ class ContenidoForm(forms.ModelForm):
             self.fields["calificacion"].choices,
             "Sin calificación",
         )
+        self._configurar_estado_inicial_visionado()
+
+    def _configurar_estado_inicial_visionado(self):
+        if self.is_bound:
+            estado = self.data.get(self.add_prefix("estado"))
+        else:
+            estado = self.initial.get(
+                "estado",
+                Contenido.Estado.PENDIENTE,
+            )
+
+        if estado != Contenido.Estado.PENDIENTE:
+            return
+
+        self.initial.update(
+            calificacion=None,
+            veces_vista=0,
+            favorita=False,
+            volveria_a_ver=False,
+        )
+        for field_name in VIEWING_FIELDS:
+            self.fields[field_name].widget.attrs["disabled"] = True
 
     @staticmethod
     def _con_etiqueta_vacia(choices, etiqueta):
@@ -73,6 +102,28 @@ class ContenidoForm(forms.ModelForm):
 
     def clean(self):
         cleaned_data = super().clean()
+        estado = cleaned_data.get("estado")
+
+        if estado == Contenido.Estado.PENDIENTE:
+            for field_name in VIEWING_FIELDS:
+                self._errors.pop(field_name, None)
+            cleaned_data.update(
+                calificacion=None,
+                veces_vista=0,
+                favorita=False,
+                volveria_a_ver=False,
+            )
+        elif estado == Contenido.Estado.VISTA:
+            veces_vista = cleaned_data.get("veces_vista")
+            if (
+                "veces_vista" not in self.errors
+                and (veces_vista is None or veces_vista < 1)
+            ):
+                self.add_error(
+                    "veces_vista",
+                    "Un contenido visto debe tener al menos una visualización.",
+                )
+
         titulo = cleaned_data.get("titulo")
         plataforma = cleaned_data.get("plataforma")
 

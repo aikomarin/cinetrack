@@ -102,13 +102,13 @@
         </nav>
 
         <div class="dock-layout-actions">
-          <a class="btn-appcentral-ghost" href="/">
+          <a class="ct-btn ct-btn--compact btn-appcentral-ghost" href="/">
             <i class="bi bi-house-door-fill"></i>
             <span>App Central</span>
           </a>
 
           <a
-            class="btn-neon small"
+            class="ct-btn ct-btn--compact btn-neon"
             href="{% url 'cinetrack:buscar' %}"
           >
             <i class="bi bi-plus-circle"></i>
@@ -125,17 +125,24 @@
     <div class="container-xl ct-messages">
       {% for message in messages %}
         <div
-          class="alert alert-{{ message.tags }} alert-dismissible fade show"
-          role="alert"
+          class="alert ct-message ct-message--{{ message.tags|default:'info' }} fade show"
+          {% if message.tags == "error" or message.tags == "warning" %}role="alert"{% else %}role="status"{% endif %}
         >
-          {{ message }}
+          <i
+            class="bi ct-message__icon {% if message.tags == 'success' %}bi-check-circle-fill{% elif message.tags == 'error' %}bi-x-octagon-fill{% elif message.tags == 'warning' %}bi-exclamation-triangle-fill{% else %}bi-info-circle-fill{% endif %}"
+            aria-hidden="true"
+          ></i>
+
+          <span class="ct-message__text">{{ message }}</span>
 
           <button
             type="button"
-            class="btn-close"
+            class="ct-message__close"
             data-bs-dismiss="alert"
             aria-label="Cerrar"
-          ></button>
+          >
+            <i class="bi bi-x-lg" aria-hidden="true"></i>
+          </button>
         </div>
       {% endfor %}
     </div>

@@ -12,20 +12,21 @@
       {% if maraton %}
         <i class="bi bi-pencil-square"></i> Editar maratón
         <span class="mx-2 text-muted">|</span>
-        <small class="fs-5 text-light fw-semibold">{{ maraton.nombre }}</small>
+        <small class="page-title-content fs-5 text-light fw-semibold">{{ maraton.nombre }}</small>
       {% else %}
         <i class="bi bi-plus-circle"></i> Nuevo maratón
         <span class="mx-2 text-muted">|</span>
         <small class="fs-5 text-light fw-semibold">Agrupa películas y series</small>
       {% endif %}
     </h2>
-    <a href="{% url 'cinetrack:maratones' %}" class="btn-ghost">
+    <a href="{% url 'cinetrack:maratones' %}" class="ct-btn btn-ghost">
       <i class="bi bi-arrow-left-circle"></i> Volver a maratones
     </a>
   </div>
 
   {% if form.non_field_errors %}
-    <div class="surface-card p-3 mb-3">
+    <div class="form-validation-summary" role="alert">
+      <i class="bi bi-exclamation-triangle-fill form-validation__icon" aria-hidden="true"></i>
       {{ form.non_field_errors }}
     </div>
   {% endif %}
@@ -38,14 +39,14 @@
     <div class="mb-3">
       <label class="form-label" for="id_nombre">Nombre</label>
       {{ form.nombre }}
-      {% if form.nombre.errors %}<div class="text-danger small mt-1">{{ form.nombre.errors }}</div>{% endif %}
+      {% if form.nombre.errors %}<div class="form-validation" role="alert"><i class="bi bi-exclamation-circle-fill form-validation__icon" aria-hidden="true"></i>{{ form.nombre.errors }}</div>{% endif %}
     </div>
 
     <!-- Descripción -->
     <div class="mb-4">
       <label class="form-label" for="id_descripcion">Descripción</label>
       {{ form.descripcion }}
-      {% if form.descripcion.errors %}<div class="text-danger small mt-1">{{ form.descripcion.errors }}</div>{% endif %}
+      {% if form.descripcion.errors %}<div class="form-validation" role="alert"><i class="bi bi-exclamation-circle-fill form-validation__icon" aria-hidden="true"></i>{{ form.descripcion.errors }}</div>{% endif %}
     </div>
 
     <!-- Buscador local -->
@@ -64,7 +65,7 @@
 
       <!-- antes: col-12 col-md-3 -->
       <div class="col-12 col-lg-2 text-lg-end">
-        <button type="button" id="btn-filtrar" class="btn-neon w-100 justify-content-center">
+        <button type="button" id="btn-filtrar" class="ct-btn btn-neon w-100">
           <i class="bi bi-search flex-shrink-0"></i> Buscar
         </button>
       </div>
@@ -76,12 +77,12 @@
       </span>
 
       <div class="d-flex gap-2">
-        <button type="submit" class="btn-save">
-          <i class="bi bi-check-circle me-1"></i>
+        <button type="submit" class="ct-btn btn-save">
+          <i class="bi bi-check-circle"></i>
           {% if maraton %}Actualizar{% else %}Guardar{% endif %}
         </button>
 
-        <a href="{% url 'cinetrack:maratones' %}" class="btn-ghost">
+        <a href="{% url 'cinetrack:maratones' %}" class="ct-btn btn-ghost">
           <i class="bi bi-x-circle"></i>
           Cancelar
         </a>
@@ -120,16 +121,19 @@
         {% endfor %}
       </div>
       {% if form.contenidos.errors %}
-        <div class="text-danger small mt-1">{{ form.contenidos.errors }}</div>
+        <div class="form-validation" role="alert">
+          <i class="bi bi-exclamation-circle-fill form-validation__icon" aria-hidden="true"></i>
+          {{ form.contenidos.errors }}
+        </div>
       {% endif %}
     </div>
 
     <!-- Acciones -->
     <div class="d-flex justify-content-center gap-3 pt-2">
-      <button type="submit" class="btn-save">
-        <i class="bi bi-check-circle me-1"></i> {% if maraton %}Actualizar{% else %}Guardar{% endif %}
+      <button type="submit" class="ct-btn btn-save">
+        <i class="bi bi-check-circle"></i> {% if maraton %}Actualizar{% else %}Guardar{% endif %}
       </button>
-      <a href="{% url 'cinetrack:maratones' %}" class="btn-ghost">
+      <a href="{% url 'cinetrack:maratones' %}" class="ct-btn btn-ghost">
         <i class="bi bi-x-circle"></i> Cancelar
       </a>
     </div>

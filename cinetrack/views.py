@@ -214,7 +214,7 @@ def eliminar(request, pk):
 
     messages.success(
         request,
-        f"🗑️ {mensaje_contenido(titulo)} fue eliminado correctamente."
+        f"{mensaje_contenido(titulo)} fue eliminado correctamente."
     )
     retorno_catalogo = obtener_retorno_catalogo(request)
     if retorno_catalogo:
@@ -351,7 +351,7 @@ def renombrar_saga(request):
                 )
             },
         )
-        messages.success(request, f"✅ Saga renombrada a “{escape(obj.nombre)}”.")
+        messages.success(request, f"Saga renombrada a “{escape(obj.nombre)}”.")
     else:
         messages.error(request, "No se pudo guardar el nombre de la saga.")
 
@@ -459,7 +459,7 @@ def eliminar_maraton(request, pk):
     nombre = maraton.nombre
 
     maraton.delete()
-    messages.success(request, f"🗑️ Se eliminó «{nombre}».")
+    messages.success(request, f"Se eliminó «{nombre}».")
 
     return redirect("cinetrack:maratones")
 
@@ -470,7 +470,7 @@ def quitar_de_maraton(request, pk, contenido_id):
     contenido = get_object_or_404(Contenido, pk=contenido_id)
 
     maraton.contenidos.remove(contenido)
-    messages.success(request, f"❌ Quitado «{contenido.titulo}» del maratón.")
+    messages.success(request, f"Se quitó «{contenido.titulo}» del maratón.")
 
     return redirect("cinetrack:detalle_maraton", pk=pk)
 

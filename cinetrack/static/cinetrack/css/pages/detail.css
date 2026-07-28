@@ -61,7 +61,7 @@
   font-weight: 900;
 }
 .detail-title .detail-year {
-  font-family: var(--font-family-interface);
+  font-family: var(--font-family-body);
   font-size: 1.65rem;
   color: var(--color-text-secondary);
   margin-left: .75rem;
@@ -78,29 +78,13 @@
 
 /* Página: Insignias de detalle */
 .detail-badges .badge {
+  min-height: 2rem;
   font-weight: 700;
+  font-size: .85rem;
   letter-spacing: .3px;
-  padding: .45rem .9rem;
+  padding: .5rem 1rem;
   margin-right: 0;
   box-shadow: 0 4px 10px rgba(0,0,0,.35);
-}
-.detail-badges .badge.tipo {
-  color: #fff;
-  background: linear-gradient(135deg, #633399, #45206f);
-}
-.detail-badges .badge.plataforma {
-  color: #fff;
-  background: #075985;
-}
-.detail-badges .badge.estado {
-  color: #fff;
-  background: #714615;
-  border: 1px solid rgba(255,184,92,.2);
-}
-.detail-badges .badge.calificacion {
-  color: #fff;
-  background: #465622;
-  border: 1px solid rgba(191,210,90,.2);
 }
 .detail-badges {
   display: flex;
@@ -127,19 +111,14 @@
   min-height: 0;
 }
 .detail-section {
-  height: 150px;
-  min-height: 150px;
+  min-height: 0;
 }
 .detail-section .detail-sub {
-  font-family: var(--font-family-interface);
-  text-transform: uppercase;
-  letter-spacing: .5px;
-  color: var(--color-text-secondary);
-  font-size: 1.3rem;
   margin-bottom: .45rem;
 }
 .detail-section .detail-text {
-  height: calc(100% - 1.8rem);
+  height: auto;
+  max-height: 150px;
   margin: 0;
   padding-right: .5rem;
   overflow-y: auto;
@@ -160,11 +139,10 @@
 /* Página: Estadísticas de detalle */
 .detail-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px 20px;
-  margin: 0;
+  margin: auto 0 0;
   padding: 0;
-  margin-top: auto;
 }
 .detail-stat {
   background: rgba(255,255,255,.05);
@@ -173,26 +151,21 @@
   padding: .8rem 1rem;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 0;
   transition: transform .15s ease, box-shadow .2s ease;
 }
 .detail-stat:hover {
   transform: translateY(-2px);
   box-shadow: 0 12px 22px rgba(0,0,0,.35);
 }
-.detail-stat .label {
-  font-family: var(--font-family-interface);
-  font-size: .85rem;
-  color: var(--color-text-secondary);
-  text-transform: uppercase;
-  letter-spacing: .4px;
-  font-weight: 700;
+.detail-stat .form-label {
+  margin-bottom: .1rem;
 }
 .detail-stat .value {
   font-size: 1.2rem;
   font-weight: 800;
   color: var(--color-text-primary);
-  margin: 0;
+  margin: auto 0 0;
 }
 
 /* Página: Acciones de detalle */

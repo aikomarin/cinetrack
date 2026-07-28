@@ -1,0 +1,25 @@
+<!-- Título -->
+<div class="mb-3">
+  <label class="form-label" for="{{ formulario.titulo.id_for_label }}">Título</label>
+  {{ formulario.titulo }}
+  {% if formulario.titulo.errors %}<div class="form-validation" role="alert"><i class="bi bi-exclamation-circle-fill form-validation__icon" aria-hidden="true"></i>{{ formulario.titulo.errors }}</div>{% endif %}
+</div>
+
+<!-- Fecha / Tipo / Plataforma -->
+<div class="row mb-4">
+  <div class="col-md-4 mb-3">
+    <label class="form-label" for="{{ formulario.fecha.id_for_label }}">Fecha de estreno</label>
+    {{ formulario.fecha }}
+    {% if formulario.fecha.errors %}<div class="form-validation" role="alert"><i class="bi bi-exclamation-circle-fill form-validation__icon" aria-hidden="true"></i>{{ formulario.fecha.errors }}</div>{% endif %}
+  </div>
+  <div class="col-md-4 mb-3">
+    <label class="form-label" for="{{ formulario.tipo.id_for_label }}">Tipo</label>
+    {{ formulario.tipo }}
+    {% if formulario.tipo.errors %}<div class="form-validation" role="alert"><i class="bi bi-exclamation-circle-fill form-validation__icon" aria-hidden="true"></i>{{ formulario.tipo.errors }}</div>{% endif %}
+  </div>
+  <div class="col-md-4 mb-3">
+    <label class="form-label" for="{{ formulario.plataforma.id_for_label }}">Plataforma</label>
+    {{ formulario.plataforma }}
+    {% if formulario.plataforma.errors %}<div class="form-validation" role="alert"><i class="bi bi-exclamation-circle-fill form-validation__icon" aria-hidden="true"></i>{{ formulario.plataforma.errors }}</div>{% endif %}
+  </div>
+</div>

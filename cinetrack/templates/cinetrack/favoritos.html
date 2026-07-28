@@ -9,11 +9,11 @@
     <h2 class="page-shell-title m-0">
       <i class="bi bi-star-fill favorite-star"></i> Favoritos
       <span class="mx-2 text-muted">|</span>
-      <small class="fs-5 text-light fw-semibold">
+      <small class="page-title-content fs-5 text-light fw-semibold">
         {{ total_favoritos }} título{{ total_favoritos|pluralize:"s" }}
       </small>
     </h2>
-    <a href="{% url 'cinetrack:catalogo' %}" class="btn-ghost">
+    <a href="{% url 'cinetrack:catalogo' %}" class="ct-btn btn-ghost">
       <i class="bi bi-collection"></i> Catálogo
     </a>
   </div>
@@ -101,7 +101,7 @@
     <div class="surface-card text-center py-5">
       <div class="display-6 mb-2">Sin favoritos</div>
       <p class="opacity-75">Marca contenidos como favoritos para verlos aquí.</p>
-      <a href="{% url 'cinetrack:catalogo' %}" class="btn-neon">
+      <a href="{% url 'cinetrack:catalogo' %}" class="ct-btn btn-neon">
         <i class="bi bi-collection"></i> Explorar catálogo
       </a>
     </div>
